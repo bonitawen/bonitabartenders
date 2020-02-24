@@ -32,26 +32,23 @@ img {
 /* =====================================
  * * TYPOGRAPHY
  * * ================================== */
-h1 {
+h1, h2, h3 {
   font-family: "Sriracha";
-  font-size: 2.83rem;
-  font-size: 2.4rem;
   line-height: 1.4;
   font-weight: 400;
+}
+
+h1 {
+  font-size: 2.83rem;
+  font-size: 2.4rem;
 }
 
 h2 {
-  font-family: "Sriracha";
   font-size: 1.74rem;
-  line-height: 1.4;
-  font-weight: 400;
 }
 
 h3 {
-  font-family: "Sriracha";
   font-size: 1.22rem;
-  line-height: 1.4;
-  font-weight: 400;
 }
 
 h4 {
