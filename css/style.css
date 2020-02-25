@@ -133,18 +133,15 @@ a:hover, a:focus {
  * * SITEWIDE
  * * ================================== */
 /* || LAYOUT */
-.col-2 {
-  width: 50%;
+.header-margin-container,
+.hero-section-margin-container {
+  margin: 0 1.47em;
+  padding: 1.47em 0;
 }
 
 /* || HEADER */
 header {
   background-color: #FEC7D7;
-}
-
-.header-margin-container {
-  margin: 0 1.47em;
-  padding: 1.47em 0;
 }
 
 /* || FOOTER */
@@ -190,5 +187,19 @@ nav ul {
  * * PAGES
  * * ================================== */
 /* || HOMEPAGE */
+.hero-section {
+  background-color: #D9D4E7;
+}
+
+.headings-wrap-landing {
+  position: relative;
+}
+
+img {
+  position: absolute;
+  left: 105px;
+  min-width: 423px;
+  border: 1px solid red;
+}
 
 /*# sourceMappingURL=style.css.map */
