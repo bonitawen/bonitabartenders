@@ -82,6 +82,7 @@ p {
 
 .logo {
   font-family: "Nunito", sans-serif;
+  letter-spacing: 1px;
   line-height: 0;
   text-transform: uppercase;
   color: #FFFFFE;
