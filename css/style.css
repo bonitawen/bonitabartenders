@@ -82,7 +82,7 @@ p {
 
 .logo {
   font-family: "Nunito", sans-serif;
-  letter-spacing: 1px;
+  letter-spacing: 0.141em;
   line-height: 0;
   text-transform: uppercase;
   color: #FFFFFE;
@@ -143,8 +143,8 @@ header {
 }
 
 .header-margin-container {
-  margin: 0 1.47rem;
-  padding: 1.47rem 0;
+  margin: 0 1.47em;
+  padding: 1.47em 0;
 }
 
 /* || FOOTER */
