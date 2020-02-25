@@ -86,6 +86,9 @@ p {
   text-transform: uppercase;
   color: #FFFFFE;
 }
+.logo a {
+  font-size: 1rem;
+}
 
 .logo a:hover, .logo a:focus {
   color: #FFFFFE;
