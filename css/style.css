@@ -54,6 +54,7 @@ h1, h2, h3 {
   font-family: "Sriracha", serif;
   line-height: 1.4;
   font-weight: 400;
+  margin: 0.87em 0;
 }
 
 h1 {
@@ -199,6 +200,10 @@ img {
   position: absolute;
   left: 105px;
   min-width: 425px;
+}
+
+.headings-wrap-landing h3 {
+  margin-top: -1.4em;
 }
 
 /*# sourceMappingURL=style.css.map */
