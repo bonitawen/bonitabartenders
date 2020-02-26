@@ -30,10 +30,14 @@ $mobile-side-margin: 1.47em
 html
   font-size: 17px
 
-body
+%body-shared
   font-family: $main-font
   font-size: 1rem
+  line-height: 1.6
   font-weight: 300
+
+body
+  @extend %body-shared
 
 img
   max-width: 100%
@@ -77,6 +81,7 @@ h4
   font-size: .78rem
   line-height: 1.5
   font-weight: 400
+  letter-spacing: .123em
   text-transform: uppercase
 
 p
@@ -129,8 +134,7 @@ a:hover, a:focus
 
 /* || LAYOUT */
 
-.header-margin-container,
-.hero-section-margin-container
+.margin-container
   margin: 0 $mobile-side-margin
   padding: $mobile-side-margin 0
 
@@ -202,3 +206,10 @@ img
 .headings-wrap-landing
   h3
     margin-top: -1.3em
+
+.phone,
+.email
+  @extend %body-shared
+
+.reservations
+  text-align: center
