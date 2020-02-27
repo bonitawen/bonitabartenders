@@ -208,8 +208,9 @@ img {
   margin-top: -1.3em;
 }
 
-.reservations {
-  text-align: center;
+.services {
+  background-color: #FEC7D7;
+  padding-top: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */
