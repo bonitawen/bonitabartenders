@@ -23,7 +23,8 @@ $purple: #A786DF
 $white: #FFFFFE
 
 $mobile-margin: 1.47em
-$tablet-margin: 10%
+$tablet-side-margin: 10%
+$table-top-bottom-padding: 2em
 
 /* =====================================
  * GENERAL
@@ -158,8 +159,8 @@ li
 
 @media (min-width: 450px)
   .margin-container
-    margin: 0 $tablet-margin
-    padding: $mobile-margin 0
+    margin: 0 $tablet-side-margin
+    padding: $table-top-bottom-padding 0
 
 /* || HEADER */
 header
@@ -250,7 +251,7 @@ img
 
 @media (min-width: 450px)
   img
-    max-width: 480px
+    max-width: 505px
     left: 40vw
 
 .headings-wrap-landing
@@ -297,11 +298,13 @@ img
     max-width: 350px
     margin-top: .7em
 
+.form-subject, .form-text
+  margin-bottom: 1.6em
 
 textarea
   @extend %h1-to-h3-styles
   font-size: 1.74em
-  height: 130px
+  height: 2.8em
   width: 100%
   background-color: $pink
   border: none

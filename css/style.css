@@ -162,7 +162,7 @@ li {
 @media (min-width: 450px) {
   .margin-container {
     margin: 0 10%;
-    padding: 1.47em 0;
+    padding: 2em 0;
   }
 }
 /* || HEADER */
@@ -253,7 +253,7 @@ img {
 
 @media (min-width: 450px) {
   img {
-    max-width: 480px;
+    max-width: 505px;
     left: 40vw;
   }
 }
@@ -295,9 +295,13 @@ img {
   margin-top: 0.7em;
 }
 
+.form-subject, .form-text {
+  margin-bottom: 1.6em;
+}
+
 textarea {
   font-size: 1.74em;
-  height: 130px;
+  height: 2.8em;
   width: 100%;
   background-color: #FEC7D7;
   border: none;
