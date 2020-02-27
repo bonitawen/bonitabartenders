@@ -26,7 +26,7 @@
   <header>
     <div class="margin-container">
       <nav class="nav-main">
-        <a href="index.html" class="nav-burger hide"></a>
+        <a href="index.html" class="nav-burger hie"></a>
         <ul>
           <li class="logo"><a href="index.html">Bonita Bartenders</a></li>
           <li><a href="about.html">About</a></li>
@@ -173,8 +173,9 @@
   <script src="js/script.js"></script>
   <!-- TODO: take this out -->
   <script type="text/javascript">
-    let footer = document.getElementsByTagName('footer')[0];
-    let compStyles = window.getComputedStyle(footer);
+    // let footer = document.getElementsByTagName('footer')[0];
+    let navBurger = document.getElementsByClassName('nav-burger')[0];
+    let compStyles = window.getComputedStyle(navBurger);
     console.log(compStyles.getPropertyValue('font-size'));
   </script>
 </body>
