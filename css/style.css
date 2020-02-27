@@ -18,6 +18,11 @@ html {
   font-size: 17px;
 }
 
+@media (min-width: 450px) {
+  html {
+    font-size: 20px;
+  }
+}
 footer .footer-contact h4, .form-email input, .form-subject input, .phone,
 .email, body {
   font-family: "Source Sans Pro", sans-serif;
@@ -154,6 +159,12 @@ li {
   padding: 1.47em 0;
 }
 
+@media (min-width: 450px) {
+  .margin-container {
+    margin: 0 10%;
+    padding: 1.47em 0;
+  }
+}
 /* || HEADER */
 header {
   background-color: #FEC7D7;
@@ -237,8 +248,15 @@ img {
   position: absolute;
   left: 105px;
   min-width: 405px;
+  max-width: 410px;
 }
 
+@media (min-width: 450px) {
+  img {
+    max-width: 480px;
+    left: 40vw;
+  }
+}
 .headings-wrap-landing h3 {
   margin-top: -1.3em;
 }

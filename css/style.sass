@@ -22,13 +22,18 @@ $pink: #FEC7D7
 $purple: #A786DF
 $white: #FFFFFE
 
-$mobile-side-margin: 1.47em
+$mobile-margin: 1.47em
+$tablet-margin: 10%
 
 /* =====================================
  * GENERAL
  * ================================== */
 html
   font-size: 17px
+
+@media(min-width: 450px)
+  html
+    font-size: 20px
 
 %body-shared
   font-family: $main-font
@@ -148,9 +153,13 @@ li
 /* || LAYOUT */
 
 .margin-container
-  margin: 0 $mobile-side-margin
-  padding: $mobile-side-margin 0
+  margin: 0 $mobile-margin
+  padding: $mobile-margin 0
 
+@media (min-width: 450px)
+  .margin-container
+    margin: 0 $tablet-margin
+    padding: $mobile-margin 0
 
 /* || HEADER */
 header
@@ -236,7 +245,13 @@ img
   position: absolute
   left: 105px
   min-width: 405px
+  max-width: 410px
   // border: 1px solid red   TODO: take out
+
+@media (min-width: 450px)
+  img
+    max-width: 480px
+    left: 40vw
 
 .headings-wrap-landing
   h3
