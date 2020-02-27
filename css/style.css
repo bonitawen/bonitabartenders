@@ -18,7 +18,7 @@ html {
   font-size: 17px;
 }
 
-.phone,
+.form-email input, .form-subject input, .phone,
 .email, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
@@ -242,6 +242,24 @@ img {
 }
 .services h4 {
   margin-bottom: 3.4em;
+}
+
+.form-email, .form-subject {
+  display: flex;
+}
+.form-email h4, .form-subject h4 {
+  width: 8em;
+}
+.form-email input, .form-subject input {
+  height: 1.3em;
+  border: none;
+  background-color: #FEC7D7;
+  width: 100%;
+  max-width: 350px;
+  margin-top: 0.82em;
+}
+.form-email input:focus, .form-email textarea:focus, .form-subject input:focus, .form-subject textarea:focus {
+  outline: none;
 }
 
 /*# sourceMappingURL=style.css.map */

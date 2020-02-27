@@ -244,3 +244,22 @@ img
 
   h4
     margin-bottom: 3.4em
+
+.form-email, .form-subject
+  display: flex
+
+  h4
+    width: 8em
+
+  input
+    @extend %body-shared
+    height: 1.3em
+
+    border: none
+    background-color: $pink
+    width: 100%
+    max-width: 350px
+    margin-top: .82em
+
+  input:focus, textarea:focus
+    outline: none
