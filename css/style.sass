@@ -62,11 +62,14 @@ a
 /* =====================================
  * TYPOGRAPHY
  * ================================== */
-h1, h2, h3
+%h1-to-h3-styles
   font-family: $heading-font
   line-height: 1.4
   font-weight: 400
   margin: .87em 0
+
+h1, h2, h3
+  @extend %h1-to-h3-styles
 
 h1
   font-size: 2.83rem
@@ -84,6 +87,7 @@ h4
   font-weight: 400
   letter-spacing: .123em
   text-transform: uppercase
+  margin: 1.1em 0
 
 p
   line-height: 1.4
@@ -112,9 +116,16 @@ a
   text-decoration: underline
 
 .btn_1
+  font-size: 1rem
   line-height: 1.5
   font-weight: 400
+  letter-spacing: .2em
   text-transform: uppercase
+  border: none
+  background-color: $pink
+  padding: 0
+  margin: 1.1em 0
+  opacity: .7
 
 .btn_2
   font-size: .78rem
@@ -230,7 +241,7 @@ img
 
 .contact-info
   background-color: $white
-  margin-bottom: 3em
+  margin-bottom: 6em
 
 .phone,
 .email
@@ -240,26 +251,46 @@ img
   // text-align: center
 
 .services
-  margin-bottom: 3.7em
+  margin-bottom: 6em
 
   h4
     margin-bottom: 3.4em
+
+.contact-form
+  margin-bottom: 6em
 
 .form-email, .form-subject
   display: flex
 
   h4
     width: 8em
+    opacity: .7
 
   input
     @extend %body-shared
+    font-weight: 400
     height: 1.3em
 
     border: none
     background-color: $pink
     width: 100%
     max-width: 350px
-    margin-top: .82em
+    margin-top: .7em
 
   input:focus, textarea:focus
     outline: none
+
+textarea
+  @extend %h1-to-h3-styles
+  font-size: 1.74em
+  height: 130px
+  border: none
+  width: 100%
+  background-color: $pink
+
+textarea::placeholder
+    color: $dark-blue
+    opacity: 1
+
+footer
+  background-color: $white
