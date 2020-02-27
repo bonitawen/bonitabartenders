@@ -147,27 +147,35 @@
   </main>
 
   <footer>
-    <div class="footer-top-row">
-      <div class="logo-footer">
-        Bonita Bartenders
+    <div class="margin-container">
+      <div class="footer-top-row">
+        <div class="logo logo-footer">
+          Bonita<br> Bartenders
+        </div>
+        <div class="footer-contact">
+          <h2>Let's talk!</h2>
+          <h4><a href="tel:+1-323-270-4324">323.270.4324</a></h4>
+        </div>
       </div>
-      <div class="footer-contact">
-        <h2>Let's talk!</h2>
-        <h4><a href="tel:+1-323-270-4324">323.270.4324</a></h4>
+      <div class="footer-bottom-row">
+        <nav class="nav-footer">
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cocktails.html">Cocktails</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-    </div>
-    <div class="footer-bottom-row">
-      <nav class="nav-footer">
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="cocktails.html">Cocktails</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </footer>
 
   <script src="js/script.js"></script>
+  <!-- TODO: take this out -->
+  <script type="text/javascript">
+    let footer = document.getElementsByTagName('footer')[0];
+    let compStyles = window.getComputedStyle(footer);
+    console.log(compStyles.getPropertyValue('font-size'));
+  </script>
 </body>
 </html>

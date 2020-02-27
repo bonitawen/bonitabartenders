@@ -18,7 +18,7 @@ html {
   font-size: 17px;
 }
 
-.form-email input, .form-subject input, .phone,
+footer .footer-contact h4, .form-email input, .form-subject input, .phone,
 .email, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
@@ -89,7 +89,7 @@ p {
 .logo {
   font-family: "Nunito", sans-serif;
   letter-spacing: 0.141em;
-  line-height: 0;
+  line-height: 1.4em;
   text-transform: uppercase;
   color: #FFFFFE;
 }
@@ -294,6 +294,35 @@ textarea::placeholder {
 
 footer {
   background-color: #FFFFFE;
+  padding-top: 1.76em;
+}
+footer .logo-footer {
+  color: #0E172C;
+  margin-bottom: 1.3em;
+}
+footer .footer-top-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6em;
+}
+footer .footer-contact h2 {
+  margin-bottom: 0;
+}
+footer .footer-contact h4 {
+  margin-top: 0.1em;
+  color: #0E172C;
+  text-decoration: none;
+}
+footer .nav-footer ul {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+footer .nav-footer ul li {
+  margin-left: 1em;
+}
+footer .nav-footer ul li:nth-child(1) {
+  margin-left: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -95,7 +95,7 @@ p
 .logo
   font-family: $logo-font
   letter-spacing: .141em
-  line-height: 0
+  line-height: 1.4em
   text-transform: uppercase
   color: $white
   a
@@ -299,3 +299,33 @@ textarea::placeholder
 
 footer
   background-color: $white
+  padding-top: 1.76em
+
+  .logo-footer
+    color: $dark-blue
+    margin-bottom: 1.3em
+
+  .footer-top-row
+    display: flex
+    flex-direction: column
+    margin-bottom: 6em
+
+  .footer-contact
+    h2
+      margin-bottom: 0
+    h4
+      @extend %body-shared
+      margin-top: .1em
+      color: $dark-blue
+      text-decoration: none
+
+  .nav-footer
+    ul
+      // margin: 0 auto
+      text-align: center
+      display: flex
+      flex-direction: row
+      li
+        margin-left: 1em
+      li:nth-child(1)
+        margin-left: 0
