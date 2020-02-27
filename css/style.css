@@ -210,6 +210,10 @@ nav a:hover, nav a:focus {
  * * PAGES
  * * ================================== */
 /* || HOMEPAGE */
+.home {
+  background-color: #FEC7D7;
+}
+
 .hero-section {
   background-color: #D9D4E7;
 }
@@ -228,9 +232,13 @@ img {
   margin-top: -1.3em;
 }
 
+.contact-info {
+  background-color: #FFFFFE;
+  margin-bottom: 3em;
+}
+
 .services {
-  background-color: #FEC7D7;
-  padding-top: 3em;
+  margin-bottom: 3.7em;
 }
 .services h4 {
   margin-bottom: 3.4em;
