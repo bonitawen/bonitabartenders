@@ -36,6 +36,10 @@ html
   html
     font-size: 20px
 
+@media(min-width: 900px)
+  html
+    font-size: 23px
+
 %body-shared
   font-family: $main-font
   font-size: 1rem
@@ -162,18 +166,29 @@ li
     margin: 0 $tablet-side-margin
     padding: $table-top-bottom-padding 0
 
+@media (min-width: 900px)
+  header
+    height: 100px
+    display: flex
+
+    .margin-container
+      width: 100%
+      margin: auto 75px 20px 75px
+      padding: 0
+
+
 /* || HEADER */
 header
   background-color: $pink
-
 
 /* || FOOTER */
 
 
 /* || COMPONENTS */
+
+// Main nav
 nav 
   display: flex
-  // flex-direction: column
 
   ul
     display: flex
@@ -188,6 +203,30 @@ nav
 
   a:hover, a:focus
     color: $purple
+
+@media (min-width: 900px)
+  .nav-main
+    flex-direction: column
+    align-items: end
+    ul
+      width: 100%
+      flex-direction: row
+      align-content: flex-end
+
+      li:nth-child(1)
+        order: 3
+        margin: 0 auto
+        align-self: flex-end
+      li:nth-child(2)
+        order: 1
+        margin-right: 43px
+      li:nth-child(3)
+        order: 2
+      li:nth-child(4)
+        order: 4
+        margin-right: 43px
+      li:nth-child(5)
+        order: 5
 
 // Start Nav-burger
 .nav-burger
@@ -218,6 +257,19 @@ nav
   left: 0
 
 // End Nav-burger
+
+// Footer nav
+footer
+  .nav-footer
+    ul
+      // margin: 0 auto
+      text-align: center
+      display: flex
+      flex-direction: row
+      li
+        margin-left: 1em
+      li:nth-child(1)
+        margin-left: 0
 
 // Card
 .card
@@ -337,14 +389,3 @@ footer
       margin-top: .1em
       color: $dark-blue
       text-decoration: none
-
-  .nav-footer
-    ul
-      // margin: 0 auto
-      text-align: center
-      display: flex
-      flex-direction: row
-      li
-        margin-left: 1em
-      li:nth-child(1)
-        margin-left: 0

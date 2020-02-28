@@ -23,6 +23,11 @@ html {
     font-size: 20px;
   }
 }
+@media (min-width: 900px) {
+  html {
+    font-size: 23px;
+  }
+}
 footer .footer-contact h4, .form-email input, .form-subject input, .phone,
 .email, body {
   font-family: "Source Sans Pro", sans-serif;
@@ -165,6 +170,17 @@ li {
     padding: 2em 0;
   }
 }
+@media (min-width: 900px) {
+  header {
+    height: 100px;
+    display: flex;
+  }
+  header .margin-container {
+    width: 100%;
+    margin: auto 75px 20px 75px;
+    padding: 0;
+  }
+}
 /* || HEADER */
 header {
   background-color: #FEC7D7;
@@ -190,6 +206,36 @@ nav a:hover, nav a:focus {
   color: #A786DF;
 }
 
+@media (min-width: 900px) {
+  .nav-main {
+    flex-direction: column;
+    align-items: end;
+  }
+  .nav-main ul {
+    width: 100%;
+    flex-direction: row;
+    align-content: flex-end;
+  }
+  .nav-main ul li:nth-child(1) {
+    order: 3;
+    margin: 0 auto;
+    align-self: flex-end;
+  }
+  .nav-main ul li:nth-child(2) {
+    order: 1;
+    margin-right: 43px;
+  }
+  .nav-main ul li:nth-child(3) {
+    order: 2;
+  }
+  .nav-main ul li:nth-child(4) {
+    order: 4;
+    margin-right: 43px;
+  }
+  .nav-main ul li:nth-child(5) {
+    order: 5;
+  }
+}
 .nav-burger {
   order: 2;
   margin-left: auto;
@@ -218,6 +264,18 @@ nav a:hover, nav a:focus {
 .nav-burger:before {
   top: 4px;
   left: 0;
+}
+
+footer .nav-footer ul {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+footer .nav-footer ul li {
+  margin-left: 1em;
+}
+footer .nav-footer ul li:nth-child(1) {
+  margin-left: 0;
 }
 
 .card {
@@ -335,17 +393,6 @@ footer .footer-contact h4 {
   margin-top: 0.1em;
   color: #0E172C;
   text-decoration: none;
-}
-footer .nav-footer ul {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-footer .nav-footer ul li {
-  margin-left: 1em;
-}
-footer .nav-footer ul li:nth-child(1) {
-  margin-left: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
