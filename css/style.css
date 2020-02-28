@@ -207,14 +207,9 @@ nav a:hover, nav a:focus {
 }
 
 @media (min-width: 900px) {
-  .nav-main {
-    flex-direction: column;
-    align-items: end;
-  }
   .nav-main ul {
     width: 100%;
     flex-direction: row;
-    align-content: flex-end;
   }
   .nav-main ul li:nth-child(1) {
     order: 3;
