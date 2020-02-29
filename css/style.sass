@@ -23,8 +23,9 @@ $purple: #A786DF
 $white: #FFFFFE
 
 $mobile-margin: 1.47em
-$tablet-side-margin: 10%
-$table-top-bottom-padding: 2em
+$large-side-margin: 10%
+$large-top-bottom-padding: 2em
+$large-side-padding: 13%
 
 /* =====================================
  * GENERAL
@@ -84,6 +85,10 @@ h1, h2, h3
 h1
   font-size: 2.83rem
   font-size: 2.4rem
+
+@media (min-width: 900px)
+  h1 
+    font-size: 2.83rem
 
 h2
   font-size: 1.74rem
@@ -163,8 +168,8 @@ li
 
 @media (min-width: 450px)
   .margin-container
-    margin: 0 $tablet-side-margin
-    padding: $table-top-bottom-padding 0
+    margin: 0 $large-side-margin
+    padding: $large-top-bottom-padding 0
 
 @media (min-width: 900px)
   header
@@ -177,6 +182,14 @@ li
       margin: 0 75px 20px 75px
       padding: 0
 
+  .margin-container
+    padding: $large-top-bottom-padding $large-side-padding
+    // border: 1px solid red
+
+  .hero-section
+    .margin-container
+      padding-top: 4.8em
+      padding-bottom: 6.8em
 
 /* || HEADER */
 header
@@ -296,13 +309,17 @@ img
   position: absolute
   left: 105px
   min-width: 405px
-  max-width: 410px
+  max-width: 405px
   // border: 1px solid red   TODO: take out
 
 @media (min-width: 450px)
   img
     max-width: 505px
     left: 40vw
+
+@media (min-width: 900px)
+  img
+    max-width: 885px
 
 .headings-wrap-landing
   h3
