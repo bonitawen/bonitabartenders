@@ -183,12 +183,15 @@ li {
     justify-content: flex-end;
   }
   header .margin-container {
+    max-width: 100%;
     margin: 0 75px 20px 75px;
     padding: 0;
   }
 
   .margin-container {
+    margin: 0 auto;
     padding: 2em 13%;
+    max-width: 1220px;
   }
 
   .hero-section .margin-container {
@@ -201,6 +204,7 @@ li {
     justify-content: space-between;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
+    margin-bottom: 10em;
   }
 }
 /* || HEADER */
@@ -303,6 +307,11 @@ footer .nav-footer ul li:nth-child(1) {
   margin-bottom: 1.5em;
 }
 
+@media (min-width: 450px) {
+  .card {
+    padding: 2em 3em;
+  }
+}
 /* =====================================
  * * PAGES
  * * ================================== */
@@ -350,10 +359,10 @@ img {
   margin-bottom: 6em;
 }
 .services h4 {
-  margin-bottom: 3.4em;
+  margin-bottom: 4em;
 }
 
-@media (min-width: 1120px) {
+@media (min-width: 900px) {
   .reservations {
     text-align: center;
   }
@@ -361,6 +370,15 @@ img {
   .hours {
     display: block;
     text-align: center;
+  }
+
+  .card-container-services {
+    display: flex;
+  }
+
+  .card-events {
+    align-self: center;
+    margin-right: 40px;
   }
 }
 .contact-form {
