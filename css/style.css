@@ -195,6 +195,13 @@ li {
     padding-top: 4.8em;
     padding-bottom: 6.8em;
   }
+
+  .contact-info .margin-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+  }
 }
 /* || HEADER */
 header {
@@ -346,6 +353,16 @@ img {
   margin-bottom: 3.4em;
 }
 
+@media (min-width: 1120px) {
+  .reservations {
+    text-align: center;
+  }
+
+  .hours {
+    display: block;
+    text-align: center;
+  }
+}
 .contact-form {
   margin-bottom: 6em;
 }
