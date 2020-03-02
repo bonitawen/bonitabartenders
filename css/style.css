@@ -191,7 +191,7 @@ li {
   .margin-container {
     margin: 0 auto;
     padding: 2em 13%;
-    max-width: 1220px;
+    max-width: 1008px;
   }
 
   .hero-section .margin-container {
@@ -205,6 +205,13 @@ li {
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     margin-bottom: 10em;
+  }
+
+  footer .margin-container {
+    padding-bottom: 1em;
+    padding-left: 8%;
+    padding-right: 8%;
+    max-width: 1520px;
   }
 }
 /* || HEADER */
@@ -444,6 +451,23 @@ footer .footer-contact h4 {
   margin-top: 0.1em;
   color: #0E172C;
   text-decoration: none;
+}
+
+@media (min-width: 900px) {
+  footer .footer-top-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 6.5em;
+  }
+  footer .footer-contact {
+    text-align: right;
+  }
+  footer .footer-contact h2 {
+    margin-top: -5px;
+  }
+  footer .nav-footer ul {
+    margin: 0 auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
