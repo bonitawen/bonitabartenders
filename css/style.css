@@ -330,33 +330,31 @@ footer .nav-footer ul li:nth-child(1) {
 .hero-section-homepage {
   background-color: #D9D4E7;
 }
-
-.headings-wrap-landing {
-  position: relative;
-}
-
-img {
+.hero-section-homepage img {
   position: absolute;
   left: 105px;
   min-width: 405px;
   max-width: 405px;
 }
 
-@media (min-width: 450px) {
-  img {
-    max-width: 505px;
-    left: 40vw;
-  }
-}
-@media (min-width: 900px) {
-  img {
-    max-width: 885px;
-  }
+.headings-wrap-landing {
+  position: relative;
 }
 .headings-wrap-landing h3 {
   margin-top: -1.3em;
 }
 
+@media (min-width: 450px) {
+  .hero-section-homepage img {
+    max-width: 505px;
+    left: 40vw;
+  }
+}
+@media (min-width: 900px) {
+  .hero-section-homepage img {
+    max-width: 885px;
+  }
+}
 .contact-info {
   background-color: #FFFFFE;
   margin-bottom: 6em;

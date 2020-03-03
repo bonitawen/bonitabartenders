@@ -322,29 +322,30 @@ footer
 
 .hero-section-homepage
   background-color: $light-purple
+  img
+    position: absolute
+    left: 105px
+    min-width: 405px
+    max-width: 405px
+    // border: 1px solid red   TODO: take out
 
 .headings-wrap-landing
   position: relative
 
-img
-  position: absolute
-  left: 105px
-  min-width: 405px
-  max-width: 405px
-  // border: 1px solid red   TODO: take out
-
-@media (min-width: 450px)
-  img
-    max-width: 505px
-    left: 40vw
-
-@media (min-width: 900px)
-  img
-    max-width: 885px
-
-.headings-wrap-landing
   h3
     margin-top: -1.3em
+
+@media (min-width: 450px)
+  .hero-section-homepage
+    img
+      max-width: 505px
+      left: 40vw
+
+@media (min-width: 900px)
+  .hero-section-homepage
+    img
+      max-width: 885px
+
 
 .contact-info
   background-color: $white
