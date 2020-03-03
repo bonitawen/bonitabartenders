@@ -194,7 +194,7 @@ li {
     max-width: 1008px;
   }
 
-  .hero-section .margin-container {
+  .hero-section-homepage .margin-container {
     padding-top: 4.8em;
     padding-bottom: 6.8em;
   }
@@ -327,7 +327,7 @@ footer .nav-footer ul li:nth-child(1) {
   background-color: #FEC7D7;
 }
 
-.hero-section {
+.hero-section-homepage {
   background-color: #D9D4E7;
 }
 
