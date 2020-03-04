@@ -467,5 +467,24 @@ footer .footer-contact h4 {
     margin: 0 auto;
   }
 }
+/* || ABOUT */
+.about {
+  background-color: #FEC7D7;
+}
+
+.hero-section-about {
+  height: 160px;
+}
+
+.hero-image-wrap {
+  height: 100%;
+  background-image: linear-gradient(rgba(217, 212, 231, 0.85), rgba(217, 212, 231, 0.85)), url(../img/hero_about.jpg);
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-image-wrap h2 {
+  margin-bottom: 0;
+}
 
 /*# sourceMappingURL=style.css.map */
