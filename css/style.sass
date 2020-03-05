@@ -477,11 +477,73 @@ footer
     margin-bottom: 0
 
 .testimonials-section
+  margin-bottom: 3.8em
   .headings-container
     display: flex
     .icon-bubbles2
-      padding: .1em 0 0 .8em
+      padding: 0 0 0 .8em
       color: $white
-      font-size: 1.9rem
+      font-size: 3rem
+      margin-top: -.3em
   p
     margin-top: -.4em
+
+  .headings-testimonials
+    margin-bottom: 2em
+
+  .testimonial-box
+    position: relative
+    background-color: $light-gray
+    border-radius: 5px
+    margin-bottom: 1.3em
+    padding: 3em
+    padding-bottom: 2em
+    z-index:-2
+
+    .icon-quotes-left
+      position: absolute
+      top: .45em
+      left: .7em
+      font-size: 3rem
+      color: $purple
+      z-index: -1
+      opacity: .16
+
+    .client-name
+      text-align: right
+
+.about-wendy-section
+  background-color: $dark-blue
+  color: $light-purple
+
+  .margin-container
+    padding-top: 4.5em
+    padding-bottom: 6.5em
+
+  h2
+      color: $white
+
+  .about-wendy-grid
+    display: flex
+    flex-direction: column
+
+    .about-wendy-text
+      order: 1
+      text-align: right
+
+    .wendy-img-box:nth-child(2)
+      order: 0
+      
+      img
+        width: 13rem
+        border-radius: 5px
+
+      span
+        display: none
+
+    .wendy-img-box:nth-child(3)
+      order: 3
+
+      img
+          width: 21.7rem
+          border-radius: 5px

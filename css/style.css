@@ -487,16 +487,81 @@ footer .footer-contact h4 {
   margin-bottom: 0;
 }
 
+.testimonials-section {
+  margin-bottom: 3.8em;
+}
 .testimonials-section .headings-container {
   display: flex;
 }
 .testimonials-section .headings-container .icon-bubbles2 {
-  padding: 0.1em 0 0 0.8em;
+  padding: 0 0 0 0.8em;
   color: #FFFFFE;
-  font-size: 1.9rem;
+  font-size: 3rem;
+  margin-top: -0.3em;
 }
 .testimonials-section p {
   margin-top: -0.4em;
+}
+.testimonials-section .headings-testimonials {
+  margin-bottom: 2em;
+}
+.testimonials-section .testimonial-box {
+  position: relative;
+  background-color: #F9F8FC;
+  border-radius: 5px;
+  margin-bottom: 1.3em;
+  padding: 3em;
+  padding-bottom: 2em;
+  z-index: -2;
+}
+.testimonials-section .testimonial-box .icon-quotes-left {
+  position: absolute;
+  top: 0.45em;
+  left: 0.7em;
+  font-size: 3rem;
+  color: #A786DF;
+  z-index: -1;
+  opacity: 0.16;
+}
+.testimonials-section .testimonial-box .client-name {
+  text-align: right;
+}
+
+.about-wendy-section {
+  background-color: #0E172C;
+  color: #D9D4E7;
+}
+.about-wendy-section .margin-container {
+  padding-top: 4.5em;
+  padding-bottom: 6.5em;
+}
+.about-wendy-section h2 {
+  color: #FFFFFE;
+}
+.about-wendy-section .about-wendy-grid {
+  display: flex;
+  flex-direction: column;
+}
+.about-wendy-section .about-wendy-grid .about-wendy-text {
+  order: 1;
+  text-align: right;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) {
+  order: 0;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) img {
+  width: 13rem;
+  border-radius: 5px;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) span {
+  display: none;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(3) {
+  order: 3;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(3) img {
+  width: 21.7rem;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
