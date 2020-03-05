@@ -544,14 +544,13 @@ textarea::placeholder {
 }
 .about-wendy-section .about-wendy-grid .about-wendy-text {
   order: 1;
-  text-align: right;
 }
 .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) {
   order: 0;
-}
-.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) img {
-  width: 13rem;
+  height: 200px;
   border-radius: 5px;
+  background-image: url(../img/wendy_smiling.jpg);
+  background-size: cover;
 }
 .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) span {
   display: none;
