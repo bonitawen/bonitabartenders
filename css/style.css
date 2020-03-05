@@ -548,11 +548,13 @@ textarea::placeholder {
 }
 .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) {
   order: 0;
-  height: 200px;
-  border-radius: 5px;
+}
+.about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) .img-wrap {
+  padding-bottom: 60%;
   background-image: url(../img/wendy_smiling.jpg);
   background-size: cover;
   background-position: center;
+  border-radius: 5px;
 }
 .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(3) {
   order: 3;
