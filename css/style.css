@@ -569,8 +569,14 @@ textarea::placeholder {
     display: block;
   }
   .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) {
-    width: 13rem;
+    width: 27vw;
     margin-bottom: 30px;
+    float: left;
+    margin-right: 2vw;
+  }
+  .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(3) img {
+    width: 45vw;
+    border-radius: 5px;
   }
 }
 
