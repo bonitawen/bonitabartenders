@@ -172,6 +172,17 @@ li
     padding: $large-top-bottom-padding 0
 
 @media (min-width: 900px)
+  .margin-container
+    margin: 0 auto
+    padding: $large-top-bottom-padding $large-side-padding
+    max-width: 1008px
+
+
+/* || HEADER */
+header
+  background-color: $pink
+
+@media (min-width: 900px)
   header
     height: 100px
     display: flex
@@ -183,37 +194,50 @@ li
       margin: 0 75px 20px 75px
       padding: 0
 
-  .margin-container
-    margin: 0 auto
-    padding: $large-top-bottom-padding $large-side-padding
-    max-width: 1008px
-    
-  .hero-section-homepage
-    .margin-container
-      padding-top: 4.8em
-      padding-bottom: 6.8em
+/* || FOOTER */
+footer
+  background-color: $white
+  padding-top: 1.76em
 
-  .contact-info
-    .margin-container
-      display: flex
-      justify-content: space-between
-      padding-top: 1.2em
-      padding-bottom: 1.2em
-      margin-bottom: 10em
+  .logo-footer
+    color: $dark-blue
+    margin-bottom: 1.3em
 
+  .footer-top-row
+    display: flex
+    flex-direction: column
+    margin-bottom: 6em
+
+  .footer-contact
+    h2
+      margin-bottom: 0
+    h4
+      @extend %body-shared
+      margin-top: .1em
+      color: $dark-blue
+      text-decoration: none
+
+@media (min-width: 900px)
   footer
     .margin-container
-      
       padding-bottom: 1em
       padding-left: 8%
       padding-right: 8%
       max-width: 1520px
 
-/* || HEADER */
-header
-  background-color: $pink
+    .footer-top-row
+      flex-direction: row
+      justify-content: space-between
+      margin-bottom: 6.5em
 
-/* || FOOTER */
+    .footer-contact
+      text-align: right
+      h2
+        margin-top: -5px
+
+    .nav-footer
+      ul
+        margin: 0 auto
 
 
 /* || COMPONENTS */
@@ -343,6 +367,10 @@ footer
 
 @media (min-width: 900px)
   .hero-section-homepage
+    .margin-container
+      padding-top: 4.8em
+      padding-bottom: 6.8em
+
     img
       max-width: 885px
 
@@ -350,6 +378,15 @@ footer
 .contact-info
   background-color: $white
   margin-bottom: 6em
+
+@media (min-width: 900px)    
+  .contact-info
+    .margin-container
+      display: flex
+      justify-content: space-between
+      padding-top: 1.2em
+      padding-bottom: 1.2em
+      margin-bottom: 10em
 
 .phone,
 .email
@@ -421,43 +458,6 @@ textarea::placeholder
     color: $dark-blue
     opacity: 1
 
-footer
-  background-color: $white
-  padding-top: 1.76em
-
-  .logo-footer
-    color: $dark-blue
-    margin-bottom: 1.3em
-
-  .footer-top-row
-    display: flex
-    flex-direction: column
-    margin-bottom: 6em
-
-  .footer-contact
-    h2
-      margin-bottom: 0
-    h4
-      @extend %body-shared
-      margin-top: .1em
-      color: $dark-blue
-      text-decoration: none
-
-@media (min-width: 900px)
-  footer
-    .footer-top-row
-      flex-direction: row
-      justify-content: space-between
-      margin-bottom: 6.5em
-
-    .footer-contact
-      text-align: right
-      h2
-        margin-top: -5px
-
-    .nav-footer
-      ul
-        margin: 0 auto
 
 /* || ABOUT */
 .about

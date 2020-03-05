@@ -28,8 +28,8 @@ html {
     font-size: 23px;
   }
 }
-footer .footer-contact h4, .form-email input, .form-subject input, .phone,
-.email, body {
+.form-email input, .form-subject input, .phone,
+.email, footer .footer-contact h4, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
@@ -176,6 +176,18 @@ li {
   }
 }
 @media (min-width: 900px) {
+  .margin-container {
+    margin: 0 auto;
+    padding: 2em 13%;
+    max-width: 1008px;
+  }
+}
+/* || HEADER */
+header {
+  background-color: #FEC7D7;
+}
+
+@media (min-width: 900px) {
   header {
     height: 100px;
     display: flex;
@@ -187,39 +199,52 @@ li {
     margin: 0 75px 20px 75px;
     padding: 0;
   }
+}
+/* || FOOTER */
+footer {
+  background-color: #FFFFFE;
+  padding-top: 1.76em;
+}
+footer .logo-footer {
+  color: #0E172C;
+  margin-bottom: 1.3em;
+}
+footer .footer-top-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6em;
+}
+footer .footer-contact h2 {
+  margin-bottom: 0;
+}
+footer .footer-contact h4 {
+  margin-top: 0.1em;
+  color: #0E172C;
+  text-decoration: none;
+}
 
-  .margin-container {
-    margin: 0 auto;
-    padding: 2em 13%;
-    max-width: 1008px;
-  }
-
-  .hero-section-homepage .margin-container {
-    padding-top: 4.8em;
-    padding-bottom: 6.8em;
-  }
-
-  .contact-info .margin-container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
-    margin-bottom: 10em;
-  }
-
+@media (min-width: 900px) {
   footer .margin-container {
     padding-bottom: 1em;
     padding-left: 8%;
     padding-right: 8%;
     max-width: 1520px;
   }
+  footer .footer-top-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 6.5em;
+  }
+  footer .footer-contact {
+    text-align: right;
+  }
+  footer .footer-contact h2 {
+    margin-top: -5px;
+  }
+  footer .nav-footer ul {
+    margin: 0 auto;
+  }
 }
-/* || HEADER */
-header {
-  background-color: #FEC7D7;
-}
-
-/* || FOOTER */
 /* || COMPONENTS */
 nav {
   display: flex;
@@ -351,6 +376,10 @@ footer .nav-footer ul li:nth-child(1) {
   }
 }
 @media (min-width: 900px) {
+  .hero-section-homepage .margin-container {
+    padding-top: 4.8em;
+    padding-bottom: 6.8em;
+  }
   .hero-section-homepage img {
     max-width: 885px;
   }
@@ -360,6 +389,15 @@ footer .nav-footer ul li:nth-child(1) {
   margin-bottom: 6em;
 }
 
+@media (min-width: 900px) {
+  .contact-info .margin-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    margin-bottom: 10em;
+  }
+}
 .services {
   margin-bottom: 6em;
 }
@@ -429,44 +467,6 @@ textarea::placeholder {
   opacity: 1;
 }
 
-footer {
-  background-color: #FFFFFE;
-  padding-top: 1.76em;
-}
-footer .logo-footer {
-  color: #0E172C;
-  margin-bottom: 1.3em;
-}
-footer .footer-top-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 6em;
-}
-footer .footer-contact h2 {
-  margin-bottom: 0;
-}
-footer .footer-contact h4 {
-  margin-top: 0.1em;
-  color: #0E172C;
-  text-decoration: none;
-}
-
-@media (min-width: 900px) {
-  footer .footer-top-row {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 6.5em;
-  }
-  footer .footer-contact {
-    text-align: right;
-  }
-  footer .footer-contact h2 {
-    margin-top: -5px;
-  }
-  footer .nav-footer ul {
-    margin: 0 auto;
-  }
-}
 /* || ABOUT */
 .about {
   background-color: #FEC7D7;
