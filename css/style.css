@@ -185,7 +185,7 @@ li {
 @media (min-width: 900px) {
   .margin-container {
     margin: 0 auto;
-    padding: 2em 13%;
+    padding: 2em 7%;
     max-width: 1008px;
   }
 }
@@ -524,7 +524,7 @@ textarea::placeholder {
   .hero-section-about .margin-container {
     margin-top: 170px;
     display: block;
-    padding: 2em 13%;
+    padding: 2em 7%;
   }
   .hero-section-about .hero-image-wrap {
     max-width: 1264px;
@@ -580,10 +580,6 @@ textarea::placeholder {
     margin-right: 2vw;
   }
   @supports (display: grid) {
-    .testimonials-section .margin-container {
-      padding-left: 2%;
-      padding-right: 2%;
-    }
     .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
       max-width: none;
       margin: 0;
