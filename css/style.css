@@ -343,6 +343,13 @@ footer .nav-footer ul li:nth-child(1) {
   background-color: #F9F8FC;
   border-radius: 5px;
   margin-bottom: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.card-margin-container {
+  position: relative;
+  display: inline-block;
   padding: 3em;
   padding-bottom: 2em;
 }
@@ -409,6 +416,8 @@ footer .nav-footer ul li:nth-child(1) {
 }
 .services .card {
   background-color: #FFFFFE;
+}
+.services .card-margin-container {
   padding: 2em;
 }
 
