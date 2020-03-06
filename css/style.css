@@ -570,6 +570,17 @@ textarea::placeholder {
     float: left;
     margin-right: 2vw;
   }
+  @supports (display: grid) {
+    .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
+      max-width: none;
+      margin: 0;
+    }
+    .testimonials-section .testimonials-grid {
+      width: 100%;
+      margin: 0;
+      display: grid;
+    }
+  }
 }
 .about-wendy-section {
   background-color: #0E172C;

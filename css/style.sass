@@ -557,6 +557,21 @@ textarea::placeholder
       float: left
       margin-right: 2vw
 
+    @supports (display: grid)
+      // Undo non-supporting grid browsers.
+      %card-styles
+        max-width: none
+        margin: 0
+
+      .testimonials-grid
+        // Undo non-supporting grid browsers.
+        width: 100%
+        margin: 0
+
+        // Grid section
+        display: grid
+
+
 .about-wendy-section
   background-color: $dark-blue
   color: $light-purple
