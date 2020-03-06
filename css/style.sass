@@ -330,17 +330,15 @@ footer
       li:nth-child(1)
         margin-left: 0
 
-// Card
-.card
-  max-width: 484px
-  background-color: $white
-  border-radius: 5px
-  padding: 1em 1.5em
-  margin-bottom: 1.5em
 
-@media (min-width: 450px)
-  .card
-    padding: 2em 3em
+// Card
+%card-styles
+  max-width: 484px
+  background-color: $light-gray
+  border-radius: 5px
+  margin-bottom: 1.5em
+  padding: 3em
+  padding-bottom: 2em
 
 /* =====================================
  * PAGES
@@ -380,7 +378,6 @@ footer
     img
       max-width: 885px
 
-
 .contact-info
   background-color: $white
   margin-bottom: 6em
@@ -406,6 +403,11 @@ footer
 
   h4
     margin-bottom: 4em
+
+  .card
+    @extend %card-styles
+    background-color: $white
+    padding: 2em
 
 @media (min-width: 900px)
   .reservations
@@ -532,12 +534,8 @@ textarea::placeholder
     margin-bottom: 2em
 
   .testimonial-box
+    @extend %card-styles
     position: relative
-    background-color: $light-gray
-    border-radius: 5px
-    margin-bottom: 1.3em
-    padding: 3em
-    padding-bottom: 2em
     z-index:-2
 
     .icon-quotes-left

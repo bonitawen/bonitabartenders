@@ -338,19 +338,15 @@ footer .nav-footer ul li:nth-child(1) {
   margin-left: 0;
 }
 
-.card {
+.testimonials-section .testimonial-box, .services .card {
   max-width: 484px;
-  background-color: #FFFFFE;
+  background-color: #F9F8FC;
   border-radius: 5px;
-  padding: 1em 1.5em;
   margin-bottom: 1.5em;
+  padding: 3em;
+  padding-bottom: 2em;
 }
 
-@media (min-width: 450px) {
-  .card {
-    padding: 2em 3em;
-  }
-}
 /* =====================================
  * * PAGES
  * * ================================== */
@@ -410,6 +406,10 @@ footer .nav-footer ul li:nth-child(1) {
 }
 .services h4 {
   margin-bottom: 4em;
+}
+.services .card {
+  background-color: #FFFFFE;
+  padding: 2em;
 }
 
 @media (min-width: 900px) {
@@ -549,11 +549,6 @@ textarea::placeholder {
 }
 .testimonials-section .testimonial-box {
   position: relative;
-  background-color: #F9F8FC;
-  border-radius: 5px;
-  margin-bottom: 1.3em;
-  padding: 3em;
-  padding-bottom: 2em;
   z-index: -2;
 }
 .testimonials-section .testimonial-box .icon-quotes-left {
