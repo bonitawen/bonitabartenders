@@ -70,6 +70,12 @@ a
 .hide
   display: none
 
+.clearfix::after
+   content: " "
+   display: block
+   height: 0
+   clear: both
+
 /* =====================================
  * TYPOGRAPHY
  * ================================== */
@@ -545,6 +551,13 @@ textarea::placeholder
 
     .client-name
       text-align: right
+
+@media (min-width: 900px)
+  .testimonials-section
+    .testimonials-grid
+      width: 46%
+      float: left
+      margin-right: 2vw
 
 .about-wendy-section
   background-color: $dark-blue
