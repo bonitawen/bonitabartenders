@@ -627,5 +627,17 @@ textarea::placeholder {
     border-radius: 5px;
   }
 }
+@media (min-width: 900px) {
+  .about-wendy-section .about-wendy-grid .about-wendy-text {
+    max-width: 496px;
+  }
+  .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(2) {
+    max-width: 300px;
+  }
+  .about-wendy-section .about-wendy-grid .wendy-img-box:nth-child(3) {
+    max-width: 500px;
+    float: left;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
