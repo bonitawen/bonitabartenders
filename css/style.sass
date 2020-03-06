@@ -463,19 +463,52 @@ textarea::placeholder
 .about
   background-color: $pink
 
-.hero-image-wrap
+.hero-section-about
   height: 160px
-  background-image: linear-gradient(rgba(217, 212, 231, .85), rgba(217, 212, 231, .85)), url(../img/hero_about.jpg)
-  background-size: cover
-  display: flex
-  align-items: flex-end
 
-  h2
-    margin-bottom: 0
+  .margin-container
+    padding: 0
+    height: 100%
+    display: flex
+    align-items: flex-end
+
+  .hero-image-wrap
+    height: 160px
+    background-image: linear-gradient(rgba(217, 212, 231, .85), rgba(217, 212, 231, .85)), url(../img/hero_about.jpg)
+    background-size: cover
+    width: 100%
+    position: absolute
+    z-index: -1
 
 @media (min-width: 450px)
-  .hero-image-wrap
-    height: 15rem
+  .hero-section-about
+    height: 15.5rem
+
+    .hero-image-wrap
+      height: 15.5rem
+
+    h2
+      margin-bottom: 40px
+
+@media (min-width: 900px)
+  .hero-section-about
+    padding-top: 60px
+
+    .margin-container
+      margin-top: 170px
+      display: block
+      padding: $large-top-bottom-padding $large-side-padding
+
+    .hero-image-wrap
+      max-width: 1264px
+      left: 50%
+      -webkit-transform: translateX(-50%)
+      transform: translateX(-50%)
+
+@media (min-width: 1280px)
+  .hero-section-about
+    .hero-image-wrap
+      border-radius: 5px
 
 .testimonials-section
   margin-bottom: 3.8em

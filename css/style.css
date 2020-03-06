@@ -472,20 +472,54 @@ textarea::placeholder {
   background-color: #FEC7D7;
 }
 
-.hero-image-wrap {
+.hero-section-about {
   height: 160px;
-  background-image: linear-gradient(rgba(217, 212, 231, 0.85), rgba(217, 212, 231, 0.85)), url(../img/hero_about.jpg);
-  background-size: cover;
+}
+.hero-section-about .margin-container {
+  padding: 0;
+  height: 100%;
   display: flex;
   align-items: flex-end;
 }
-.hero-image-wrap h2 {
-  margin-bottom: 0;
+.hero-section-about .hero-image-wrap {
+  height: 160px;
+  background-image: linear-gradient(rgba(217, 212, 231, 0.85), rgba(217, 212, 231, 0.85)), url(../img/hero_about.jpg);
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
 @media (min-width: 450px) {
-  .hero-image-wrap {
-    height: 15rem;
+  .hero-section-about {
+    height: 15.5rem;
+  }
+  .hero-section-about .hero-image-wrap {
+    height: 15.5rem;
+  }
+  .hero-section-about h2 {
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 900px) {
+  .hero-section-about {
+    padding-top: 60px;
+  }
+  .hero-section-about .margin-container {
+    margin-top: 170px;
+    display: block;
+    padding: 2em 13%;
+  }
+  .hero-section-about .hero-image-wrap {
+    max-width: 1264px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section-about .hero-image-wrap {
+    border-radius: 5px;
   }
 }
 .testimonials-section {
