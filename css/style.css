@@ -864,7 +864,7 @@ textarea::placeholder {
 }
 .cocktail-finder-section form .btn_2 {
   margin-left: auto;
-  height: 2.3rem;
+  height: 2rem;
   width: 5.6rem;
   color: #D9D4E7;
   background-color: #A786DF;
@@ -873,17 +873,7 @@ textarea::placeholder {
   line-height: 1.5;
   font-size: 0.78rem;
   cursor: pointer;
-}
-
-.form-email input, .form-subject input {
-  font-weight: 400;
-  height: 1.3em;
-  border: none;
-  outline: none;
-  background-color: #FEC7D7;
-  width: 100%;
-  max-width: 350px;
-  margin-top: 0.7em;
+  letter-spacing: 0.123em;
 }
 
 /*# sourceMappingURL=style.css.map */
