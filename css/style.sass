@@ -842,25 +842,18 @@ textarea::placeholder
     padding-bottom: 6.5em
 
   form
-    margin: 1.8em 0
+    margin-top: 1.8em
     display: flex
     flex-direction: column
     max-width: 496px
 
     input
       @extend %body-shared
-      // font-weight: 400
       height: 3.2rem
-
       border: none
       outline: none
-
       border-radius: 5px
-
       background-color: $light-purple
-      // width: 100%
-      // max-width: 350px
-      // margin-top: .7em
 
     .ingredient-input
       margin-bottom: 1em
@@ -878,3 +871,55 @@ textarea::placeholder
       font-size: .78rem
       cursor: pointer
       letter-spacing: .123em
+
+  .beverage-list-container,
+  .beverage-details-container
+    @extend %card-styles
+    background-color: $light-purple
+
+  .beverage-list-container
+    align-items: start
+    font-size: .78rem
+
+    .card-margin-container
+      padding: 1em 0
+      width: 100%
+
+      .heading-container
+        text-align: center
+
+    .drinks-wrap
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+    .drinks-slide
+      display: flex
+      justify-content: space-between
+      order: 1
+
+      li
+        border-radius: 5px
+        background-color: $light-gray
+        padding: .8em
+        margin: 1em .5em
+
+    .btn_back,
+    .btn_forward
+      width: 2.8rem
+      height: 2.8rem
+      color: $light-gray
+
+    .btn_back
+      order: 0
+
+      .material-icons-round
+        font-size: 2.5rem
+
+    .btn_forward
+      order: 2
+      display: flex
+
+      .material-icons-round
+        font-size: 2.5rem
+        margin-left: auto

@@ -331,7 +331,8 @@ footer .nav-footer ul li:nth-child(1) {
   margin-left: 0;
 }
 
-.menu-section .drink-box, .testimonials-section .testimonial-box, .services .card {
+.cocktail-finder-section .beverage-list-container,
+.cocktail-finder-section .beverage-details-container, .menu-section .drink-box, .testimonials-section .testimonial-box, .services .card {
   max-width: 484px;
   background-color: #F9F8FC;
   border-radius: 5px;
@@ -573,7 +574,9 @@ textarea::placeholder {
     margin-right: 2vw;
   }
   @supports (display: grid) {
-    .testimonials-section .menu-section .drink-box, .menu-section .testimonials-section .drink-box, .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
+    .testimonials-section .cocktail-finder-section .beverage-list-container, .cocktail-finder-section .testimonials-section .beverage-list-container,
+.testimonials-section .cocktail-finder-section .beverage-details-container,
+.cocktail-finder-section .testimonials-section .beverage-details-container, .testimonials-section .menu-section .drink-box, .menu-section .testimonials-section .drink-box, .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
       max-width: none;
       margin: 0;
     }
@@ -799,7 +802,9 @@ textarea::placeholder {
     margin-right: 2vw;
   }
   @supports (display: grid) {
-    .menu-section .services .card, .services .menu-section .card, .menu-section .testimonials-section .testimonial-box, .testimonials-section .menu-section .testimonial-box, .menu-section .drink-box {
+    .menu-section .cocktail-finder-section .beverage-list-container, .cocktail-finder-section .menu-section .beverage-list-container,
+.menu-section .cocktail-finder-section .beverage-details-container,
+.cocktail-finder-section .menu-section .beverage-details-container, .menu-section .services .card, .services .menu-section .card, .menu-section .testimonials-section .testimonial-box, .testimonials-section .menu-section .testimonial-box, .menu-section .drink-box {
       max-width: none;
       margin: 0;
     }
@@ -846,7 +851,7 @@ textarea::placeholder {
   padding-bottom: 6.5em;
 }
 .cocktail-finder-section form {
-  margin: 1.8em 0;
+  margin-top: 1.8em;
   display: flex;
   flex-direction: column;
   max-width: 496px;
@@ -874,6 +879,57 @@ textarea::placeholder {
   font-size: 0.78rem;
   cursor: pointer;
   letter-spacing: 0.123em;
+}
+.cocktail-finder-section .beverage-list-container,
+.cocktail-finder-section .beverage-details-container {
+  background-color: #D9D4E7;
+}
+.cocktail-finder-section .beverage-list-container {
+  align-items: start;
+  font-size: 0.78rem;
+}
+.cocktail-finder-section .beverage-list-container .card-margin-container {
+  padding: 1em 0;
+  width: 100%;
+}
+.cocktail-finder-section .beverage-list-container .card-margin-container .heading-container {
+  text-align: center;
+}
+.cocktail-finder-section .beverage-list-container .drinks-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cocktail-finder-section .beverage-list-container .drinks-slide {
+  display: flex;
+  justify-content: space-between;
+  order: 1;
+}
+.cocktail-finder-section .beverage-list-container .drinks-slide li {
+  border-radius: 5px;
+  background-color: #F9F8FC;
+  padding: 0.8em;
+  margin: 1em 0.5em;
+}
+.cocktail-finder-section .beverage-list-container .btn_back,
+.cocktail-finder-section .beverage-list-container .btn_forward {
+  width: 2.8rem;
+  height: 2.8rem;
+  color: #F9F8FC;
+}
+.cocktail-finder-section .beverage-list-container .btn_back {
+  order: 0;
+}
+.cocktail-finder-section .beverage-list-container .btn_back .material-icons-round {
+  font-size: 2.5rem;
+}
+.cocktail-finder-section .beverage-list-container .btn_forward {
+  order: 2;
+  display: flex;
+}
+.cocktail-finder-section .beverage-list-container .btn_forward .material-icons-round {
+  font-size: 2.5rem;
+  margin-left: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
