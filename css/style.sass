@@ -149,12 +149,6 @@ a
   opacity: .7
   cursor: pointer
 
-.btn_2
-  font-size: .78rem
-  line-height: 1.5
-  font-weight: 600
-  cursor: pointer
-
 .attention
   font-size: .61rem
   line-height: 1.4
@@ -772,6 +766,8 @@ textarea::placeholder
       border-radius: 5px
 
 .menu-section
+  margin-bottom: 3.8em
+
   p
     color: $light-gray
     margin-bottom: 4.5em
@@ -835,3 +831,65 @@ textarea::placeholder
           grid-row: 1/2
         .drink-box:nth-child(3)
           grid-row: 2/3
+
+.cocktail-finder-section
+  background-color: $white
+
+  .margin-container:nth-of-type(1)
+    padding-top: 4.5em
+
+  .margin-container:nth-of-type(2)
+    padding-bottom: 6.5em
+
+  form
+    margin: 1.8em 0
+    display: flex
+    flex-direction: column
+    max-width: 496px
+
+    input
+      @extend %body-shared
+      // font-weight: 400
+      height: 3.2rem
+
+      border: none
+      outline: none
+
+      border-radius: 5px
+
+      background-color: $light-purple
+      // width: 100%
+      // max-width: 350px
+      // margin-top: .7em
+
+    .ingredient-input
+      margin-bottom: 1em
+      padding-left: 1.8em
+
+    .btn_2
+      margin-left: auto
+      height: 2.3rem
+      width: 5.6rem
+      color: $light-purple
+      background-color: $purple
+      opacity: .73
+      font-weight: 600
+      line-height: 1.5
+      font-size: .78rem
+      cursor: pointer
+
+.form-email, .form-subject
+
+
+  input
+    @extend %body-shared
+    font-weight: 400
+    height: 1.3em
+
+    border: none
+    outline: none
+
+    background-color: $pink
+    width: 100%
+    max-width: 350px
+    margin-top: .7em

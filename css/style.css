@@ -28,7 +28,7 @@ html {
     font-size: 23px;
   }
 }
-.form-email input, .form-subject input, .phone,
+.cocktail-finder-section form input, .form-email input, .form-subject input, .phone,
 .email, footer .footer-contact h4, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
@@ -147,13 +147,6 @@ a {
   padding: 0;
   margin: 1.1em 0;
   opacity: 0.7;
-  cursor: pointer;
-}
-
-.btn_2 {
-  font-size: 0.78rem;
-  line-height: 1.5;
-  font-weight: 600;
   cursor: pointer;
 }
 
@@ -779,6 +772,9 @@ textarea::placeholder {
     border-radius: 5px;
   }
 }
+.menu-section {
+  margin-bottom: 3.8em;
+}
 .menu-section p {
   color: #F9F8FC;
   margin-bottom: 4.5em;
@@ -839,6 +835,55 @@ textarea::placeholder {
       grid-row: 2/3;
     }
   }
+}
+.cocktail-finder-section {
+  background-color: #FFFFFE;
+}
+.cocktail-finder-section .margin-container:nth-of-type(1) {
+  padding-top: 4.5em;
+}
+.cocktail-finder-section .margin-container:nth-of-type(2) {
+  padding-bottom: 6.5em;
+}
+.cocktail-finder-section form {
+  margin: 1.8em 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 496px;
+}
+.cocktail-finder-section form input {
+  height: 3.2rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #D9D4E7;
+}
+.cocktail-finder-section form .ingredient-input {
+  margin-bottom: 1em;
+  padding-left: 1.8em;
+}
+.cocktail-finder-section form .btn_2 {
+  margin-left: auto;
+  height: 2.3rem;
+  width: 5.6rem;
+  color: #D9D4E7;
+  background-color: #A786DF;
+  opacity: 0.73;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.form-email input, .form-subject input {
+  font-weight: 400;
+  height: 1.3em;
+  border: none;
+  outline: none;
+  background-color: #FEC7D7;
+  width: 100%;
+  max-width: 350px;
+  margin-top: 0.7em;
 }
 
 /*# sourceMappingURL=style.css.map */
