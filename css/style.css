@@ -910,12 +910,14 @@ textarea::placeholder {
   background-color: #F9F8FC;
   padding: 0.8em;
   margin: 1em 0.5em;
+  cursor: pointer;
 }
 .cocktail-finder-section .beverage-list-container .btn_back,
 .cocktail-finder-section .beverage-list-container .btn_forward {
   width: 2.8rem;
   height: 2.8rem;
   color: #F9F8FC;
+  cursor: pointer;
 }
 .cocktail-finder-section .beverage-list-container .btn_back {
   order: 0;
