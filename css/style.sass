@@ -345,8 +345,7 @@ footer
 .card-margin-container
   position: relative
   display: inline-block
-  padding: 3em
-  padding-bottom: 2em
+  padding: 2em
 
 
 /* =====================================
@@ -416,9 +415,6 @@ footer
   .card
     @extend %card-styles
     background-color: $white
-
-  .card-margin-container
-    padding: 2em
 
 @media (min-width: 900px)
   .reservations
@@ -549,17 +545,21 @@ textarea::placeholder
     position: relative
     z-index:-2
 
-    .icon-quotes-left
-      position: absolute
-      top: .45em
-      left: .7em
-      font-size: 3rem
-      color: $purple
-      z-index: -1
-      opacity: .16
+    .card-margin-container
+      padding: 3em
+      padding-bottom: 2em
 
-    .client-name
-      text-align: right
+      .icon-quotes-left
+        position: absolute
+        top: .45em
+        left: .7em
+        font-size: 3rem
+        color: $purple
+        z-index: -1
+        opacity: .16
+
+      .client-name
+        text-align: right
 
 @media (min-width: 900px)
   .testimonials-section
@@ -708,3 +708,92 @@ textarea::placeholder
         .about-wendy-text
           grid-column: 1/2
 
+/* || COCKTAILS */
+.cocktails
+  background-color: $dark-blue
+
+  header
+    background-color: $dark-blue
+
+    .nav-burger
+      border-top: 2px solid $light-gray
+
+    .nav-burger:after, .nav-burger:before
+      background-color: $light-gray
+
+    a
+      color: $light-gray
+
+.hero-section-cocktails
+  height: 160px
+
+  .margin-container
+    padding: 0
+    height: 100%
+    display: flex
+    align-items: flex-end
+
+  .hero-image-wrap
+    height: 160px
+    background-image: linear-gradient(rgba(217, 212, 231, .85), rgba(217, 212, 231, .85)), url(../img/cocktails.jpg)
+    background-size: cover
+    width: 100%
+    position: absolute
+    z-index: -1
+
+@media (min-width: 450px)
+  .hero-section-cocktails
+    height: 15.5rem
+
+    .hero-image-wrap
+      height: 15.5rem
+
+    h2
+      margin-bottom: 40px
+
+@media (min-width: 900px)
+  .hero-section-cocktails
+    padding-top: 60px
+
+    .margin-container
+      margin-top: 170px
+      display: block
+      padding: $large-top-bottom-padding $large-side-padding
+
+    .hero-image-wrap
+      max-width: 1264px
+      left: 50%
+      -webkit-transform: translateX(-50%)
+      transform: translateX(-50%)
+
+@media (min-width: 1280px)
+  .hero-section-cocktails
+    .hero-image-wrap
+      border-radius: 5px
+
+.menu-section
+  p
+    color: $light-gray
+    margin-bottom: 4.5em
+
+  h4
+    color: $white
+
+  .js-alcohol-headings
+    // display: flex   // TODO: apply via JS
+    li
+      margin-right: 3em
+
+  .alcohol-heading
+    margin: 4em 0 2em
+
+  .drink-box
+    @extend %card-styles
+    background-color: $light-purple
+
+@media (min-width: 900px)
+  .menu-section
+    .drink-box
+      width: 46%
+      float: left
+      margin-right: 2vw

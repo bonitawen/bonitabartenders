@@ -54,16 +54,17 @@
 
   <main>
     <section class="hero-section-cocktails">
+      <div class="hero-image-wrap"></div>
       <div class="margin-container">
         <h2>Cocktails</h2>
       </div>
     </section>
 
-    <section class="menu-section">
+    <section class="menu-section clearfix">
       <div class="margin-container">
         <p>Get inspired by our menu.</p>
 
-        <ul class="js-alcohol-headings hid">
+        <ul class="js-alcohol-headings hide">
           <li><h4>Vodka</h4></li>
           <li><h4>Rum</h4></li>
         </ul>
@@ -129,7 +130,7 @@
             </div>
           </div>
 
-          <h4>Rum</h4>
+          <h4 class="alcohol-heading">Rum</h4>
           <div class="drinks-grid">
             <div class="drink-box">
               <div class="card-margin-container">
@@ -246,8 +247,8 @@
   <script src="js/script.js"></script>
   <!-- TODO: take this out -->
   <script type="text/javascript">
-    let elem = document.getElementsByTagName('textarea')[0];
-    // let elem = document.getElementsByClassName('nav-burger')[0];
+    // let elem = document.getElementsByTagName('textarea')[0];
+    let elem = document.getElementsByClassName('js-alcohol-headings')[0];
     let compStyles = window.getComputedStyle(elem);
     console.log(compStyles.getPropertyValue('font-size'));
   </script>

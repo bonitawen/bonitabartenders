@@ -338,7 +338,7 @@ footer .nav-footer ul li:nth-child(1) {
   margin-left: 0;
 }
 
-.testimonials-section .testimonial-box, .services .card {
+.menu-section .drink-box, .testimonials-section .testimonial-box, .services .card {
   max-width: 484px;
   background-color: #F9F8FC;
   border-radius: 5px;
@@ -350,8 +350,7 @@ footer .nav-footer ul li:nth-child(1) {
 .card-margin-container {
   position: relative;
   display: inline-block;
-  padding: 3em;
-  padding-bottom: 2em;
+  padding: 2em;
 }
 
 /* =====================================
@@ -416,9 +415,6 @@ footer .nav-footer ul li:nth-child(1) {
 }
 .services .card {
   background-color: #FFFFFE;
-}
-.services .card-margin-container {
-  padding: 2em;
 }
 
 @media (min-width: 900px) {
@@ -560,7 +556,11 @@ textarea::placeholder {
   position: relative;
   z-index: -2;
 }
-.testimonials-section .testimonial-box .icon-quotes-left {
+.testimonials-section .testimonial-box .card-margin-container {
+  padding: 3em;
+  padding-bottom: 2em;
+}
+.testimonials-section .testimonial-box .card-margin-container .icon-quotes-left {
   position: absolute;
   top: 0.45em;
   left: 0.7em;
@@ -569,7 +569,7 @@ textarea::placeholder {
   z-index: -1;
   opacity: 0.16;
 }
-.testimonials-section .testimonial-box .client-name {
+.testimonials-section .testimonial-box .card-margin-container .client-name {
   text-align: right;
 }
 
@@ -580,7 +580,7 @@ textarea::placeholder {
     margin-right: 2vw;
   }
   @supports (display: grid) {
-    .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
+    .testimonials-section .menu-section .drink-box, .menu-section .testimonials-section .drink-box, .testimonials-section .services .card, .services .testimonials-section .card, .testimonials-section .testimonial-box {
       max-width: none;
       margin: 0;
     }
@@ -710,6 +710,97 @@ textarea::placeholder {
     .about-wendy-section .about-wendy-grid .about-wendy-text {
       grid-column: 1/2;
     }
+  }
+}
+/* || COCKTAILS */
+.cocktails {
+  background-color: #0E172C;
+}
+.cocktails header {
+  background-color: #0E172C;
+}
+.cocktails header .nav-burger {
+  border-top: 2px solid #F9F8FC;
+}
+.cocktails header .nav-burger:after, .cocktails header .nav-burger:before {
+  background-color: #F9F8FC;
+}
+.cocktails header a {
+  color: #F9F8FC;
+}
+
+.hero-section-cocktails {
+  height: 160px;
+}
+.hero-section-cocktails .margin-container {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-section-cocktails .hero-image-wrap {
+  height: 160px;
+  background-image: linear-gradient(rgba(217, 212, 231, 0.85), rgba(217, 212, 231, 0.85)), url(../img/cocktails.jpg);
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+@media (min-width: 450px) {
+  .hero-section-cocktails {
+    height: 15.5rem;
+  }
+  .hero-section-cocktails .hero-image-wrap {
+    height: 15.5rem;
+  }
+  .hero-section-cocktails h2 {
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 900px) {
+  .hero-section-cocktails {
+    padding-top: 60px;
+  }
+  .hero-section-cocktails .margin-container {
+    margin-top: 170px;
+    display: block;
+    padding: 2em 7%;
+  }
+  .hero-section-cocktails .hero-image-wrap {
+    max-width: 1264px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section-cocktails .hero-image-wrap {
+    border-radius: 5px;
+  }
+}
+.menu-section p {
+  color: #F9F8FC;
+  margin-bottom: 4.5em;
+}
+.menu-section h4 {
+  color: #FFFFFE;
+}
+.menu-section .js-alcohol-headings li {
+  margin-right: 3em;
+}
+.menu-section .alcohol-heading {
+  margin: 4em 0 2em;
+}
+.menu-section .drink-box {
+  background-color: #D9D4E7;
+}
+
+@media (min-width: 900px) {
+  .menu-section .drink-box {
+    width: 46%;
+    float: left;
+    margin-right: 2vw;
   }
 }
 
