@@ -850,6 +850,9 @@ textarea::placeholder {
 .cocktail-finder-section .margin-container:nth-of-type(1) {
   padding-top: 4.5em;
 }
+.cocktail-finder-section .margin-container:nth-of-type(1) p {
+  max-width: 490px;
+}
 .cocktail-finder-section .margin-container:nth-of-type(2) {
   padding-bottom: 6.5em;
 }
@@ -947,6 +950,67 @@ textarea::placeholder {
 }
 .cocktail-finder-section .beverage-details-container ul li {
   font-weight: 300;
+}
+
+@media (min-width: 900px) {
+  .cocktail-finder-section .margin-container:nth-of-type(2) {
+    max-width: 1520px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .cocktail-finder-section .beverage-list-container,
+.cocktail-finder-section .beverage-details-container {
+    max-width: none;
+    width: 49%;
+    font-size: 1em;
+  }
+  .cocktail-finder-section .beverage-list-container {
+    height: 635.7px;
+  }
+  .cocktail-finder-section .beverage-list-container .drinks-wrap {
+    justify-content: center;
+  }
+  .cocktail-finder-section .beverage-list-container .drinks-wrap .btn_back, .cocktail-finder-section .beverage-list-container .drinks-wrap .btn_forward {
+    display: none;
+  }
+  .cocktail-finder-section .beverage-list-container .drinks-wrap li {
+    font-weight: 300;
+  }
+  .cocktail-finder-section .beverage-details-container {
+    align-items: flex-start;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container {
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    width: 100%;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container .heading-container {
+    text-align: center;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container img {
+    width: 360px;
+  }
+}
+@media (min-width: 1690px) {
+  .cocktail-finder-section .beverage-details-container .card-margin-container {
+    padding: 1em 1.5em;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container .beverage-details-wrap {
+    display: flex;
+    margin-top: 80px;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container .heading-container {
+    text-align: left;
+  }
+  .cocktail-finder-section .beverage-details-container .beverage-image-wrap {
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+  .cocktail-finder-section .beverage-details-container .ingredients-list-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

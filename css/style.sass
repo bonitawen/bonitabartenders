@@ -841,6 +841,9 @@ textarea::placeholder
   .margin-container:nth-of-type(1)
     padding-top: 4.5em
 
+    p
+      max-width: 490px
+
   .margin-container:nth-of-type(2)
     padding-bottom: 6.5em
 
@@ -941,3 +944,75 @@ textarea::placeholder
     ul
       li
         font-weight: 300
+
+@media (min-width: 900px)
+  .cocktail-finder-section
+    .margin-container:nth-of-type(2)
+      max-width: 1520px
+      display: flex
+      justify-content: space-between
+
+    .beverage-list-container,
+    .beverage-details-container
+      max-width: none
+      width: 49%
+      font-size: 1em
+
+    .beverage-list-container
+      height: 635.7px
+
+      .drinks-wrap
+        justify-content: center
+
+        .btn_back, .btn_forward
+          display: none
+
+        li
+          font-weight: 300
+
+    .beverage-details-container
+      align-items: flex-start
+
+      .card-margin-container
+        padding-top: 1em
+        padding-bottom: 1.5em
+        width: 100%
+
+        .heading-container
+          text-align: center
+
+        // .beverage-details-wrap
+        //   display: flex
+        //   // flex-direction: column
+
+        img
+          width: 360px
+
+@media (min-width: 1690px)
+  .cocktail-finder-section
+    .beverage-details-container
+      .card-margin-container
+        padding: 1em 1.5em
+        .beverage-details-wrap
+          display: flex
+          // justify-content: space-between
+          margin-top: 80px
+
+          img
+
+
+        .heading-container
+          text-align: left
+
+      
+
+    .beverage-details-container
+      .beverage-image-wrap
+        margin-bottom: 0
+        margin-right: 30px
+
+      .ingredients-list-wrap
+        display: flex
+        flex-direction: column
+        justify-content: center
+
