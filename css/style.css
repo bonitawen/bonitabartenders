@@ -724,6 +724,9 @@ textarea::placeholder {
 .cocktails header a {
   color: #F9F8FC;
 }
+.cocktails footer {
+  background-color: #FEC7D7;
+}
 
 .hero-section-cocktails {
   height: 160px;
