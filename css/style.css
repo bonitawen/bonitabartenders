@@ -1013,48 +1013,48 @@ textarea::placeholder {
   }
 }
 /* || FAQ */
-.hero-section-faq {
+.faq .hero-section-faq {
   height: 200px;
   background-image: url(../img/questionmark.jpg);
   background-size: cover;
   background-position: center;
   margin-bottom: 2em;
 }
-
-.qa-container {
+.faq .qa-section {
+  margin-bottom: 7rem;
+}
+.faq .qa-container {
   background-color: #D9D4E7;
   border-radius: 5px;
 }
-
-.card-margin-container {
+.faq .card-margin-container {
   padding: 2em 0.7em;
 }
-
-.qa {
+.faq .qa {
   border-bottom: 1px solid #F9F8FC;
   margin-bottom: 1.4em;
 }
-
-.qa:last-child {
+.faq .qa:last-child {
   border: none;
   margin-bottom: 0;
 }
-.qa:last-child p {
+.faq .qa:last-child p {
   margin-bottom: 0;
 }
-
-.question-container {
+.faq .question-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.question-container h3 {
+.faq .question-container h3 {
   margin: 0 1.47em 0 0;
 }
-
-.add-icon {
+.faq .add-icon {
   font-size: 1.95rem;
   color: #F9F8FC;
+}
+.faq footer {
+  background-color: #FEC7D7;
 }
 
 /*# sourceMappingURL=style.css.map */
