@@ -1013,7 +1013,7 @@ textarea::placeholder {
   }
 }
 /* || FAQ */
-.faq .intro-section-faq .margin-container {
+.faq .intro-section-faq p {
   max-width: 27rem;
 }
 .faq .hero-section-faq {
@@ -1026,6 +1026,11 @@ textarea::placeholder {
 @media (min-width: 450px) {
   .faq .hero-section-faq {
     height: 300px;
+  }
+}
+@media (min-width: 900px) {
+  .faq .hero-section-faq {
+    height: 460px;
   }
 }
 .faq .qa-section {
@@ -1071,6 +1076,17 @@ textarea::placeholder {
   }
   .faq .answer-container p {
     max-width: 540px;
+  }
+}
+@media (min-width: 900px) {
+  .faq .hero-section-faq {
+    margin-bottom: 3em;
+  }
+  .faq .qa-container {
+    padding: 3em 5em;
+  }
+  .faq .answer-container p {
+    max-width: 624px;
   }
 }
 .faq footer {
