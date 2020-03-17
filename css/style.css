@@ -1093,4 +1093,27 @@ textarea::placeholder {
   background-color: #FEC7D7;
 }
 
+/* || CONTACT */
+.contact {
+  background-color: #FEC7D7;
+}
+.contact header {
+  margin-bottom: 3em;
+}
+@media (min-width: 900px) {
+  .contact header {
+    margin-bottom: 8.7em;
+  }
+}
+.contact .contact-section {
+  margin-bottom: 6em;
+}
+.contact .contact-section .contact-info-wrap {
+  max-width: 496px;
+}
+.contact .email-address {
+  display: block;
+  margin-bottom: 3em;
+}
+
 /*# sourceMappingURL=style.css.map */
