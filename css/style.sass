@@ -1021,12 +1021,20 @@ textarea::placeholder
 
 .faq
 
+  .intro-section-faq
+    .margin-container
+      max-width: 27rem
+
   .hero-section-faq
     height: 200px
     background-image: url(../img/questionmark.jpg)
     background-size: cover
     background-position: center
     margin-bottom: 2em
+
+  @media (min-width: 450px)
+    .hero-section-faq
+      height: 300px
 
   .qa-section
     margin-bottom: 7rem
@@ -1054,15 +1062,25 @@ textarea::placeholder
     justify-content: space-between
     align-items: center
 
-
-
     h3
       margin: 0 1.47em 0 0
-
 
   .add-icon
     font-size: 1.95rem
     color: $light-gray
 
+  @media (min-width: 450px)
+    .qa-container
+      padding: 2em
+
+    .card-margin-container
+      padding: 0
+      width: 100%
+
+    .answer-container
+      p
+        max-width: 540px
+
   footer
     background-color: $pink
+

@@ -1013,12 +1013,20 @@ textarea::placeholder {
   }
 }
 /* || FAQ */
+.faq .intro-section-faq .margin-container {
+  max-width: 27rem;
+}
 .faq .hero-section-faq {
   height: 200px;
   background-image: url(../img/questionmark.jpg);
   background-size: cover;
   background-position: center;
   margin-bottom: 2em;
+}
+@media (min-width: 450px) {
+  .faq .hero-section-faq {
+    height: 300px;
+  }
 }
 .faq .qa-section {
   margin-bottom: 7rem;
@@ -1052,6 +1060,18 @@ textarea::placeholder {
 .faq .add-icon {
   font-size: 1.95rem;
   color: #F9F8FC;
+}
+@media (min-width: 450px) {
+  .faq .qa-container {
+    padding: 2em;
+  }
+  .faq .card-margin-container {
+    padding: 0;
+    width: 100%;
+  }
+  .faq .answer-container p {
+    max-width: 540px;
+  }
 }
 .faq footer {
   background-color: #FEC7D7;
