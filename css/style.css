@@ -248,6 +248,7 @@ footer .footer-contact h4 {
 /* || COMPONENTS */
 nav {
   display: flex;
+  align-items: center;
 }
 nav ul {
   display: flex;
@@ -292,7 +293,6 @@ nav a:hover, nav a:focus {
 .nav-burger {
   order: 2;
   margin-left: auto;
-  margin-top: 0.16rem;
   width: 30px;
   height: 12px;
   position: relative;
@@ -319,6 +319,11 @@ nav a:hover, nav a:focus {
   left: 0;
 }
 
+@media (min-width: 900px) {
+  .nav-burger {
+    display: none;
+  }
+}
 footer .nav-footer ul {
   text-align: center;
   display: flex;

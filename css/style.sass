@@ -245,6 +245,7 @@ footer
 // Main nav
 nav 
   display: flex
+  align-items: center
 
   ul
     display: flex
@@ -285,7 +286,6 @@ nav
 .nav-burger
   order: 2
   margin-left: auto
-  margin-top: .16rem
 
   width: 30px
   height: 12px
@@ -309,7 +309,12 @@ nav
   top: 4px
   left: 0
 
+@media (min-width: 900px)
+  .nav-burger
+    display: none
+
 // End Nav-burger
+
 
 // Footer nav
 footer
