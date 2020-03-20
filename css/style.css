@@ -185,6 +185,8 @@ li {
 /* || HEADER */
 header {
   background-color: #FEC7D7;
+  width: 100%;
+  z-index: 1;
 }
 
 @media (min-width: 900px) {
