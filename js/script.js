@@ -79,7 +79,6 @@
 // - STATIC WHEN SCROLLING DOWN,
 // - FIXED WHEN SCROLLING UP.
 {
-
   let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const header = document.getElementsByTagName('header')[0];
   let headerHeight = header.offsetHeight;
@@ -90,24 +89,28 @@
 
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // If downscroll.
     if (scrollTop > lastScrollTop) {
-      // Downscroll code
-      // Set header to static and don't display pushdown div.
-      header.style.position = 'static';
-      fixedHeaderPushDown.style.display = 'none';
-    } else if (scrollTop < lastScrollTop) {
-      // Upscroll code
-      // If scrolled past header height.
-      if (scrollTop > (6 * headerHeight)) {
-
-        // Set header to fixed and display pushdown div.
-        header.style.position = 'fixed';
-        fixedHeaderPushDown.style.display = 'block';
+      // If scroll from top less than header height.
+      if (scrollTop < (8 * headerHeight + 2)) {
+        header.style.position = 'static';
+        fixedHeaderPushDown.style.display = 'none';
+      } else {
+        // Move header up.
+        header.style.transform = `translateY(-${headerHeight}px)`;
       }
 
+    // If upscroll.
+    } else if (scrollTop < lastScrollTop) {
+      // If scroll from top larger than header height.
+      if (scrollTop > (8 * headerHeight)) {
+        header.style.position = 'fixed';
+        fixedHeaderPushDown.style.display = 'block';
+        // Move header down
+        header.style.transform = 'translateY(0px)';
+      }
     }
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
   }, false);
 
 } // End display header static/fixed.
-
