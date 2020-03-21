@@ -1108,8 +1108,8 @@ textarea::placeholder {
   margin-bottom: 3em;
 }
 @media (min-width: 900px) {
-  .contact header {
-    margin-bottom: 8.7em;
+  .contact main {
+    margin-top: 8.7em;
   }
 }
 .contact .contact-section {

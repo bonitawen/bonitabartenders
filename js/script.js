@@ -53,6 +53,8 @@
   const headerHeight = window.getComputedStyle(header).height;
   const fixedHeaderPushDown = document.createElement('div');
 
+  fixedHeaderPushDown.classList.add('header-push-down');
+
   header.style.position = 'fixed';
 
 
@@ -69,3 +71,43 @@
   });
 
 } // End fixed header.
+
+
+
+
+// DISPLAY HEADER
+// - STATIC WHEN SCROLLING DOWN,
+// - FIXED WHEN SCROLLING UP.
+{
+
+  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const header = document.getElementsByTagName('header')[0];
+  let headerHeight = header.offsetHeight;
+  let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
+
+
+  window.addEventListener('scroll', function () {
+
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Downscroll code
+      // Set header to static and don't display pushdown div.
+      header.style.position = 'static';
+      fixedHeaderPushDown.style.display = 'none';
+    } else if (scrollTop < lastScrollTop) {
+      // Upscroll code
+      // If scrolled past header height.
+      if (scrollTop > (6 * headerHeight)) {
+
+        // Set header to fixed and display pushdown div.
+        header.style.position = 'fixed';
+        fixedHeaderPushDown.style.display = 'block';
+      }
+
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  }, false);
+
+} // End display header static/fixed.
+
