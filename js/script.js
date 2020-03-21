@@ -85,6 +85,11 @@
   let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
 
 
+  // Update header height according to screen width.
+  window.addEventListener('resize', function () {
+    headerHeight = header.offsetHeight;
+  });
+
   window.addEventListener('scroll', function () {
 
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
