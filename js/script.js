@@ -6,7 +6,7 @@
   const burger = mainNav.getElementsByClassName('nav-burger')[0];
 
 
-  let hideNavItemsShowBurger = () => {
+  let hideNavItems = () => {
 
     for (let i = 0; i < liArr.length; i++) {
       // If li not the logo.
@@ -24,11 +24,11 @@
 
   };
 
-  hideNavItemsShowBurger();
+  hideNavItems();
 
 
   window.addEventListener('resize', function () {
-    hideNavItemsShowBurger();
+    hideNavItems();
   });
 
 
