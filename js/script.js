@@ -5,22 +5,9 @@
   const liArr = mainNav.getElementsByTagName('li');
   const burger = mainNav.getElementsByClassName('nav-burger')[0];
 
-  for (let i = 0; i < liArr.length; i++) {
-    // If li not the logo.
-    if (!liArr[i].classList.contains('logo')) {
-      // If viewport > 900px and li-elem has hide-class.
-      if (window.matchMedia('(min-width: 900px)').matches) {
-        // Remove hide-class.
-        liArr[i].classList.remove('hide');
-      } else {
-        // Add hide class.
-        liArr[i].classList.add('hide');
-      }
-    }
-  }
 
+  let hideNavItemsShowBurger = () => {
 
-  window.addEventListener('resize', function () {
     for (let i = 0; i < liArr.length; i++) {
       // If li not the logo.
       if (!liArr[i].classList.contains('logo')) {
@@ -34,7 +21,16 @@
         }
       }
     }
+
+  };
+
+  hideNavItemsShowBurger();
+
+
+  window.addEventListener('resize', function () {
+    hideNavItemsShowBurger();
   });
+
 
 
   // Show burger-nav.
