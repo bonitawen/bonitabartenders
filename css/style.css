@@ -344,6 +344,10 @@ nav a:hover, nav a:focus {
   align-items: center;
 }
 
+.nav-mobile-show {
+  transform: translateY(0vh);
+}
+
 footer .nav-footer ul {
   text-align: center;
   display: flex;
