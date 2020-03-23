@@ -327,6 +327,23 @@ nav a:hover, nav a:focus {
     display: none;
   }
 }
+.nav-mobile {
+  width: 100vw;
+  height: 100vh;
+  background-color: #FEC7D7;
+  position: fixed;
+  z-index: 3;
+  transition: transform 0.5s ease-in-out;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer .nav-footer ul {
   text-align: center;
   display: flex;
