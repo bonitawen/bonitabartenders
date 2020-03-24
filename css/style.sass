@@ -191,7 +191,6 @@ header
   header
     margin: $large-top-bottom-padding $large-side-margin
 
-
 @media (min-width: 900px)
   header
     height: 100px
@@ -305,6 +304,11 @@ nav
   position: relative
   border-top: 2px solid $dark-blue
 
+  display: block
+  position: absolute
+  right: 1.47em
+  top: 1.7em
+
 .nav-burger:after, .nav-burger:before
   content: ''
   width: 100%
@@ -328,6 +332,11 @@ nav
 .js-navBurger-darkBlue:after, .js-navBurger-darkBlue:before
   background-color: $dark-blue !important
 
+
+@media (min-width: 450px)
+  .nav-burger
+    top: 2.3em
+    right: $large-side-margin
 
 @media (min-width: 900px)
   .nav-burger
