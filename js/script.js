@@ -71,88 +71,82 @@
 
 
 
-// // DISPLAY HEADER
-// // - STATIC WHEN SCROLLING DOWN,
-// // - FIXED WHEN SCROLLING UP.
-// {
-//   let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-//   const header = document.getElementsByTagName('header')[0];
-//   let headerHeight = header.offsetHeight;
-//   let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
+// DISPLAY HEADER
+// - STATIC WHEN SCROLLING DOWN,
+// - FIXED WHEN SCROLLING UP.
+{
+  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const header = document.getElementsByTagName('header')[0];
+  let headerHeight = header.offsetHeight;
+  let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
 
 
-//   // Update header height according to screen width.
-//   window.addEventListener('resize', function () {
-//     headerHeight = header.offsetHeight;
-//   });
+  // Update header height according to screen width.
+  window.addEventListener('resize', function () {
+    headerHeight = header.offsetHeight;
+  });
 
 
-//   function staticFixedHeader() {
-//     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  function staticFixedHeader() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-//     // If downscroll.
-//     if (scrollTop > lastScrollTop) {
-//       // If scroll from top less than header height.
-//       if (scrollTop < (8 * headerHeight + 2)) {
-//         header.style.position = 'static';
-//         fixedHeaderPushDown.style.display = 'none';
-//       } else {
-//         // Move header up.
-//         header.style.transform = `translateY(-${headerHeight}px)`;
-//       }
+    // If downscroll.
+    if (scrollTop > lastScrollTop) {
+      // If scroll from top less than header height.
+      if (scrollTop < (8 * headerHeight + 2)) {
+        header.style.position = 'static';
+        fixedHeaderPushDown.style.display = 'none';
+      } else {
+        // Move header up.
+        header.style.transform = `translateY(-${headerHeight}px)`;
+      }
 
-//     // If upscroll.
-//     } else if (scrollTop < lastScrollTop) {
-//       // If scroll from top larger than header height.
-//       if (scrollTop > (8 * headerHeight)) {
-//         header.style.position = 'fixed';
-//         fixedHeaderPushDown.style.display = 'block';
-//         // Move header down
-//         header.style.transform = 'translateY(0px)';
-//       }
-//     }
-//     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-//   } 
+    // If upscroll.
+    } else if (scrollTop < lastScrollTop) {
+      // If scroll from top larger than header height.
+      if (scrollTop > (8 * headerHeight)) {
+        header.style.position = 'fixed';
+        fixedHeaderPushDown.style.display = 'block';
+        // Move header down
+        header.style.transform = 'translateY(0px)';
+      }
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  } 
 
-//   window.addEventListener('scroll', staticFixedHeader);
+  window.addEventListener('scroll', staticFixedHeader);
 
-// } // End display header static/fixed.
-
-
-
-// // START SHOW/HIDE MOBILE-NAV.
-// {
-//   let mobNav = document.getElementsByClassName('nav-mobile')[0];
-//   let header = document.getElementsByTagName('header')[0];
-//   let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
-//   let navBurger = document.getElementsByClassName('nav-burger')[0];
-//   let logo = document.getElementsByClassName('logo')[0];
+} // End display header static/fixed.
 
 
-//   document.getElementsByClassName('nav-burger')[0].addEventListener('click', function () {
+
+// START SHOW/HIDE MOBILE-NAV.
+{
+  let mobNav = document.getElementsByClassName('nav-mobile')[0];
+  let header = document.getElementsByTagName('header')[0];
+  let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
+  let navBurger = document.getElementsByClassName('nav-burger')[0];
+  let logo = document.getElementsByClassName('logo')[0];
+
+
+  document.getElementsByClassName('nav-burger')[0].addEventListener('click', function () {
     
-//     if (!mobNav.classList.contains('nav-mobile-show')) {
-//       mobNav.classList.add('nav-mobile-show');
+    if (!mobNav.classList.contains('nav-mobile-show')) {
+      mobNav.classList.add('nav-mobile-show');
 
 
-//       window.removeEventListener('scroll', staticFixedHeader);
+      window.removeEventListener('scroll', staticFixedHeader);
 
-//       header.classList.add('js-fixed-header');
-//       fixedHeaderPushDown.style.display = 'block';
-//       navBurger.classList.add('js-navBurger-darkBlue');
-//       logo.style.visibility = 'hidden';
+      navBurger.classList.add('js-navBurger-darkBlue');
 
+    } else {
+      mobNav.classList.remove('nav-mobile-show');
 
-//     } else {
-//       mobNav.classList.remove('nav-mobile-show');
+      window.addEventListener('scroll', staticFixedHeader);
 
-//       window.addEventListener('scroll', staticFixedHeader);
+      navBurger.classList.remove('js-navBurger-darkBlue');
 
-//       header.classList.remove('js-fixed-header');
+    }
+  });
 
-//       navBurger.classList.remove('js-navBurger-darkBlue');
-//       logo.style.visibility = 'visible';
-//     }
-//   });
-
-// } // End show/hide mobile-nav.
+} // End show/hide mobile-nav.
