@@ -197,6 +197,12 @@ header
       margin: 0 75px 20px 75px
       padding: 0
 
+.js-fixed-header
+  position: fixed !important
+  transform: translateY(0)
+  z-index: 9
+  background-color: transparent !important
+
 /* || FOOTER */
 footer
   background-color: $white
@@ -311,6 +317,13 @@ nav
 .nav-burger:before
   top: 4px
   left: 0
+
+.js-navBurger-darkBlue
+  border-top: 2px solid $dark-blue !important
+
+.js-navBurger-darkBlue:after, .js-navBurger-darkBlue:before
+  background-color: $dark-blue !important
+
 
 @media (min-width: 900px)
   .nav-burger

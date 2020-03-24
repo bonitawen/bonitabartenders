@@ -86,8 +86,8 @@
     headerHeight = header.offsetHeight;
   });
 
-  window.addEventListener('scroll', function () {
 
+  function staticFixedHeader() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     // If downscroll.
@@ -112,6 +112,47 @@
       }
     }
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-  }, false);
+  } 
+
+  window.addEventListener('scroll', staticFixedHeader);
 
 } // End display header static/fixed.
+
+
+
+// START SHOW/HIDE MOBILE-NAV.
+{
+  let mobNav = document.getElementsByClassName('nav-mobile')[0];
+  let header = document.getElementsByTagName('header')[0];
+  let fixedHeaderPushDown = document.getElementsByClassName('header-push-down')[0];
+  let navBurger = document.getElementsByClassName('nav-burger')[0];
+  let logo = document.getElementsByClassName('logo')[0];
+
+
+  document.getElementsByClassName('nav-burger')[0].addEventListener('click', function () {
+    
+    if (!mobNav.classList.contains('nav-mobile-show')) {
+      mobNav.classList.add('nav-mobile-show');
+
+
+      window.removeEventListener('scroll', staticFixedHeader);
+
+      header.classList.add('js-fixed-header');
+      fixedHeaderPushDown.style.display = 'block';
+      navBurger.classList.add('js-navBurger-darkBlue');
+      logo.style.visibility = 'hidden';
+
+
+    } else {
+      mobNav.classList.remove('nav-mobile-show');
+
+      window.addEventListener('scroll', staticFixedHeader);
+
+      header.classList.remove('js-fixed-header');
+
+      navBurger.classList.remove('js-navBurger-darkBlue');
+      logo.style.visibility = 'visible';
+    }
+  });
+
+} // End show/hide mobile-nav.
