@@ -187,12 +187,13 @@ header {
   background-color: #FEC7D7;
   z-index: 1;
   transition: transform 0.8s;
-  margin: 1.47em;
+  padding: 1.47em;
+  width: 100%;
 }
 
 @media (min-width: 450px) {
   header {
-    margin: 2em 10%;
+    padding: 2em 10%;
   }
 }
 @media (min-width: 900px) {
@@ -203,6 +204,7 @@ header {
     justify-content: flex-end;
     margin: 0;
     padding: 0 75px 20px 75px;
+    padding: 0;
   }
 }
 .js-fixed-header {
@@ -281,6 +283,7 @@ nav a:hover, nav a:focus {
   .nav-main ul {
     width: 100%;
     flex-direction: row;
+    margin: 0 75px 20px 75px;
   }
   .nav-main ul li:nth-child(1) {
     order: 3;
@@ -315,6 +318,10 @@ nav a:hover, nav a:focus {
   top: 1.7em;
 }
 
+.js-nav-burger {
+  right: 4.47em;
+}
+
 .nav-burger:after, .nav-burger:before {
   content: "";
   width: 100%;
@@ -346,7 +353,10 @@ nav a:hover, nav a:focus {
 @media (min-width: 450px) {
   .nav-burger {
     top: 2.3em;
-    right: 10%;
+  }
+
+  .js-nav-burger {
+    right: 25%;
   }
 }
 @media (min-width: 900px) {

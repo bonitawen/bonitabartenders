@@ -185,11 +185,13 @@ header
   z-index: 1
   transition: transform .8s
 
-  margin: $mobile-margin
+  padding: $mobile-margin
+
+  width: 100%
 
 @media (min-width: 450px)
   header
-    margin: $large-top-bottom-padding $large-side-margin
+    padding: $large-top-bottom-padding $large-side-margin
 
 @media (min-width: 900px)
   header
@@ -199,6 +201,7 @@ header
     justify-content: flex-end
     margin: 0
     padding: 0 75px 20px 75px
+    padding: 0
 
 .js-fixed-header
   position: fixed !important
@@ -278,6 +281,7 @@ nav
     ul
       width: 100%
       flex-direction: row
+      margin: 0 75px 20px 75px
 
       li:nth-child(1)
         order: 3
@@ -309,6 +313,9 @@ nav
   right: 1.47em
   top: 1.7em
 
+.js-nav-burger
+  right: 4.47em
+
 .nav-burger:after, .nav-burger:before
   content: ''
   width: 100%
@@ -336,7 +343,9 @@ nav
 @media (min-width: 450px)
   .nav-burger
     top: 2.3em
-    right: $large-side-margin
+
+  .js-nav-burger
+    right: 25%
 
 @media (min-width: 900px)
   .nav-burger
