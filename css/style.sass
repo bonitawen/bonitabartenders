@@ -181,9 +181,16 @@ li
 /* || HEADER */
 header
   background-color: $pink
-  width: 100%
+  // width: 100%
   z-index: 1
   transition: transform .8s
+
+  margin: $mobile-margin
+
+@media (min-width: 450px)
+  header
+    margin: $large-top-bottom-padding $large-side-margin
+
 
 @media (min-width: 900px)
   header
@@ -191,11 +198,8 @@ header
     display: flex
     flex-direction: column
     justify-content: flex-end
-
-    .margin-container
-      max-width: 100%
-      margin: 0 75px 20px 75px
-      padding: 0
+    margin: 0
+    padding: 0 75px 20px 75px
 
 .js-fixed-header
   position: fixed !important

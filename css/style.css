@@ -185,22 +185,24 @@ li {
 /* || HEADER */
 header {
   background-color: #FEC7D7;
-  width: 100%;
   z-index: 1;
   transition: transform 0.8s;
+  margin: 1.47em;
 }
 
+@media (min-width: 450px) {
+  header {
+    margin: 2em 10%;
+  }
+}
 @media (min-width: 900px) {
   header {
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-  }
-  header .margin-container {
-    max-width: 100%;
-    margin: 0 75px 20px 75px;
-    padding: 0;
+    margin: 0;
+    padding: 0 75px 20px 75px;
   }
 }
 .js-fixed-header {
