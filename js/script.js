@@ -55,6 +55,8 @@
   const headerBuffer = document.getElementsByClassName('headerBuffer')[0];
   let headerHeight = header.offsetHeight;
 
+  window.addEventListener('resize', () => headerHeight = header.offsetHeight);
+
 
   // WHEN SCROLLED PAST CERTAIN POINT TURN STATIC HEADER INTO FIXED HEADER
   let headerPositioning_1 = () => {
