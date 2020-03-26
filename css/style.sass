@@ -179,14 +179,14 @@ li
 
 /* || HEADER */
 header
+  box-sizing: border-box
   background-color: $pink
-  height: 100px
+  width: 100%
+  padding: $mobile-margin
   display: flex
   align-items: center
-  padding: $mobile-margin
-  width: 100%
   z-index: 8
-
+  
 .js-header-transition 
   transition: transform 1s
 
@@ -197,11 +197,8 @@ header
 @media (min-width: 900px)
   header
     height: 100px
-    display: flex
     flex-direction: column
     justify-content: flex-end
-    margin: 0
-    padding: 0 75px 20px 75px
     padding: 0
 
 /* || FOOTER */
@@ -273,6 +270,8 @@ nav
 
 @media (min-width: 900px)
   .nav-main
+    width: 100%
+
     ul
       width: 100%
       flex-direction: row
@@ -297,22 +296,11 @@ nav
 .nav-burger
   order: 2
   margin-left: auto
-
   width: 30px
   height: 12px
   position: relative
   border-top: 2px solid $dark-blue
-
-  display: block
-  position: absolute
-  right: 1.47em
-  top: 1.7em
-
   z-index: 9
-
-// TODO: take out??
-// .js-nav-burger
-  // right: 4.47em
 
 .nav-burger:after, .nav-burger:before
   content: ''
@@ -337,14 +325,6 @@ nav
 
 // .js-navBurger-darkBlue:after, .js-navBurger-darkBlue:before
 //   background-color: $dark-blue !important
-
-
-@media (min-width: 450px)
-  .nav-burger
-    top: 2.3em
-
-  .js-nav-burger
-    right: 25%
 
 @media (min-width: 900px)
   .nav-burger

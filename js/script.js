@@ -5,9 +5,7 @@
   const liArr = mainNav.getElementsByTagName('li');
   const burger = document.getElementsByClassName('nav-burger')[0];
 
-
   let hideNavItems = () => {
-
     for (let i = 0; i < liArr.length; i++) {
       // If li not the logo.
       if (!liArr[i].classList.contains('logo')) {
@@ -21,16 +19,10 @@
         }
       }
     }
-
   };
-
   hideNavItems();
 
-
-  window.addEventListener('resize', function () {
-    hideNavItems();
-  });
-
+  window.addEventListener('resize', hideNavItems);
 
   // Show burger-nav.
   burger.classList.remove('hide');
@@ -38,12 +30,31 @@
 } // End hide nav items of regular nav. Show burger-nav.
 
 
+
+// SET HEADER HEIGHT.
+{
+  const header = document.getElementsByTagName('header')[0];
+
+  let setHeaderHeight = () => {
+    if (window.matchMedia('(min-width: 450px)').matches) {
+      header.style.height = '100px';
+    } else {
+      header.style.height = '70px';  
+    } 
+  };
+  setHeaderHeight();
+
+  window.addEventListener('resize', setHeaderHeight);
+} // End set header height.
+
+
+
 // START HEADER AND OVERLAY MENU.
 {
   const header = document.getElementsByTagName('header')[0];
   const headerBuffer = document.getElementsByClassName('headerBuffer')[0];
   let headerHeight = header.offsetHeight;
-console.log(headerHeight);
+
 
   // WHEN SCROLLED PAST CERTAIN POINT TURN STATIC HEADER INTO FIXED HEADER
   let headerPositioning_1 = () => {
