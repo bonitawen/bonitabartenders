@@ -131,15 +131,16 @@
       overlay.classList.remove('js-nav-mobile-show');
       window.addEventListener('scroll', headerPositioning_1);
       window.addEventListener('scroll', showHideHeader);
-
-      // if (window.pageYOffset === 0) {
-      //   header.style.position = 'static';
-      //   headerBuffer.style.height = 0;
-      //   header.classList.remove('js-header-transition');
-      // } else {
-      //   header.classList.add('js-header-transition');
-      // }
     }
   };
   burger.addEventListener('click', menuOverlay);
+
+
+  // CLOSE OVERLAY IF VIEWPORT > 900
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 900px)').matches && overlay.classList.contains('js-nav-mobile-show')) {
+      overlay.classList.remove('js-nav-mobile-show');
+    }
+  });
+
 } // End header and overlay menu.
