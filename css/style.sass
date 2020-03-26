@@ -339,7 +339,6 @@ nav
   background-color: $pink
   position: fixed
   z-index: 3
-  transition: transform .5s ease-in-out
   top: 0
   right: 0
   bottom: 0
@@ -349,6 +348,9 @@ nav
   display: flex
   justify-content: center
   align-items: center
+
+.js-nav-mobile-transition
+  transition: transform .5s ease-in-out
 
 .js-nav-mobile-show
   transform: translateY(0vh)

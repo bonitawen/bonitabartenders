@@ -143,4 +143,10 @@
     }
   });
 
+  // ON LOAD MOVE OVERLAY OFF THE PAGE
+  window.addEventListener('load', () => {
+    overlay.classList.add('js-nav-mobile-transition');
+  });
+
+
 } // End header and overlay menu.
