@@ -5,8 +5,7 @@ html,
 body
   margin: 0
   pading: 0
-  box-sizing: border-box
-
+  overflow-x: hidden
 
 /* =====================================
  * SASS VARIABLES
@@ -181,13 +180,15 @@ li
 /* || HEADER */
 header
   background-color: $pink
-  // width: 100%
-  z-index: 1
-  transition: transform .8s
-
+  height: 100px
+  display: flex
+  align-items: center
   padding: $mobile-margin
-
   width: 100%
+  z-index: 8
+
+.js-header-transition 
+  transition: transform 1s
 
 @media (min-width: 450px)
   header
@@ -307,10 +308,11 @@ nav
   right: 1.47em
   top: 1.7em
 
-  z-index: 9999
+  z-index: 9
 
-.js-nav-burger
-  right: 4.47em
+// TODO: take out??
+// .js-nav-burger
+  // right: 4.47em
 
 .nav-burger:after, .nav-burger:before
   content: ''
@@ -329,11 +331,12 @@ nav
   top: 4px
   left: 0
 
-.js-navBurger-darkBlue
-  border-top: 2px solid $dark-blue !important
+// TODO: uncomment again
+// .js-navBurger-darkBlue
+//   border-top: 2px solid $dark-blue !important
 
-.js-navBurger-darkBlue:after, .js-navBurger-darkBlue:before
-  background-color: $dark-blue !important
+// .js-navBurger-darkBlue:after, .js-navBurger-darkBlue:before
+//   background-color: $dark-blue !important
 
 
 @media (min-width: 450px)
@@ -367,7 +370,7 @@ nav
   justify-content: center
   align-items: center
 
-.nav-mobile-show
+.js-nav-mobile-show
   transform: translateY(0vh)
 
 // Footer nav
