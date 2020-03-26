@@ -71,7 +71,7 @@
     }
   };
   window.addEventListener('scroll', headerPositioning_1);
-
+  window.addEventListener('resize', headerPositioning_1);
 
 
   // ON LOAD, SET HEADER TO FIXED/STATIC DEPENDING ON SCROLL POSITION
