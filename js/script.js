@@ -63,12 +63,12 @@
     if (window.pageYOffset > 500) {
       header.style.position = 'fixed';
       headerBuffer.style.height = headerHeight + 'px';
-
-    } else if (window.pageYOffset === 0) {
-      header.style.position = 'static';
-      headerBuffer.style.height = 0;
-      header.classList.remove('js-header-transition');
     }
+    // } else if (window.pageYOffset === 0) {
+    //   header.style.position = 'static';
+    //   headerBuffer.style.height = 0;
+    //   header.classList.remove('js-header-transition');
+    // }
   };
   window.addEventListener('scroll', headerPositioning_1);
   window.addEventListener('resize', headerPositioning_1);
