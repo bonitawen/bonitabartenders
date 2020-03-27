@@ -302,6 +302,8 @@ nav
   border-top: 2px solid $dark-blue
   z-index: 9
 
+  transition: border .4s ease-in-out
+
 .nav-burger:after, .nav-burger:before
   content: ''
   width: 100%
@@ -315,9 +317,13 @@ nav
   width: 60%
   transition: width .2s ease-in-out
 
+  transition: background-color .4s ease-in-out
+
 .nav-burger:before
   top: 4px
   left: 0
+
+  transition: background-color .4s ease-in-out
 
 // TODO: uncomment again
 .js-navBurger-darkBlue
