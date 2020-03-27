@@ -118,6 +118,7 @@
   // OVERLAY-MENU
   const burger = document.getElementsByClassName('nav-burger')[0];
   const overlay = document.getElementsByClassName('nav-mobile')[0];
+  const body = document.body;
 
   let menuOverlay = () => {
     if (!overlay.classList.contains('js-nav-mobile-show')) {
@@ -132,6 +133,14 @@
       window.addEventListener('scroll', headerPositioning_1);
       window.addEventListener('scroll', showHideHeader);
     }
+
+    // IF ON COCKTAILS PAGE TURN NAV-BURGER DARK BLUE
+    if (body.classList.contains('cocktails') && !burger.classList.contains('js-navBurger-darkBlue')) {
+      burger.classList.add('js-navBurger-darkBlue');
+    } else {
+      burger.classList.remove('js-navBurger-darkBlue');
+    }
+
   };
   burger.addEventListener('click', menuOverlay);
 
@@ -150,3 +159,5 @@
 
 
 } // End header and overlay menu.
+
+
