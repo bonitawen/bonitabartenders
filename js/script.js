@@ -121,6 +121,7 @@
   const body = document.body;
 
   let menuOverlay = () => {
+    // if menu-overlay closed
     if (!overlay.classList.contains('js-nav-mobile-show')) {
       overlay.classList.add('js-nav-mobile-show');
       header.style.position = 'fixed';
@@ -128,10 +129,13 @@
       header.style.transform = 'translateY(0)';
       window.removeEventListener('scroll', headerPositioning_1);
       window.removeEventListener('scroll', showHideHeader);
+      burger.classList.add('js-nav-burger-expand');
+    // if menu-overlay opened
     } else {
       overlay.classList.remove('js-nav-mobile-show');
       window.addEventListener('scroll', headerPositioning_1);
       window.addEventListener('scroll', showHideHeader);
+      burger.classList.remove('js-nav-burger-expand');
     }
 
     // IF ON COCKTAILS PAGE TURN NAV-BURGER DARK BLUE
@@ -140,7 +144,6 @@
     } else {
       burger.classList.remove('js-navBurger-darkBlue');
     }
-
   };
   burger.addEventListener('click', menuOverlay);
 
