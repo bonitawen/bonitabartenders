@@ -1141,8 +1141,8 @@ textarea::placeholder {
 .contact {
   background-color: #FEC7D7;
 }
-.contact header {
-  margin-bottom: 3em;
+.contact main {
+  margin-top: 3em;
 }
 @media (min-width: 900px) {
   .contact main {
