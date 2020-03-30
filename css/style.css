@@ -450,8 +450,39 @@ footer .nav-footer ul li:nth-child(1) {
 .headings-wrap-landing {
   position: relative;
 }
+.headings-wrap-landing h1:nth-child(1) {
+  margin-bottom: 0;
+}
+.headings-wrap-landing h1:nth-child(2) {
+  margin: 0;
+}
+.headings-wrap-landing h1:nth-child(3) {
+  margin-top: 0;
+}
 .headings-wrap-landing h3 {
   margin-top: -1.3em;
+}
+
+.js-landing-h1-startPosition {
+  transform: translateX(-200px);
+  opacity: 0;
+}
+
+.js-landing-h1-show {
+  transform: translate(0);
+  opacity: 1;
+  transition: 0.6s ease-in-out;
+}
+
+.js-landing-h3-startPosition {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.js-landing-h3-show {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 0.6s ease-in-out;
 }
 
 @media (min-width: 450px) {

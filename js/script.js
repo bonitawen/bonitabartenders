@@ -164,3 +164,37 @@
 } // End header and overlay menu.
 
 
+
+
+// START ANIMATE LANDING INTRO TEXT.
+{
+  let landingHeadings = () => {
+
+    let h1Arr = document.querySelectorAll('.headings-wrap-landing h1'),
+        h3 = document.querySelector('.headings-wrap-landing h3');
+
+    // hide headings on load
+    for (let i = 0; i < h1Arr.length; i++) {
+      h1Arr[i].classList.add('js-landing-h1-startPosition');
+    }
+    h3.classList.add('js-landing-h3-startPosition');
+
+    // animate headings into view
+    window.setTimeout(function () {
+      h1Arr[0].classList.add('js-landing-h1-show');
+    }, 10)
+
+    window.setTimeout(function () {
+      h1Arr[1].classList.add('js-landing-h1-show');
+    }, 200)
+
+    window.setTimeout(function () {
+      h1Arr[2].classList.add('js-landing-h1-show');
+    }, 400)
+
+    window.setTimeout(function () {
+      h3.classList.add('js-landing-h3-show');
+    }, 500)
+  };
+  window.addEventListener('load', landingHeadings);
+} // End animate landing intro text.
