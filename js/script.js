@@ -57,6 +57,13 @@
 
   window.addEventListener('resize', () => headerHeight = header.offsetHeight);
 
+  window.addEventListener('resize', () => {
+    if (header.style.position === 'fixed') {
+      headerBuffer.style.height = headerHeight + 'px';
+    }
+  });
+  
+
 
   // WHEN SCROLLED PAST CERTAIN POINT TURN STATIC HEADER INTO FIXED HEADER
   let headerPositioning_1 = () => {
