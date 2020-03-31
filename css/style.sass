@@ -4,7 +4,7 @@
 html,
 body
   margin: 0
-  pading: 0
+  padding: 0
   overflow-x: hidden
 
 /* =====================================
@@ -348,7 +348,7 @@ nav
   right: 0
   bottom: 0
   left: 0
-  transform: translateY(-100vh)
+  transform: translateY(-100%)
 
   display: flex
   justify-content: center
@@ -356,7 +356,6 @@ nav
 
   ul
     text-align: center
-    font-size: calc(100% * 1.1)
     text-transform: uppercase
     li
       margin-bottom: 1em
@@ -371,8 +370,15 @@ nav
       letter-spacing: .141em
     .logo
       a
-        font-size: (100% * 1.1)
         color: $white
+        
+@supports (font-size: calc(100% * 1.1))
+  .nav-mobile
+    ul
+      font-size: calc(100% * 1.1)
+      .logo
+        a
+          font-size: (100% * 1.1)
 
 .js-nav-mobile-transition
   transition: transform .4s ease-in-out

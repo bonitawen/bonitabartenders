@@ -4,7 +4,7 @@
 html,
 body {
   margin: 0;
-  pading: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
@@ -363,14 +363,13 @@ nav a:hover, nav a:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translateY(-100vh);
+  transform: translateY(-100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .nav-mobile ul {
   text-align: center;
-  font-size: calc(100% * 1.1);
   text-transform: uppercase;
 }
 .nav-mobile ul li {
@@ -389,10 +388,17 @@ nav a:hover, nav a:focus {
   letter-spacing: 0.141em;
 }
 .nav-mobile ul .logo a {
-  font-size: 110%;
   color: #FFFFFE;
 }
 
+@supports (font-size: calc(100% * 1.1)) {
+  .nav-mobile ul {
+    font-size: calc(100% * 1.1);
+  }
+  .nav-mobile ul .logo a {
+    font-size: 110%;
+  }
+}
 .js-nav-mobile-transition {
   transition: transform 0.4s ease-in-out;
 }
