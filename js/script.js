@@ -203,5 +203,10 @@
       h3.classList.add('js-landing-h3-endPosition');
     }, 1000)
   };
-  window.addEventListener('load', landingHeadings);
+
+  // if on landing fire event-listener
+  if (typeof document.getElementsByClassName('headings-wrap-landing')[0] !== 'undefined') {
+    window.addEventListener('load', landingHeadings);
+  }
+
 } // End animate landing intro text.
