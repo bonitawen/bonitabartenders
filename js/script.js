@@ -173,6 +173,21 @@
 
 
 
+// HELPER FUNC THAT RETURNS TRUE IF ELEM IN VIEWPORT
+let isInViewport = (elem) => {
+  let bounding = elem.getBoundingClientRect();
+
+  return (
+      bounding.top  >= 0 &&
+      bounding.left >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+
+
+
+
 // START ANIMATE LANDING INTRO TEXT.
 {
   let animateLandingHeadings = () => {
@@ -184,49 +199,75 @@
         hoursH4 = document.querySelector('.hours h4'),
         hoursDivsArr = document.querySelectorAll('.hours div');
 
-    // hide headings on load
+
+    // hide elems (opacity only)
     for (let i = 0; i < h1Arr.length; i++) {
-      h1Arr[i].classList.add('js-startPositionLeft');
+      h1Arr[i].classList.add('js-start-hide');
       // check if reservation links exists
       if (typeof reservationsLinksArr[i] !== 'undefined') {
         reservationsLinksArr[i].classList.add('js-start-hide');
         hoursDivsArr[i].classList.add('js-start-hide');
       }
     }
-    h3.classList.add('js-landing-h3-startPosition');
+    h3.classList.add('js-start-hide');
     reservationsH4.classList.add('js-start-hide');
     hoursH4.classList.add('js-start-hide');
 
-    // animate headings into view
-    window.setTimeout(function () {
-      h1Arr[0].classList.add('js-endPosition');
-    }, 10)
 
-    window.setTimeout(function () {
-      h1Arr[1].classList.add('js-endPosition');
-    }, 250)
+    // if first h1 in viewport
+    if (isInViewport(h1Arr[0])) {
 
-    window.setTimeout(function () {
-      h1Arr[2].classList.add('js-endPosition');
-    }, 500)
+      // set start positions for animation
+      for (let i = 0; i < h1Arr.length; i++) {
+        h1Arr[i].classList.add('js-startPositionLeft');
+        // check if reservation links exists
+        if (typeof reservationsLinksArr[i] !== 'undefined') {
+          reservationsLinksArr[i].classList.add('js-start-hide');
+          hoursDivsArr[i].classList.add('js-start-hide');
+        }
+      }
+      h3.classList.add('js-landing-h3-startPosition');
+      reservationsH4.classList.add('js-start-hide');
+      hoursH4.classList.add('js-start-hide');
 
-    window.setTimeout(function () {
-      h3.classList.add('js-landing-h3-endPosition');
-    }, 1000)
 
-    window.setTimeout(function () {
-      reservationsH4.classList.add('js-end-show');
-      reservationsLinksArr[0].classList.add('js-end-show');
-      reservationsLinksArr[1].classList.add('js-end-show');
-      hoursH4.classList.add('js-end-show');
-      hoursDivsArr[0].classList.add('js-end-show');
-      hoursDivsArr[1].classList.add('js-end-show');
-    }, 1600)
+      // animate headings into view
+      window.setTimeout(function () {
+        h1Arr[0].classList.add('js-endPosition');
+      }, 10)
+
+      window.setTimeout(function () {
+        h1Arr[1].classList.add('js-endPosition');
+      }, 250)
+
+      window.setTimeout(function () {
+        h1Arr[2].classList.add('js-endPosition');
+      }, 500)
+
+      window.setTimeout(function () {
+        h3.classList.add('js-landing-h3-endPosition');
+      }, 1000)
+
+      window.setTimeout(function () {
+        reservationsH4.classList.add('js-end-show');
+        reservationsLinksArr[0].classList.add('js-end-show');
+        reservationsLinksArr[1].classList.add('js-end-show');
+        hoursH4.classList.add('js-end-show');
+        hoursDivsArr[0].classList.add('js-end-show');
+        hoursDivsArr[1].classList.add('js-end-show');
+      }, 1600)
+    }
   };
 
-  // if on landing fire event-listener
+  // if on landing fire event-listeners
   if (typeof document.getElementsByClassName('headings-wrap-landing')[0] !== 'undefined') {
+    window.addEventListener('scroll', animateLandingHeadings);
     window.addEventListener('load', animateLandingHeadings);
   }
 
 } // End animate landing intro text.
+
+
+// 1) helper func - in viewport
+// 2) replace load eL w/ scroll
+// 3) put section "animate headings into view" in if in view
