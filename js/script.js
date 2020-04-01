@@ -268,6 +268,58 @@ let isInViewport = (elem) => {
 } // End animate landing intro text.
 
 
-// 1) helper func - in viewport
-// 2) replace load eL w/ scroll
-// 3) put section "animate headings into view" in if in view
+
+
+// START ANIMATE SERVICES SECTION.
+{
+  let heading = document.getElementsByClassName('services-heading')[0],
+      eventsCard = document.getElementsByClassName('card-events')[0],
+      consultingCard = document.getElementsByClassName('card-cocktail-consulting')[0],
+      mocktailsCard = document.getElementsByClassName('card-mocktails')[0];
+
+
+  // if services section exists
+  if (typeof document.getElementsByClassName('services-heading')[0] !== 'undefined') {
+
+    // hide elems
+    heading.classList.add('js-start-hide');
+    eventsCard.classList.add('js-start-hide');
+    consultingCard.classList.add('js-start-hide');
+    mocktailsCard.classList.add('js-start-hide');
+
+
+    let animateServices = () => {
+
+      if (isInViewport(heading)) {
+        // animate into view
+        heading.classList.add('js-end-show');
+      }
+
+      if (isInViewport(eventsCard)) {
+        // set start position
+        eventsCard.classList.add('js-startPositionTop');
+        // animate into view
+        window.setTimeout(function () {
+          eventsCard.classList.add('js-endPosition');
+        }, 10)
+      }
+
+      if (isInViewport(consultingCard)) {
+        // set start position
+        consultingCard.classList.add('js-startPositionLeft');
+        // animate into view
+        window.setTimeout(function () {
+          consultingCard.classList.add('js-endPosition');
+        }, 10)
+      }
+
+      if (isInViewport(mocktailsCard)) {
+        mocktailsCard.classList.add('js-end-show');
+      }
+    };
+
+    window.addEventListener('scroll', animateServices);
+    window.addEventListener('load', animateServices);
+  }
+}
+// End animate services section.
