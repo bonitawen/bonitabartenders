@@ -178,13 +178,24 @@
   let landingHeadings = () => {
 
     let h1Arr = document.querySelectorAll('.headings-wrap-landing h1'),
-        h3 = document.querySelector('.headings-wrap-landing h3');
+        h3 = document.querySelector('.headings-wrap-landing h3'),
+        reservationsH4 = document.querySelector('.reservations h4'),
+        reservationsLinksArr = document.querySelectorAll('.reservations a');
+        hoursH4 = document.querySelector('.hours h4'),
+        hoursDivsArr = document.querySelectorAll('.hours div');
 
     // hide headings on load
     for (let i = 0; i < h1Arr.length; i++) {
       h1Arr[i].classList.add('js-startPositionLeft');
+      // check if reservation links exists
+      if (typeof reservationsLinksArr[i] !== 'undefined') {
+        reservationsLinksArr[i].classList.add('js-start-hide');
+        hoursDivsArr[i].classList.add('js-start-hide');
+      }
     }
     h3.classList.add('js-landing-h3-startPosition');
+    reservationsH4.classList.add('js-start-hide');
+    hoursH4.classList.add('js-start-hide');
 
     // animate headings into view
     window.setTimeout(function () {
@@ -202,6 +213,15 @@
     window.setTimeout(function () {
       h3.classList.add('js-landing-h3-endPosition');
     }, 1000)
+
+    window.setTimeout(function () {
+      reservationsH4.classList.add('js-end-show');
+      reservationsLinksArr[0].classList.add('js-end-show');
+      reservationsLinksArr[1].classList.add('js-end-show');
+      hoursH4.classList.add('js-end-show');
+      hoursDivsArr[0].classList.add('js-end-show');
+      hoursDivsArr[1].classList.add('js-end-show');
+    }, 1600)
   };
 
   // if on landing fire event-listener

@@ -469,8 +469,22 @@ footer .nav-footer ul li:nth-child(1) {
   margin-top: -1.3em;
 }
 
+.js-start-hide {
+  opacity: 0;
+}
+
+.js-end-show {
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
 .js-startPositionLeft {
   transform: translateX(-40vw);
+  opacity: 0;
+}
+
+.js-startPositionRight {
+  transform: translateX(40vw);
   opacity: 0;
 }
 
@@ -520,6 +534,11 @@ footer .nav-footer ul li:nth-child(1) {
     margin-bottom: 10em;
   }
 }
+.phone,
+.email {
+  display: inline-block;
+}
+
 .services {
   margin-bottom: 6em;
 }

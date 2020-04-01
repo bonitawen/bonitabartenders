@@ -450,8 +450,19 @@ footer
   h3
     margin-top: -1.3em
 
+.js-start-hide
+  opacity: 0
+
+.js-end-show
+  opacity: 1
+  transition: opacity .6s ease-in-out
+
 .js-startPositionLeft
   transform: translateX(-40vw)
+  opacity: 0
+
+.js-startPositionRight
+  transform: translateX(40vw)
   opacity: 0
 
 .js-endPosition
@@ -499,6 +510,7 @@ footer
 .phone,
 .email
   @extend %body-shared
+  display: inline-block // needed for js-animation
 
 .services
   margin-bottom: 6em
