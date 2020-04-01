@@ -175,7 +175,7 @@
 
 // START ANIMATE LANDING INTRO TEXT.
 {
-  let landingHeadings = () => {
+  let animateLandingHeadings = () => {
 
     let h1Arr = document.querySelectorAll('.headings-wrap-landing h1'),
         h3 = document.querySelector('.headings-wrap-landing h3'),
@@ -226,7 +226,7 @@
 
   // if on landing fire event-listener
   if (typeof document.getElementsByClassName('headings-wrap-landing')[0] !== 'undefined') {
-    window.addEventListener('load', landingHeadings);
+    window.addEventListener('load', animateLandingHeadings);
   }
 
 } // End animate landing intro text.
