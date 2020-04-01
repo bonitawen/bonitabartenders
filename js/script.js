@@ -182,25 +182,25 @@
 
     // hide headings on load
     for (let i = 0; i < h1Arr.length; i++) {
-      h1Arr[i].classList.add('js-landing-h1-startPosition');
+      h1Arr[i].classList.add('js-startPositionLeft');
     }
     h3.classList.add('js-landing-h3-startPosition');
 
     // animate headings into view
     window.setTimeout(function () {
-      h1Arr[0].classList.add('js-landing-h1-show');
+      h1Arr[0].classList.add('js-endPosition');
     }, 10)
 
     window.setTimeout(function () {
-      h1Arr[1].classList.add('js-landing-h1-show');
+      h1Arr[1].classList.add('js-endPosition');
     }, 250)
 
     window.setTimeout(function () {
-      h1Arr[2].classList.add('js-landing-h1-show');
+      h1Arr[2].classList.add('js-endPosition');
     }, 500)
 
     window.setTimeout(function () {
-      h3.classList.add('js-landing-h3-show');
+      h3.classList.add('js-landing-h3-endPosition');
     }, 1000)
   };
   window.addEventListener('load', landingHeadings);
