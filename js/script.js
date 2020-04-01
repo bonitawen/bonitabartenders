@@ -193,15 +193,15 @@
 
     window.setTimeout(function () {
       h1Arr[1].classList.add('js-landing-h1-show');
-    }, 200)
+    }, 250)
 
     window.setTimeout(function () {
       h1Arr[2].classList.add('js-landing-h1-show');
-    }, 400)
+    }, 500)
 
     window.setTimeout(function () {
       h3.classList.add('js-landing-h3-show');
-    }, 500)
+    }, 1000)
   };
   window.addEventListener('load', landingHeadings);
 } // End animate landing intro text.
