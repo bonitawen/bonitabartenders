@@ -185,7 +185,18 @@ let isInViewport = (elem) => {
   );
 };
 
+// HELPER FUNC THAT RETURNS TRUE IF HALF OF ELEM IN VIEWPORT
+let isHalfInViewport = (elem) => {
+  let bounding = elem.getBoundingClientRect();
+  let elemStyle = window.getComputedStyle(elem);
 
+  return (
+      bounding.top  >= '-' + parseInt(elemStyle.height) / 2 &&
+      bounding.left >= 0 &&
+      bounding.bottom - parseInt(elemStyle.height) / 2 <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
 
 
 // START ANIMATE LANDING INTRO TEXT.
@@ -295,7 +306,7 @@ let isInViewport = (elem) => {
         heading.classList.add('js-end-show');
       }
 
-      if (isInViewport(eventsCard)) {
+      if (isHalfInViewport(eventsCard)) {
         // set start position
         eventsCard.classList.add('js-startPositionTop');
         // animate into view
