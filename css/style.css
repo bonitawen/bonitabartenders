@@ -594,6 +594,7 @@ footer .nav-footer ul li:nth-child(1) {
 .form-email h4, .form-subject h4 {
   width: 8em;
   opacity: 0.7;
+  color: #0E172C;
 }
 .form-email input, .form-subject input {
   font-weight: 400;
@@ -604,6 +605,11 @@ footer .nav-footer ul li:nth-child(1) {
   width: 100%;
   max-width: 350px;
   margin-top: 0.7em;
+}
+.form-email input::placeholder, .form-subject input::placeholder {
+  color: #0E172C;
+  font-weight: 400;
+  opacity: 0.7;
 }
 
 .form-subject, .form-text {
