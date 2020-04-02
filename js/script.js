@@ -323,8 +323,49 @@ let isInViewport = (elem) => {
       }
     };
 
-    window.addEventListener('scroll', animateServices);
-    window.addEventListener('load', animateServices);
+
+    let animateServicesLargeViewport = () => {
+
+      if (isInViewport(heading)) {
+        // animate into view
+        heading.classList.add('js-end-show');
+      }
+
+      // if consultingCard OR mocktailsCard in viewport
+      if (isInViewport(consultingCard) || isInViewport(mocktailsCard)) {
+        // staggered animations for cards
+
+        // set start position
+        consultingCard.classList.add('js-startPositionLeft_ext');
+        // animate into view
+        window.setTimeout(function () {
+          consultingCard.classList.add('js-endPosition_ext');
+        }, 10)
+
+        // set start position
+        eventsCard.classList.add('js-startPositionTop');
+        // animate into view
+        window.setTimeout(function () {
+          eventsCard.classList.add('js-endPosition');
+        }, 700)
+
+        // set start position
+        mocktailsCard.classList.add('js-startPositionLeft');
+        // animate into view
+        window.setTimeout(function () {
+          mocktailsCard.classList.add('js-endPosition');
+        }, 1300)
+      }
+    };
+
+    // if vp > 900
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      window.addEventListener('scroll', animateServicesLargeViewport);
+      window.addEventListener('load', animateServicesLargeViewport);
+    } else {
+      window.addEventListener('scroll', animateServices);
+      window.addEventListener('load', animateServices);
+    }
   }
 }
 // End animate services section.
