@@ -479,17 +479,17 @@ footer .nav-footer ul li:nth-child(1) {
 }
 
 .js-startPositionTop {
-  transform: translateY(-15vw);
+  transform: translateY(-50px);
   opacity: 0;
 }
 
 .js-startPositionLeft {
-  transform: translateX(-40vw);
+  transform: translateX(-50px);
   opacity: 0;
 }
 
-.js-startPositionRight {
-  transform: translateX(40vw);
+.js-landing-h1-startPosition {
+  transform: translateX(-40vw);
   opacity: 0;
 }
 

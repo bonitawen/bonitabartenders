@@ -219,7 +219,7 @@ let isInViewport = (elem) => {
 
       // set start positions for animation
       for (let i = 0; i < h1Arr.length; i++) {
-        h1Arr[i].classList.add('js-startPositionLeft');
+        h1Arr[i].classList.add('js-landing-h1-startPosition');
         // check if reservation links exists
         if (typeof reservationsLinksArr[i] !== 'undefined') {
           reservationsLinksArr[i].classList.add('js-start-hide');
@@ -314,7 +314,12 @@ let isInViewport = (elem) => {
       }
 
       if (isInViewport(mocktailsCard)) {
-        mocktailsCard.classList.add('js-end-show');
+        // set start position
+        mocktailsCard.classList.add('js-startPositionLeft');
+        // animate into view
+        window.setTimeout(function () {
+          mocktailsCard.classList.add('js-endPosition');
+        }, 10)
       }
     };
 
