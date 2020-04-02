@@ -585,7 +585,7 @@ footer
 textarea
   @extend %h1-to-h3-styles
   font-size: 1.74em
-  height: 2.8em
+  height: 3em
   width: 100%
   max-width: 900px
   background-color: $pink
@@ -595,7 +595,17 @@ textarea
   outline: none
 
 textarea::placeholder
-    color: $dark-blue
+  color: $dark-blue
+  opacity: 1
+  transition: opacity .3s ease
+
+textarea:hover::placeholder
+  opacity: .6
+
+.form-submit
+  input
+    transition: opacity .1s ease
+  input:hover
     opacity: 1
 
 

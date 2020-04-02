@@ -618,7 +618,7 @@ footer .nav-footer ul li:nth-child(1) {
 
 textarea {
   font-size: 1.74em;
-  height: 2.8em;
+  height: 3em;
   width: 100%;
   max-width: 900px;
   background-color: #FEC7D7;
@@ -630,6 +630,18 @@ textarea {
 
 textarea::placeholder {
   color: #0E172C;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+textarea:hover::placeholder {
+  opacity: 0.6;
+}
+
+.form-submit input {
+  transition: opacity 0.1s ease;
+}
+.form-submit input:hover {
   opacity: 1;
 }
 
