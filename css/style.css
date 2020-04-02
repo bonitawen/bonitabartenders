@@ -618,7 +618,8 @@ footer .nav-footer ul li:nth-child(1) {
 
 textarea {
   font-size: 1.74em;
-  height: 3em;
+  min-height: 3em;
+  max-height: 40vh;
   width: 100%;
   max-width: 900px;
   background-color: #FEC7D7;
