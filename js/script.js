@@ -592,3 +592,37 @@ let isHalfInViewport = (elem) => {
   }
 }
 // End animation for hero section on about & cocktails page.
+
+
+
+
+// START ANIMATE ABOUT US SECTION.
+{
+  let aboutUs = document.getElementsByClassName('about-us-section')[0];
+
+
+  // if form exists
+  if (typeof aboutUs !== 'undefined') {
+
+    // hide elems
+    aboutUs.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      if (isInViewport(aboutUs)) {
+        // animate into view
+
+        window.setTimeout(function() {
+          aboutUs.classList.add('js-end-show');
+        }, 500);
+        
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+    
+  }
+}
+// End animate about us section.
