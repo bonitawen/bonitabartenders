@@ -553,3 +553,42 @@ let isHalfInViewport = (elem) => {
 
 }
 // End animate footer.
+
+
+
+
+// START ANIMATION FOR HERO SECTION ON ABOUT & COCKTAILS PAGE
+{
+  let section = document.getElementsByClassName('hero-section-about&cocktails')[0];
+
+  // if about or cocktails hero section exists
+  if (typeof section !== 'undefined') {
+
+    let img = section.getElementsByClassName('hero-image-wrap')[0],
+        heading = section.getElementsByTagName('h2')[0];
+
+    // hide elems
+    img.classList.add('js-start-hide');
+    heading.classList.add('js-start-hide');
+
+    let animateHeroSection = () => {
+
+      if (isInViewport(section)) {
+        // set start position
+        heading.classList.add('js-about-h2-startPosition');
+
+        // animate into view
+        img.classList.add('js-end-show');
+
+        window.setTimeout(function () {
+          heading.classList.add('js-endPosition');
+        }, 300);
+      }
+    };
+
+    window.addEventListener('scroll', animateHeroSection);
+    window.addEventListener('load', animateHeroSection);
+    
+  }
+}
+// End animation for hero section on about & cocktails page.
