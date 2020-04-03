@@ -618,7 +618,6 @@ footer .nav-footer ul li:nth-child(1) {
 
 textarea {
   font-size: 1.74em;
-  min-height: 3em;
   max-height: 40vh;
   width: 100%;
   max-width: 900px;
@@ -646,6 +645,11 @@ textarea:hover::placeholder {
   opacity: 1;
 }
 
+@media (min-width: 900px) {
+  textarea {
+    min-height: 3em;
+  }
+}
 /* || ABOUT */
 .about {
   background-color: #FEC7D7;
