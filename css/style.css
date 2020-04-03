@@ -475,7 +475,7 @@ footer .nav-footer ul li:nth-child(1) {
 
 .js-end-show {
   opacity: 1;
-  transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .js-startPositionTop {

@@ -424,3 +424,33 @@ let isHalfInViewport = (elem) => {
     autoExpand(event.target);
   }, false);
 } // End autogrow textarea.
+
+
+
+
+// START ANIMATE FORMS.
+{
+  let form = document.getElementsByTagName('form')[0];
+
+
+  // if form exists
+  if (typeof document.getElementsByTagName('form')[0] !== 'undefined') {
+
+    // hide elems
+    form.classList.add('js-start-hide');
+
+
+    let animateForm = () => {
+
+      if (isInViewport(form)) {
+        // animate into view
+        form.classList.add('js-end-show');
+      }
+    };
+
+    window.addEventListener('scroll', animateForm);
+    window.addEventListener('load', animateForm);
+    
+  }
+}
+// End animate form.
