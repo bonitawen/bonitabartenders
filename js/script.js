@@ -601,7 +601,7 @@ let isHalfInViewport = (elem) => {
   let aboutUs = document.getElementsByClassName('about-us-section')[0];
 
 
-  // if form exists
+  // if aboutUS exists
   if (typeof aboutUs !== 'undefined') {
 
     // hide elems
@@ -611,8 +611,8 @@ let isHalfInViewport = (elem) => {
     let animate = () => {
 
       if (isInViewport(aboutUs)) {
-        // animate into view
 
+        // animate into view
         window.setTimeout(function() {
           aboutUs.classList.add('js-end-show');
         }, 500);
@@ -626,3 +626,45 @@ let isHalfInViewport = (elem) => {
   }
 }
 // End animate about us section.
+
+
+
+
+// START ANIMATE TESTIMONIALS HEADINGS.
+{
+  let section = document.getElementsByClassName('headings-testimonials')[0],
+      heading = document.querySelector('.headings-testimonials h3')
+      aboutUs = document.getElementsByClassName('about-us-section')[0];
+
+
+  // if form exists
+  if (typeof aboutUs !== 'undefined') {
+
+    // hide elems
+    section.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      // if speech bubble section in view but not previous para
+      if (isInViewport(heading) && !isInViewport(aboutUs)) {
+        
+        // animate into view
+        section.classList.add('js-end-show');
+
+      } else if (isInViewport(heading) && isInViewport(aboutUs)) {
+
+        // animate w/ delay
+        window.setTimeout(function() {
+          section.classList.add('js-end-show');
+        }, 700);
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+  } 
+} // End animate testimonials headings.
+
+
+
