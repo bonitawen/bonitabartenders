@@ -426,41 +426,48 @@ let isHalfInViewport = (elem) => {
 {
   // Calculate textAreas height 
   let textArea = document.getElementsByTagName('textarea')[0];
-  let textAreaComputed = window.getComputedStyle(textArea);
-   
-  let initialHeight = parseInt(textAreaComputed.getPropertyValue('border-top-width'), 10)
-                     + parseInt(textAreaComputed.getPropertyValue('padding-top'), 10)
-                     + textArea.scrollHeight
-                     + parseInt(textAreaComputed.getPropertyValue('padding-bottom'), 10)
-                     + parseInt(textAreaComputed.getPropertyValue('border-bottom-width'), 10);
+
+  // if textArea exists
+  if (typeof textArea !== 'undefined') {
+
+    let textAreaComputed = window.getComputedStyle(textArea);
+     
+    let initialHeight = parseInt(textAreaComputed.getPropertyValue('border-top-width'), 10)
+                       + parseInt(textAreaComputed.getPropertyValue('padding-top'), 10)
+                       + textArea.scrollHeight
+                       + parseInt(textAreaComputed.getPropertyValue('padding-bottom'), 10)
+                       + parseInt(textAreaComputed.getPropertyValue('border-bottom-width'), 10);
 
 
-  let autoExpand = (field) => {
+    let autoExpand = (field) => {
 
-    // Reset field height
-    field.style.height = 'inherit';
+      // Reset field height
+      field.style.height = 'inherit';
 
-    // Get the computed styles for the element
-    let computed = window.getComputedStyle(field);
+      // Get the computed styles for the element
+      let computed = window.getComputedStyle(field);
 
-    // Calculate the height
-    let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-                 + parseInt(computed.getPropertyValue('padding-top'), 10)
-                 + field.scrollHeight
-                 + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                 + parseInt(computed.getPropertyValue('border-bottom-width'), 10)
-                 + 5;
+      // Calculate the height
+      let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                   + parseInt(computed.getPropertyValue('padding-top'), 10)
+                   + field.scrollHeight
+                   + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                   + parseInt(computed.getPropertyValue('border-bottom-width'), 10)
+                   + 5;
 
-    // If initialHeight < height
-    if (initialHeight < height) {
-      field.style.height = `${height}px`;
-    }
-  };
+      // If initialHeight < height
+      if (initialHeight < height) {
+        field.style.height = `${height}px`;
+      }
+    };
 
-  document.addEventListener('input', function (event) {
-    if (event.target.tagName.toLowerCase() !== 'textarea') return;
-    autoExpand(event.target);
-  }, false);
+    document.addEventListener('input', function (event) {
+      if (event.target.tagName.toLowerCase() !== 'textarea') return;
+      autoExpand(event.target);
+    }, false);
+
+  }
+
 } // End autogrow textarea.
 
 
