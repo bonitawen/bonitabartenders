@@ -199,7 +199,7 @@ let isHalfInViewport = (elem) => {
 };
 
 
-// START ANIMATE LANDING INTRO TEXT.
+// START ANIMATE LANDING INTRO TEXT AND HERO IMG.
 {
   let animateLandingHeadings = () => {
 
@@ -208,7 +208,8 @@ let isHalfInViewport = (elem) => {
         reservationsH4 = document.querySelector('.reservations h4'),
         reservationsLinksArr = document.querySelectorAll('.reservations a');
         hoursH4 = document.querySelector('.hours h4'),
-        hoursDivsArr = document.querySelectorAll('.hours div');
+        hoursDivsArr = document.querySelectorAll('.hours div')
+        hero = document.querySelector('.hero-section-homepage img');
 
 
     // hide elems (opacity only)
@@ -223,6 +224,7 @@ let isHalfInViewport = (elem) => {
     h3.classList.add('js-start-hide');
     reservationsH4.classList.add('js-start-hide');
     hoursH4.classList.add('js-start-hide');
+    hero.classList.add('js-start-hide');
 
 
     // if first h1 in viewport
@@ -241,6 +243,11 @@ let isHalfInViewport = (elem) => {
       reservationsH4.classList.add('js-start-hide');
       hoursH4.classList.add('js-start-hide');
 
+
+      // animate hero into view
+      window.setTimeout(function () {
+        hero.classList.add('js-landing-hero-show');
+      }, 10)
 
       // animate headings into view
       window.setTimeout(function () {
@@ -276,7 +283,38 @@ let isHalfInViewport = (elem) => {
     window.addEventListener('load', animateLandingHeadings);
   }
 
-} // End animate landing intro text.
+} // End animate landing intro text and hero img.
+
+
+
+
+// // START ANIMATE LANDING HERO.
+// {
+//   let hero = document.querySelector('.hero-section-homepage img');
+
+
+//   // if form exists
+//   if (typeof hero !== 'undefined') {
+
+//     // hide elems
+//     hero.classList.add('js-start-hide');
+
+
+//     let animateHeroLanding = () => {
+
+//       if (isInViewport(hero)) {
+//         // animate into view
+//         form.classList.add('js-end-show');
+// console.log('puuh');
+//       }
+//     };
+
+//     window.addEventListener('scroll', animateHeroLanding);
+//     window.addEventListener('load', animateHeroLanding);
+    
+//   }
+// }
+// // End animate landing hero.
 
 
 
@@ -434,7 +472,7 @@ let isHalfInViewport = (elem) => {
 
 
   // if form exists
-  if (typeof document.getElementsByTagName('form')[0] !== 'undefined') {
+  if (typeof form !== 'undefined') {
 
     // hide elems
     form.classList.add('js-start-hide');
@@ -454,3 +492,59 @@ let isHalfInViewport = (elem) => {
   }
 }
 // End animate form.
+
+
+
+
+// START ANIMATE FOOTER.
+{
+  let logo = document.getElementsByClassName('logo-footer')[0],
+      contact = document.getElementsByClassName('footer-contact')[0],
+      nav = document.getElementsByClassName('nav-footer')[0],
+      liArr = nav.getElementsByTagName('li');
+
+
+  // hide elems
+  logo.classList.add('js-start-hide');
+  contact.classList.add('js-start-hide');
+  liArr[0].classList.add('js-start-hide');
+  liArr[1].classList.add('js-start-hide');
+  liArr[2].classList.add('js-start-hide');
+  liArr[3].classList.add('js-start-hide');
+
+
+  let animateFooter = () => {
+
+    if (isInViewport(logo)) {
+      // animate into view
+      logo.classList.add('js-end-show');
+    }
+
+    if (isInViewport(contact)) {
+      // animate into view
+      contact.classList.add('js-end-show');
+    }
+
+    if (isInViewport(liArr[0])) {
+      // animate into view
+      liArr[0].classList.add('js-end-show');
+
+      window.setTimeout(function () {
+        liArr[1].classList.add('js-end-show');
+      }, 100);
+
+      window.setTimeout(function () {
+        liArr[2].classList.add('js-end-show');
+      }, 200);
+
+      window.setTimeout(function () {
+        liArr[3].classList.add('js-end-show');
+      }, 300);
+    }
+  };
+
+  window.addEventListener('scroll', animateFooter);
+  window.addEventListener('load', animateFooter);
+
+}
+// End animate footer.

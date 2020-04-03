@@ -478,6 +478,11 @@ footer .nav-footer ul li:nth-child(1) {
   transition: opacity 0.8s ease-in-out;
 }
 
+.js-landing-hero-show {
+  opacity: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
 .js-startPositionTop {
   transform: translateY(-50px);
   opacity: 0;
