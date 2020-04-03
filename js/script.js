@@ -247,7 +247,7 @@ let isHalfInViewport = (elem) => {
       // animate hero into view
       window.setTimeout(function () {
         hero.classList.add('js-landing-hero-show');
-      }, 10)
+      }, 100)
 
       // animate headings into view
       window.setTimeout(function () {
