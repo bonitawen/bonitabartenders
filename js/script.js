@@ -633,7 +633,7 @@ let isHalfInViewport = (elem) => {
 // START ANIMATE TESTIMONIALS HEADINGS.
 {
   let section = document.getElementsByClassName('headings-testimonials')[0],
-      heading = document.querySelector('.headings-testimonials h3')
+      heading = document.querySelector('.headings-testimonials h3'),
       aboutUs = document.getElementsByClassName('about-us-section')[0];
 
 
