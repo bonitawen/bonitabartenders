@@ -206,9 +206,9 @@ let isHalfInViewport = (elem) => {
     let h1Arr = document.querySelectorAll('.headings-wrap-landing h1'),
         h3 = document.querySelector('.headings-wrap-landing h3'),
         reservationsH4 = document.querySelector('.reservations h4'),
-        reservationsLinksArr = document.querySelectorAll('.reservations a');
+        reservationsLinksArr = document.querySelectorAll('.reservations a'),
         hoursH4 = document.querySelector('.hours h4'),
-        hoursDivsArr = document.querySelectorAll('.hours div')
+        hoursDivsArr = document.querySelectorAll('.hours div'),
         hero = document.querySelector('.hero-section-homepage img');
 
 
@@ -465,9 +465,7 @@ let isHalfInViewport = (elem) => {
       if (event.target.tagName.toLowerCase() !== 'textarea') return;
       autoExpand(event.target);
     }, false);
-
   }
-
 } // End autogrow textarea.
 
 
