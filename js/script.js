@@ -573,7 +573,7 @@ let isHalfInViewport = (elem) => {
 
     let animateHeroSection = () => {
 
-      if (isInViewport(section)) {
+      if (isInViewport(heading)) {
         // set start position
         heading.classList.add('js-about-h2-startPosition');
 
