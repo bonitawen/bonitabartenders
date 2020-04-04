@@ -598,7 +598,7 @@ let isHalfInViewport = (elem) => {
 
 // START ANIMATE ABOUT US SECTION.
 {
-  let aboutUs = document.getElementsByClassName('about-us-section')[0];
+  let aboutUs = document.querySelector('.about-us-section p');
 
 
   // if aboutUS exists
@@ -634,7 +634,7 @@ let isHalfInViewport = (elem) => {
 {
   let section = document.getElementsByClassName('headings-testimonials')[0],
       heading = document.querySelector('.headings-testimonials h3'),
-      aboutUs = document.getElementsByClassName('about-us-section')[0];
+      aboutUs = document.querySelector('.about-us-section p');
 
 
   // if form exists
