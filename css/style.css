@@ -775,6 +775,8 @@ textarea:hover::placeholder {
       position: absolute;
       display: flex;
       width: 200%;
+    }
+    .testimonials-section .js-belt-transition {
       transition: transform 300ms ease-in-out;
     }
     .testimonials-section .testimonials-grid {

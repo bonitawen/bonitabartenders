@@ -680,14 +680,15 @@
       if (typeof document.createElement('div').style.grid !== 'undefined'
           && window.matchMedia('(min-width: 900px)').matches) {
 
-        console.log('grid');
+// console.log('grid');
 
         const sliderWindow = document.getElementsByClassName('slider-window')[0];
         const belt = document.getElementsByClassName('testimonials-container')[0];
         const beltItem1 = document.getElementsByClassName('testimonials-grid')[0];
         const beltItem2 = document.getElementsByClassName('testimonials-grid')[1];
+        let clickCounter = 0;
         let shiftCounter = 0;
-
+        const beltItemArr = document.getElementsByClassName('testimonials-grid');
 
         // set css
         sliderWindow.classList.add('js-slider-window');
@@ -698,6 +699,7 @@
 
         // set slider-window height === testimonials-container height
         const setSliderWindowHeight = () => {
+          belt.classList.remove('js-belt-transition');
           window.setTimeout(function () {
               const testimContComputed = window.getComputedStyle(belt);
               let beltHeight = parseInt(testimContComputed.height);
@@ -719,6 +721,7 @@
           const beltWidth = belt.offsetWidth;
           let beltRemainder = beltWidth + shiftCounter;
 
+          belt.classList.add('js-belt-transition');
 
           if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
             // clicked left
@@ -728,7 +731,9 @@
             if (shiftCounter < -10) { // note: -10 is just a safety buffer for borders etc (can be zero, but it may cause glitches)
 
               // increase counter
-              shiftCounter += clickTargetWidth;
+              clickCounter += 1;
+              shiftCounter = clickCounter * clickTargetWidth;
+
               // shift belt right
               belt.style.transform = `translateX(${shiftCounter}px)`;
             }
@@ -742,7 +747,9 @@
               if (beltRemainder > clickTargetWidth + 10) {
 
                 // decrease counter
-                shiftCounter -= clickTargetWidth;
+                clickCounter -= 1;
+                shiftCounter = clickCounter * clickTargetWidth;
+
                 // shift belt left
                 belt.style.transform = `translateX(${shiftCounter}px)`;
               }
@@ -754,6 +761,32 @@
         sliderWindow.addEventListener('click', function (e) {
           slideLeftRight(e);
         });
+
+
+        // needed so belt-position is adjusted properly on resize
+        let adjustXpositionOfBelt = () => {
+
+          if (window.matchMedia('(min-width: 900px)').matches) {
+            let beltComputed = window.getComputedStyle(belt);
+            let beltWidth = parseInt(beltComputed.width);
+
+            let itemWidth = beltWidth / beltItemArr.length;   // NOTE:  depends on how many item on belt; possibly automate
+console.log(itemWidth);
+// console.log(beltWidth);
+// console.log(beltItemArr.length);
+// console.log(clickCounter);
+            belt.classList.remove('js-belt-transition');
+
+            shiftCounter = clickCounter * itemWidth;
+
+            belt.style.transform = `translateX(${shiftCounter}px)`;
+          } else {
+            belt.style.transform = `translateX(0)`;
+          }
+          
+        };
+
+        window.addEventListener('resize', adjustXpositionOfBelt);
 
 
         // function displaying left right arrows on hover
@@ -785,7 +818,7 @@
       } else if (typeof document.createElement('div').style.grid === 'undefined'
                  || window.matchMedia('(max-width: 900px)').matches) {
 
-        console.log('no grid');
+// console.log('no grid');
 
         const sliderWindow = document.getElementsByClassName('slider-window')[0];
 
@@ -818,7 +851,7 @@
     } // End testimonialSlider-function.
 
     testimonialSlider();
-    window.addEventListener('resize', testimonialSlider);
+    // window.addEventListener('resize', testimonialSlider);
 
 
   } // End of if testimonials section exists.
