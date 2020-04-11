@@ -674,6 +674,8 @@
   // if testimonial section exists
   if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
 
+    const belt = document.getElementsByClassName('testimonials-container')[0];
+
     let testimonialSlider = () => {
 
       // if browser supports grid && vp > 900
@@ -683,18 +685,22 @@
 // console.log('grid');
 
         const sliderWindow = document.getElementsByClassName('slider-window')[0];
-        const belt = document.getElementsByClassName('testimonials-container')[0];
+        // const belt = document.getElementsByClassName('testimonials-container')[0];
         const beltItem1 = document.getElementsByClassName('testimonials-grid')[0];
         const beltItem2 = document.getElementsByClassName('testimonials-grid')[1];
         let clickCounter = 0;
         let shiftCounter = 0;
         const beltItemArr = document.getElementsByClassName('testimonials-grid');
 
+
         // set css
-        sliderWindow.classList.add('js-slider-window');
-        belt.classList.add('js-testimonials-container');
-        beltItem1.style.marginBottom = '0';
-        beltItem2.style.marginBottom = '0';
+        const cssSetup = () => {
+          sliderWindow.classList.add('js-slider-window');
+          belt.classList.add('js-testimonials-container');
+          beltItem1.style.marginBottom = '0';
+          beltItem2.style.marginBottom = '0';
+        };
+        cssSetup();
 
 
         // set slider-window height === testimonials-container height
@@ -736,6 +742,7 @@
 
               // shift belt right
               belt.style.transform = `translateX(${shiftCounter}px)`;
+              belt.classList.add('js-belt-moved');
             }
 
           } else {
@@ -752,11 +759,12 @@
 
                 // shift belt left
                 belt.style.transform = `translateX(${shiftCounter}px)`;
+                belt.classList.add('js-belt-moved');
               }
 
             }
           }
-        }; 
+        }; // End slideLeftRight-function.
 
         sliderWindow.addEventListener('click', function (e) {
           slideLeftRight(e);
@@ -771,10 +779,7 @@
             let beltWidth = parseInt(beltComputed.width);
 
             let itemWidth = beltWidth / beltItemArr.length;   // NOTE:  depends on how many item on belt; possibly automate
-console.log(itemWidth);
-// console.log(beltWidth);
-// console.log(beltItemArr.length);
-// console.log(clickCounter);
+
             belt.classList.remove('js-belt-transition');
 
             shiftCounter = clickCounter * itemWidth;
@@ -783,11 +788,50 @@ console.log(itemWidth);
           } else {
             belt.style.transform = `translateX(0)`;
           }
-          
         };
 
         window.addEventListener('resize', adjustXpositionOfBelt);
 
+
+      // browser doesn't support grid  OR  vp < 900
+      } else if (typeof document.createElement('div').style.grid === 'undefined'  // TODO: not needed..?
+                 || window.matchMedia('(max-width: 900px)').matches) {
+
+// console.log('no grid');
+
+
+      } // End else-if.
+
+    } // End testimonialSlider-function.
+
+    testimonialSlider();
+
+    window.addEventListener('resize', function () {
+      // if belt hasn't been moved yet (e.g. if mobile view on load and then enlarged to desktop)
+      if (!belt.classList.contains('js-belt-moved')) {
+        testimonialSlider();
+      }
+    });
+
+  } // End of if testimonials section exists.
+
+} // End testimonial slider.
+
+
+
+
+// START NAV-ARROW LOGIC FOR TESTIMONIALS SECTION
+{
+  // if testimonial section exists
+  if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
+
+    const sliderWindow = document.getElementsByClassName('slider-window')[0];
+
+    let navArrows = () => {
+
+      // if browser supports grid && vp > 900
+      if (typeof document.createElement('div').style.grid !== 'undefined'
+          && window.matchMedia('(min-width: 900px)').matches) {
 
         // function displaying left right arrows on hover
         const showNavArrows = (e) => {
@@ -813,48 +857,40 @@ console.log(itemWidth);
         });
 
 
-
-      // browser doesn't support grid  OR  vp < 900
       } else if (typeof document.createElement('div').style.grid === 'undefined'
-                 || window.matchMedia('(max-width: 900px)').matches) {
+                   || window.matchMedia('(max-width: 900px)').matches) {
 
-// console.log('no grid');
+          const sliderWindow = document.getElementsByClassName('slider-window')[0];
 
-        const sliderWindow = document.getElementsByClassName('slider-window')[0];
+          // function hiding left right arrows
+          const hideNavArrows = (e) => {
 
-        // function hiding left right arrows
-        const showNavArrows = (e) => {
-
-          const clickTarget = e.target;
-          const clickTargetWidth = clickTarget.offsetWidth;
-          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
-          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
-            // clicked left
-            clickTarget.style.cursor = 'auto';
-
-          } else {
-            // clicked right
-
-            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            const clickTarget = e.target;
+            const clickTargetWidth = clickTarget.offsetWidth;
+            const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+            if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              // clicked left
               clickTarget.style.cursor = 'auto';
-            }
-          }  
-        };
 
-        sliderWindow.addEventListener('mousemove', function (e) {
-          showNavArrows(e);
-        });
+            } else {
+              // clicked right
 
+              if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+                clickTarget.style.cursor = 'auto';
+              }
+            }  
+          };
+
+          sliderWindow.addEventListener('mousemove', function (e) {
+            hideNavArrows(e);
+          });
 
       } // End else-if.
 
-    } // End testimonialSlider-function.
+    } // End navArrows-function.
 
-    testimonialSlider();
-    // window.addEventListener('resize', testimonialSlider);
+    navArrows();
+    window.addEventListener('resize', navArrows);
 
-
-  } // End of if testimonials section exists.
-
-} // End testimonial slider.
-
+  } // End if testimonials section exists.
+} // End nav-arrow logic for testimonials section.
