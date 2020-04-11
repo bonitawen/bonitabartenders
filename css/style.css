@@ -767,6 +767,16 @@ textarea:hover::placeholder {
       max-width: none;
       margin: 0;
     }
+    .testimonials-section .js-slider-window {
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials-section .js-testimonials-container {
+      position: absolute;
+      display: flex;
+      width: 200%;
+      transition: transform 300ms ease-in-out;
+    }
     .testimonials-section .testimonials-grid {
       width: 100%;
       margin: 0;

@@ -671,25 +671,157 @@
 
 // START TESTIMONIAL SLIDER.
 {
-// if testimonial section exists
-if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
+  // if testimonial section exists
+  if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
 
-  // if browser supports grid && vp > 900
-  if (typeof document.createElement('div').style.grid !== 'undefined'
-      && window.matchMedia('(min-width: 900px)').matches) {
+    let testimonialSlider = () => {
 
-    console.log('grid');
+      // if browser supports grid && vp > 900
+      if (typeof document.createElement('div').style.grid !== 'undefined'
+          && window.matchMedia('(min-width: 900px)').matches) {
 
-  // browser doesn't support grid  OR  vp < 900
-  } else if (typeof document.createElement('div').style.grid === 'undefined'
-             || window.matchMedia('(max-width: 900px)').matches) {
+        console.log('grid');
 
-    console.log('no grid');
-  }
-}
+        const sliderWindow = document.getElementsByClassName('slider-window')[0];
+        const belt = document.getElementsByClassName('testimonials-container')[0];
+        const beltItem1 = document.getElementsByClassName('testimonials-grid')[0];
+        const beltItem2 = document.getElementsByClassName('testimonials-grid')[1];
+        let shiftCounter = 0;
+
+
+        // set css
+        sliderWindow.classList.add('js-slider-window');
+        belt.classList.add('js-testimonials-container');
+        beltItem1.style.marginBottom = '0';
+        beltItem2.style.marginBottom = '0';
+
+
+        // set slider-window height === testimonials-container height
+        const setSliderWindowHeight = () => {
+          window.setTimeout(function () {
+              const testimContComputed = window.getComputedStyle(belt);
+              let beltHeight = parseInt(testimContComputed.height);
+
+              sliderWindow.style.height = beltHeight + 'px';
+          }, 100); 
+        };
+        setSliderWindowHeight();
+        window.addEventListener('resize', setSliderWindowHeight);
+
+
+        // function that slides belt left or right
+        const slideLeftRight = (e) => {
+
+          const clickTarget = e.target;
+          const clickTargetWidth = clickTarget.offsetWidth;
+          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+
+          const beltWidth = belt.offsetWidth;
+          let beltRemainder = beltWidth + shiftCounter;
+
+
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            // clicked left
+
+            // if belt if is not in start position
+            // or "only shift belt right, if shiftCounter is negative"
+            if (shiftCounter < -10) { // note: -10 is just a safety buffer for borders etc (can be zero, but it may cause glitches)
+
+              // increase counter
+              shiftCounter += clickTargetWidth;
+              // shift belt right
+              belt.style.transform = `translateX(${shiftCounter}px)`;
+            }
+
+          } else {
+            // clicked right
+
+            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+
+              // if beltRemainder > width of viewing window + couple extra px for e.g. borders (can be omitted if not borders etc)
+              if (beltRemainder > clickTargetWidth + 10) {
+
+                // decrease counter
+                shiftCounter -= clickTargetWidth;
+                // shift belt left
+                belt.style.transform = `translateX(${shiftCounter}px)`;
+              }
+
+            }
+          }
+        }; 
+
+        sliderWindow.addEventListener('click', function (e) {
+          slideLeftRight(e);
+        });
+
+
+        // function displaying left right arrows on hover
+        const showNavArrows = (e) => {
+
+          const clickTarget = e.target;
+          const clickTargetWidth = clickTarget.offsetWidth;
+          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            // clicked left
+            clickTarget.style.cursor = 'url(img/back.png) 15 18, auto';
+
+          } else {
+            // clicked right
+
+            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
+            }
+          }  
+        };
+
+        sliderWindow.addEventListener('mousemove', function (e) {
+          showNavArrows(e);
+        });
 
 
 
-}
-// End testimonial slider.
+      // browser doesn't support grid  OR  vp < 900
+      } else if (typeof document.createElement('div').style.grid === 'undefined'
+                 || window.matchMedia('(max-width: 900px)').matches) {
+
+        console.log('no grid');
+
+        const sliderWindow = document.getElementsByClassName('slider-window')[0];
+
+        // function hiding left right arrows
+        const showNavArrows = (e) => {
+
+          const clickTarget = e.target;
+          const clickTargetWidth = clickTarget.offsetWidth;
+          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            // clicked left
+            clickTarget.style.cursor = 'auto';
+
+          } else {
+            // clicked right
+
+            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              clickTarget.style.cursor = 'auto';
+            }
+          }  
+        };
+
+        sliderWindow.addEventListener('mousemove', function (e) {
+          showNavArrows(e);
+        });
+
+
+      } // End else-if.
+
+    } // End testimonialSlider-function.
+
+    testimonialSlider();
+    window.addEventListener('resize', testimonialSlider);
+
+
+  } // End of if testimonials section exists.
+
+} // End testimonial slider.
 
