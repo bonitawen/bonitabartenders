@@ -774,6 +774,7 @@ textarea:hover::placeholder {
     .testimonials-section .js-testimonials-container {
       position: absolute;
       display: flex;
+      justify-content: space-between;
       width: 200%;
     }
     .testimonials-section .js-belt-transition {
@@ -782,6 +783,7 @@ textarea:hover::placeholder {
     .testimonials-section .testimonials-grid {
       width: 100%;
       margin: 0;
+      width: 49.9%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 30px;

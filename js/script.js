@@ -721,11 +721,11 @@
         const slideLeftRight = (e) => {
 
           const clickTarget = e.target;
-          const clickTargetWidth = clickTarget.offsetWidth;
           const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
 
           const beltWidth = belt.offsetWidth;
           let beltRemainder = beltWidth + shiftCounter;
+          const clickTargetWidth = beltWidth / beltItemArr.length;
 
           belt.classList.add('js-belt-transition');
 
