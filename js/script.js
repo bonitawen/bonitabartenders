@@ -721,6 +721,7 @@
         const slideLeftRight = (e) => {
 
           const clickTarget = e.target;
+
           const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
 
           const beltWidth = belt.offsetWidth;
@@ -729,7 +730,9 @@
 
           belt.classList.add('js-belt-transition');
 
-          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+          // note: 2 self additions: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+          //                         "clickTarget.classList.contains('testimonials-grid')", ensures that we click on belt item, so belt won't shift if clicked on belt insted of belt item.
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) { 
             // clicked left
 
             // if belt if is not in start position
@@ -748,7 +751,9 @@
           } else {
             // clicked right
 
-            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            // note: 2 self additions: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            //                         "clickTarget.classList.contains('testimonials-grid')", ensures that we click on belt item, so belt won't shift if clicked on belt insted of belt item.
+            if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {
 
               // if beltRemainder > width of viewing window + couple extra px for e.g. borders (can be omitted if not borders etc)
               if (beltRemainder > clickTargetWidth + 10) {
@@ -839,17 +844,16 @@
           const clickTarget = e.target;
           const clickTargetWidth = clickTarget.offsetWidth;
           const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
-          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
             // clicked left
             clickTarget.style.cursor = 'url(img/back.png) 15 18, auto';
 
-          } else {
+          } else if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {
             // clicked right
-
-            if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
-              clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
-            }
-          }  
+            clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
+          }  else {
+            clickTarget.style.cursor = 'auto';
+          }
         };
 
         sliderWindow.addEventListener('mousemove', function (e) {
@@ -868,14 +872,14 @@
             const clickTarget = e.target;
             const clickTargetWidth = clickTarget.offsetWidth;
             const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
-            if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
               // clicked left
               clickTarget.style.cursor = 'auto';
 
             } else {
               // clicked right
 
-              if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
                 clickTarget.style.cursor = 'auto';
               }
             }  
