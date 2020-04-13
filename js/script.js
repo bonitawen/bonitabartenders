@@ -288,37 +288,6 @@ let isHalfInViewport = (elem) => {
 
 
 
-// // START ANIMATE LANDING HERO.
-// {
-//   let hero = document.querySelector('.hero-section-homepage img');
-
-
-//   // if form exists
-//   if (typeof hero !== 'undefined') {
-
-//     // hide elems
-//     hero.classList.add('js-start-hide');
-
-
-//     let animateHeroLanding = () => {
-
-//       if (isInViewport(hero)) {
-//         // animate into view
-//         form.classList.add('js-end-show');
-// console.log('puuh');
-//       }
-//     };
-
-//     window.addEventListener('scroll', animateHeroLanding);
-//     window.addEventListener('load', animateHeroLanding);
-    
-//   }
-// }
-// // End animate landing hero.
-
-
-
-
 // START ANIMATE SERVICES SECTION.
 {
   let heading = document.getElementsByClassName('services-heading')[0],
