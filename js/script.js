@@ -954,9 +954,6 @@ let isHalfInViewport = (elem) => {
       sliderWindow.classList.remove('js-start-hide');
     }
 
-
-
-
   }; // End animateTestimonials-function.
 
 
