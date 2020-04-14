@@ -606,7 +606,7 @@ let isHalfInViewport = (elem) => {
       aboutUs = document.querySelector('.about-us-section p');
 
 
-  // if form exists
+  // if aboutUS exists
   if (typeof aboutUs !== 'undefined') {
 
     // hide elems
@@ -834,7 +834,7 @@ let isHalfInViewport = (elem) => {
 
 
       } else if (typeof document.createElement('div').style.grid === 'undefined'
-                   || window.matchMedia('(max-width: 900px)').matches) {
+                 || window.matchMedia('(max-width: 900px)').matches) {
 
           const sliderWindow = document.getElementsByClassName('slider-window')[0];
 
@@ -870,3 +870,102 @@ let isHalfInViewport = (elem) => {
 
   } // End if testimonials section exists.
 } // End nav-arrow logic for testimonials section.
+
+
+
+
+// START ANIMATE TESTIMONIAL SECTION.
+{
+  const sliderWindow = document.getElementsByClassName('slider-window')[0];
+  const testimonialBoxArr = document.getElementsByClassName('testimonial-box');
+
+  const animateTestimonials = () => {
+
+    // if browser supports grid && vp > 900 && visible-flag not present
+    if (typeof document.createElement('div').style.grid !== 'undefined'
+        && window.matchMedia('(min-width: 900px)').matches
+        && !sliderWindow.classList.contains('visible-flag')) {
+
+      // hide slider-window
+      sliderWindow.classList.add('js-start-hide');
+
+      const animate = () => {
+
+        // if half of sliderWindow in view
+        if (isHalfInViewport(sliderWindow)) { // TODO: possibly change to isInViewport
+          
+          // animate into view and add visible-flag
+          sliderWindow.classList.add('js-end-show');
+          sliderWindow.classList.add('visible-flag');
+        }
+      };
+
+      window.addEventListener('scroll', animate);
+      window.addEventListener('load', animate);
+      window.addEventListener('resize', animate);
+
+
+    // if no grid OR vp < 900 && visible-flag not present
+    } else if (typeof document.createElement('div').style.grid === 'undefined'
+               || window.matchMedia('(max-width: 900px)').matches
+               && !sliderWindow.classList.contains('visible-flag')) {
+
+      // hide cards
+      for (let i = 0; i < testimonialBoxArr.length; i++) {
+        testimonialBoxArr[i].classList.add('js-start-hide');
+      }
+
+      // show slider-window
+      sliderWindow.classList.remove('js-start-hide');
+
+      const animate = () => {
+
+        for (let i = 0; i < testimonialBoxArr.length; i++) {
+          // if card in view
+          if (isInViewport(testimonialBoxArr[i])) {
+            
+            // animate into view and add visible-flag
+            testimonialBoxArr[i].classList.add('js-end-show');
+            sliderWindow.classList.add('visible-flag');
+          }
+        }
+      };
+
+      window.addEventListener('scroll', animate);
+      window.addEventListener('load', animate);
+      window.addEventListener('resize', animate);
+
+    // else-if browser supports grid && vp > 900 && visible-flag present
+    } else if (typeof document.createElement('div').style.grid !== 'undefined'
+               && window.matchMedia('(min-width: 900px)').matches
+               && sliderWindow.classList.contains('visible-flag')) {
+
+      // show cards
+      for (let i = 0; i < testimonialBoxArr.length; i++) {
+        testimonialBoxArr[i].classList.remove('js-start-hide');
+      }
+
+    // else-if no grid && vp < 900 && visible-flag present
+    } else if (typeof document.createElement('div').style.grid === 'undefined'
+               && window.matchMedia('(max-width: 900px)').matches
+               && sliderWindow.classList.contains('visible-flag')) {
+
+      // show slider-window
+      sliderWindow.classList.remove('js-start-hide');
+    }
+
+
+
+
+  }; // End animateTestimonials-function.
+
+
+
+  // if testimonial section exists
+  if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
+
+    animateTestimonials();
+    window.addEventListener('resize', animateTestimonials);
+
+  }
+} // End animate testimonial section.
