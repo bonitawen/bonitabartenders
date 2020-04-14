@@ -966,3 +966,73 @@ let isHalfInViewport = (elem) => {
 
   }
 } // End animate testimonial section.
+
+
+
+
+// START ANIMATE ABOUT WENDY SECTION.
+{
+  // if about-wendy section exists
+  if (typeof document.getElementsByClassName('about-wendy-section')[0] !== 'undefined') {
+
+    const h2 = document.querySelector('.about-wendy-section h2'),
+          p = document.querySelector('.about-wendy-text p'),
+          smImg = document.querySelector('.wendy-img-box .img-wrap'),
+          lgImg = document.querySelector('.wendy-img-box img');
+
+    h2.classList.add('js-start-hide');
+    p.classList.add('js-start-hide');
+    smImg.classList.add('js-start-hide');
+    lgImg.classList.add('js-start-hide');
+
+    let animate = () => {
+
+      if (isInViewport(h2)) {
+        // animate into view
+        h2.classList.add('js-endPosition');
+      }
+
+      if (isInViewport(p)) {
+        // animate into view
+        p.classList.add('js-endPosition');
+      }
+
+      // if vp > 450
+      if (window.matchMedia('(min-width: 450px)').matches) {
+        if (isInViewport(smImg)) {
+          // set start position
+          lgImg.classList.add('js-startPositionTop');
+          // animate into view
+          window.setTimeout(function () {
+            lgImg.classList.add('js-endPosition');
+          }, 10)
+        }
+
+        if (isInViewport(smImg)) {
+          // set start position
+          smImg.classList.add('js-startPositionRight');
+          // animate into view
+          window.setTimeout(function () {
+            smImg.classList.add('js-endPosition');
+          }, 400)
+        }
+
+      // vp < 450
+      } else {
+        if (isInViewport(lgImg)) {
+          // animate into view
+          lgImg.classList.add('js-endPosition');
+        }
+
+        if (isInViewport(smImg)) {
+          // animate into view
+          smImg.classList.add('js-endPosition');
+        }
+      } // End if else
+    }; // End animate-function
+
+    animate();
+    window.addEventListener('scroll', animate);
+
+  } // End if about-wendy section exists
+} // End animate about wendy section.
