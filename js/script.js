@@ -689,55 +689,58 @@ let isHalfInViewport = (elem) => {
         // function that slides belt left or right
         const slideLeftRight = (e) => {
 
-          const clickTarget = e.target;
+          if (typeof document.createElement('div').style.grid !== 'undefined'
+              && window.matchMedia('(min-width: 900px)').matches) {
 
-          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+            const clickTarget = e.target;
 
-          const beltWidth = belt.offsetWidth;
-          let beltRemainder = beltWidth + shiftCounter;
-          const clickTargetWidth = beltWidth / beltItemArr.length;
+            const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
 
-          belt.classList.add('js-belt-transition');
+            const beltWidth = belt.offsetWidth;
+            let beltRemainder = beltWidth + shiftCounter;
+            const clickTargetWidth = beltWidth / beltItemArr.length;
 
-          // note: 2 self additions: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
-          //                         "clickTarget.classList.contains('testimonials-grid')", ensures that we click on belt item, so belt won't shift if clicked on belt insted of belt item.
-          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) { 
-            // clicked left
-
-            // if belt if is not in start position
-            // or "only shift belt right, if shiftCounter is negative"
-            if (shiftCounter < -10) { // note: -10 is just a safety buffer for borders etc (can be zero, but it may cause glitches)
-
-              // increase counter
-              clickCounter += 1;
-              shiftCounter = clickCounter * clickTargetWidth;
-
-              // shift belt right
-              belt.style.transform = `translateX(${shiftCounter}px)`;
-              belt.classList.add('js-belt-moved');
-            }
-
-          } else {
-            // clicked right
+            belt.classList.add('js-belt-transition');
 
             // note: 2 self additions: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
             //                         "clickTarget.classList.contains('testimonials-grid')", ensures that we click on belt item, so belt won't shift if clicked on belt insted of belt item.
-            if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {
+            if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) { 
+              // clicked left
 
-              // if beltRemainder > width of viewing window + couple extra px for e.g. borders (can be omitted if not borders etc)
-              if (beltRemainder > clickTargetWidth + 10) {
+              // if belt if is not in start position
+              // or "only shift belt right, if shiftCounter is negative"
+              if (shiftCounter < -10) { // note: -10 is just a safety buffer for borders etc (can be zero, but it may cause glitches)
 
-                // decrease counter
-                clickCounter -= 1;
+                // increase counter
+                clickCounter += 1;
                 shiftCounter = clickCounter * clickTargetWidth;
 
-                // shift belt left
+                // shift belt right
                 belt.style.transform = `translateX(${shiftCounter}px)`;
                 belt.classList.add('js-belt-moved');
               }
 
+            } else {
+              // clicked right
+
+              // note: 2 self additions: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              //                         "clickTarget.classList.contains('testimonials-grid')", ensures that we click on belt item, so belt won't shift if clicked on belt insted of belt item.
+              if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {
+
+                // if beltRemainder > width of viewing window + couple extra px for e.g. borders (can be omitted if not borders etc)
+                if (beltRemainder > clickTargetWidth + 10) {
+
+                  // decrease counter
+                  clickCounter -= 1;
+                  shiftCounter = clickCounter * clickTargetWidth;
+
+                  // shift belt left
+                  belt.style.transform = `translateX(${shiftCounter}px)`;
+                  belt.classList.add('js-belt-moved');
+                }
+              }
             }
-          }
+          } // End if.
         }; // End slideLeftRight-function.
 
         sliderWindow.addEventListener('click', function (e) {
