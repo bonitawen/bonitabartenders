@@ -788,7 +788,6 @@ textarea:hover::placeholder {
     .testimonials-section .testimonials-grid {
       width: 100%;
       margin: 0;
-      width: 49.9%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 30px;

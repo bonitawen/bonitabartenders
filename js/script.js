@@ -668,7 +668,10 @@ let isHalfInViewport = (elem) => {
           sliderWindow.classList.add('js-slider-window');
           belt.classList.add('js-testimonials-container');
           beltItem1.style.marginBottom = '0';
+          beltItem1.style.width = '49.9%';
           beltItem2.style.marginBottom = '0';
+          beltItem2.style.width = '49.9%';
+
         };
         cssSetup();
 
