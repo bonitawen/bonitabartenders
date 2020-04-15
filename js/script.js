@@ -569,9 +569,9 @@ let isHalfInViewport = (elem) => {
 {
   let aboutUs = document.querySelector('.about-us-section p');
 
-
   // if aboutUS exists
-  if (typeof aboutUs !== 'undefined') {
+  if (typeof aboutUs !== 'undefined' 
+      && aboutUs !== null) {
 
     // hide elems
     aboutUs.classList.add('js-start-hide');
@@ -607,7 +607,8 @@ let isHalfInViewport = (elem) => {
 
 
   // if aboutUS exists
-  if (typeof aboutUs !== 'undefined') {
+  if (typeof aboutUs !== 'undefined'
+      && aboutUs !== null) {
 
     // hide elems
     section.classList.add('js-start-hide');
