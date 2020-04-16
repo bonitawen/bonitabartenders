@@ -1103,3 +1103,64 @@ let isHalfInViewport = (elem) => {
   }
 } // End set slider-window height === current belt height.
 
+
+
+
+// START ALCOHOL OPTIONS MARKER & ADD/REMOVE ACTIVE BELT FLAG.
+// note: the XXX indicates the belt-logic (showing/hiding belt && adding/removing click-handler to belt)
+{
+  const optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0],
+        optionsArr = optionsContainer.getElementsByTagName('h4'), // # of options
+        beltArr = document.getElementsByClassName('belt'), // # of belts (same amount as # of options)
+        sliderWindow = document.getElementsByClassName('window')[0];
+
+  const optionsMarkerAndBeltSwitcher = (e) => { // note: beltSwitcher parts marked with XXX
+
+    let target = e.target;
+
+    // if target doesn't have selected-class AND target is an actual option
+    if (!target.classList.contains('js-selected') && optionsContainer.contains(target) && target.tagName === 'H4') { // TODO: verify that 2nd condition works
+
+      // loop over all options
+      for (let i = 0; i < optionsArr.length; i++) {
+
+        // if option has selected-class
+        if (optionsArr[i].classList.contains('js-selected')) {
+
+          // remove selected-class
+          optionsArr[i].classList.remove('js-selected');
+
+          // XXX add js-hide-v2
+          beltArr[i].classList.add('js-hide-v2');
+          // sliderWindow.removeEventListener('click', callBeltArr[i]);
+        }
+
+        // XXX if clicked item same as current optionsArr-item in loop, then give corresponding beltArr-item 'js-belt-show'-class
+        if (target === optionsArr[i]) {
+
+          // remove js-hide-v2 from belt
+          beltArr[i].classList.remove('js-hide-v2');
+          // sliderWindow.addEventListener('click', callBeltArr[i]);
+        }
+
+        // add selected class to target
+        target.classList.add('js-selected');
+      }
+    }
+  };
+
+  if (typeof optionsContainer !== 'undefined') {
+
+    optionsArr[0].classList.add('js-selected'); // 1st option selected on load
+    // on load: hide all belts except 1st belt
+    for (let i = 1; i < beltArr.length; i++) {
+      beltArr[i].classList.add('js-hide-v2');
+    }
+    // sliderWindow.addEventListener('click', callBeltArr[0]); // XXX 1st belt gets click-handler on load
+
+    optionsContainer.addEventListener('click', function (e) {
+      optionsMarkerAndBeltSwitcher(e);
+    });
+  }
+}
+// End alcohol options marker & add/remove active belt flag.

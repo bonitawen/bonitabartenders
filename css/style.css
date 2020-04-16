@@ -60,6 +60,10 @@ a {
   display: none;
 }
 
+.js-hide-v2 {
+  visibility: hidden;
+}
+
 .clearfix::after {
   content: " ";
   display: block;
