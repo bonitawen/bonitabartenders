@@ -1040,3 +1040,20 @@ let isHalfInViewport = (elem) => {
 
   } // End if about-wendy section exists
 } // End animate about wendy section.
+
+
+
+
+// START SHOW JS-ALCOHOL-HEADINGS, HIDE INDIVIDUAL HEADINGS.
+{
+  if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
+    const headingsGroup = document.getElementsByClassName('js-alcohol-headings')[0],
+          individualHeadingsArr = document.getElementsByClassName('alcohol-heading');
+
+    headingsGroup.classList.remove('hide');
+
+    for (let i = 0; i < individualHeadingsArr.length; i++) {
+      individualHeadingsArr[i].classList.add('hide');
+    }
+  }
+} // End show js-alcohol-headings, hide individual headings.
