@@ -1079,34 +1079,8 @@ let isHalfInViewport = (elem) => {
 
 
 
-// START SET SLIDER-WINDOW HEIGHT === CURRENT BELT HEIGHT.
-{
-  const beltArr = document.getElementsByClassName('belt'),
-        sliderWindow = document.getElementsByClassName('window')[0];
 
-  const setWindowHeight = (belt) => {
-    belt.classList.remove('js-belt-transition');
-    window.setTimeout(function () {
-        const testimContComputed = window.getComputedStyle(belt);
-        let beltHeight = parseInt(testimContComputed.height);
-
-        sliderWindow.style.height = beltHeight + 'px';
-    }, 100); 
-  };
-
-  // TODO: this logic (calling for setWindowHeight-func should be done by button-marker-func)
-  if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
-    setWindowHeight(beltArr[0]);
-    window.addEventListener('resize', function () {
-      setWindowHeight(beltArr[0]);
-    });
-  }
-} // End set slider-window height === current belt height.
-
-
-
-
-// START ALCOHOL OPTIONS MARKER & ADD/REMOVE ACTIVE BELT FLAG.
+// START ALCOHOL OPTIONS MARKER & ADD/REMOVE ACTIVE BELT FLAG & SET WINDOW HEIGHT === ACTIVE BELT HEIGHT.
 // note: the XXX indicates the belt-logic (showing/hiding belt && adding/removing click-handler to belt)
 {
   const optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0],
@@ -1114,7 +1088,8 @@ let isHalfInViewport = (elem) => {
         beltArr = document.getElementsByClassName('belt'), // # of belts (same amount as # of options)
         sliderWindow = document.getElementsByClassName('window')[0];
 
-  const optionsMarkerAndBeltSwitcher = (e) => { // note: beltSwitcher parts marked with XXX
+  // does 3 things: 1) mark alcohol option, 2) switch belt, 3) set window height to belt height
+  const optionsSetup = (e) => { // note: beltSwitcher parts marked with XXX
 
     let target = e.target;
 
@@ -1141,13 +1116,31 @@ let isHalfInViewport = (elem) => {
           // remove js-hide-v2 from belt
           beltArr[i].classList.remove('js-hide-v2');
           // sliderWindow.addEventListener('click', callBeltArr[i]);
+
+          // set window-height === current-belt-height
+          setWindowHeight(beltArr[i]);
+          window.addEventListener('resize', function () {
+            setWindowHeight(beltArr[i]);
+          });
         }
 
         // add selected class to target
         target.classList.add('js-selected');
       }
     }
-  };
+  }; // End optionsSetup-function.
+
+
+  const setWindowHeight = (belt) => {
+    belt.classList.remove('js-belt-transition'); // TODO: check if needed
+    window.setTimeout(function () {
+        const testimContComputed = window.getComputedStyle(belt);
+        let beltHeight = parseInt(testimContComputed.height);
+
+        sliderWindow.style.height = beltHeight + 'px';
+    }, 10); 
+  }; // End setWindowHeight-function.
+
 
   if (typeof optionsContainer !== 'undefined') {
 
@@ -1159,8 +1152,13 @@ let isHalfInViewport = (elem) => {
     // sliderWindow.addEventListener('click', callBeltArr[0]); // XXX 1st belt gets click-handler on load
 
     optionsContainer.addEventListener('click', function (e) {
-      optionsMarkerAndBeltSwitcher(e);
+      optionsSetup(e);
+    });
+
+    // on load: set window-height to 1st belt height
+    setWindowHeight(beltArr[0]);
+    window.addEventListener('resize', function () {
+      setWindowHeight(beltArr[0]);
     });
   }
-}
-// End alcohol options marker & add/remove active belt flag.
+} // End alcohol options marker & add/remove active belt flag & set window height === active belt height.
