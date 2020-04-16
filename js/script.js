@@ -1057,3 +1057,49 @@ let isHalfInViewport = (elem) => {
     }
   }
 } // End show js-alcohol-headings, hide individual headings.
+
+
+
+
+// START SET CSS FOR MENU SECTION.
+{
+  if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
+    const beltArr = document.getElementsByClassName('belt'),
+          sliderWindow = document.getElementsByClassName('window')[0];
+
+    sliderWindow.style.position = 'relative';
+
+    for (let i = 0; i < beltArr.length; i++) {
+      beltArr[i].style.position = 'absolute';
+      beltArr[i].style.width = '100%';
+    }
+  }
+}
+// End set css for menu section.
+
+
+
+// START SET SLIDER-WINDOW HEIGHT === CURRENT BELT HEIGHT.
+{
+  const beltArr = document.getElementsByClassName('belt'),
+        sliderWindow = document.getElementsByClassName('window')[0];
+
+  const setWindowHeight = (belt) => {
+    belt.classList.remove('js-belt-transition');
+    window.setTimeout(function () {
+        const testimContComputed = window.getComputedStyle(belt);
+        let beltHeight = parseInt(testimContComputed.height);
+
+        sliderWindow.style.height = beltHeight + 'px';
+    }, 100); 
+  };
+
+  // TODO: this logic (calling for setWindowHeight-func should be done by button-marker-func)
+  if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
+    setWindowHeight(beltArr[0]);
+    window.addEventListener('resize', function () {
+      setWindowHeight(beltArr[0]);
+    });
+  }
+} // End set slider-window height === current belt height.
+
