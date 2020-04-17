@@ -1312,12 +1312,29 @@ window.addEventListener('resize', function () {
   if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
 
     const sliderWindow = document.getElementsByClassName('window')[0];
+    const beltArr = document.getElementsByClassName('belt');
+    const optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0];
+
+    // helper function.
+    let activeBeltHasMoreThan2Items = () => {
+
+      for (let i = 0; i < beltArr.length; i++) {
+        if (!beltArr[i].classList.contains('js-hide-v2')) {
+          // active belt
+          
+          let gridArr = beltArr[i].getElementsByClassName('drinks-grid');
+
+          return gridArr.length >= 2;
+        }
+      }
+    };
 
     let navArrows = () => {
 
-      // if browser supports grid && vp > 900
+      // if browser supports grid && vp > 900 && active belt has more than 2 items on it
       if (typeof document.createElement('div').style.grid !== 'undefined'
-          && window.matchMedia('(min-width: 900px)').matches) {
+          && window.matchMedia('(min-width: 900px)').matches
+          && activeBeltHasMoreThan2Items() === true) {
 
         // function displaying left right arrows on hover
         const showNavArrows = (e) => {
@@ -1343,7 +1360,8 @@ window.addEventListener('resize', function () {
 
 
       } else if (typeof document.createElement('div').style.grid === 'undefined'
-                 || window.matchMedia('(max-width: 900px)').matches) {
+                 || window.matchMedia('(max-width: 900px)').matches
+                 || activeBeltHasMoreThan2Items() === false) {
 
           const sliderWindow = document.getElementsByClassName('window')[0];
 
@@ -1376,6 +1394,7 @@ window.addEventListener('resize', function () {
 
     navArrows();
     window.addEventListener('resize', navArrows);
+    optionsContainer.addEventListener('click', navArrows);
 
   } // End if menu section exists.
 } // End nav-arrow logic for menu section.
