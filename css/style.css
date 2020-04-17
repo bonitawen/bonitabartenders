@@ -1025,6 +1025,9 @@ textarea:hover::placeholder {
       display: flex;
       justify-content: space-between;
     }
+    .menu-section .js-belt-transition {
+      transition: transform 300ms ease-in-out;
+    }
     .menu-section .drinks-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
