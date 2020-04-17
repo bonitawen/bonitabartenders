@@ -1066,10 +1066,26 @@ let isHalfInViewport = (elem) => {
 
     const beltArr = document.getElementsByClassName('belt'),
           sliderWindow = document.getElementsByClassName('window')[0],
-          drinksGridArr = document.getElementsByClassName('drinks-grid');
+          drinksGridArr = document.getElementsByClassName('drinks-grid'),
+          optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0];
+          h4Arr = optionsContainer.getElementsByTagName('h4');
 
     sliderWindow.style.position = 'relative';
     sliderWindow.style.overflow = 'hidden';
+    optionsContainer.style.display = 'flex';
+
+    for (let i = 0; i < h4Arr.length; i++) {
+      h4Arr[i].classList.add('js-h4');
+      h4Arr[i].addEventListener('mouseenter', function() {
+        h4Arr[i].classList.add('js-h4-hover');
+      })
+      h4Arr[i].addEventListener('mouseleave', function() {
+        h4Arr[i].classList.remove('js-h4-hover');
+      })
+
+    }
+
+
 
     let menuCss = () => {
 
@@ -1186,7 +1202,7 @@ let Belt = function (belt) {
       this.shiftCounter = this.clickCounter * this.itemWidth;
 
       this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
-      
+
     } else {
       belt.style.transform = `translateX(0)`;
     }
@@ -1304,6 +1320,8 @@ window.addEventListener('resize', function () {
     window.addEventListener('resize', function () {
       setWindowHeight(beltArr[0]);
     });
+
+
   }
 } // End alcohol options marker & add/remove active belt flag & set window height === active belt height.
 

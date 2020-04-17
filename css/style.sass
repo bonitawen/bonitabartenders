@@ -951,13 +951,23 @@ textarea:hover::placeholder
   h4
     color: $white
 
+  .js-h4
+    border-bottom: 1px solid $dark-blue
+    transition: border-bottom .2s ease-in-out
+
+  .js-h4-hover
+    border-bottom: 1px solid $purple
+    cursor: pointer
+
   .js-alcohol-headings
-    // display: flex   // TODO: apply via JS
     li
       margin-right: 3em
 
   .alcohol-heading
     margin: 4em 0 2em
+
+  .js-selected
+    border-bottom: 1px solid $purple
 
   .drink-box
     @extend %card-styles

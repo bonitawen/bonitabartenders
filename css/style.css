@@ -997,11 +997,22 @@ textarea:hover::placeholder {
 .menu-section h4 {
   color: #FFFFFE;
 }
+.menu-section .js-h4 {
+  border-bottom: 1px solid #0E172C;
+  transition: border-bottom 0.2s ease-in-out;
+}
+.menu-section .js-h4-hover {
+  border-bottom: 1px solid #A786DF;
+  cursor: pointer;
+}
 .menu-section .js-alcohol-headings li {
   margin-right: 3em;
 }
 .menu-section .alcohol-heading {
   margin: 4em 0 2em;
+}
+.menu-section .js-selected {
+  border-bottom: 1px solid #A786DF;
 }
 .menu-section .drink-box {
   background-color: #D9D4E7;
