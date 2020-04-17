@@ -1175,20 +1175,24 @@ let Belt = function (belt) {
 
   this.adjustXpositionOfBeltOnResize = function () {
 
-    this.beltComputed = window.getComputedStyle(this.belt);
-    this.beltWidth = parseInt(this.beltComputed.width);
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      this.beltComputed = window.getComputedStyle(this.belt);
+      this.beltWidth = parseInt(this.beltComputed.width);
 
-    this.itemWidth = this.beltWidth / this.itemArr.length;   // depends on how many item on belt
+      this.itemWidth = this.beltWidth / this.itemArr.length;   // depends on how many item on belt
 
-    this.belt.classList.remove('js-belt-transition');
+      this.belt.classList.remove('js-belt-transition');
 
-    this.shiftCounter = this.clickCounter * this.itemWidth;
+      this.shiftCounter = this.clickCounter * this.itemWidth;
 
-    this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
+      this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
+      
+    } else {
+      belt.style.transform = `translateX(0)`;
+    }
 
   } // end adjustXpositionOfBeltOnResize-func
 }; // End belt-constructor.
-
 
 
 
