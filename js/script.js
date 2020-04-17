@@ -1306,3 +1306,76 @@ window.addEventListener('resize', function () {
 
 
 
+// START NAV-ARROW LOGIC FOR MENU SECTION
+{
+  // if testimonial section exists
+  if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
+
+    const sliderWindow = document.getElementsByClassName('window')[0];
+
+    let navArrows = () => {
+
+      // if browser supports grid && vp > 900
+      if (typeof document.createElement('div').style.grid !== 'undefined'
+          && window.matchMedia('(min-width: 900px)').matches) {
+
+        // function displaying left right arrows on hover
+        const showNavArrows = (e) => {
+
+          const clickTarget = e.currentTarget;
+          const clickTargetWidth = clickTarget.offsetWidth;
+          const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+          if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+            // clicked left
+            clickTarget.style.cursor = 'url(img/back.png) 15 18, auto';
+
+          } else if (xCoordInClickTarget > 0) {
+            // clicked right
+            clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
+          }  else {
+            clickTarget.style.cursor = 'auto';
+          }
+        };
+
+        sliderWindow.addEventListener('mousemove', function (e) {
+          showNavArrows(e);
+        });
+
+
+      } else if (typeof document.createElement('div').style.grid === 'undefined'
+                 || window.matchMedia('(max-width: 900px)').matches) {
+
+          const sliderWindow = document.getElementsByClassName('window')[0];
+
+          // function hiding left right arrows
+          const hideNavArrows = (e) => {
+
+            const clickTarget = e.currentTarget;
+            const clickTargetWidth = clickTarget.offsetWidth;
+            const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
+            if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+              // clicked left
+              clickTarget.style.cursor = 'auto';
+
+            } else {
+              // clicked right
+
+              if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
+                clickTarget.style.cursor = 'auto';
+              }
+            }  
+          };
+
+          sliderWindow.addEventListener('mousemove', function (e) {
+            hideNavArrows(e);
+          });
+
+      } // End else-if.
+
+    } // End navArrows-function.
+
+    navArrows();
+    window.addEventListener('resize', navArrows);
+
+  } // End if menu section exists.
+} // End nav-arrow logic for menu section.
