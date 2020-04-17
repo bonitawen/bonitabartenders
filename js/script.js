@@ -1130,7 +1130,9 @@ let Belt = function (belt) {
 
   this.beltSlider = function (e) {
 
-    if (this.itemArr.length > 1) {
+    if (this.itemArr.length > 1
+        && typeof document.createElement('div').style.grid !== 'undefined'
+        && window.matchMedia('(min-width: 900px)').matches) {
 
       this.clickTarget = e.currentTarget;
       this.xCoordInClickTarget = e.clientX - this.clickTarget.getBoundingClientRect().left;
