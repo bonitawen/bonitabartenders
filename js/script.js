@@ -671,7 +671,6 @@ let isHalfInViewport = (elem) => {
           beltItem1.style.width = '49.9%';
           beltItem2.style.marginBottom = '0';
           beltItem2.style.width = '49.9%';
-
         };
         cssSetup();
 
@@ -1064,18 +1063,60 @@ let isHalfInViewport = (elem) => {
 // START SET CSS FOR MENU SECTION.
 {
   if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
+
+
+
     const beltArr = document.getElementsByClassName('belt'),
-          sliderWindow = document.getElementsByClassName('window')[0];
+          sliderWindow = document.getElementsByClassName('window')[0],
+          drinksGridArr = document.getElementsByClassName('drinks-grid');
 
     sliderWindow.style.position = 'relative';
+    sliderWindow.style.overflow = 'hidden';
 
-    for (let i = 0; i < beltArr.length; i++) {
-      beltArr[i].style.position = 'absolute';
-      beltArr[i].style.width = '100%';
-    }
-  }
-}
-// End set css for menu section.
+    let menuCss = () => {
+
+      // grid + vp > 900
+      if (typeof document.createElement('div').style.grid !== 'undefined'
+          && window.matchMedia('(min-width: 900px)').matches) {
+
+
+        for (let i = 0; i < beltArr.length; i++) {
+
+          let gridsOnBeltArr = beltArr[i].getElementsByClassName('drinks-grid');
+
+          // belt styling
+          beltArr[i].classList.add('belt-slider');
+          beltArr[i].style.width = 100 * gridsOnBeltArr.length + '%';
+
+          // set grid width
+          for (let j = 0; j < gridsOnBeltArr.length; j++) {
+            let width = 100 / gridsOnBeltArr.length - .1;
+
+            gridsOnBeltArr[j].style.width = width + '%';
+          }
+        }
+
+      // no grid OR vp < 900
+      } else {
+
+        for (let i = 0; i < beltArr.length; i++) {
+          beltArr[i].style.position = 'absolute';
+          beltArr[i].style.width = '100%';
+          beltArr[i].classList.remove('belt-slider');
+        }
+
+        for (let j = 0; j < drinksGridArr.length; j++) {
+          drinksGridArr[j].style.width = '100%';
+        }
+      }
+    } // End menuCss-func.
+
+    menuCss();
+
+    window.addEventListener('resize', menuCss);
+
+  } // End if menu-section exists.
+} // End set css for menu section.
 
 
 

@@ -1020,6 +1020,11 @@ textarea:hover::placeholder {
       max-width: none;
       margin: 0;
     }
+    .menu-section .belt-slider {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+    }
     .menu-section .drinks-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
