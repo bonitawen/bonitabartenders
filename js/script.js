@@ -1064,8 +1064,6 @@ let isHalfInViewport = (elem) => {
 {
   if (typeof document.getElementsByClassName('menu-section')[0] !== 'undefined') {
 
-
-
     const beltArr = document.getElementsByClassName('belt'),
           sliderWindow = document.getElementsByClassName('window')[0],
           drinksGridArr = document.getElementsByClassName('drinks-grid');
@@ -1093,6 +1091,7 @@ let isHalfInViewport = (elem) => {
             let width = 100 / gridsOnBeltArr.length - .1;
 
             gridsOnBeltArr[j].style.width = width + '%';
+            gridsOnBeltArr[j].style.marginBottom = '0';
           }
         }
 
@@ -1117,6 +1116,104 @@ let isHalfInViewport = (elem) => {
 
   } // End if menu-section exists.
 } // End set css for menu section.
+
+
+
+
+// START BELT CONSTRUCTOR
+let Belt = function (belt) {
+
+  this.belt = belt;
+  this.clickCounter = 0;
+  this.shiftCounter = 0;
+  this.itemArr = this.belt.getElementsByClassName('drinks-grid');
+
+  this.beltSlider = function (e) {
+
+    if (this.itemArr.length > 1) {
+
+      this.clickTarget = e.currentTarget;
+      this.xCoordInClickTarget = e.clientX - this.clickTarget.getBoundingClientRect().left;
+      this.beltWidth = this.belt.offsetWidth;
+      this.beltRemainder = this.beltWidth + this.shiftCounter;
+      this.clickTargetWidth = this.beltWidth / this.itemArr.length;
+
+      this.belt.classList.add('js-belt-transition');
+
+
+      if (this.clickTargetWidth / 2 > this.xCoordInClickTarget && this.xCoordInClickTarget > 0) {
+        // clicked left
+
+        if (this.shiftCounter < -10) {
+
+          this.clickCounter += 1;
+          this.shiftCounter = this.clickCounter * this.clickTargetWidth;
+
+          // shift belt right
+          this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
+        }
+      } else {
+        // clicked right
+
+        if (this.xCoordInClickTarget > 0) {
+
+          if (this.beltRemainder > this.clickTargetWidth + 10) {
+
+            this.clickCounter -= 1;
+
+            this.shiftCounter = this.clickCounter * this.clickTargetWidth;
+
+            // shift belt left
+            this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
+          }
+        }
+      } // end clicked left/right
+    } // end if
+  } // end beltSlider-func
+
+  this.adjustXpositionOfBeltOnResize = function () {
+
+    this.beltComputed = window.getComputedStyle(this.belt);
+    this.beltWidth = parseInt(this.beltComputed.width);
+
+    this.itemWidth = this.beltWidth / this.itemArr.length;   // depends on how many item on belt
+
+    this.belt.classList.remove('js-belt-transition');
+
+    this.shiftCounter = this.clickCounter * this.itemWidth;
+
+    this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
+
+  } // end adjustXpositionOfBeltOnResize-func
+}; // End belt-constructor.
+
+
+
+
+// TODO: put in brackets? may have to coordinate w/other sections.
+// START BELT-FUNCTIONALITY.
+
+const belt1 = document.getElementsByClassName('belt-1')[0];
+const belt2 = document.getElementsByClassName('belt-2')[0];
+
+let myBelt1 = new Belt(belt1);
+let myBelt2 = new Belt(belt2);
+
+let callBelt1 = function (e) {
+  myBelt1.beltSlider(e);
+};
+let callBelt2 = function (e) {
+  myBelt2.beltSlider(e);
+};
+
+let callBeltArr = [callBelt1, callBelt2];
+
+
+window.addEventListener('resize', function () {
+  myBelt1.adjustXpositionOfBeltOnResize();
+  myBelt2.adjustXpositionOfBeltOnResize();
+});
+// End belt-functionality.
 
 
 
@@ -1148,7 +1245,7 @@ let isHalfInViewport = (elem) => {
 
           // XXX add js-hide-v2
           beltArr[i].classList.add('js-hide-v2');
-          // sliderWindow.removeEventListener('click', callBeltArr[i]);
+          sliderWindow.removeEventListener('click', callBeltArr[i]);
         }
 
         // XXX if clicked item same as current optionsArr-item in loop, then give corresponding beltArr-item 'js-belt-show'-class
@@ -1156,7 +1253,7 @@ let isHalfInViewport = (elem) => {
 
           // remove js-hide-v2 from belt
           beltArr[i].classList.remove('js-hide-v2');
-          // sliderWindow.addEventListener('click', callBeltArr[i]);
+          sliderWindow.addEventListener('click', callBeltArr[i]);
 
           // set window-height === current-belt-height
           setWindowHeight(beltArr[i]);
@@ -1190,7 +1287,7 @@ let isHalfInViewport = (elem) => {
     for (let i = 1; i < beltArr.length; i++) {
       beltArr[i].classList.add('js-hide-v2');
     }
-    // sliderWindow.addEventListener('click', callBeltArr[0]); // XXX 1st belt gets click-handler on load
+    sliderWindow.addEventListener('click', callBeltArr[0]); // XXX 1st belt gets click-handler on load
 
     optionsContainer.addEventListener('click', function (e) {
       optionsSetup(e);
@@ -1203,3 +1300,7 @@ let isHalfInViewport = (elem) => {
     });
   }
 } // End alcohol options marker & add/remove active belt flag & set window height === active belt height.
+
+
+
+
