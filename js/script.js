@@ -668,9 +668,14 @@ let isHalfInViewport = (elem) => {
           sliderWindow.classList.add('js-slider-window');
           belt.classList.add('js-testimonials-container');
           beltItem1.style.marginBottom = '0';
-          beltItem1.style.width = '49.9%';
+          beltItem1.style.width = '50%';
           beltItem2.style.marginBottom = '0';
-          beltItem2.style.width = '49.9%';
+          beltItem2.style.width = '50%';
+
+          beltItem1.style.border = '1px solid transparent';
+          beltItem2.style.border = '1px solid transparent';
+
+
         };
         cssSetup();
 
@@ -1104,10 +1109,11 @@ let isHalfInViewport = (elem) => {
 
           // set grid width
           for (let j = 0; j < gridsOnBeltArr.length; j++) {
-            let width = 100 / gridsOnBeltArr.length - .1;
+            let width = 100 / gridsOnBeltArr.length;
 
             gridsOnBeltArr[j].style.width = width + '%';
             gridsOnBeltArr[j].style.marginBottom = '0';
+            gridsOnBeltArr[j].style.border = '1px solid transparent';
           }
         }
 
