@@ -1086,7 +1086,7 @@ let isHalfInViewport = (elem) => {
     const beltArr = document.getElementsByClassName('belt'),
           sliderWindow = document.getElementsByClassName('window')[0],
           drinksGridArr = document.getElementsByClassName('drinks-grid'),
-          optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0];
+          optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0],
           h4Arr = optionsContainer.getElementsByTagName('h4');
 
     sliderWindow.style.position = 'relative';
