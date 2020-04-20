@@ -1232,41 +1232,31 @@ let Belt = function (belt) {
 
 
 
-// TODO: put in brackets? may have to coordinate w/other sections.
-// START BELT-FUNCTIONALITY.
-
-const belt1 = document.getElementsByClassName('belt-1')[0];
-const belt2 = document.getElementsByClassName('belt-2')[0];
-
-let myBelt1 = new Belt(belt1);
-let myBelt2 = new Belt(belt2);
-
-let callBelt1 = function (e) {
-  myBelt1.beltSlider(e);
-};
-let callBelt2 = function (e) {
-  myBelt2.beltSlider(e);
-};
-
-let callBeltArr = [callBelt1, callBelt2];
-
-
-window.addEventListener('resize', function () {
-  myBelt1.adjustXpositionOfBeltOnResize();
-  myBelt2.adjustXpositionOfBeltOnResize();
-});
-// End belt-functionality.
-
-
-
 
 // START ALCOHOL OPTIONS MARKER & ADD/REMOVE ACTIVE BELT FLAG & SET WINDOW HEIGHT === ACTIVE BELT HEIGHT.
 // note: the XXX indicates the belt-logic (showing/hiding belt && adding/removing click-handler to belt)
-{
+if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefined') {
+  
+
   const optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0],
         optionsArr = optionsContainer.getElementsByTagName('h4'), // # of options
         beltArr = document.getElementsByClassName('belt'), // # of belts (same amount as # of options)
-        sliderWindow = document.getElementsByClassName('window')[0];
+        sliderWindow = document.getElementsByClassName('window')[0],
+        belt1 = beltArr[0],
+        belt2 = beltArr[1],
+
+        myBelt1 = new Belt(belt1),
+        myBelt2 = new Belt(belt2),
+
+        callBelt1 = function (e) {
+          myBelt1.beltSlider(e);
+        },
+        callBelt2 = function (e) {
+          myBelt2.beltSlider(e);
+        },
+        callBeltArr = [callBelt1, callBelt2];
+
+
 
   // does 3 things: 1) mark alcohol option, 2) switch belt, 3) set window height to belt height
   const optionsSetup = (e) => { // note: beltSwitcher parts marked with XXX
@@ -1319,7 +1309,7 @@ window.addEventListener('resize', function () {
 
         sliderWindow.style.height = beltHeight + 'px';
     }, 10); 
-  }; // End setWindowHeight-function.
+  } // End setWindowHeight-function.
 
 
   if (typeof optionsContainer !== 'undefined') {
@@ -1341,7 +1331,10 @@ window.addEventListener('resize', function () {
       setWindowHeight(beltArr[0]);
     });
 
-
+    window.addEventListener('resize', function () {
+      myBelt1.adjustXpositionOfBeltOnResize();
+      myBelt2.adjustXpositionOfBeltOnResize();
+    });
   }
 } // End alcohol options marker & add/remove active belt flag & set window height === active belt height.
 
