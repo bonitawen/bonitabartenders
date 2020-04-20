@@ -1448,7 +1448,8 @@ window.addEventListener('resize', function () {
 {
   let para = document.querySelector('.menu-section p'),
       headings = document.getElementsByClassName('js-alcohol-headings')[0],
-      drinksWindow = document.getElementsByClassName('window')[0];
+      drinksWindow = document.getElementsByClassName('window')[0],
+      drinkBoxArr = document.getElementsByClassName('drink-box');
 
   // if para exists
   if (typeof para !== 'undefined' 
@@ -1471,6 +1472,13 @@ window.addEventListener('resize', function () {
           drinksWindow.classList.add('js-end-show');
         }, 500);
         
+      } else {
+        for (let i = 0; i < drinkBoxArr.length; i++) {
+          if (isInViewport(drinkBoxArr[i])) {
+            headings.classList.add('js-end-show');
+            drinksWindow.classList.add('js-end-show');
+          }
+        }
       }
     };
 
