@@ -1501,15 +1501,15 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 // START ANIMATE FAQ PAGE.
 {
-  const introSection = document.querySelector('.intro-section-faq'),
-        h2 = introSection.getElementsByTagName('h2')[0],
-        heroSection = document.getElementsByClassName('hero-section-faq')[0],
-        qaContainer = document.getElementsByClassName('qa-container')[0],
-        qaArr = document.getElementsByClassName('qa');
-
   // if introSection exists
-  if (typeof introSection !== 'undefined' 
-      && introSection !== null) {
+  if (typeof document.querySelector('.intro-section-faq') !== 'undefined' 
+      && document.querySelector('.intro-section-faq') !== null) {
+
+    const introSection = document.querySelector('.intro-section-faq'),
+          h2 = introSection.getElementsByTagName('h2')[0],
+          heroSection = document.getElementsByClassName('hero-section-faq')[0],
+          qaContainer = document.getElementsByClassName('qa-container')[0],
+          qaArr = document.getElementsByClassName('qa');
 
     // hide elems
     introSection.classList.add('js-start-hide');
