@@ -665,19 +665,33 @@ let isHalfInViewport = (elem) => {
 
         // set css
         const cssSetup = () => {
-          sliderWindow.classList.add('js-slider-window');
-          belt.classList.add('js-testimonials-container');
-          beltItem1.style.marginBottom = '0';
-          beltItem1.style.width = '50%';
-          beltItem2.style.marginBottom = '0';
-          beltItem2.style.width = '50%';
+          if (typeof document.createElement('div').style.grid !== 'undefined'
+              && window.matchMedia('(min-width: 900px)').matches) {
 
-          beltItem1.style.border = '1px solid transparent';
-          beltItem2.style.border = '1px solid transparent';
+            sliderWindow.classList.add('js-slider-window');
+            belt.classList.add('js-testimonials-container');
+            beltItem1.style.marginBottom = '0';
+            beltItem1.style.width = '50%';
+            beltItem2.style.marginBottom = '0';
+            beltItem2.style.width = '50%';
 
+            beltItem1.style.border = '1px solid transparent';
+            beltItem2.style.border = '1px solid transparent';
 
+          // no grid OR vp < 900
+          } else {
+
+            sliderWindow.classList.remove('js-slider-window');
+            belt.classList.remove('js-testimonials-container');
+            beltItem1.style.marginBottom = 'inherit';
+            beltItem1.style.width = '100%';
+            beltItem2.style.marginBottom = 'inherit';
+            beltItem2.style.width = '100%';
+
+          }
         };
         cssSetup();
+        window.addEventListener('resize', cssSetup);
 
 
         // set slider-window height === testimonials-container height
