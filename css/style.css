@@ -1303,6 +1303,7 @@ textarea:hover::placeholder {
 .faq .add-icon {
   font-size: 1.95rem;
   color: #F9F8FC;
+  display: none;
 }
 @media (min-width: 450px) {
   .faq .qa-container {
