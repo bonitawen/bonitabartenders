@@ -1545,3 +1545,49 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     
   }
 } // End animate faq page.
+
+
+
+
+// START ANIMATE CONTACE PAGE.
+{
+  // if contactSection exists
+  if (typeof document.querySelector('.contact-section') !== 'undefined' 
+      && document.querySelector('.contact-section') !== null) {
+
+    const h2 = document.querySelector('.contact-info-wrap h2'),
+          emailSection = document.getElementsByClassName('email-section')[0],
+          phoneSection = document.getElementsByClassName('phone-section')[0];
+
+    // hide elems
+    h2.classList.add('js-start-hide');
+    emailSection.classList.add('js-start-hide');
+    phoneSection.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      if (isInViewport(h2)) {
+
+        // animate into view
+        h2.classList.add('js-end-show');
+      }
+
+      if (isInViewport(emailSection)) {
+
+        // animate into view
+        emailSection.classList.add('js-end-show');
+      }
+
+      if (isInViewport(phoneSection)) {
+
+        // animate into view
+        phoneSection.classList.add('js-end-show');
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+    
+  }
+} // End animate contact page.
