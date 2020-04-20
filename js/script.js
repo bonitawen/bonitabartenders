@@ -1495,3 +1495,53 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
   }
 }
 // End animate menu section.
+
+
+
+
+// START ANIMATE FAQ PAGE.
+{
+  const introSection = document.querySelector('.intro-section-faq'),
+        h2 = introSection.getElementsByTagName('h2')[0],
+        heroSection = document.getElementsByClassName('hero-section-faq')[0],
+        qaContainer = document.getElementsByClassName('qa-container')[0],
+        qaArr = document.getElementsByClassName('qa');
+
+  // if introSection exists
+  if (typeof introSection !== 'undefined' 
+      && introSection !== null) {
+
+    // hide elems
+    introSection.classList.add('js-start-hide');
+    heroSection.classList.add('js-start-hide');
+    qaContainer.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      if (isInViewport(h2)) {
+
+        // animate into view
+        introSection.classList.add('js-end-show');
+      }
+
+      if (isInViewport(heroSection)) {
+
+        // animate into view
+        heroSection.classList.add('js-end-show');
+      }
+
+      for (let i = 0; i < qaArr.length; i++) {
+        if (isInViewport(qaArr[i])) {
+
+          // animate into view
+          qaContainer.classList.add('js-end-show');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+    
+  }
+} // End animate faq page.
