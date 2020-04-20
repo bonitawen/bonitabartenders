@@ -1440,3 +1440,43 @@ window.addEventListener('resize', function () {
 
   } // End if menu section exists.
 } // End nav-arrow logic for menu section.
+
+
+
+
+// START ANIMATE MENU SECTION.
+{
+  let para = document.querySelector('.menu-section p'),
+      headings = document.getElementsByClassName('js-alcohol-headings')[0],
+      drinksWindow = document.getElementsByClassName('window')[0];
+
+  // if para exists
+  if (typeof para !== 'undefined' 
+      && para !== null) {
+
+    // hide elems
+    para.classList.add('js-start-hide');
+    headings.classList.add('js-start-hide');
+    drinksWindow.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      if (isInViewport(para)) {
+
+        // animate into view
+        window.setTimeout(function() {
+          para.classList.add('js-end-show');
+          headings.classList.add('js-end-show');
+          drinksWindow.classList.add('js-end-show');
+        }, 500);
+        
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+    
+  }
+}
+// End animate menu section.
