@@ -840,13 +840,17 @@ let isHalfInViewport = (elem) => {
           const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
           if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
             // clicked left
-            clickTarget.style.cursor = 'url(img/back.png) 15 18, auto';
+            clickTarget.classList.remove('js-arrow-next');
+            clickTarget.classList.add('js-arrow-back');
 
           } else if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {
             // clicked right
-            clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
+            clickTarget.classList.remove('js-arrow-back');
+            clickTarget.classList.add('js-arrow-next');
+
           }  else {
-            clickTarget.style.cursor = 'auto';
+            clickTarget.classList.remove('js-arrow-back');
+            clickTarget.classList.remove('js-arrow-next');
           }
         };
 
@@ -868,13 +872,15 @@ let isHalfInViewport = (elem) => {
             const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
             if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
               // clicked left
-              clickTarget.style.cursor = 'auto';
+              clickTarget.classList.remove('js-arrow-back');
+              clickTarget.classList.remove('js-arrow-next');
 
             } else {
               // clicked right
 
               if (xCoordInClickTarget > 0 && clickTarget.classList.contains('testimonials-grid')) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
-                clickTarget.style.cursor = 'auto';
+                clickTarget.classList.remove('js-arrow-back');
+                clickTarget.classList.remove('js-arrow-next');
               }
             }  
           };
@@ -1379,13 +1385,19 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
           const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
           if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
             // clicked left
-            clickTarget.style.cursor = 'url(img/back.png) 15 18, auto';
+
+            clickTarget.classList.remove('js-arrow-next');
+            clickTarget.classList.add('js-arrow-back');
 
           } else if (xCoordInClickTarget > 0) {
             // clicked right
-            clickTarget.style.cursor = 'url(img/next.png) 20 18, auto';
+
+            clickTarget.classList.remove('js-arrow-back');
+            clickTarget.classList.add('js-arrow-next');
           }  else {
-            clickTarget.style.cursor = 'auto';
+            // clickTarget.style.cursor = 'auto';
+            clickTarget.classList.remove('js-arrow-back');
+            clickTarget.classList.remove('js-arrow-next');
           }
         };
 
@@ -1408,13 +1420,15 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
             const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
             if (clickTargetWidth / 2 > xCoordInClickTarget && xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
               // clicked left
-              clickTarget.style.cursor = 'auto';
+              clickTarget.classList.remove('js-arrow-back');
+              clickTarget.classList.remove('js-arrow-next');
 
             } else {
               // clicked right
 
               if (xCoordInClickTarget > 0) {  // note: self addition: "&& xCoordInClickTarget > 0", if omitted there may be a little glitch on very right edge of element
-                clickTarget.style.cursor = 'auto';
+                clickTarget.classList.remove('js-arrow-back');
+                clickTarget.classList.remove('js-arrow-next');
               }
             }  
           };
