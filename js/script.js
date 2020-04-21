@@ -1525,7 +1525,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         introSection.classList.add('js-end-show');
       }
 
-      if (isInViewport(heroSection)) {
+      if (isInViewport(heroSection) || isInViewport(h2)) {
 
         // animate into view
         heroSection.classList.add('js-end-show');
