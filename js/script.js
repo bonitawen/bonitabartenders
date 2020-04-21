@@ -454,7 +454,7 @@ let isHalfInViewport = (elem) => {
 
     let animateForm = () => {
 
-      if (isInViewport(form)) {
+      if (isHalfInViewport(form)) {
         // animate into view
         form.classList.add('js-end-show');
       }
