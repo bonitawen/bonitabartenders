@@ -1087,7 +1087,7 @@ textarea:hover::placeholder
     font-size: .78rem
 
     .card-margin-container
-      padding: 1em 0
+      padding: 1rem 0
       width: 100%
 
       .heading-container
@@ -1129,9 +1129,11 @@ textarea:hover::placeholder
 
       .material-icons-round
         font-size: 2.5rem
-        margin-left: auto
 
   .beverage-details-container
+    .heading-container
+      text-align: center
+
     .beverage-image-wrap
       margin-bottom: 30px
     img
@@ -1142,68 +1144,59 @@ textarea:hover::placeholder
 
     ul
       li
+        font-size: .85rem
         font-weight: 300
 
 @media (min-width: 900px)
   .cocktail-finder-section
     .margin-container:nth-of-type(2)
-      max-width: 1520px
+      max-width: 1520px  // TODO: add via JS, when drinks details are displayed; and add transition to margin container via JS.
       display: flex
       justify-content: space-between
 
     .beverage-list-container,
     .beverage-details-container
       max-width: none
-      width: 49%
-      font-size: 1em
 
     .beverage-list-container
-      height: 635.7px
-
+      align-self: flex-start
+      margin-right: 10px
+      min-width: 400px
+  
       .drinks-wrap
-        justify-content: center
 
         .btn_back, .btn_forward
-          display: none
+          // display: none
 
         li
           font-weight: 300
 
     .beverage-details-container
       align-items: flex-start
+      width: 100%
 
       .card-margin-container
         padding-top: 1em
         padding-bottom: 1.5em
         width: 100%
 
-        .heading-container
-          text-align: center
-
-        // .beverage-details-wrap
-        //   display: flex
-        //   // flex-direction: column
-
         img
           width: 360px
 
-@media (min-width: 1690px)
+@media (min-width: 1000px)
+  .cocktail-finder-section
+    .beverage-list-container
+      margin-right: 60px
+
+@media (min-width: 1450px)   // was 1690
   .cocktail-finder-section
     .beverage-details-container
       .card-margin-container
         padding: 1em 1.5em
         .beverage-details-wrap
           display: flex
-          // justify-content: space-between
-          margin-top: 80px
-
-          img
-
-
-        .heading-container
-          text-align: left
-
-      
+          justify-content: center
+          margin-top: 60px
 
     .beverage-details-container
       .beverage-image-wrap
