@@ -1179,6 +1179,9 @@ textarea:hover::placeholder {
 .cocktail-finder-section .beverage-details-container .heading-container {
   text-align: center;
 }
+.cocktail-finder-section .beverage-details-container .beverage-details-wrap {
+  margin-bottom: 30px;
+}
 .cocktail-finder-section .beverage-details-container .beverage-image-wrap {
   margin-bottom: 30px;
 }
@@ -1189,6 +1192,10 @@ textarea:hover::placeholder {
   margin: 0 auto;
 }
 .cocktail-finder-section .beverage-details-container ul li {
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+.cocktail-finder-section .beverage-details-container .directions-wrap p {
   font-size: 0.85rem;
   font-weight: 300;
 }
@@ -1237,15 +1244,20 @@ textarea:hover::placeholder {
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    margin-bottom: 50px;
   }
-  .cocktail-finder-section .beverage-details-container .beverage-image-wrap {
+  .cocktail-finder-section .beverage-details-container .card-margin-container .beverage-image-wrap {
     margin-bottom: 0;
     margin-right: 30px;
   }
-  .cocktail-finder-section .beverage-details-container .ingredients-list-wrap {
+  .cocktail-finder-section .beverage-details-container .card-margin-container .ingredients-list-wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .cocktail-finder-section .beverage-details-container .card-margin-container .directions-wrap {
+    max-width: 650px;
+    margin: 0 auto;
   }
 }
 /* || FAQ */
