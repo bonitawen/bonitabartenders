@@ -1094,6 +1094,11 @@ textarea:hover::placeholder {
 .cocktail-finder-section .margin-container:nth-of-type(2) {
   padding-bottom: 6.5em;
 }
+.cocktail-finder-section .error-message-input, .cocktail-finder-section .error-message-server {
+  color: #A786DF;
+  font-style: italic;
+  font-weight: 400;
+}
 .cocktail-finder-section form {
   margin-top: 1.8em;
   display: flex;
