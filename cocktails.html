@@ -178,7 +178,9 @@
         <h2>Cocktail Finder</h2>
         <p>Have a favorites alcohol or any other ingredient?
         Type it in to explore what beverages are out there.</p>
-        <form>
+        <div class="error-message-input hid">Oops, we couldn't find that ingredient.</div>
+        <div class="error-message-server hid">Sorry, we couldn't connect to the database.</div>
+        <form class="cocktail-finder-form">
           <input type="text" name="ingredient" class="ingredient-input" placeholder="Cinnamon">
           <input class="btn_2" type="submit" value="Search">
         </form>
@@ -187,19 +189,18 @@
         <div class="beverage-list-container">
           <div class="card-margin-container">
             <div class="heading-container">
-              <h3>Cinnamon Beverages</h3>
+              <h3></h3>
             </div>
             <div class="drinks-wrap">
-              <div class="drinks-slide"><!--TODO: note, for mob + tablet 4 lis-->
-                <ul>
+              <div class="drinks-slide">
+<!--                 <ul>
                   <li>Orci vivamus porttci vivitor</li>
                   <li>Arcu consequatrcu c nulrcu cla</li>
                   <li>Consequat pellentesque</li>
                   <li>Orci vivamus porttitor</li>
                   <li>Consequat pellentesque</li>
-                  <!-- <li>Consequat pellentesque</li> -->
                 </ul>
-              </div>
+ -->              </div>
               <div class="btn_back">
                 <i class="material-icons-round">arrow_back_ios</i>
               </div>
@@ -212,15 +213,15 @@
         <div class="beverage-details-container">
           <div class="card-margin-container">
             <div class="heading-container">
-              <h3>Fantasy Cinnamom</h3>
+              <h3></h3>
             </div>
             <div class="beverage-details-wrap">
               <div class="beverage-image-wrap">
-                <img src="img/cocktail1.jpg">
+                <img src="">
               </div>
               <div class="ingredients-list-wrap">
                 <h4>Ingredients</h4>
-                <ul>
+<!--                 <ul>
                   <li>Consequat pellentesque</li>
                   <li>Orci vivamus porttitor</li>
                   <li>Arcu consequat nulla</li>
@@ -228,15 +229,12 @@
                   <li>Orci vivamus porttitor</li>
                   <li>Arcu consequat nulla</li>
                   <li>Consequat pellentesque</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
             <div class="directions-wrap">
               <h4>Directions</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
+              <p></p>
             </div>
           </div>
         </div>
