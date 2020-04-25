@@ -1591,3 +1591,17 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     
   }
 } // End animate contact page.
+
+
+
+
+// SHOW COCKTAIL-FINDER-SECTION ON LOAD
+{
+  let cocktailFinderSection = document.getElementsByClassName('cocktail-finder-section')[0];
+
+  cocktailFinderSection.classList.remove('hide');
+}
+
+
+
+
