@@ -1721,10 +1721,10 @@ let processDrinks = (drinksObj, ingredient) => {
     j += upDown;
 
     // if i <= 0, hide previous button, else show it.
-    (i <= 0) ? prev.classList.add('hide') : prev.classList.remove('hide');
+    (i <= 0) ? prev.classList.add('js-hide-v2') : prev.classList.remove('js-hide-v2');
 
     // if j >= number of drinks, hide next button, else show it.
-    (j >= drinksArr.length - 1) ? next.classList.add('hide') : next.classList.remove('hide');
+    (j >= drinksArr.length - 1) ? next.classList.add('js-hide-v2') : next.classList.remove('js-hide-v2');
 
     printList(i, j);
   };
