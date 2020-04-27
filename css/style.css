@@ -1157,12 +1157,20 @@ textarea:hover::placeholder {
   justify-content: space-between;
   order: 1;
 }
+.cocktail-finder-section .beverage-list-container .drinks-slide ul {
+  text-align: center;
+}
 .cocktail-finder-section .beverage-list-container .drinks-slide li {
   border-radius: 5px;
   background-color: #F9F8FC;
   padding: 0.8em;
   margin: 1em 0.5em;
   cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+.cocktail-finder-section .beverage-list-container .drinks-slide li:hover {
+  background-color: rgba(167, 134, 223, 0.73);
+  color: #F9F8FC;
 }
 .cocktail-finder-section .beverage-list-container .btn_back,
 .cocktail-finder-section .beverage-list-container .btn_forward {

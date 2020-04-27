@@ -1111,12 +1111,22 @@ textarea:hover::placeholder
       justify-content: space-between
       order: 1
 
+      ul
+        text-align: center
+
       li
         border-radius: 5px
         background-color: $light-gray
         padding: .8em
         margin: 1em .5em
         cursor: pointer
+        transition: .1s ease-in-out
+
+      li:hover
+        background-color: rgba(167, 134, 223, .73)
+        color: $light-gray
+
+
 
     .btn_back,
     .btn_forward
