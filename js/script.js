@@ -1599,9 +1599,180 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 {
   let cocktailFinderSection = document.getElementsByClassName('cocktail-finder-section')[0];
 
-  cocktailFinderSection.classList.remove('hide');
+  if (typeof cocktailFinderSection !== 'undefined') {
+    cocktailFinderSection.classList.remove('hide');
+  }
+}
+
+
+
+// START COCKTAIL-FINDER LOGIC.
+// ***************************
+
+// Establishes connection to server. 
+// Converts JSON response into an object.
+// Passes response-object and ingredient to appropriate function for processing.
+let getDrinks = (e) => {
+
+  e.preventDefault();
+
+  let ingredient = document.getElementsByClassName('ingredient-input')[0].value,
+      inputErrorDiv = document.getElementsByClassName('error-message-input')[0],
+      serverErrorDiv = document.getElementsByClassName('error-message-server')[0],
+      drinksDiv = document.getElementsByClassName('drinks-slide')[0];
+
+
+  let xhr = new XMLHttpRequest();
+
+
+  xhr.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredient, true);
+
+
+  xhr.onload = function () {
+
+    // hide error-messages
+    inputErrorDiv.classList.add('hide');
+    serverErrorDiv.classList.add('hide');
+
+    if (this.readyState == 4 && this.status == 200) {
+
+      // if user typed in correct search term
+      if (this.responseText !== '') {
+
+        // get JSON response and turn into an object
+        let drinksObj = JSON.parse(this.responseText);
+
+        // call processDrinks-function with object as para
+        processDrinks(drinksObj, ingredient);
+
+      } else {
+
+        // show error-message
+        inputErrorDiv.classList.remove('hide');
+      }
+    }
+  }; // end onload
+
+
+  // if server couldn't be reached
+  xhr.onerror = function () {
+
+    // show error-message
+    serverErrorDiv.classList.remove('hide');
+  };
+
+
+  xhr.send();
+
+}; // end getDrinks-function
+
+
+// if cocktailfinder form exists
+if (typeof document.getElementsByClassName('cocktail-finder-section')[0] !== 'undefined') {
+
+  // call getDrinks-function on submit
+  document.getElementsByClassName('cocktail-finder-section')[0].addEventListener('submit', function (e) {
+    getDrinks(e);
+  });
 }
 
 
 
 
+// Prints out 5 results at a time and the heading.
+// Shows next/previous 5 results when nav-arrows clicked.
+// Calls getDrinkDetails when a drink was clicked.
+let processDrinks = (drinksObj, ingredient) => {
+
+  let drinksArr = drinksObj['drinks'],
+      prev = document.getElementsByClassName('btn_back')[0],
+      next = document.getElementsByClassName('btn_forward')[0],
+      [i, j] = [-5, -1],
+      drinksDiv = document.getElementsByClassName('drinks-slide')[0],
+      drinksListHeading = document.querySelector('.heading-container h3');
+
+  let printHeading = (ingredient) => {
+
+    let smallCapIngredient = ingredient.toLowerCase();
+    let firstCapIngredient = smallCapIngredient.charAt(0).toUpperCase() + smallCapIngredient.slice(1);
+
+    drinksListHeading.textContent =  `${firstCapIngredient} Beverages`;
+  };
+
+  // Increments or decrements or doesn't change counter.
+  // Calls print-function.
+  let counter = (upDown) => {
+
+    i += upDown;
+    j += upDown;
+
+    // if i <= 0, hide previous button, else show it.
+    (i <= 0) ? prev.classList.add('hide') : prev.classList.remove('hide');
+
+    // if j >= number of drinks, hide next button, else show it.
+    (j >= drinksArr.length - 1) ? next.classList.add('hide') : next.classList.remove('hide');
+
+    printList(i, j);
+  };
+
+  // Loops over 5 items. If item exist, print it.
+  let printList = (i, j) => {
+
+    // if ul exists, remove it
+    if (drinksDiv.contains(drinksDiv.getElementsByTagName('ul')[0])) {
+      drinksDiv.removeChild(drinksDiv.getElementsByTagName('ul')[0]);
+    }
+
+    // create ul
+    let ul = document.createElement('ul');
+
+    // runs from 0 to 4
+    let liCounter = 0;
+
+    for (i; i <= j; i++ ) {
+
+      if (typeof drinksArr[i] !== 'undefined') {
+
+        // create li elem
+        let li = document.createElement('li');
+
+        // add text content to li
+        li.textContent = drinksArr[i]['strDrink'];
+
+        // append li to ul
+        ul.appendChild(li);
+      }
+
+      liCounter += 1;
+
+    } // end for-loop
+
+    // append ul to drinks-list-div
+    drinksDiv.appendChild(ul);
+
+  }; // end printList-function
+
+
+
+  next.addEventListener('click', function () {
+    counter(5);
+  });
+
+  prev.addEventListener('click', function () {
+    counter(-5);
+  });
+
+  counter(5);
+
+
+  printHeading(ingredient);
+
+
+}; // end processDrinks-function
+
+
+
+
+
+// End cocktial-finder logic.
+// ***************************
