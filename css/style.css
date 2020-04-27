@@ -1217,7 +1217,6 @@ textarea:hover::placeholder {
 
 @media (min-width: 900px) {
   .cocktail-finder-section .margin-container:nth-of-type(2) {
-    max-width: 1520px;
     display: flex;
     justify-content: space-between;
   }
