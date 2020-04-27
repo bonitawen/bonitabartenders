@@ -1901,8 +1901,8 @@ let displayDrinkDetails = (obj) => {
 
 
   // if ul exists, remove it
-  if (drinksDetailsDiv.contains(drinksDetailsDiv.getElementsByTagName('ul')[0])) {
-    drinksDetailsDiv.removeChild(drinksDetailsDiv.getElementsByTagName('ul')[0]);
+  if (ingredientsListWrap.contains(ingredientsListWrap.getElementsByTagName('ul')[0])) {
+    ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
   }
 
 
