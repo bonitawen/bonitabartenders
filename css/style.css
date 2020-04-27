@@ -1133,6 +1133,9 @@ textarea:hover::placeholder {
 .cocktail-finder-section .beverage-details-container {
   background-color: #D9D4E7;
 }
+.cocktail-finder-section .hide-beverage-container {
+  display: none;
+}
 .cocktail-finder-section .beverage-list-container {
   align-items: start;
   font-size: 0.78rem;

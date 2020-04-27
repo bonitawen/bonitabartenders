@@ -1689,7 +1689,21 @@ let processDrinks = (drinksObj, ingredient) => {
       next = document.getElementsByClassName('btn_forward')[0],
       [i, j] = [-5, -1],
       drinksDiv = document.getElementsByClassName('drinks-slide')[0],
-      drinksListHeading = document.querySelector('.heading-container h3');
+      drinksListHeading = document.querySelector('.heading-container h3'),
+      beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
+
+
+
+  // animate drinks-list-container into view
+  if (!beverageListContainer.classList.contains('js-start-hide')) {
+    beverageListContainer.classList.add('js-start-hide');
+    beverageListContainer.classList.remove('hide-beverage-container');
+    window.setTimeout(function () {
+      beverageListContainer.classList.add('js-end-show');
+    }, 10);
+  }
+
+
 
   let printHeading = (ingredient) => {
 
