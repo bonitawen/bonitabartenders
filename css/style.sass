@@ -1125,8 +1125,6 @@ textarea:hover::placeholder
         background-color: rgba(167, 134, 223, .73)
         color: $light-gray
 
-
-
     .btn_back,
     .btn_forward
       width: 2.8rem
@@ -1178,6 +1176,10 @@ textarea:hover::placeholder
       //max-width: 1520px  // TODO: add via JS, when drinks details are displayed; and add transition to margin container via JS.
       display: flex
       justify-content: space-between
+      transition: .4s ease-in-out
+
+    .js-max-width
+      max-width: 1520px
 
     .beverage-list-container,
     .beverage-details-container

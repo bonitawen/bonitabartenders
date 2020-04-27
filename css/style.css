@@ -1219,6 +1219,10 @@ textarea:hover::placeholder {
   .cocktail-finder-section .margin-container:nth-of-type(2) {
     display: flex;
     justify-content: space-between;
+    transition: 0.4s ease-in-out;
+  }
+  .cocktail-finder-section .js-max-width {
+    max-width: 1520px;
   }
   .cocktail-finder-section .beverage-list-container,
 .cocktail-finder-section .beverage-details-container {
