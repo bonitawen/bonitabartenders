@@ -1121,8 +1121,7 @@ textarea:hover::placeholder {
   height: 2rem;
   width: 5.6rem;
   color: #D9D4E7;
-  background-color: #A786DF;
-  opacity: 0.73;
+  background-color: rgba(167, 134, 223, 0.73);
   font-weight: 600;
   line-height: 1.5;
   font-size: 0.78rem;
