@@ -1880,7 +1880,6 @@ let displayDrinkDetails = (obj) => {
       ul = document.createElement('ul'),
       ingredientsListWrap = document.getElementsByClassName('ingredients-list-wrap')[0],
       marginContainer = document.getElementsByClassName('js-margin-container-beverages')[0],
-      imgElem = new Image(),
       beverageImageWrap = document.getElementsByClassName('beverage-image-wrap')[0];
 
 
@@ -1953,17 +1952,22 @@ let displayDrinkDetails = (obj) => {
     ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
   }
 
-  // if img exists, remove it
+
+  // display name, image, ingredients, amounts, directions
+
+  // if img exists, update it's source
   if (beverageImageWrap.contains(beverageImageWrap.getElementsByTagName('img')[0])) {
-    beverageImageWrap.removeChild(beverageImageWrap.getElementsByTagName('img')[0]);
+    beverageImageWrap.getElementsByTagName('img')[0].src = imgSrc;
+
+  // if no img exists yet, new-up one, attach source and attach to dom
+  } else {
+    let imgElem = new Image();
+    imgElem.src = imgSrc;
+    beverageImageWrap.appendChild(imgElem);
   }
 
 
-  // display name, image, ingredients, amounts, directions
   h3.textContent = name;
-  imgElem.src = imgSrc;
-
-  beverageImageWrap.appendChild(imgElem);
 
 
   ingredientsArr.forEach((ingredient) => {
