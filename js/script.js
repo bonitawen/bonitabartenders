@@ -1982,7 +1982,7 @@ let displayDrinkDetails = (obj) => {
   window.setTimeout(function () {
     document.querySelector('.beverage-details-container .card-margin-container').classList.add('quick-fader-show');
     document.querySelector('.beverage-details-container .card-margin-container').classList.remove('quick-fader-hide');
-  }, 700);
+  }, 500);
 
 
 }; // End displayDrinkDetails-function.
