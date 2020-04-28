@@ -1612,9 +1612,14 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 // Establishes connection to server. 
 // Converts JSON response into an object.
 // Passes response-object and ingredient to appropriate function for processing.
+// Hides drinks-details-container.
 let getDrinks = (e) => {
 
   e.preventDefault();
+
+  // hide drinks details-container
+  document.getElementsByClassName('beverage-details-container')[0].classList.remove('js-end-show');
+
 
   let ingredient = document.getElementsByClassName('ingredient-input')[0].value,
       inputErrorDiv = document.getElementsByClassName('error-message-input')[0],
@@ -1849,13 +1854,24 @@ let displayDrinkDetails = (obj) => {
 
 
   // animate margin-container width & beverage-details-container
-  if (!drinksDetailsDiv.classList.contains('js-start-hide')) {
+  if (!marginContainer.classList.contains('js-max-width')) {
     marginContainer.classList.add('js-max-width');
     drinksDetailsDiv.classList.add('js-start-hide');
     drinksDetailsDiv.classList.remove('hide-beverage-container');
-    window.setTimeout(function () {
-      drinksDetailsDiv.classList.add('js-end-show');
-    }, 400);
+
+    // if vp > 900 add a delay to fade-in
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      window.setTimeout(function () {
+        drinksDetailsDiv.classList.add('js-end-show');
+      }, 400);
+    } else {
+      window.setTimeout(function () {
+        drinksDetailsDiv.classList.add('js-end-show');
+      }, 10);
+    }
+    
+  } else {
+    drinksDetailsDiv.classList.add('js-end-show');
   }
 
 
