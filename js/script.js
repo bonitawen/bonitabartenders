@@ -1825,13 +1825,6 @@ let getDrinkName = (e) => {
       window.setTimeout(function () {
         getDrinkDetails(strDrink);
       }, 100);
-
-      // fade drinks-details back in
-      window.setTimeout(function () {
-        marginContainerBeverageDetails.classList.add('quick-fader-show');
-        marginContainerBeverageDetails.classList.remove('quick-fader-hide');
-      }, 600);
-
     }
   }
 };
@@ -1839,7 +1832,6 @@ let getDrinkName = (e) => {
 document.getElementsByClassName('beverage-list-container')[0].addEventListener('click', function (e) {
   getDrinkName(e);
 });
-
 
 
 
@@ -1985,6 +1977,12 @@ let displayDrinkDetails = (obj) => {
   });
 
   p.textContent = directions;
+
+  // fade-in wrapper div w/ delay
+  window.setTimeout(function () {
+    document.querySelector('.beverage-details-container .card-margin-container').classList.add('quick-fader-show');
+    document.querySelector('.beverage-details-container .card-margin-container').classList.remove('quick-fader-hide');
+  }, 700);
 
 
 }; // End displayDrinkDetails-function.
