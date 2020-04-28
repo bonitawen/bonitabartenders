@@ -1708,7 +1708,9 @@ let processDrinks = (drinksObj, ingredient) => {
     }, 10);
   }
 
-
+  // remove activated class from margin-container for beverage section
+  // part of logic, that helps fade drinks details when a new drink is selected
+  document.querySelector('.beverage-details-container .card-margin-container').classList.remove('activated');
 
   let printHeading = (ingredient) => {
 
@@ -1798,11 +1800,39 @@ let getDrinkName = (e) => {
 
   if (clickedElem.tagName === 'LI' ) {
 
-    // get clicked li-elems id-number
+    // get clicked li-elems text-content
     let strDrink = clickedElem.textContent;
 
-    // make ajax call
-    getDrinkDetails(strDrink);
+    let marginContainerBeverageDetails = document.querySelector('.beverage-details-container .card-margin-container');
+
+
+
+    // if a new ingredient search is triggered 
+    if (!marginContainerBeverageDetails.classList.contains('activated')) {
+
+      // make ajax call right away
+      getDrinkDetails(strDrink);
+      marginContainerBeverageDetails.classList.add('activated');
+
+    // make ajax call after current drinks-details are faded-out
+    } else {
+
+      // fade out drinks-details
+      marginContainerBeverageDetails.classList.add('quick-fader-hide');
+      marginContainerBeverageDetails.classList.remove('quick-fader-show');
+
+      // then call getDrinkDetails-func w/ delay (delay equal css transition time .1s)
+      window.setTimeout(function () {
+        getDrinkDetails(strDrink);
+      }, 100);
+
+      // fade drinks-details back in
+      window.setTimeout(function () {
+        marginContainerBeverageDetails.classList.add('quick-fader-show');
+        marginContainerBeverageDetails.classList.remove('quick-fader-hide');
+      }, 600);
+
+    }
   }
 };
 
@@ -1869,7 +1899,7 @@ let displayDrinkDetails = (obj) => {
         drinksDetailsDiv.classList.add('js-end-show');
       }, 10);
     }
-    
+
   } else {
     drinksDetailsDiv.classList.add('js-end-show');
   }

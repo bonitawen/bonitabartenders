@@ -1194,6 +1194,14 @@ textarea:hover::placeholder {
 .cocktail-finder-section .beverage-details-container {
   transition: opacity 0.7s;
 }
+.cocktail-finder-section .beverage-details-container .quick-fader-show {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.cocktail-finder-section .beverage-details-container .quick-fader-hide {
+  opacity: 0;
+  transition: opacity 0.1s;
+}
 .cocktail-finder-section .beverage-details-container .heading-container {
   text-align: center;
 }
