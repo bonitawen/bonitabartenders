@@ -1875,11 +1875,13 @@ let displayDrinkDetails = (obj) => {
 
   let drinksDetailsDiv = document.getElementsByClassName('beverage-details-container')[0],
       h3 = drinksDetailsDiv.getElementsByTagName('h3')[0],
-      imgElem = drinksDetailsDiv.getElementsByTagName('img')[0],
+      // imgElem = drinksDetailsDiv.getElementsByTagName('img')[0],
       p = drinksDetailsDiv.getElementsByTagName('p')[0],
       ul = document.createElement('ul'),
       ingredientsListWrap = document.getElementsByClassName('ingredients-list-wrap')[0],
-      marginContainer = document.getElementsByClassName('js-margin-container-beverages')[0];
+      marginContainer = document.getElementsByClassName('js-margin-container-beverages')[0],
+      imgElem = new Image(),
+      beverageImageWrap = document.getElementsByClassName('beverage-image-wrap')[0];
 
 
 
@@ -1913,7 +1915,7 @@ let displayDrinkDetails = (obj) => {
   let name = drinkObject['strDrink'];
 
   // get drink image
-  let img = drinkObject['strDrinkThumb'];
+  let imgSrc = drinkObject['strDrinkThumb'];
 
   // get ingredients and amounts.
   // two dimensional array. holds ingredients and amount for each drink.
@@ -1951,10 +1953,18 @@ let displayDrinkDetails = (obj) => {
     ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
   }
 
+  // if img exists, remove it
+  if (beverageImageWrap.contains(beverageImageWrap.getElementsByTagName('img')[0])) {
+    beverageImageWrap.removeChild(beverageImageWrap.getElementsByTagName('img')[0]);
+  }
+
 
   // display name, image, ingredients, amounts, directions
   h3.textContent = name;
-  imgElem.src = img;
+  imgElem.src = imgSrc;
+
+  beverageImageWrap.appendChild(imgElem);
+
 
   ingredientsArr.forEach((ingredient) => {
     let li = document.createElement('li');
