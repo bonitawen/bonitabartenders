@@ -1829,9 +1829,12 @@ let getDrinkName = (e) => {
   }
 };
 
-document.getElementsByClassName('beverage-list-container')[0].addEventListener('click', function (e) {
-  getDrinkName(e);
-});
+
+if (typeof document.getElementsByClassName('beverage-list-container')[0] !== 'undefined') {
+  document.getElementsByClassName('beverage-list-container')[0].addEventListener('click', function (e) {
+    getDrinkName(e);
+  });
+}
 
 
 
