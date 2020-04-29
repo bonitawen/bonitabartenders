@@ -209,7 +209,8 @@ let isHalfInViewport = (elem) => {
         reservationsLinksArr = document.querySelectorAll('.reservations a'),
         hoursH4 = document.querySelector('.hours h4'),
         hoursDivsArr = document.querySelectorAll('.hours div'),
-        hero = document.querySelector('.hero-section-homepage img');
+        hero = document.querySelector('.hero-section-homepage img'),
+        servicesHeading = document.querySelector('.services-heading');
 
 
     // hide elems (opacity only)
@@ -229,6 +230,9 @@ let isHalfInViewport = (elem) => {
 
     // if first h1 in viewport
     if (isInViewport(h1Arr[0])) {
+
+      // adds flag to services heading, so it'll get animated w/delay
+      servicesHeading.classList.add('inView');
 
       // set start positions for animation
       for (let i = 0; i < h1Arr.length; i++) {
@@ -273,6 +277,10 @@ let isHalfInViewport = (elem) => {
         hoursH4.classList.add('js-end-show');
         hoursDivsArr[0].classList.add('js-end-show');
         hoursDivsArr[1].classList.add('js-end-show');
+
+        if (isInViewport(servicesHeading)) {
+          servicesHeading.classList.add('js-end-show');
+        }
       }, 1600)
     }
   };
@@ -308,7 +316,7 @@ let isHalfInViewport = (elem) => {
 
     let animateServices = () => {
 
-      if (isInViewport(heading)) {
+      if (isInViewport(heading) && !heading.classList.contains('inView')) {
         // animate into view
         heading.classList.add('js-end-show');
       }
