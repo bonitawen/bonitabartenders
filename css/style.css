@@ -224,6 +224,13 @@ footer .logo-footer {
   color: #0E172C;
   margin-bottom: 1.3em;
 }
+footer .logo-footer a {
+  color: #0E172C;
+  text-decoration: none;
+}
+footer .logo-footer a:hover, footer .logo-footer a:focus {
+  color: #0E172C;
+}
 footer .footer-top-row {
   display: flex;
   flex-direction: column;
