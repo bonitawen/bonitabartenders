@@ -138,7 +138,6 @@ p {
 a {
   font-weight: 400;
   color: #A786DF;
-  text-decoration: underline;
 }
 
 .btn_1 {
@@ -590,6 +589,9 @@ footer .nav-footer ul li:nth-child(1) {
 }
 .services .card {
   background-color: #FFFFFE;
+}
+.services .card a {
+  text-decoration: underline;
 }
 
 @media (min-width: 900px) {
