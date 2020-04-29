@@ -944,6 +944,12 @@ textarea:hover::placeholder {
 .cocktails header a {
   color: #F9F8FC;
 }
+.cocktails header a:hover, .cocktails header a:focus {
+  color: #A786DF;
+}
+.cocktails header .logo a {
+  color: #FFFFFE;
+}
 .cocktails footer {
   background-color: #FEC7D7;
 }
