@@ -1595,7 +1595,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
-// SHOW COCKTAIL-FINDER-SECTION ON LOAD
+// UN-HIDE COCKTAIL-FINDER-SECTION ON LOAD
 {
   let cocktailFinderSection = document.getElementsByClassName('cocktail-finder-section')[0];
 
@@ -1991,7 +1991,43 @@ let displayDrinkDetails = (obj) => {
 }; // End displayDrinkDetails-function.
 
 
-
-
 // End cocktial-finder logic.
 // ***************************
+
+
+
+
+// START ANIMATE COCKTAIL-FINDER HEADING AND PARAGRAPH.
+{
+  // if cocktail-finder-section exists
+  if (typeof document.querySelector('.cocktail-finder-section') !== 'undefined' 
+      && document.querySelector('.cocktail-finder-section') !== null) {
+
+    const h2 = document.querySelector('.cocktail-finder-search-container h2'),
+          p = document.querySelector('.cocktail-finder-search-container p');
+
+    // hide elems
+    h2.classList.add('js-start-hide');
+    p.classList.add('js-start-hide');
+
+
+    let animate = () => {
+
+      if (isInViewport(h2)) {
+
+        // animate into view
+        h2.classList.add('js-end-show');
+      }
+
+      if (isInViewport(p)) {
+
+        // animate into view
+        p.classList.add('js-end-show');
+      }
+    };
+
+    window.addEventListener('scroll', animate);
+    window.addEventListener('load', animate);
+
+  }
+} // End animate cocktail-finder heading and paragraph.
