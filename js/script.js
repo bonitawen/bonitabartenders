@@ -84,13 +84,27 @@
   // ON LOAD, SET HEADER TO FIXED/STATIC DEPENDING ON SCROLL POSITION
   let headerPositioning_2 = () => {
 
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
     if (window.pageYOffset > 500) {
       header.style.position = 'fixed';
       headerBuffer.style.height = headerHeight + 'px';
       header.classList.add('js-header-transition');
     } else {
+
       header.style.position = 'static';
       headerBuffer.style.height = 0;
+
+      // prevents page to jump 100px when scrolling down, back up and reloading
+      // scrollTop -= 1;
+
+      let newScrollTop = scrollTop - headerHeight;
+
+      if (scrollTop < (2 * headerHeight)) {
+        window.setTimeout(function () {
+          document.documentElement.scrollTop = newScrollTop;
+        }, 10);
+      }
     }
   };
   window.addEventListener('load', headerPositioning_2);
