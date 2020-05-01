@@ -1182,7 +1182,6 @@ let isHalfInViewport = (elem) => {
           beltArr[i].style.width = 100 * gridsOnBeltArr.length + '%';
 
           if (i === 0) {
-console.log(beltArr[i]);
             beltArr[i].classList.add('belt-slider-absolute');
           }
 
