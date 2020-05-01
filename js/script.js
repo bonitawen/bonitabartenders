@@ -2085,3 +2085,10 @@ let displayDrinkDetails = (obj) => {
 
   }
 } // End animate cocktail-finder heading and paragraph.
+
+
+// TODO: take out
+window.addEventListener('click', function () {
+  console.log(window.pageYOffset);
+})
+console.log(window.pageYOffset);

@@ -791,7 +791,7 @@ textarea:hover::placeholder {
       overflow: hidden;
     }
     .testimonials-section .js-testimonials-container {
-      position: absolute;
+      position: relative;
       display: flex;
       justify-content: space-between;
       width: 200%;
