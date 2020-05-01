@@ -1058,9 +1058,12 @@ textarea:hover::placeholder {
       margin: 0;
     }
     .menu-section .belt-slider {
-      position: absolute;
+      position: relative;
       display: flex;
       justify-content: space-between;
+    }
+    .menu-section .belt-slider-absolute {
+      position: absolute;
     }
     .menu-section .js-belt-transition {
       transition: transform 300ms ease-in-out;

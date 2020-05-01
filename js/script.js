@@ -1181,6 +1181,11 @@ let isHalfInViewport = (elem) => {
           beltArr[i].classList.add('belt-slider');
           beltArr[i].style.width = 100 * gridsOnBeltArr.length + '%';
 
+          if (i === 0) {
+console.log(beltArr[i]);
+            beltArr[i].classList.add('belt-slider-absolute');
+          }
+
           // set grid width
           for (let j = 0; j < gridsOnBeltArr.length; j++) {
             let width = 100 / gridsOnBeltArr.length;
