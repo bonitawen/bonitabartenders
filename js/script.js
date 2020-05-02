@@ -107,7 +107,8 @@ var checkScrollSpeed = (function(settings){
   // WHEN SCROLLED PAST CERTAIN POINT TURN STATIC HEADER INTO FIXED HEADER
   let headerPositioning_1 = () => {
 
-    if (window.pageYOffset > 500) {
+    // if vp < 900
+    if (window.pageYOffset > 500 && window.matchMedia('(max-width: 900px)').matches) {
       header.style.position = 'fixed';
       headerBuffer.style.height = headerHeight + 'px';
     }
@@ -121,7 +122,8 @@ var checkScrollSpeed = (function(settings){
 
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (window.pageYOffset > 500) {
+    // if vp < 900
+    if (window.pageYOffset > 500 && window.matchMedia('(max-width: 900px)').matches) {
       header.style.position = 'fixed';
       headerBuffer.style.height = headerHeight + 'px';
       header.classList.add('js-header-transition');
@@ -140,51 +142,63 @@ var checkScrollSpeed = (function(settings){
 
   let showHideHeader = () => {
 
-    let headerTransformDistance = headerHeight + 10;
+    // if vp < 900
+    if (window.matchMedia('(max-width: 900px)').matches) {
 
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      let headerTransformDistance = headerHeight + 10;
 
-    if (header.style.position === 'absolute' && scrollTop > headerHeight) {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (header.style.position === 'absolute' && scrollTop > headerHeight) {
 
 
-      header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
-    } else if ((header.style.position === 'absolute' && scrollTop < headerHeight)) {
-      header.style.transform = 'translateY(0)';
-    }
-
-    // down scroll
-    if (scrollTop > lastScrollTop && header.style.position === 'fixed' && scrollTop > headerHeight) {
-      header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
-      header.classList.add('js-header-transition');
-
-    // up scroll
-    } else if (scrollTop < lastScrollTop) {
-
-      // if past 500
-      if (window.pageYOffset > 500 && checkScrollSpeed() < -15) {
-
-        // show header
+        header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
+      } else if ((header.style.position === 'absolute' && scrollTop < headerHeight)) {
         header.style.transform = 'translateY(0)';
-        header.classList.add('js-header-transition');
+      }
 
-      // if less than 500 && header fixed
-      } else if (window.pageYOffset < 500 && header.style.position === 'fixed') {
-
-        // hide header smoothly
+      // down scroll
+      if (scrollTop > lastScrollTop && header.style.position === 'fixed' && scrollTop > headerHeight) {
         header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
         header.classList.add('js-header-transition');
 
-        // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
-        window.setTimeout(function () {
-          header.style.position = 'absolute';
+      // up scroll
+      } else if (scrollTop < lastScrollTop) {
+
+        // if past 500
+        if (window.pageYOffset > 500 && checkScrollSpeed() < -15) {
+
+          // show header
           header.style.transform = 'translateY(0)';
-          header.classList.remove('js-header-transition');
-        }, 400);
+          header.classList.add('js-header-transition');
+
+        // if less than 500 && header fixed
+        } else if (window.pageYOffset < 500 && header.style.position === 'fixed') {
+
+          // hide header smoothly
+          header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
+          header.classList.add('js-header-transition');
+
+          // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
+          window.setTimeout(function () {
+            header.style.position = 'absolute';
+            header.style.transform = 'translateY(0)';
+            header.classList.remove('js-header-transition');
+          }, 400);
+        }
       }
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+    } else {
+
+      header.style.position = 'absolute';
+      header.style.transform = 'translateY(0)';
+      header.classList.remove('js-header-transition');
+
+    } // end if-else
   }
   window.addEventListener('scroll', showHideHeader);
+  window.addEventListener('resize', showHideHeader);
 
 
   // OVERLAY-MENU
