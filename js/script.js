@@ -189,16 +189,24 @@ var checkScrollSpeed = (function(settings){
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
-    } else {
+    } // end if
+  }
+  window.addEventListener('scroll', showHideHeader);
 
+
+
+  let setHeaderPosition = () => {
+
+    // vp < 900
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      showHideHeader();
+    } else {
       header.style.position = 'absolute';
       header.style.transform = 'translateY(0)';
       header.classList.remove('js-header-transition');
-
-    } // end if-else
-  }
-  window.addEventListener('scroll', showHideHeader);
-  window.addEventListener('resize', showHideHeader);
+    }
+  };
+  window.addEventListener('resize', setHeaderPosition);
 
 
   // OVERLAY-MENU
