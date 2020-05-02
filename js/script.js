@@ -36,11 +36,13 @@
   const header = document.getElementsByTagName('header')[0];
 
   let setHeaderHeight = () => {
-    if (window.matchMedia('(min-width: 450px)').matches) {
+    if (window.matchMedia('(min-width: 900px)').matches) {
       header.style.height = '100px';
+    } else if (window.matchMedia('(min-width: 450px)').matches) {
+      header.style.height = '80px';
     } else {
-      header.style.height = '57px';  
-    } 
+      header.style.height = '57px';
+    }
   };
   setHeaderHeight();
 
