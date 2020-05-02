@@ -39,7 +39,7 @@
     if (window.matchMedia('(min-width: 450px)').matches) {
       header.style.height = '100px';
     } else {
-      header.style.height = '70px';  
+      header.style.height = '57px';  
     } 
   };
   setHeaderHeight();
