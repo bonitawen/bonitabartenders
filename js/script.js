@@ -31,6 +31,15 @@
 
 
 
+
+// ADD BOX-SHADOW TO HEADER
+{
+  document.getElementsByTagName('header')[0].classList.add('js-header-box-shadow');
+}
+
+
+
+
 // SET HEADER HEIGHT.
 {
   const header = document.getElementsByTagName('header')[0];
@@ -131,17 +140,21 @@ var checkScrollSpeed = (function(settings){
 
   let showHideHeader = () => {
 
+    let headerTransformDistance = headerHeight + 10;
+
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (header.style.position === 'absolute' && scrollTop > headerHeight) {
-      header.style.transform = 'translateY(-' + headerHeight + 'px)';
+
+
+      header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
     } else if ((header.style.position === 'absolute' && scrollTop < headerHeight)) {
       header.style.transform = 'translateY(0)';
     }
 
     // down scroll
     if (scrollTop > lastScrollTop && header.style.position === 'fixed' && scrollTop > headerHeight) {
-      header.style.transform = 'translateY(-' + headerHeight + 'px)';
+      header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
       header.classList.add('js-header-transition');
 
     // up scroll
@@ -158,7 +171,7 @@ var checkScrollSpeed = (function(settings){
       } else if (window.pageYOffset < 500 && header.style.position === 'fixed') {
 
         // hide header smoothly
-        header.style.transform = 'translateY(-' + headerHeight + 'px)';
+        header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
         header.classList.add('js-header-transition');
 
         // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
