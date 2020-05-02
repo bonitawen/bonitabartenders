@@ -145,10 +145,10 @@ var checkScrollSpeed = (function(settings){
       header.classList.add('js-header-transition');
 
     // up scroll
-    } else if (scrollTop < lastScrollTop && checkScrollSpeed() < -15) {
+    } else if (scrollTop < lastScrollTop) {
 
       // if past 500
-      if (window.pageYOffset > 500) {
+      if (window.pageYOffset > 500 && checkScrollSpeed() < -15) {
 
         // show header
         header.style.transform = 'translateY(0)';
