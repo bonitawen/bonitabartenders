@@ -353,7 +353,7 @@ let isHalfInViewport = (elem) => {
 
 
     // if third h1 in viewport
-    if (isInViewport(h1Arr[2])) {
+    if (isInViewport(h3)) {
 
       // set start positions for animation
       for (let i = 0; i < h1Arr.length; i++) {
