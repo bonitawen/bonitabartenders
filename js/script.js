@@ -352,7 +352,7 @@ let isHalfInViewport = (elem) => {
     }
 
 
-    // if third h1 in viewport
+    // if h3 in viewport
     if (isInViewport(h3)) {
 
       // set start positions for animation
@@ -403,9 +403,11 @@ let isHalfInViewport = (elem) => {
           servicesHeading.classList.add('js-end-show');
         }
       }, 1600)
+    } 
+
 
     // first h1 not in vp, but reservations section is
-    } else if (isInViewport(reservationsH4) && !h1Arr[0].classList.contains('inView')) {
+    if (isInViewport(reservationsH4) && !h1Arr[0].classList.contains('inView')) {
 
       reservationsH4.classList.add('js-end-show');
       reservationsLinksArr[0].classList.add('js-end-show');
