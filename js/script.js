@@ -1,3 +1,26 @@
+// START REMOVE PRELOADER
+{
+  const preloader = document.getElementsByClassName('preloader')[0];
+
+  const removePreloader = () => {
+
+    preloader.classList.add('js-preloader-invisible');
+
+    window.setTimeout(function () {
+      preloader.classList.add('js-preloader-remove');
+    }, 1500); // should be same as preloader fade out length
+
+  };
+
+  if (typeof preloader !== 'undefined') {
+    removePreloader();
+  }
+
+} // End remove preloader.
+
+
+
+
 // START HIDE NAV ITEMS OF REGULAR NAV.
 // SHOW BURGER-NAV.
 {
