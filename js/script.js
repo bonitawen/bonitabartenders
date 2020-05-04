@@ -313,6 +313,8 @@ let isHalfInViewport = (elem) => {
 };
 
 
+
+
 // START ANIMATE LANDING INTRO TEXT AND HERO IMG.
 {
   let animateLandingHeadings = () => {
@@ -345,8 +347,13 @@ let isHalfInViewport = (elem) => {
     // if first h1 in viewport
     if (isInViewport(h1Arr[0])) {
 
-      // adds flag to services heading, so it'll get animated w/delay
-      servicesHeading.classList.add('inView');
+      // adds flag to first h1, services heading & reservations section get animated w/delay
+      h1Arr[0].classList.add('inView');
+    }
+
+
+    // if third h1 in viewport
+    if (isInViewport(h1Arr[2])) {
 
       // set start positions for animation
       for (let i = 0; i < h1Arr.length; i++) {
@@ -396,6 +403,16 @@ let isHalfInViewport = (elem) => {
           servicesHeading.classList.add('js-end-show');
         }
       }, 1600)
+
+    // first h1 not in vp, but reservations section is
+    } else if (isInViewport(reservationsH4) && !h1Arr[0].classList.contains('inView')) {
+
+      reservationsH4.classList.add('js-end-show');
+      reservationsLinksArr[0].classList.add('js-end-show');
+      reservationsLinksArr[1].classList.add('js-end-show');
+      hoursH4.classList.add('js-end-show');
+      hoursDivsArr[0].classList.add('js-end-show');
+      hoursDivsArr[1].classList.add('js-end-show');
     }
   };
 
@@ -430,7 +447,7 @@ let isHalfInViewport = (elem) => {
 
     let animateServices = () => {
 
-      if (isInViewport(heading) && !heading.classList.contains('inView')) {
+      if (isInViewport(heading) && !document.querySelectorAll('.headings-wrap-landing h1')[0].classList.contains('inView')) {
         // animate into view
         heading.classList.add('js-end-show');
       }
