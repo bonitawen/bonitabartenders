@@ -1309,9 +1309,13 @@ let isHalfInViewport = (elem) => {
       } else {
 
         for (let i = 0; i < beltArr.length; i++) {
-          beltArr[i].style.position = 'absolute';
           beltArr[i].style.width = '100%';
           beltArr[i].classList.remove('belt-slider');
+
+          // set belts to absolute w/delay to prevent page jump on load
+          window.setTimeout(function () {
+            beltArr[i].style.position = 'absolute';
+          }, 100);
         }
 
         for (let j = 0; j < drinksGridArr.length; j++) {
