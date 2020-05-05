@@ -1503,8 +1503,15 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
       optionsSetup(e);
     });
 
-    // on load: set window-height to 1st belt height
+    // on load: set window-height to 1st belt height. also w/timeout for vp > 900. to prevent slightly off window height when reloading. used to occur around vp 948px.
     setWindowHeight(beltArr[0]);
+
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      window.setTimeout(function () {
+        setWindowHeight(beltArr[0]);
+      }, 100);
+    }
+
     window.addEventListener('resize', function () {
       setWindowHeight(beltArr[0]);
     });
