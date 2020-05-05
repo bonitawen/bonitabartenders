@@ -480,6 +480,7 @@ footer .nav-footer ul li:nth-child(1) {
 
 .hero-section-homepage {
   background-color: #D9D4E7;
+  position: relative;
 }
 .hero-section-homepage img {
   position: absolute;
