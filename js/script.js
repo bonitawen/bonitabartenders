@@ -495,7 +495,7 @@ let isHalfInViewport = (elem) => {
         }, 10)
       }
 
-      if (isInViewport(mocktailsCard)) {
+      if (isHalfInViewport(mocktailsCard)) {
         // set start position
         mocktailsCard.classList.add('js-startPositionLeft');
         // animate into view
@@ -513,8 +513,8 @@ let isHalfInViewport = (elem) => {
         heading.classList.add('js-end-show');
       }
 
-      // if consultingCard OR mocktailsCard in viewport
-      if (isInViewport(consultingCard) || isInViewport(mocktailsCard)) {
+      // if consultingCard OR mocktailsCard half in viewport
+      if (isHalfInViewport(consultingCard) || isHalfInViewport(mocktailsCard)) {
         // staggered animations for cards
 
         // set start position
