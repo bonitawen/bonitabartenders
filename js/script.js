@@ -1,3 +1,4 @@
+
 // START REMOVE PRELOADER
 {
   const preloader = document.getElementsByClassName('preloader')[0];
@@ -9,11 +10,26 @@
     window.setTimeout(function () {
       preloader.classList.add('js-preloader-remove');
     }, 1500); // should be same as preloader fade out length
-
   };
 
   if (typeof preloader !== 'undefined') {
-    removePreloader();
+
+    // set first time loaded var
+    let firstTime = localStorage.getItem('first_time');
+
+    // if first time loaded, remove preloader w/delay
+    if (!firstTime) {
+
+      localStorage.setItem('first_time','1');
+
+      window.setTimeout(function () {
+        removePreloader();
+      }, 500);
+
+    // if not first time loaded, remove preloader right away
+    } else {
+      removePreloader();
+    }
   }
 
 } // End remove preloader.
