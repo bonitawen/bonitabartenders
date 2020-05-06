@@ -188,11 +188,15 @@ var checkScrollSpeed = (function(settings){
 
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      if (header.style.position === 'absolute' && scrollTop > headerHeight) {
+      // down scroll & header === absolute
+      if (scrollTop > lastScrollTop && header.style.position === 'absolute' && window.pageYOffset > 300) {
+        header.classList.remove('js-header-transition');
 
-
+        // move up so it won't be visible when positioned changes to fixed
         header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
-      } else if ((header.style.position === 'absolute' && scrollTop < headerHeight)) {
+
+      // up scroll & header === absolute
+      } else if ((scrollTop < lastScrollTop && header.style.position === 'absolute')) {
         header.style.transform = 'translateY(0)';
       }
 
@@ -222,7 +226,6 @@ var checkScrollSpeed = (function(settings){
           window.setTimeout(function () {
             header.style.position = 'absolute';
             header.style.transform = 'translateY(0)';
-            header.classList.remove('js-header-transition');
           }, 400);
         }
       }
