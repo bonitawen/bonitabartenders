@@ -26,9 +26,11 @@
         removePreloader();
       }, 500);
 
-    // if not first time loaded, remove preloader right away
+    // if not first time loaded, remove preloader w/ shorter delay
     } else {
-      removePreloader();
+      window.setTimeout(function () {
+        removePreloader();
+      }, 100);
     }
   }
 
