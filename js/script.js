@@ -601,8 +601,7 @@ let isHalfInViewport = (elem) => {
                    + parseInt(computed.getPropertyValue('padding-top'), 10)
                    + field.scrollHeight
                    + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                   + parseInt(computed.getPropertyValue('border-bottom-width'), 10)
-                   + 5;
+                   + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
 
       // If initialHeight < height
       if (initialHeight < height) {
