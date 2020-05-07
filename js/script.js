@@ -443,6 +443,12 @@ let isHalfInViewport = (elem) => {
         hoursDivsArr[0].classList.add('js-end-show');
         hoursDivsArr[1].classList.add('js-end-show');
 
+        //  add color transition after elems are animated in, so css link transitions work
+        window.setTimeout(function () {
+          reservationsLinksArr[0].classList.add('js-color-transition');
+          reservationsLinksArr[1].classList.add('js-color-transition');
+        }, 800);
+
         if (isInViewport(servicesHeading)) {
           servicesHeading.classList.add('js-end-show');
         }
@@ -459,6 +465,13 @@ let isHalfInViewport = (elem) => {
       hoursH4.classList.add('js-end-show');
       hoursDivsArr[0].classList.add('js-end-show');
       hoursDivsArr[1].classList.add('js-end-show');
+
+
+      //  add color transition after elems are animated in, so css link transitions work
+      window.setTimeout(function () {
+        reservationsLinksArr[0].classList.add('js-color-transition');
+        reservationsLinksArr[1].classList.add('js-color-transition');
+      }, 800);
     }
   };
 
