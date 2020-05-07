@@ -152,6 +152,10 @@ var checkScrollSpeed = (function(settings){
     if (window.pageYOffset > 500 && window.matchMedia('(max-width: 900px)').matches) {
       header.style.position = 'fixed';
       headerBuffer.style.height = headerHeight + 'px';
+
+    } else if (window.pageYOffset === 0 && window.matchMedia('(max-width: 900px)').matches) {
+      header.style.position = 'absolute';
+      headerBuffer.style.height = headerHeight + 'px';
     }
   };
   window.addEventListener('scroll', headerPositioning_1);
@@ -207,6 +211,14 @@ var checkScrollSpeed = (function(settings){
         header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
         header.classList.add('js-header-transition');
 
+        // if pageYOffset < 500
+        if (window.pageYOffset < 500) {
+          window.setTimeout(function () {
+            // set header = absolute
+            header.style.position = 'absolute';
+          }, 400);
+        }
+        
       // up scroll
       } else if (scrollTop < lastScrollTop) {
 
@@ -220,15 +232,15 @@ var checkScrollSpeed = (function(settings){
         // if less than 500 && header fixed
         } else if (window.pageYOffset < 500 && header.style.position === 'fixed') {
 
-          // hide header smoothly
-          header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
-          header.classList.add('js-header-transition');
+          // // hide header smoothly
+          // header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
+          // header.classList.add('js-header-transition');
 
-          // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
-          window.setTimeout(function () {
-            header.style.position = 'absolute';
-            header.style.transform = 'translateY(0)';
-          }, 400);
+          // // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
+          // window.setTimeout(function () {
+          //   header.style.position = 'absolute';
+          //   header.style.transform = 'translateY(0)';
+          // }, 400);
         }
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
