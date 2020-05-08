@@ -294,14 +294,14 @@ var checkScrollSpeed = (function(settings){
       scrollPosition = window.pageYOffset;
 
       window.setTimeout(function () {
-        document.body.classList.add('noscroll');
+        document.documentElement.classList.add('noscroll');
       }, 400);
 
     // if menu opened
     } else {
 
       // remove fixed from body
-      document.body.classList.remove('noscroll');
+      document.documentElement.classList.remove('noscroll');
 
       // set scroll position to where it was before opening menu
       window.setTimeout(function () {
