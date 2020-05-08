@@ -269,6 +269,7 @@ var checkScrollSpeed = (function(settings){
   const burger = document.getElementsByClassName('nav-burger')[0];
   const overlay = document.getElementsByClassName('nav-mobile')[0];
   const body = document.body;
+  let scrollPosition;
 
   let menuOverlay = () => {
 
@@ -288,31 +289,52 @@ var checkScrollSpeed = (function(settings){
       window.removeEventListener('scroll', showHideHeader);
       burger.classList.add('js-nav-burger-expand');
 
+
+      // gets pageYOffset before setting body to fixed
+      scrollPosition = window.pageYOffset;
+
+      window.setTimeout(function () {
+        document.body.classList.add('noscroll');
+      }, 400);
+
     // if menu opened
     } else {
 
-      // if header has a flag, set header to absolute
-      if (header.classList.contains('removeFixed')) {
-        header.classList.remove('removeFixed');
-        header.style.position = 'absolute';
+      // remove fixed from body
+      document.body.classList.remove('noscroll');
 
-        if (window.pageYOffset > 500) {
+      // set scroll position to where it was before opening menu
+      window.setTimeout(function () {
+        document.documentElement.scrollTop = scrollPosition;
+      }, 50);
+
+
+      // call code w/slight delay
+      window.setTimeout(function () {
+
+        // if header has a flag, set header to absolute
+        if (header.classList.contains('removeFixed')) {
           header.classList.remove('removeFixed');
-          header.style.position = 'fixed';
+          header.style.position = 'absolute';
+
+          if (window.pageYOffset > 500) {
+            header.classList.remove('removeFixed');
+            header.style.position = 'fixed';
+          }
+
+        } else if (window.pageYOffset < 200) {
+
+          window.setTimeout(function () {
+            header.style.position = 'absolute';
+          }, 400); // length of transitioning mobile-overlay
         }
 
-      } else if (window.pageYOffset < 200) {
+        overlay.classList.remove('js-nav-mobile-show');
+        window.addEventListener('scroll', headerPositioning_1);
+        window.addEventListener('scroll', showHideHeader);
+        burger.classList.remove('js-nav-burger-expand');
+      }, 100)
 
-        window.setTimeout(function () {
-          header.style.position = 'absolute';
-        }, 400); // length of transitioning mobile-overlay
-      }
-
-
-      overlay.classList.remove('js-nav-mobile-show');
-      window.addEventListener('scroll', headerPositioning_1);
-      window.addEventListener('scroll', showHideHeader);
-      burger.classList.remove('js-nav-burger-expand');
     }
 
     // IF ON COCKTAILS PAGE TURN NAV-BURGER DARK BLUE
