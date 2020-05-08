@@ -321,13 +321,15 @@ var checkScrollSpeed = (function(settings){
             header.classList.remove('removeFixed');
             header.style.position = 'fixed';
           }
+        } 
+        
+        // header was fixed before opening
+        //else if (window.pageYOffset < 200) {
 
-        } else if (window.pageYOffset < 200) {
-
-          window.setTimeout(function () {
-            header.style.position = 'absolute';
-          }, 400); // length of transitioning mobile-overlay
-        }
+        //   window.setTimeout(function () {
+        //     header.style.position = 'absolute';
+        //   }, 400); // length of transitioning mobile-overlay
+        // }
 
         overlay.classList.remove('js-nav-mobile-show');
         window.addEventListener('scroll', headerPositioning_1);
