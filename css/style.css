@@ -210,6 +210,9 @@ header {
   align-items: center;
   z-index: 8;
 }
+header .logo img {
+  width: 130px;
+}
 
 .js-header-transition {
   transition: transform 0.4s ease-in-out;
@@ -223,6 +226,9 @@ header {
   header {
     padding: 2em 10%;
   }
+  header .logo img {
+    width: 160px;
+  }
 }
 @media (min-width: 900px) {
   header {
@@ -230,6 +236,9 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     padding: 0;
+  }
+  header .logo img {
+    width: 210px;
   }
 }
 /* || FOOTER */
@@ -305,7 +314,8 @@ nav a {
   .nav-main ul {
     width: 100%;
     flex-direction: row;
-    margin: 0 75px 20px 75px;
+    margin: 0 75px 15px 75px;
+    align-items: flex-end;
   }
   .nav-main ul li:nth-child(1) {
     order: 3;
