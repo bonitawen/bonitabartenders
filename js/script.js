@@ -1872,12 +1872,12 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
   }
 
 
-
-
+  // Prevent default.
+  // Hides drinks-details-container.
   // Establishes connection to server. 
   // Converts JSON response into an object.
-  // Passes response-object and ingredient to appropriate function for processing.
-  // Hides drinks-details-container.
+  // Passes response-object and ingredient to processDrinks-function for processing.
+  // Sets ajax-return-object in inputOutput, so it can be accessed by other functions.
   let getDrinks = (e) => {
 
     e.preventDefault();
@@ -1949,20 +1949,19 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     });
   }
 
+
+
+  // new-up inputOutput object
   let inputOutput = new InputOutput();
 
 
 
-
-  // Prints out 5 results at a time and the heading.
-  // Shows next/previous 5 results when nav-arrows clicked.
-  // Calls getDrinkDetails when a drink was clicked.
+  // Animates drinks-list-container into view.
+  // Removes activated-flag from beverage-details-container.
+  // Calls printHeading- and counter-function.
   let processDrinks = (drinksObj, ingredient) => {
 
-    let drinksListHeading = document.querySelector('.heading-container h3'),
-        beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
-
-
+    let beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
 
     // animate drinks-list-container into view
     if (!beverageListContainer.classList.contains('js-start-hide')) {
@@ -1977,21 +1976,21 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     // part of logic, that helps fade drinks details when a new drink is selected
     document.querySelector('.beverage-details-container .card-margin-container').classList.remove('activated');
 
-    let printHeading = (ingredient) => {
-
-      let smallCapIngredient = ingredient.toLowerCase();
-      let firstCapIngredient = smallCapIngredient.charAt(0).toUpperCase() + smallCapIngredient.slice(1);
-
-      drinksListHeading.textContent =  `${firstCapIngredient} Beverages`;
-    };
-
-    counter(5, 1);
-
-
     printHeading(ingredient);
-
-
+    counter(5, 1);
   }; // end processDrinks-function
+
+
+
+  // Converts users search input into first capital word, then prints it.
+  let printHeading = (ingredient) => {
+
+    let drinksListHeading = document.querySelector('.heading-container h3'),
+        smallCapIngredient = ingredient.toLowerCase(),
+        firstCapIngredient = smallCapIngredient.charAt(0).toUpperCase() + smallCapIngredient.slice(1);
+
+    drinksListHeading.textContent =  `${firstCapIngredient} Beverages`;
+  };
 
 
 
@@ -2000,8 +1999,9 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
       prev = document.getElementsByClassName('btn_back')[0],
       next = document.getElementsByClassName('btn_forward')[0];
 
-  // Increments or decrements or doesn't change counter.
-  // Calls print-function.
+  // Increments (next arrow) or decrements (previous arrow) or doesn't change counter, or resets counter if a new search was issued.
+  // Shows/hides next & previous arrows.
+  // Calls printList-function.
   let counter = (upDown, reset = 0) => {
 
     let drinksObj = inputOutput.getResponseObject(),
@@ -2033,6 +2033,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
+
+  // Removes previous ul.
   // Loops over 5 items. If item exist, print it.
   let printList = (i, j) => {
 
@@ -2049,7 +2051,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     let ul = document.createElement('ul');
 
     // runs from 0 to 4
-    let liCounter = 0;
+    let liCounter = 0;  // TODO: liCounter needed?
 
     for (i; i <= j; i++ ) {
 
