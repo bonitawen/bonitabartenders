@@ -386,6 +386,10 @@ nav
   justify-content: center
   align-items: center
 
+  .logo
+    img
+      width: 170px
+
   ul
     text-align: center
     text-transform: uppercase
@@ -411,6 +415,12 @@ nav
       .logo
         a
           font-size: (100% * 1.1)
+
+@media (min-width: 450px)
+  .nav-mobile
+    .logo
+      img
+        width: 200px
 
 .js-nav-mobile-transition
   transition: transform .4s ease-in-out

@@ -402,6 +402,9 @@ nav a {
   justify-content: center;
   align-items: center;
 }
+.nav-mobile .logo img {
+  width: 170px;
+}
 .nav-mobile ul {
   text-align: center;
   text-transform: uppercase;
@@ -431,6 +434,11 @@ nav a {
   }
   .nav-mobile ul .logo a {
     font-size: 110%;
+  }
+}
+@media (min-width: 450px) {
+  .nav-mobile .logo img {
+    width: 200px;
   }
 }
 .js-nav-mobile-transition {
