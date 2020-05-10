@@ -1857,120 +1857,159 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 // START COCKTAIL-FINDER LOGIC.
 // ***************************
 
-// Establishes connection to server. 
-// Converts JSON response into an object.
-// Passes response-object and ingredient to appropriate function for processing.
-// Hides drinks-details-container.
-let getDrinks = (e) => {
+{
+  // Constructor setting and getting return ajax return object.
+  function InputOutput() {
+      var inputs; //This will contain key-value pairs.
 
-  e.preventDefault();
+      this.setResponseObject = function (obj) {
+          inputs = obj;
+      };
 
-  // hide drinks details-container
-  document.getElementsByClassName('beverage-details-container')[0].classList.remove('js-end-show');
-
-
-  let ingredient = document.getElementsByClassName('ingredient-input')[0].value,
-      inputErrorDiv = document.getElementsByClassName('error-message-input')[0],
-      serverErrorDiv = document.getElementsByClassName('error-message-server')[0],
-      drinksDiv = document.getElementsByClassName('drinks-slide')[0];
-
-
-  let xhr = new XMLHttpRequest();
-
-
-  xhr.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredient, true);
-
-
-  xhr.onload = function () {
-
-    // hide error-messages
-    inputErrorDiv.classList.add('hide');
-    serverErrorDiv.classList.add('hide');
-
-    if (this.readyState == 4 && this.status == 200) {
-
-      // if user typed in correct search term
-      if (this.responseText !== '') {
-
-        // get JSON response and turn into an object
-        let drinksObj = JSON.parse(this.responseText);
-
-        // call processDrinks-function with object as para
-        processDrinks(drinksObj, ingredient);
-
-      } else {
-
-        // show error-message
-        inputErrorDiv.classList.remove('hide');
+      this.getResponseObject = function () {
+          return inputs;
       }
-    }
-  }; // end onload
-
-
-  // if server couldn't be reached
-  xhr.onerror = function () {
-
-    // show error-message
-    serverErrorDiv.classList.remove('hide');
-  };
-
-
-  xhr.send();
-
-}; // end getDrinks-function
-
-
-// if cocktailfinder form exists
-if (typeof document.getElementsByClassName('cocktail-finder-section')[0] !== 'undefined') {
-
-  // call getDrinks-function on submit
-  document.getElementsByClassName('cocktail-finder-section')[0].addEventListener('submit', function (e) {
-    getDrinks(e);
-  });
-}
-
-
-
-
-// Prints out 5 results at a time and the heading.
-// Shows next/previous 5 results when nav-arrows clicked.
-// Calls getDrinkDetails when a drink was clicked.
-let processDrinks = (drinksObj, ingredient) => {
-
-  let drinksArr = drinksObj['drinks'],
-      prev = document.getElementsByClassName('btn_back')[0],
-      next = document.getElementsByClassName('btn_forward')[0],
-      [i, j] = [-5, -1],
-      drinksDiv = document.getElementsByClassName('drinks-slide')[0],
-      drinksListHeading = document.querySelector('.heading-container h3'),
-      beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
-
-
-
-  // animate drinks-list-container into view
-  if (!beverageListContainer.classList.contains('js-start-hide')) {
-    beverageListContainer.classList.add('js-start-hide');
-    beverageListContainer.classList.remove('hide-beverage-container');
-    window.setTimeout(function () {
-      beverageListContainer.classList.add('js-end-show');
-    }, 10);
   }
 
-  // remove activated class from margin-container for beverage section
-  // part of logic, that helps fade drinks details when a new drink is selected
-  document.querySelector('.beverage-details-container .card-margin-container').classList.remove('activated');
 
-  let printHeading = (ingredient) => {
 
-    let smallCapIngredient = ingredient.toLowerCase();
-    let firstCapIngredient = smallCapIngredient.charAt(0).toUpperCase() + smallCapIngredient.slice(1);
 
-    drinksListHeading.textContent =  `${firstCapIngredient} Beverages`;
-  };
+  // Establishes connection to server. 
+  // Converts JSON response into an object.
+  // Passes response-object and ingredient to appropriate function for processing.
+  // Hides drinks-details-container.
+  let getDrinks = (e) => {
+
+    e.preventDefault();
+
+    // hide drinks details-container
+    document.getElementsByClassName('beverage-details-container')[0].classList.remove('js-end-show');
+
+
+    let ingredient = document.getElementsByClassName('ingredient-input')[0].value,
+        inputErrorDiv = document.getElementsByClassName('error-message-input')[0],
+        serverErrorDiv = document.getElementsByClassName('error-message-server')[0],
+        drinksDiv = document.getElementsByClassName('drinks-slide')[0];
+
+
+    let xhr = new XMLHttpRequest();
+
+
+    xhr.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredient, true);
+
+
+    xhr.onload = function () {
+
+      // hide error-messages
+      inputErrorDiv.classList.add('hide');
+      serverErrorDiv.classList.add('hide');
+
+      if (this.readyState == 4 && this.status == 200) {
+
+        // if user typed in correct search term
+        if (this.responseText !== '') {
+
+          // get JSON response and turn into an object
+          let drinksObj = JSON.parse(this.responseText);
+
+          // set response object, so other functions can access it
+          inputOutput.setResponseObject(drinksObj);
+
+          // call processDrinks-function with object as para
+          processDrinks(drinksObj, ingredient);
+
+        } else {
+
+          // show error-message
+          inputErrorDiv.classList.remove('hide');
+        }
+      }
+    }; // end onload
+
+
+    // if server couldn't be reached
+    xhr.onerror = function () {
+
+      // show error-message
+      serverErrorDiv.classList.remove('hide');
+    };
+
+
+    xhr.send();
+
+  }; // end getDrinks-function
+
+
+  // if cocktailfinder form exists
+  if (typeof document.getElementsByClassName('cocktail-finder-section')[0] !== 'undefined') {
+
+    // call getDrinks-function on submit
+    document.getElementsByClassName('cocktail-finder-section')[0].addEventListener('submit', function (e) {
+      getDrinks(e);
+    });
+  }
+
+  let inputOutput = new InputOutput();
+
+
+
+
+  // Prints out 5 results at a time and the heading.
+  // Shows next/previous 5 results when nav-arrows clicked.
+  // Calls getDrinkDetails when a drink was clicked.
+  let processDrinks = (drinksObj, ingredient) => {
+
+    let drinksListHeading = document.querySelector('.heading-container h3'),
+        beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
+
+
+
+    // animate drinks-list-container into view
+    if (!beverageListContainer.classList.contains('js-start-hide')) {
+      beverageListContainer.classList.add('js-start-hide');
+      beverageListContainer.classList.remove('hide-beverage-container');
+      window.setTimeout(function () {
+        beverageListContainer.classList.add('js-end-show');
+      }, 10);
+    }
+
+    // remove activated class from margin-container for beverage section
+    // part of logic, that helps fade drinks details when a new drink is selected
+    document.querySelector('.beverage-details-container .card-margin-container').classList.remove('activated');
+
+    let printHeading = (ingredient) => {
+
+      let smallCapIngredient = ingredient.toLowerCase();
+      let firstCapIngredient = smallCapIngredient.charAt(0).toUpperCase() + smallCapIngredient.slice(1);
+
+      drinksListHeading.textContent =  `${firstCapIngredient} Beverages`;
+    };
+
+    counter(5, 1);
+
+
+    printHeading(ingredient);
+
+
+  }; // end processDrinks-function
+
+
+
+
+  let [i, j] = [-5, -1],
+      prev = document.getElementsByClassName('btn_back')[0],
+      next = document.getElementsByClassName('btn_forward')[0];
 
   // Increments or decrements or doesn't change counter.
   // Calls print-function.
-  let counter = (upDown) => {
+  let counter = (upDown, reset = 0) => {
+
+    let drinksObj = inputOutput.getResponseObject(),
+        drinksArr = drinksObj['drinks'];
+
+    if (reset === 1) {
+      [i, j] = [-5, -1]
+    }
 
     i += upDown;
     j += upDown;
@@ -1984,8 +2023,22 @@ let processDrinks = (drinksObj, ingredient) => {
     printList(i, j);
   };
 
+  next.addEventListener('click', function () {
+    counter(5);
+  });
+
+  prev.addEventListener('click', function () {
+    counter(-5);
+  });
+
+
+
   // Loops over 5 items. If item exist, print it.
   let printList = (i, j) => {
+
+    let drinksObj = inputOutput.getResponseObject(),
+        drinksArr = drinksObj['drinks'],
+        drinksDiv = document.getElementsByClassName('drinks-slide')[0];
 
     // if ul exists, remove it
     if (drinksDiv.contains(drinksDiv.getElementsByTagName('ul')[0])) {
@@ -2023,221 +2076,221 @@ let processDrinks = (drinksObj, ingredient) => {
 
 
 
-  next.addEventListener('click', function () {
-    counter(5);
-  });
-
-  prev.addEventListener('click', function () {
-    counter(-5);
-  });
-
-  counter(5);
-
-
-  printHeading(ingredient);
-
-
-}; // end processDrinks-function
 
 
 
 
-// Gets matching drink name, then calls next function.
-let getDrinkName = (e) => {
-  let clickedElem = e.target;
-
-  if (clickedElem.tagName === 'LI' ) {
-
-    // get clicked li-elems text-content
-    let strDrink = clickedElem.textContent;
-
-    let marginContainerBeverageDetails = document.querySelector('.beverage-details-container .card-margin-container');
 
 
 
-    // if a new ingredient search is triggered 
-    if (!marginContainerBeverageDetails.classList.contains('activated')) {
 
-      // make ajax call right away
-      getDrinkDetails(strDrink);
-      marginContainerBeverageDetails.classList.add('activated');
 
-    // make ajax call after current drinks-details are faded-out
-    } else {
 
-      // fade out drinks-details
-      marginContainerBeverageDetails.classList.add('quick-fader-hide');
-      marginContainerBeverageDetails.classList.remove('quick-fader-show');
 
-      // then call getDrinkDetails-func w/ delay (delay equal css transition time .1s)
-      window.setTimeout(function () {
+
+
+
+
+
+
+
+
+  // Gets matching drink name, then calls next function.
+  let getDrinkName = (e) => {
+    let clickedElem = e.target;
+
+    if (clickedElem.tagName === 'LI' ) {
+
+      // get clicked li-elems text-content
+      let strDrink = clickedElem.textContent;
+
+      let marginContainerBeverageDetails = document.querySelector('.beverage-details-container .card-margin-container');
+
+
+
+      // if a new ingredient search is triggered 
+      if (!marginContainerBeverageDetails.classList.contains('activated')) {
+
+        // make ajax call right away
         getDrinkDetails(strDrink);
-      }, 100);
+        marginContainerBeverageDetails.classList.add('activated');
+
+      // make ajax call after current drinks-details are faded-out
+      } else {
+
+        // fade out drinks-details
+        marginContainerBeverageDetails.classList.add('quick-fader-hide');
+        marginContainerBeverageDetails.classList.remove('quick-fader-show');
+
+        // then call getDrinkDetails-func w/ delay (delay equal css transition time .1s)
+        window.setTimeout(function () {
+          getDrinkDetails(strDrink);
+        }, 100);
+      }
     }
+  };
+
+
+  if (typeof document.getElementsByClassName('beverage-list-container')[0] !== 'undefined') {
+    document.getElementsByClassName('beverage-list-container')[0].addEventListener('click', function (e) {
+      getDrinkName(e);
+    });
   }
-};
 
 
-if (typeof document.getElementsByClassName('beverage-list-container')[0] !== 'undefined') {
-  document.getElementsByClassName('beverage-list-container')[0].addEventListener('click', function (e) {
-    getDrinkName(e);
-  });
+
+  // Makes ajax call, returns object with details about one drink.
+  // Calls displayDrinkDetails with return-object as parameter.
+  let getDrinkDetails = (drinkName) => {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkName, true);
+
+    xhr.onload = function () {
+
+      if (this.readyState == 4 && this.status == 200) {
+
+        // get JSON response and turn into an object
+        let drinkObj = JSON.parse(this.responseText);
+
+        // call displayDrinkDetails-function with object as para
+        displayDrinkDetails(drinkObj);
+
+      }
+    }; // end onload
+
+    xhr.send();
+  };
+
+
+
+
+  // Displays drink name, image, ingredients, amounts, instructions.
+  let displayDrinkDetails = (obj) => {
+
+    let drinksDetailsDiv = document.getElementsByClassName('beverage-details-container')[0],
+        h3 = drinksDetailsDiv.getElementsByTagName('h3')[0],
+        // imgElem = drinksDetailsDiv.getElementsByTagName('img')[0],
+        p = drinksDetailsDiv.getElementsByTagName('p')[0],
+        ul = document.createElement('ul'),
+        ingredientsListWrap = document.getElementsByClassName('ingredients-list-wrap')[0],
+        marginContainer = document.getElementsByClassName('js-margin-container-beverages')[0],
+        beverageImageWrap = document.getElementsByClassName('beverage-image-wrap')[0];
+
+
+
+    // animate margin-container width & beverage-details-container
+    if (!marginContainer.classList.contains('js-max-width')) {
+      marginContainer.classList.add('js-max-width');
+      drinksDetailsDiv.classList.add('js-start-hide');
+      drinksDetailsDiv.classList.remove('hide-beverage-container');
+
+      // if vp > 900 add a delay to fade-in
+      if (window.matchMedia('(min-width: 900px)').matches) {
+        window.setTimeout(function () {
+          drinksDetailsDiv.classList.add('js-end-show');
+        }, 400);
+      } else {
+        window.setTimeout(function () {
+          drinksDetailsDiv.classList.add('js-end-show');
+        }, 10);
+      }
+
+    } else {
+      drinksDetailsDiv.classList.add('js-end-show');
+    }
+
+
+
+    // extract drink object
+    let drinkObject = obj['drinks'][0];
+
+    // get drink name
+    let name = drinkObject['strDrink'];
+
+    // get drink image
+    let imgSrc = drinkObject['strDrinkThumb'];
+
+    // get ingredients and amounts.
+    // two dimensional array. holds ingredients and amount for each drink.
+    let ingredientsArr = [];
+
+    for (let i = 1; i < 16; i++) {
+
+      // if ingredient not null AND not empty string
+      if (drinkObject['strIngredient' + i] !== null && drinkObject['strIngredient' + i] !== '') {
+
+        // array to hold ingredient & amount for one drink.
+        let ingredientAndAmountArr = [];
+
+        // add ingredient and amount to array.
+        ingredientAndAmountArr.push(drinkObject['strIngredient' + i]);
+        ingredientAndAmountArr.push(drinkObject['strMeasure' + i]);
+        
+        // add array for one drink to array holding all drinks
+        ingredientsArr.push(ingredientAndAmountArr);
+
+      } else {
+        break;
+      }
+    }
+  // console.log(ingredientsArr[0][0]);   -- ingredient
+  // console.log(ingredientsArr[0][1]);   -- amount
+
+    // get directions
+    let directions = drinkObject['strInstructions'];
+
+
+
+    // if ul exists, remove it
+    if (ingredientsListWrap.contains(ingredientsListWrap.getElementsByTagName('ul')[0])) {
+      ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
+    }
+
+
+    // display name, image, ingredients, amounts, directions
+
+    // if img exists, update it's source
+    if (beverageImageWrap.contains(beverageImageWrap.getElementsByTagName('img')[0])) {
+      beverageImageWrap.getElementsByTagName('img')[0].src = imgSrc;
+
+    // if no img exists yet, new-up one, attach source and attach to dom
+    } else {
+      let imgElem = new Image();
+      imgElem.src = imgSrc;
+      beverageImageWrap.appendChild(imgElem);
+    }
+
+
+    h3.textContent = name;
+
+
+    ingredientsArr.forEach((ingredient) => {
+      let li = document.createElement('li');
+      li.textContent = `${ingredient[0]}`; // 0 represents ingredient; 1 represents amount
+
+      // add amounts if they're not null or empty string
+      if (ingredient[1] !== null && ingredient[1] !== '') {
+        li.textContent += ` --- ${ingredient[1]}`;
+      }
+
+      ul.appendChild(li);
+
+      ingredientsListWrap.appendChild(ul);
+    });
+
+    p.textContent = directions;
+
+    // fade-in wrapper div w/ delay
+    window.setTimeout(function () {
+      document.querySelector('.beverage-details-container .card-margin-container').classList.add('quick-fader-show');
+      document.querySelector('.beverage-details-container .card-margin-container').classList.remove('quick-fader-hide');
+    }, 600);
+
+
+  }; // End displayDrinkDetails-function.
 }
-
-
-
-// Makes ajax call, returns object with details about one drink.
-// Calls displayDrinkDetails with return-object as parameter.
-let getDrinkDetails = (drinkName) => {
-
-  let xhr = new XMLHttpRequest();
-
-  xhr.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkName, true);
-
-  xhr.onload = function () {
-
-    if (this.readyState == 4 && this.status == 200) {
-
-      // get JSON response and turn into an object
-      let drinkObj = JSON.parse(this.responseText);
-
-      // call displayDrinkDetails-function with object as para
-      displayDrinkDetails(drinkObj);
-
-    }
-  }; // end onload
-
-  xhr.send();
-};
-
-
-
-
-// Displays drink name, image, ingredients, amounts, instructions.
-let displayDrinkDetails = (obj) => {
-
-  let drinksDetailsDiv = document.getElementsByClassName('beverage-details-container')[0],
-      h3 = drinksDetailsDiv.getElementsByTagName('h3')[0],
-      // imgElem = drinksDetailsDiv.getElementsByTagName('img')[0],
-      p = drinksDetailsDiv.getElementsByTagName('p')[0],
-      ul = document.createElement('ul'),
-      ingredientsListWrap = document.getElementsByClassName('ingredients-list-wrap')[0],
-      marginContainer = document.getElementsByClassName('js-margin-container-beverages')[0],
-      beverageImageWrap = document.getElementsByClassName('beverage-image-wrap')[0];
-
-
-
-  // animate margin-container width & beverage-details-container
-  if (!marginContainer.classList.contains('js-max-width')) {
-    marginContainer.classList.add('js-max-width');
-    drinksDetailsDiv.classList.add('js-start-hide');
-    drinksDetailsDiv.classList.remove('hide-beverage-container');
-
-    // if vp > 900 add a delay to fade-in
-    if (window.matchMedia('(min-width: 900px)').matches) {
-      window.setTimeout(function () {
-        drinksDetailsDiv.classList.add('js-end-show');
-      }, 400);
-    } else {
-      window.setTimeout(function () {
-        drinksDetailsDiv.classList.add('js-end-show');
-      }, 10);
-    }
-
-  } else {
-    drinksDetailsDiv.classList.add('js-end-show');
-  }
-
-
-
-  // extract drink object
-  let drinkObject = obj['drinks'][0];
-
-  // get drink name
-  let name = drinkObject['strDrink'];
-
-  // get drink image
-  let imgSrc = drinkObject['strDrinkThumb'];
-
-  // get ingredients and amounts.
-  // two dimensional array. holds ingredients and amount for each drink.
-  let ingredientsArr = [];
-
-  for (let i = 1; i < 16; i++) {
-
-    // if ingredient not null AND not empty string
-    if (drinkObject['strIngredient' + i] !== null && drinkObject['strIngredient' + i] !== '') {
-
-      // array to hold ingredient & amount for one drink.
-      let ingredientAndAmountArr = [];
-
-      // add ingredient and amount to array.
-      ingredientAndAmountArr.push(drinkObject['strIngredient' + i]);
-      ingredientAndAmountArr.push(drinkObject['strMeasure' + i]);
-      
-      // add array for one drink to array holding all drinks
-      ingredientsArr.push(ingredientAndAmountArr);
-
-    } else {
-      break;
-    }
-  }
-// console.log(ingredientsArr[0][0]);   -- ingredient
-// console.log(ingredientsArr[0][1]);   -- amount
-
-  // get directions
-  let directions = drinkObject['strInstructions'];
-
-
-
-  // if ul exists, remove it
-  if (ingredientsListWrap.contains(ingredientsListWrap.getElementsByTagName('ul')[0])) {
-    ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
-  }
-
-
-  // display name, image, ingredients, amounts, directions
-
-  // if img exists, update it's source
-  if (beverageImageWrap.contains(beverageImageWrap.getElementsByTagName('img')[0])) {
-    beverageImageWrap.getElementsByTagName('img')[0].src = imgSrc;
-
-  // if no img exists yet, new-up one, attach source and attach to dom
-  } else {
-    let imgElem = new Image();
-    imgElem.src = imgSrc;
-    beverageImageWrap.appendChild(imgElem);
-  }
-
-
-  h3.textContent = name;
-
-
-  ingredientsArr.forEach((ingredient) => {
-    let li = document.createElement('li');
-    li.textContent = `${ingredient[0]}`; // 0 represents ingredient; 1 represents amount
-
-    // add amounts if they're not null or empty string
-    if (ingredient[1] !== null && ingredient[1] !== '') {
-      li.textContent += ` --- ${ingredient[1]}`;
-    }
-
-    ul.appendChild(li);
-
-    ingredientsListWrap.appendChild(ul);
-  });
-
-  p.textContent = directions;
-
-  // fade-in wrapper div w/ delay
-  window.setTimeout(function () {
-    document.querySelector('.beverage-details-container .card-margin-container').classList.add('quick-fader-show');
-    document.querySelector('.beverage-details-container .card-margin-container').classList.remove('quick-fader-hide');
-  }, 600);
-
-
-}; // End displayDrinkDetails-function.
-
 
 // End cocktial-finder logic.
 // ***************************
