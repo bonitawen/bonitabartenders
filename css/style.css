@@ -246,9 +246,8 @@ footer {
   background-color: #FFFFFE;
   padding-top: 1.76em;
 }
-footer .logo-footer {
-  color: #0E172C;
-  margin-bottom: 1.3em;
+footer .logo-footer img {
+  width: 54px;
 }
 footer .logo-footer a {
   color: #0E172C;
@@ -271,6 +270,11 @@ footer .footer-contact h4 {
   text-decoration: none;
 }
 
+@media (min-width: 450px) {
+  footer .logo-footer img {
+    width: 70px;
+  }
+}
 @media (min-width: 900px) {
   footer .margin-container {
     padding-bottom: 1em;
@@ -282,6 +286,9 @@ footer .footer-contact h4 {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 6.5em;
+  }
+  footer .logo-footer img {
+    width: 80px;
   }
   footer .footer-contact {
     text-align: right;

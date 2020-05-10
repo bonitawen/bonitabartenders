@@ -236,8 +236,10 @@ footer
   padding-top: 1.76em
 
   .logo-footer
-    color: $dark-blue
-    margin-bottom: 1.3em
+    // color: $dark-blue
+    // margin-bottom: 1.3em
+    img
+      width: 54px
 
     a
       color: $dark-blue
@@ -260,6 +262,12 @@ footer
       color: $dark-blue
       text-decoration: none
 
+@media (min-width: 450px)
+  footer
+    .logo-footer
+      img
+        width: 70px
+
 @media (min-width: 900px)
   footer
     .margin-container
@@ -272,6 +280,10 @@ footer
       flex-direction: row
       justify-content: space-between
       margin-bottom: 6.5em
+
+    .logo-footer
+      img
+        width: 80px
 
     .footer-contact
       text-align: right
