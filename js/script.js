@@ -5,8 +5,10 @@
 
   const removePreloader = () => {
 
+    // set opacity to 0
     preloader.classList.add('js-preloader-invisible');
 
+    // set display: none
     window.setTimeout(function () {
       preloader.classList.add('js-preloader-remove');
     }, 1500); // should be same as preloader fade out length
