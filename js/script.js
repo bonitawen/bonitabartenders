@@ -1121,9 +1121,8 @@ let isHalfInViewport = (elem) => {
                && !sliderWindow.classList.contains('visible-flag')) {
 
       // hide cards
-      for (let i = 0; i < testimonialBoxArr.length; i++) {
+      for (let i = 0, j = testimonialBoxArr.length; i < j; i++)
         testimonialBoxArr[i].classList.add('js-start-hide');
-      }
 
       // show slider-window
       sliderWindow.classList.remove('js-start-hide');
@@ -1151,29 +1150,24 @@ let isHalfInViewport = (elem) => {
                && sliderWindow.classList.contains('visible-flag')) {
 
       // show cards
-      for (let i = 0; i < testimonialBoxArr.length; i++) {
+      for (let i = 0, j = testimonialBoxArr.length; i < j; i++)
         testimonialBoxArr[i].classList.remove('js-start-hide');
-      }
 
     // else-if no grid && vp < 900 && visible-flag present
     } else if (typeof document.createElement('div').style.grid === 'undefined'
                && window.matchMedia('(max-width: 900px)').matches
-               && sliderWindow.classList.contains('visible-flag')) {
+               && sliderWindow.classList.contains('visible-flag'))
 
       // show slider-window
       sliderWindow.classList.remove('js-start-hide');
-    }
 
   }; // End animateTestimonials-function.
 
 
-
   // if testimonial section exists
   if (typeof document.getElementsByClassName('testimonials-section')[0] !== 'undefined') {
-
     animateTestimonials();
     window.addEventListener('resize', animateTestimonials);
-
   }
 } // End animate testimonial section.
 
@@ -1197,15 +1191,13 @@ let isHalfInViewport = (elem) => {
 
     let animate = () => {
 
-      if (isInViewport(h2)) {
+      if (isInViewport(h2))
         // animate into view
         h2.classList.add('js-endPosition');
-      }
 
-      if (isInViewport(p)) {
+      if (isInViewport(p))
         // animate into view
         p.classList.add('js-endPosition');
-      }
 
       // if vp > 450
       if (window.matchMedia('(min-width: 450px)').matches) {
@@ -1229,15 +1221,14 @@ let isHalfInViewport = (elem) => {
 
       // vp < 450
       } else {
-        if (isInViewport(lgImg)) {
+        if (isInViewport(lgImg))
           // animate into view
           lgImg.classList.add('js-endPosition');
-        }
 
-        if (isInViewport(smImg)) {
+        if (isInViewport(smImg))
           // animate into view
           smImg.classList.add('js-endPosition');
-        }
+
       } // End if else
     }; // End animate-function
 
@@ -1258,9 +1249,8 @@ let isHalfInViewport = (elem) => {
 
     headingsGroup.classList.remove('hide');
 
-    for (let i = 0; i < individualHeadingsArr.length; i++) {
+    for (let i = 0, j = individualHeadingsArr.length; i < j; i++)
       individualHeadingsArr[i].classList.add('hide');
-    }
   }
 } // End show js-alcohol-headings, hide individual headings.
 
@@ -1281,7 +1271,7 @@ let isHalfInViewport = (elem) => {
     sliderWindow.style.overflow = 'hidden';
     optionsContainer.style.display = 'flex';
 
-    for (let i = 0; i < h4Arr.length; i++) {
+    for (let i = 0, j = h4Arr.length; i < j; i++) {
       h4Arr[i].classList.add('js-h4');
       h4Arr[i].addEventListener('mouseenter', function() {
         h4Arr[i].classList.add('js-h4-hover');
@@ -1289,9 +1279,7 @@ let isHalfInViewport = (elem) => {
       h4Arr[i].addEventListener('mouseleave', function() {
         h4Arr[i].classList.remove('js-h4-hover');
       })
-
     }
-
 
 
     let menuCss = () => {
@@ -1301,7 +1289,7 @@ let isHalfInViewport = (elem) => {
           && window.matchMedia('(min-width: 900px)').matches) {
 
 
-        for (let i = 0; i < beltArr.length; i++) {
+        for (let i = 0, j = beltArr.length; i < j; i++) {
 
           let gridsOnBeltArr = beltArr[i].getElementsByClassName('drinks-grid');
 
@@ -1309,13 +1297,12 @@ let isHalfInViewport = (elem) => {
           beltArr[i].classList.add('belt-slider');
           beltArr[i].style.width = 100 * gridsOnBeltArr.length + '%';
 
-          if (i === 0) {
+          if (i === 0)
             beltArr[i].classList.add('belt-slider-absolute');
-          }
 
           // set grid width
-          for (let j = 0; j < gridsOnBeltArr.length; j++) {
-            let width = 100 / gridsOnBeltArr.length;
+          for (let j = 0, arrLength = gridsOnBeltArr.length; j < arrLength; j++) {
+            let width = 100 / arrLength;
 
             gridsOnBeltArr[j].style.width = width + '%';
             gridsOnBeltArr[j].style.marginBottom = '0';
@@ -1326,7 +1313,7 @@ let isHalfInViewport = (elem) => {
       // no grid OR vp < 900
       } else {
 
-        for (let i = 0; i < beltArr.length; i++) {
+        for (let i = 0, j = beltArr.length; i < j; i++) {
           beltArr[i].style.width = '100%';
           beltArr[i].classList.remove('belt-slider');
 
@@ -1336,9 +1323,8 @@ let isHalfInViewport = (elem) => {
           }, 100);
         }
 
-        for (let j = 0; j < drinksGridArr.length; j++) {
+        for (let j = 0, arrLength = drinksGridArr.length; j < arrLength; j++)
           drinksGridArr[j].style.width = '100%';
-        }
       }
     } // End menuCss-func.
 
@@ -1394,7 +1380,6 @@ let Belt = function (belt) {
           if (this.beltRemainder > this.clickTargetWidth + 10) {
 
             this.clickCounter -= 1;
-
             this.shiftCounter = this.clickCounter * this.clickTargetWidth;
 
             // shift belt left
@@ -1410,18 +1395,13 @@ let Belt = function (belt) {
     if (window.matchMedia('(min-width: 900px)').matches) {
       this.beltComputed = window.getComputedStyle(this.belt);
       this.beltWidth = parseInt(this.beltComputed.width);
-
       this.itemWidth = this.beltWidth / this.itemArr.length;   // depends on how many item on belt
-
       this.belt.classList.remove('js-belt-transition');
-
       this.shiftCounter = this.clickCounter * this.itemWidth;
-
       this.belt.style.transform = `translateX(${this.shiftCounter}px)`;
 
-    } else {
+    } else
       belt.style.transform = `translateX(0)`;
-    }
 
   } // end adjustXpositionOfBeltOnResize-func
 }; // End belt-constructor.
@@ -1433,7 +1413,6 @@ let Belt = function (belt) {
 // note: the XXX indicates the belt-logic (showing/hiding belt && adding/removing click-handler to belt)
 if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefined') {
   
-
   const optionsContainer = document.getElementsByClassName('js-alcohol-headings')[0],
         optionsArr = optionsContainer.getElementsByTagName('h4'), // # of options
         beltArr = document.getElementsByClassName('belt'), // # of belts (same amount as # of options)
@@ -1451,7 +1430,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
           myBelt2.beltSlider(e);
         },
         callBeltArr = [callBelt1, callBelt2];
-
 
 
   // does 3 things: 1) mark alcohol option, 2) switch belt, 3) set window height to belt height
@@ -1512,9 +1490,9 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
     optionsArr[0].classList.add('js-selected'); // 1st option selected on load
     // on load: hide all belts except 1st belt
-    for (let i = 1; i < beltArr.length; i++) {
+    for (let i = 1, j = beltArr.length; i < j; i++)
       beltArr[i].classList.add('js-hide-v2');
-    }
+
     sliderWindow.addEventListener('click', callBeltArr[0]); // XXX 1st belt gets click-handler on load
 
     optionsContainer.addEventListener('click', function (e) {
@@ -1556,7 +1534,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     // helper function.
     let activeBeltHasMoreThan2Items = () => {
 
-      for (let i = 0; i < beltArr.length; i++) {
+      for (let i = 0, j = beltArr.length; i < j; i++) {
         if (!beltArr[i].classList.contains('js-hide-v2')) {
           // active belt
           
