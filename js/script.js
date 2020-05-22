@@ -1,4 +1,3 @@
-
 // START REMOVE PRELOADER
 {
   const preloader = document.getElementsByClassName('preloader')[0];
@@ -49,19 +48,27 @@
   const burger = document.getElementsByClassName('nav-burger')[0];
 
   let hideNavItems = () => {
+
     for (let i = 0; i < liArr.length; i++) {
-      // If li not the logo.
-      if (!liArr[i].classList.contains('logo')) {
-        // If viewport > 900px and li-elem has hide-class.
-        if (window.matchMedia('(min-width: 900px)').matches) {
-          // Remove hide-class.
-          liArr[i].classList.remove('hide');
-        } else {
-          // Add hide class.
-          liArr[i].classList.add('hide');
-        }
-      }
+      if (liArr[i].classList.contains('logo')) continue;
+
+      window.matchMedia('(min-width: 900px)').matches ? liArr[i].classList.remove('hide') : liArr[i].classList.add('hide');
     }
+
+    // TODO: take out
+    // for (let i = 0; i < liArr.length; i++) {
+    //   // If li not the logo.
+    //   if (!liArr[i].classList.contains('logo')) {
+    //     // If viewport > 900px and li-elem has hide-class.
+    //     if (window.matchMedia('(min-width: 900px)').matches) {
+    //       // Remove hide-class.
+    //       liArr[i].classList.remove('hide');
+    //     } else {
+    //       // Add hide class.
+    //       liArr[i].classList.add('hide');
+    //     }
+    //   }
+    // }
   };
   hideNavItems();
 
