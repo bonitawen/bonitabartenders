@@ -319,20 +319,16 @@ var checkScrollSpeed = (function(settings){
     }
 
     // IF ON COCKTAILS PAGE TURN NAV-BURGER DARK BLUE
-    if (body.classList.contains('cocktails') && !burger.classList.contains('js-navBurger-darkBlue')) {
-      burger.classList.add('js-navBurger-darkBlue');
-    } else {
-      burger.classList.remove('js-navBurger-darkBlue');
-    }
+    (body.classList.contains('cocktails') && !burger.classList.contains('js-navBurger-darkBlue')) ? burger.classList.add('js-navBurger-darkBlue') : burger.classList.remove('js-navBurger-darkBlue');
+
   };
   burger.addEventListener('click', menuOverlay);
 
 
   // CLOSE OVERLAY IF VIEWPORT > 900
   window.addEventListener('resize', () => {
-    if (window.matchMedia('(min-width: 900px)').matches && overlay.classList.contains('js-nav-mobile-show')) {
+    if (window.matchMedia('(min-width: 900px)').matches && overlay.classList.contains('js-nav-mobile-show'))
       overlay.classList.remove('js-nav-mobile-show');
-    }
   });
 
   // ON LOAD MOVE OVERLAY OFF THE PAGE
@@ -389,8 +385,9 @@ let isHalfInViewport = (elem) => {
 
 
     // hide elems (opacity only)
-    for (let i = 0; i < h1Arr.length; i++) {
+    for (let i = 0, j = h1Arr.length; i < j; i++) {
       h1Arr[i].classList.add('js-start-hide');
+
       // check if reservation links exists
       if (typeof reservationsLinksArr[i] !== 'undefined') {
         reservationsLinksArr[i].classList.add('js-start-hide');
@@ -404,19 +401,17 @@ let isHalfInViewport = (elem) => {
 
 
     // if first h1 in viewport
-    if (isInViewport(h1Arr[0])) {
-
-      // adds flag to first h1, services heading & reservations section get animated w/delay
+    // adds flag to first h1, services heading & reservations section get animated w/delay
+    if (isInViewport(h1Arr[0]))
       h1Arr[0].classList.add('inView');
-    }
-
 
     // if h3 in viewport
     if (isInViewport(h3)) {
 
       // set start positions for animation
-      for (let i = 0; i < h1Arr.length; i++) {
+      for (let i = 0, j = h1Arr.length; i < j; i++) {
         h1Arr[i].classList.add('js-landing-h1-startPosition');
+
         // check if reservation links exists
         if (typeof reservationsLinksArr[i] !== 'undefined') {
           reservationsLinksArr[i].classList.add('js-start-hide');
@@ -464,9 +459,9 @@ let isHalfInViewport = (elem) => {
           reservationsLinksArr[1].classList.add('js-color-transition');
         }, 800);
 
-        if (isInViewport(servicesHeading)) {
+        if (isInViewport(servicesHeading))
           servicesHeading.classList.add('js-end-show');
-        }
+
       }, 1600)
     } 
 
@@ -488,7 +483,7 @@ let isHalfInViewport = (elem) => {
         reservationsLinksArr[1].classList.add('js-color-transition');
       }, 800);
     }
-  };
+  }; // End animateLandingHeadings-function.
 
   // if on landing fire event-listeners
   if (typeof document.getElementsByClassName('headings-wrap-landing')[0] !== 'undefined') {
@@ -521,10 +516,9 @@ let isHalfInViewport = (elem) => {
 
     let animateServices = () => {
 
-      if (isInViewport(heading) && !document.querySelectorAll('.headings-wrap-landing h1')[0].classList.contains('inView')) {
+      if (isInViewport(heading) && !document.querySelectorAll('.headings-wrap-landing h1')[0].classList.contains('inView'))
         // animate into view
         heading.classList.add('js-end-show');
-      }
 
       if (isHalfInViewport(eventsCard)) {
         // set start position
@@ -557,10 +551,9 @@ let isHalfInViewport = (elem) => {
 
     let animateServicesLargeViewport = () => {
 
-      if (isInViewport(heading)) {
+      if (isInViewport(heading))
         // animate into view
         heading.classList.add('js-end-show');
-      }
 
       // if consultingCard OR mocktailsCard half in viewport
       if (isHalfInViewport(consultingCard) || isHalfInViewport(mocktailsCard)) {
@@ -637,9 +630,8 @@ let isHalfInViewport = (elem) => {
                    + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
 
       // If initialHeight < height
-      if (initialHeight < height) {
+      if (initialHeight < height)
         field.style.height = `${height}px`;
-      }
     };
 
     document.addEventListener('input', function (event) {
@@ -663,18 +655,15 @@ let isHalfInViewport = (elem) => {
     // hide elems
     form.classList.add('js-start-hide');
 
-
     let animateForm = () => {
 
-      if (isHalfInViewport(form)) {
+      if (isHalfInViewport(form))
         // animate into view
         form.classList.add('js-end-show');
-      }
     };
 
     window.addEventListener('scroll', animateForm);
     window.addEventListener('load', animateForm);
-    
   }
 }
 // End animate form.
@@ -701,15 +690,13 @@ let isHalfInViewport = (elem) => {
 
   let animateFooter = () => {
 
-    if (isInViewport(logo)) {
+    if (isInViewport(logo))
       // animate into view
       logo.classList.add('js-end-show');
-    }
 
-    if (isInViewport(contact)) {
+    if (isInViewport(contact))
       // animate into view
       contact.classList.add('js-end-show');
-    }
 
     if (isInViewport(liArr[0])) {
       // animate into view
@@ -731,7 +718,6 @@ let isHalfInViewport = (elem) => {
 
   window.addEventListener('scroll', animateFooter);
   window.addEventListener('load', animateFooter);
-
 }
 // End animate footer.
 
@@ -797,13 +783,11 @@ let isHalfInViewport = (elem) => {
         window.setTimeout(function() {
           aboutUs.classList.add('js-end-show');
         }, 500);
-        
       }
     };
 
     window.addEventListener('scroll', animate);
     window.addEventListener('load', animate);
-    
   }
 }
 // End animate about us section.
@@ -824,7 +808,6 @@ let isHalfInViewport = (elem) => {
 
     // hide elems
     section.classList.add('js-start-hide');
-
 
     let animate = () => {
 
@@ -864,8 +847,6 @@ let isHalfInViewport = (elem) => {
       if (typeof document.createElement('div').style.grid !== 'undefined'
           && window.matchMedia('(min-width: 900px)').matches) {
 
-// console.log('grid');
-
         const sliderWindow = document.getElementsByClassName('slider-window')[0];
         // const belt = document.getElementsByClassName('testimonials-container')[0];
         const beltItem1 = document.getElementsByClassName('testimonials-grid')[0];
@@ -873,7 +854,6 @@ let isHalfInViewport = (elem) => {
         let clickCounter = 0;
         let shiftCounter = 0;
         const beltItemArr = document.getElementsByClassName('testimonials-grid');
-
 
         // set css
         const cssSetup = () => {
@@ -927,7 +907,6 @@ let isHalfInViewport = (elem) => {
               && window.matchMedia('(min-width: 900px)').matches) {
 
             const clickTarget = e.target;
-
             const xCoordInClickTarget = e.clientX - clickTarget.getBoundingClientRect().left;
 
             const beltWidth = belt.offsetWidth;
@@ -1003,16 +982,7 @@ let isHalfInViewport = (elem) => {
 
         window.addEventListener('resize', adjustXpositionOfBelt);
 
-
-      // browser doesn't support grid  OR  vp < 900
-      } else if (typeof document.createElement('div').style.grid === 'undefined'  // TODO: not needed..?
-                 || window.matchMedia('(max-width: 900px)').matches) {
-
-// console.log('no grid');
-
-
-      } // End else-if.
-
+      } // end if
     } // End testimonialSlider-function.
 
     testimonialSlider();
