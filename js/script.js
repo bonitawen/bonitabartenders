@@ -142,12 +142,8 @@ var checkScrollSpeed = (function(settings){
   let headerHeight = header.offsetHeight;
 
   window.addEventListener('resize', () => headerHeight = header.offsetHeight);
-
-  window.addEventListener('resize', () => {
-    headerBuffer.style.height = headerHeight + 'px';
-  });
+  window.addEventListener('resize', () => headerBuffer.style.height = headerHeight + 'px');
   
-
 
   // WHEN SCROLLED PAST CERTAIN POINT TURN STATIC HEADER INTO FIXED HEADER
   let headerPositioning_1 = () => {
@@ -177,10 +173,8 @@ var checkScrollSpeed = (function(settings){
       headerBuffer.style.height = headerHeight + 'px';
       header.classList.add('js-header-transition');
     } else {
-
       header.style.position = 'absolute';
       headerBuffer.style.height = headerHeight + 'px';
-
     }
   };
   window.addEventListener('load', headerPositioning_2);
@@ -195,7 +189,6 @@ var checkScrollSpeed = (function(settings){
     if (window.matchMedia('(max-width: 900px)').matches) {
 
       let headerTransformDistance = headerHeight + 10;
-
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       // down scroll & header === absolute
@@ -206,9 +199,9 @@ var checkScrollSpeed = (function(settings){
         header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
 
       // up scroll & header === absolute
-      } else if ((scrollTop < lastScrollTop && header.style.position === 'absolute')) {
+      } else if ((scrollTop < lastScrollTop && header.style.position === 'absolute'))
         header.style.transform = 'translateY(0)';
-      }
+    
 
       // down scroll
       if (scrollTop > lastScrollTop && header.style.position === 'fixed' && scrollTop > headerHeight) {
@@ -223,34 +216,18 @@ var checkScrollSpeed = (function(settings){
           }, 400);
         }
         
-      // up scroll
-      } else if (scrollTop < lastScrollTop) {
+      // up scroll && if past 500
+      } else if (scrollTop < lastScrollTop && window.pageYOffset > 500 && checkScrollSpeed() < -15) {
 
-        // if past 500
-        if (window.pageYOffset > 500 && checkScrollSpeed() < -15) {
-
-          // show header
-          header.style.transform = 'translateY(0)';
-          header.classList.add('js-header-transition');
-
-        // if less than 500 && header fixed
-        } else if (window.pageYOffset < 500 && header.style.position === 'fixed') {
-
-          // // hide header smoothly
-          // header.style.transform = 'translateY(-' + headerTransformDistance + 'px)';
-          // header.classList.add('js-header-transition');
-
-          // // w/ delay set header to aboslute and in normal position (delay == transition time to move header off page)
-          // window.setTimeout(function () {
-          //   header.style.position = 'absolute';
-          //   header.style.transform = 'translateY(0)';
-          // }, 400);
-        }
+        // show header
+        header.style.transform = 'translateY(0)';
+        header.classList.add('js-header-transition');
       }
+
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
     } // end if
-  }
+  } // end showHideHeader-func
   window.addEventListener('scroll', showHideHeader);
 
 
