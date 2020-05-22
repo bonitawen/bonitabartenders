@@ -1655,7 +1655,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         }, 500);
         
       } else {
-        for (let i = 0; i < drinkBoxArr.length; i++) {
+        for (let i = 0, j = drinkBoxArr.length; i < j; i++) {
           if (isInViewport(drinkBoxArr[i])) {
             headings.classList.add('js-end-show');
             drinksWindow.classList.add('js-end-show');
@@ -1666,7 +1666,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
     window.addEventListener('scroll', animate);
     window.addEventListener('load', animate);
-    
   }
 }
 // End animate menu section.
@@ -1694,24 +1693,18 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
     let animate = () => {
 
-      if (isInViewport(h2)) {
-
+      if (isInViewport(h2))
         // animate into view
         introSection.classList.add('js-end-show');
-      }
 
-      if (isInViewport(heroSection) || isInViewport(h2)) {
-
+      if (isInViewport(heroSection) || isInViewport(h2))
         // animate into view
         heroSection.classList.add('js-end-show');
-      }
 
-      for (let i = 0; i < qaArr.length; i++) {
-        if (isInViewport(qaArr[i])) {
-
+      for (let i = 0, j = qaArr.length; i < j; i++) {
+        if (isInViewport(qaArr[i]))
           // animate into view
           qaContainer.classList.add('js-end-show');
-        }
       }
     };
 
@@ -1742,23 +1735,17 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
     let animate = () => {
 
-      if (isInViewport(h2)) {
-
+      if (isInViewport(h2))
         // animate into view
         h2.classList.add('js-end-show');
-      }
 
-      if (isInViewport(emailSection)) {
-
+      if (isInViewport(emailSection))
         // animate into view
         emailSection.classList.add('js-end-show');
-      }
 
-      if (isInViewport(phoneSection)) {
-
+      if (isInViewport(phoneSection))
         // animate into view
         phoneSection.classList.add('js-end-show');
-      }
     };
 
     window.addEventListener('scroll', animate);
@@ -1774,9 +1761,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 {
   let cocktailFinderSection = document.getElementsByClassName('cocktail-finder-section')[0];
 
-  if (typeof cocktailFinderSection !== 'undefined') {
+  if (typeof cocktailFinderSection !== 'undefined')
     cocktailFinderSection.classList.remove('hide');
-  }
 }
 
 
@@ -1785,7 +1771,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 // ***************************
 
 {
-  // Constructor setting and getting return ajax return object.
+  // Constructor setting and getting ajax return object.
   function InputOutput() {
       var inputs; //This will contain key-value pairs.
 
@@ -1861,7 +1847,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
       serverErrorDiv.classList.remove('hide');
     };
 
-
     xhr.send();
 
   }; // end getDrinks-function
@@ -1877,10 +1862,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
   }
 
 
-
   // new-up inputOutput object
   let inputOutput = new InputOutput();
-
 
 
   // Animates drinks-list-container into view.
@@ -1921,7 +1904,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
-
   let [i, j] = [-5, -1],
       prev = document.getElementsByClassName('btn_back')[0],
       next = document.getElementsByClassName('btn_forward')[0];
@@ -1934,9 +1916,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     let drinksObj = inputOutput.getResponseObject(),
         drinksArr = drinksObj['drinks'];
 
-    if (reset === 1) {
+    if (reset === 1)
       [i, j] = [-5, -1]
-    }
 
     i += upDown;
     j += upDown;
@@ -1960,7 +1941,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
-
   // Removes previous ul.
   // Loops over 5 items. If item exist, print it.
   let printList = (i, j) => {
@@ -1970,9 +1950,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         drinksDiv = document.getElementsByClassName('drinks-slide')[0];
 
     // if ul exists, remove it
-    if (drinksDiv.contains(drinksDiv.getElementsByTagName('ul')[0])) {
+    if (drinksDiv.contains(drinksDiv.getElementsByTagName('ul')[0]))
       drinksDiv.removeChild(drinksDiv.getElementsByTagName('ul')[0]);
-    }
 
     // create ul
     let ul = document.createElement('ul');
@@ -2008,22 +1987,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Gets matching drink name, then calls next function.
   let getDrinkName = (e) => {
     let clickedElem = e.target;
@@ -2034,7 +1997,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
       let strDrink = clickedElem.textContent;
 
       let marginContainerBeverageDetails = document.querySelector('.beverage-details-container .card-margin-container');
-
 
 
       // if a new ingredient search is triggered 
@@ -2085,7 +2047,6 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
         // call displayDrinkDetails-function with object as para
         displayDrinkDetails(drinkObj);
-
       }
     }; // end onload
 
@@ -2126,9 +2087,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         }, 10);
       }
 
-    } else {
+    } else
       drinksDetailsDiv.classList.add('js-end-show');
-    }
 
 
 
@@ -2145,7 +2105,9 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     // two dimensional array. holds ingredients and amount for each drink.
     let ingredientsArr = [];
 
-    for (let i = 1; i < 16; i++) {
+    let maxIngredients = 16;
+
+    for (let i = 1; i < maxIngredients; i++) {
 
       // if ingredient not null AND not empty string
       if (drinkObject['strIngredient' + i] !== null && drinkObject['strIngredient' + i] !== '') {
@@ -2160,9 +2122,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         // add array for one drink to array holding all drinks
         ingredientsArr.push(ingredientAndAmountArr);
 
-      } else {
+      } else
         break;
-      }
     }
   // console.log(ingredientsArr[0][0]);   -- ingredient
   // console.log(ingredientsArr[0][1]);   -- amount
@@ -2173,9 +2134,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
     // if ul exists, remove it
-    if (ingredientsListWrap.contains(ingredientsListWrap.getElementsByTagName('ul')[0])) {
+    if (ingredientsListWrap.contains(ingredientsListWrap.getElementsByTagName('ul')[0]))
       ingredientsListWrap.removeChild(ingredientsListWrap.getElementsByTagName('ul')[0]);
-    }
 
 
     // display name, image, ingredients, amounts, directions
@@ -2200,9 +2160,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
       li.textContent = `${ingredient[0]}`; // 0 represents ingredient; 1 represents amount
 
       // add amounts if they're not null or empty string
-      if (ingredient[1] !== null && ingredient[1] !== '') {
+      if (ingredient[1] !== null && ingredient[1] !== '')
         li.textContent += ` --- ${ingredient[1]}`;
-      }
 
       ul.appendChild(li);
 
@@ -2221,7 +2180,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
   }; // End displayDrinkDetails-function.
 }
 
-// End cocktial-finder logic.
+// End cocktail-finder logic.
 // ***************************
 
 
@@ -2242,29 +2201,16 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
     let animate = () => {
-
-      if (isInViewport(h2)) {
-
+      if (isInViewport(h2))
         // animate into view
         h2.classList.add('js-end-show');
-      }
 
-      if (isInViewport(p)) {
-
+      if (isInViewport(p))
         // animate into view
         p.classList.add('js-end-show');
-      }
     };
 
     window.addEventListener('scroll', animate);
     window.addEventListener('load', animate);
-
   }
 } // End animate cocktail-finder heading and paragraph.
-
-
-
-
-
-
-
