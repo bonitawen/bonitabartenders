@@ -49,7 +49,7 @@
 
   let hideNavItems = () => {
 
-    for (let i = 0; i < liArr.length; i++) {
+    for (let i = 0, j = liArr.length; i < j; i++) {
       if (liArr[i].classList.contains('logo')) continue;
 
       window.matchMedia('(min-width: 900px)').matches ? liArr[i].classList.remove('hide') : liArr[i].classList.add('hide');
