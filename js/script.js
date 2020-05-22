@@ -184,7 +184,7 @@ var checkScrollSpeed = (function(settings){
   let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   let showHideHeader = () => {
-console.log('mama');
+
     // if vp < 900
     if (window.matchMedia('(max-width: 900px)').matches) {
 
@@ -236,7 +236,7 @@ console.log('mama');
 
     // vp < 900
     if (window.matchMedia('(max-width: 900px)').matches) return showHideHeader();
-console.log('mia');
+
     header.style.position = 'absolute';
     header.style.transform = 'translateY(0)';
     header.classList.remove('js-header-transition');
