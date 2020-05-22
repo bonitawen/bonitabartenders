@@ -90,21 +90,16 @@
 
 
 
-// SET HEADER HEIGHT.
+// START SET HEADER HEIGHT.
 {
   const header = document.getElementsByTagName('header')[0];
 
   let setHeaderHeight = () => {
-    if (window.matchMedia('(min-width: 900px)').matches) {
-      header.style.height = '100px';
-    } else if (window.matchMedia('(min-width: 450px)').matches) {
-      header.style.height = '80px';
-    } else {
-      header.style.height = '57px';
-    }
+    if (window.matchMedia('(min-width: 900px)').matches) return header.style.height = '100px';
+    if (window.matchMedia('(min-width: 450px)').matches) return header.style.height = '80px';
+    return header.style.height = '57px';
   };
   setHeaderHeight();
-
   window.addEventListener('resize', setHeaderHeight);
 } // End set header height.
 
