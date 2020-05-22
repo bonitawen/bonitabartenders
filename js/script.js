@@ -256,9 +256,8 @@ var checkScrollSpeed = (function(settings){
     if (!overlay.classList.contains('js-nav-mobile-show')) {
 
       // if header absolute add a flag
-      if (header.style.position === 'absolute') {
+      if (header.style.position === 'absolute')
         header.classList.add('removeFixed');
-      }
 
       overlay.classList.add('js-nav-mobile-show');
       header.style.position = 'fixed';
@@ -302,6 +301,7 @@ var checkScrollSpeed = (function(settings){
           }
         } 
         
+        // TODO: remove??
         // header was fixed before opening
         //else if (window.pageYOffset < 200) {
 
