@@ -672,6 +672,11 @@ function ElementAnimation (elem) {
     this.elem.classList.add('js-full-opacity');
     this.elem.style.transition = `opacity ${duration}ms ${easing}`;
   };
+  this.delay = function (action, delay) {
+    window.setTimeout(function () {
+      action();
+    }, delay);
+  }
   this.isInViewport = function () {
     this.bounding = this.elem.getBoundingClientRect();
     return (
