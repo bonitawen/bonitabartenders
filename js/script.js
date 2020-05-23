@@ -646,27 +646,58 @@ let isHalfInViewport = (elem) => {
 
 // START ANIMATE FORMS.
 {
-  let form = document.getElementsByTagName('form')[0];
-
-
-  // if form exists
-  if (typeof form !== 'undefined') {
-
-    // hide elems
-    form.classList.add('js-start-hide');
-
-    let animateForm = () => {
-
-      if (isHalfInViewport(form))
-        // animate into view
-        form.classList.add('js-end-show');
-    };
-
-    window.addEventListener('scroll', animateForm);
-    window.addEventListener('load', animateForm);
+  const form = new ElementAnimation(document.getElementsByTagName('form')[0]);
+  
+  if (form.isNotUndefined()) {
+    form.zeroOpacity();
+    form.animateIfHalfInView();
+    window.addEventListener('scroll', () => form.animateIfHalfInView());
   }
 }
 // End animate form.
+
+
+
+
+// ***************************************************
+function ElementAnimation (elem) {
+  this.elem = elem;
+  this.isNotUndefined = function () {
+    return (typeof this.elem !== 'undefined');
+  };
+  this.zeroOpacity = function () {
+    this.elem.classList.add('js-zero-opacity');
+  };
+  this.fullOpacity = function (duration = 800, easing = 'ease-in-out') {
+    this.elem.classList.add('js-full-opacity');
+    this.elem.style.transition = `opacity ${duration}ms ${easing}`;
+  };
+  this.isInViewport = function () {
+    this.bounding = this.elem.getBoundingClientRect();
+    return (
+      this.bounding.top  >= 0 &&
+      this.bounding.left >= 0 &&
+      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+  this.isHalfInViewport = function () {
+    this.bounding = this.elem.getBoundingClientRect();
+    this.computedStyle = window.getComputedStyle(this.elem);
+    return (
+      this.bounding.top  >= '-' + parseInt(this.computedStyle.height) / 2 &&
+      this.bounding.left >= 0 &&
+      this.bounding.bottom - parseInt(this.computedStyle.height) / 2 <= (window.innerHeight || document.documentElement.clientHeight) &&
+      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+  this.animateIfHalfInView = function (duration = 800, easing = 'ease-in-out') {
+    // console.log(this); // ??? why is this === window here ???
+    if (this.isHalfInViewport())
+      this.fullOpacity(duration, easing);
+  }.bind(this);
+}
+// ***************************************************
 
 
 

@@ -537,6 +537,14 @@ footer .nav-footer ul li:nth-child(1) {
   margin-top: -1.3em;
 }
 
+.js-zero-opacity {
+  opacity: 0;
+}
+
+.js-full-opacity {
+  opacity: 1;
+}
+
 .js-start-hide {
   opacity: 0;
 }
