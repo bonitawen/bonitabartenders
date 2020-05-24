@@ -791,32 +791,14 @@ function ElementAnimation (elem) {
 
 // START ANIMATE ABOUT US SECTION.
 {
-  let aboutUs = document.querySelector('.about-us-section p');
-
-  // if aboutUS exists
-  if (typeof aboutUs !== 'undefined' 
-      && aboutUs !== null) {
-
-    // hide elems
-    aboutUs.classList.add('js-start-hide');
-
-
-    let animate = () => {
-
-      if (isInViewport(aboutUs)) {
-
-        // animate into view
-        window.setTimeout(function() {
-          aboutUs.classList.add('js-end-show');
-        }, 500);
-      }
-    };
-
-    window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
+  const aboutUs = new ElementAnimation(document.querySelector('.about-us-section p'));
+  
+  if (aboutUs.isNotUndefined()) {
+    aboutUs.zeroOpacity();
+    aboutUs.delay(aboutUs.animateIfInView, 500);
+    window.addEventListener('scroll', () => aboutUs.delay(aboutUs.animateIfInView, 500));
   }
 }
-// End animate about us section.
 
 
 
