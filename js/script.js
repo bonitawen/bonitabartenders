@@ -696,6 +696,10 @@ function ElementAnimation (elem) {
       this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   };
+  this.animateIfInView = function (duration = 800, easing = 'ease-in-out') {
+    if (this.isInViewport())
+      this.fullOpacity(duration, easing);
+  }.bind(this);
   this.animateIfHalfInView = function (duration = 800, easing = 'ease-in-out') {
     // console.log(this); // ??? why is this === window here ???
     if (this.isHalfInViewport())
@@ -709,51 +713,85 @@ function ElementAnimation (elem) {
 
 // START ANIMATE FOOTER.
 {
-  let logo = document.getElementsByClassName('logo-footer')[0],
-      contact = document.getElementsByClassName('footer-contact')[0],
-      nav = document.getElementsByClassName('nav-footer')[0],
-      liArr = nav.getElementsByTagName('li');
+  const footerElems = {
+    logo: new ElementAnimation(document.getElementsByClassName('logo-footer')[0]),
+    contact: new ElementAnimation(document.getElementsByClassName('footer-contact')[0]),
+    nav: new ElementAnimation(document.getElementsByClassName('nav-footer')[0]),
+    liArr: [
+      new ElementAnimation(document.querySelectorAll('.nav-footer li')[0]),
+      new ElementAnimation(document.querySelectorAll('.nav-footer li')[1]),
+      new ElementAnimation(document.querySelectorAll('.nav-footer li')[2]),
+      new ElementAnimation(document.querySelectorAll('.nav-footer li')[3])
+    ]
+  }
 
+  const animateFooter = () => {
+    for (let key in footerElems) {
+      if (!Array.isArray(footerElems[key])) {
+        footerElems[key].zeroOpacity();
+        footerElems[key].animateIfInView();
+      }
+      else {
+        let delay = 0;
+        for (let li of footerElems[key]) {
+          li.zeroOpacity();
+          li.delay(li.animateIfInView, delay);
+          delay += 100;
+        }
+      }
+    }
+  }
+
+  if (footerElems.logo.isNotUndefined()) {
+    animateFooter();
+    window.addEventListener('scroll', () => animateFooter());
+  }
+
+  // if (form.isNotUndefined()) {
+  //   form.zeroOpacity();
+  //   form.animateIfHalfInView();
+  //   window.addEventListener('scroll', () => form.animateIfHalfInView());
+  // }
 
   // hide elems
-  logo.classList.add('js-start-hide');
-  contact.classList.add('js-start-hide');
-  liArr[0].classList.add('js-start-hide');
-  liArr[1].classList.add('js-start-hide');
-  liArr[2].classList.add('js-start-hide');
-  liArr[3].classList.add('js-start-hide');
+  // logo.classList.add('js-start-hide');
+  // contact.classList.add('js-start-hide');
+  // liArr[0].classList.add('js-start-hide');
+  // liArr[1].classList.add('js-start-hide');
+  // liArr[2].classList.add('js-start-hide');
+  // liArr[3].classList.add('js-start-hide');
 
 
-  let animateFooter = () => {
+  // let animateFooter = () => {
 
-    if (isInViewport(logo))
-      // animate into view
-      logo.classList.add('js-end-show');
+  //   if (isInViewport(logo))
+  //     // animate into view
+  //     logo.classList.add('js-end-show');
 
-    if (isInViewport(contact))
-      // animate into view
-      contact.classList.add('js-end-show');
+  //   if (isInViewport(contact))
+  //     // animate into view
+  //     contact.classList.add('js-end-show');
 
-    if (isInViewport(liArr[0])) {
-      // animate into view
-      liArr[0].classList.add('js-end-show');
+  //   if (isInViewport(liArr[0])) {
+  //     // animate into view
+  //     liArr[0].classList.add('js-end-show');
 
-      window.setTimeout(function () {
-        liArr[1].classList.add('js-end-show');
-      }, 100);
+  //     window.setTimeout(function () {
+  //       liArr[1].classList.add('js-end-show');
+  //     }, 100);
 
-      window.setTimeout(function () {
-        liArr[2].classList.add('js-end-show');
-      }, 200);
+  //     window.setTimeout(function () {
+  //       liArr[2].classList.add('js-end-show');
+  //     }, 200);
 
-      window.setTimeout(function () {
-        liArr[3].classList.add('js-end-show');
-      }, 300);
-    }
-  };
+  //     window.setTimeout(function () {
+  //       liArr[3].classList.add('js-end-show');
+  //     }, 300);
+  //   }
+  // };
 
-  window.addEventListener('scroll', animateFooter);
-  window.addEventListener('load', animateFooter);
+  // window.addEventListener('scroll', animateFooter);
+  // window.addEventListener('load', animateFooter);
 }
 // End animate footer.
 
