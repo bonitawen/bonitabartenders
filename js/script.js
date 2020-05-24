@@ -771,16 +771,17 @@ function ElementAnimation (elem) {
   };
 
   const animateIntroSection = () => {
-    introElems.img.zeroOpacity();
-    introElems.img.animateIfInView();
-    
     if (introElems.heading.isInViewport()) {
-      introElems.heading.slideDownStartPos(20);
+      introElems.img.fullOpacity();
       introElems.heading.delay(introElems.heading.slideDownEndPos, 300);
     }
   };
 
   if (introElems.img.isNotUndefined()) {
+    introElems.img.zeroOpacity();
+    introElems.heading.zeroOpacity();
+    introElems.heading.slideDownStartPos(20);
+
     animateIntroSection();
     window.addEventListener('scroll', () => animateIntroSection());
   }
