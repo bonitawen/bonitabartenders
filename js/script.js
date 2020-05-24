@@ -663,7 +663,7 @@ let isHalfInViewport = (elem) => {
 function ElementAnimation (elem) {
   this.elem = elem;
   this.isNotUndefined = function () {
-    return (typeof this.elem !== 'undefined');
+    return (typeof this.elem !== 'undefined' && this.elem !== null);
   };
   this.zeroOpacity = function () {
     this.elem.classList.add('js-zero-opacity');
@@ -705,6 +705,17 @@ function ElementAnimation (elem) {
     if (this.isHalfInViewport())
       this.fullOpacity(duration, easing);
   }.bind(this);
+  this.slideDownStartPos = function (startPos = 10) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateY(-${startPos}px)`;
+  }; 
+  this.slideDownEndPos = function (duration = 600, easing = 'ease-in-out') {
+    window.setTimeout(function () {
+      this.elem.classList.add('js-full-opacity');
+      this.elem.style.transform = `translateY(0)`;
+      this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
+    }.bind(this));
+  }.bind(this);
 }
 // ***************************************************
 
@@ -723,7 +734,7 @@ function ElementAnimation (elem) {
       new ElementAnimation(document.querySelectorAll('.nav-footer li')[2]),
       new ElementAnimation(document.querySelectorAll('.nav-footer li')[3])
     ]
-  }
+  };
 
   const animateFooter = () => {
     for (let key in footerElems) {
@@ -740,58 +751,12 @@ function ElementAnimation (elem) {
         }
       }
     }
-  }
+  };
 
   if (footerElems.logo.isNotUndefined()) {
     animateFooter();
     window.addEventListener('scroll', () => animateFooter());
   }
-
-  // if (form.isNotUndefined()) {
-  //   form.zeroOpacity();
-  //   form.animateIfHalfInView();
-  //   window.addEventListener('scroll', () => form.animateIfHalfInView());
-  // }
-
-  // hide elems
-  // logo.classList.add('js-start-hide');
-  // contact.classList.add('js-start-hide');
-  // liArr[0].classList.add('js-start-hide');
-  // liArr[1].classList.add('js-start-hide');
-  // liArr[2].classList.add('js-start-hide');
-  // liArr[3].classList.add('js-start-hide');
-
-
-  // let animateFooter = () => {
-
-  //   if (isInViewport(logo))
-  //     // animate into view
-  //     logo.classList.add('js-end-show');
-
-  //   if (isInViewport(contact))
-  //     // animate into view
-  //     contact.classList.add('js-end-show');
-
-  //   if (isInViewport(liArr[0])) {
-  //     // animate into view
-  //     liArr[0].classList.add('js-end-show');
-
-  //     window.setTimeout(function () {
-  //       liArr[1].classList.add('js-end-show');
-  //     }, 100);
-
-  //     window.setTimeout(function () {
-  //       liArr[2].classList.add('js-end-show');
-  //     }, 200);
-
-  //     window.setTimeout(function () {
-  //       liArr[3].classList.add('js-end-show');
-  //     }, 300);
-  //   }
-  // };
-
-  // window.addEventListener('scroll', animateFooter);
-  // window.addEventListener('load', animateFooter);
 }
 // End animate footer.
 
@@ -800,39 +765,26 @@ function ElementAnimation (elem) {
 
 // START ANIMATION FOR HERO SECTION ON ABOUT & COCKTAILS PAGE
 {
-  let section = document.getElementsByClassName('hero-section-about&cocktails')[0];
+  const introElems = {
+    img: new ElementAnimation(document.querySelector('.hero-section-aboutAndCocktails .hero-image-wrap')),
+    heading: new ElementAnimation(document.querySelector('.hero-section-aboutAndCocktails h2'))
+  };
 
-  // if about or cocktails hero section exists
-  if (typeof section !== 'undefined') {
-
-    let img = section.getElementsByClassName('hero-image-wrap')[0],
-        heading = section.getElementsByTagName('h2')[0];
-
-    // hide elems
-    img.classList.add('js-start-hide');
-    heading.classList.add('js-start-hide');
-
-    let animateHeroSection = () => {
-
-      if (isInViewport(heading)) {
-        // set start position
-        heading.classList.add('js-about-h2-startPosition');
-
-        // animate into view
-        img.classList.add('js-end-show');
-
-        window.setTimeout(function () {
-          heading.classList.add('js-endPosition');
-        }, 300);
-      }
-    };
-
-    window.addEventListener('scroll', animateHeroSection);
-    window.addEventListener('load', animateHeroSection);
+  const animateIntroSection = () => {
+    introElems.img.zeroOpacity();
+    introElems.img.animateIfInView();
     
+    if (introElems.heading.isInViewport()) {
+      introElems.heading.slideDownStartPos(20);
+      introElems.heading.delay(introElems.heading.slideDownEndPos, 300);
+    }
+  };
+
+  if (introElems.img.isNotUndefined()) {
+    animateIntroSection();
+    window.addEventListener('scroll', () => animateIntroSection());
   }
-}
-// End animation for hero section on about & cocktails page.
+} // End animation for hero section on about & cocktails page.
 
 
 
