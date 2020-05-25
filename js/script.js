@@ -669,9 +669,10 @@ function ElementAnimation (elem) {
     this.elem.classList.add('js-zero-opacity');
   };
   this.fullOpacity = function (duration = 800, easing = 'ease-in-out') {
+    console.log(this);
     this.elem.classList.add('js-full-opacity');
     this.elem.style.transition = `opacity ${duration}ms ${easing}`;
-  };
+  }.bind(this);
   this.delay = function (action, delay) {
     window.setTimeout(function () {
       action();
@@ -806,38 +807,22 @@ function ElementAnimation (elem) {
 
 // START ANIMATE TESTIMONIALS HEADINGS.
 {
-  let section = document.getElementsByClassName('headings-testimonials')[0],
-      heading = document.querySelector('.headings-testimonials h3'),
-      aboutUs = document.querySelector('.about-us-section p');
+  const headingsWrap = new ElementAnimation(document.getElementsByClassName('headings-testimonials')[0]);
+  const heading = new ElementAnimation(document.querySelector('.headings-testimonials h3'));
+  const aboutUs = new ElementAnimation(document.querySelector('.about-us-section p'));
 
+  const animate = () => {
+    if (heading.isInViewport() && !aboutUs.isInViewport())
+      return headingsWrap.fullOpacity();
+    if (heading.isInViewport() && aboutUs.isInViewport())
+      return headingsWrap.delay(headingsWrap.fullOpacity, 700);
+  };
 
-  // if aboutUS exists
-  if (typeof aboutUs !== 'undefined'
-      && aboutUs !== null) {
-
-    // hide elems
-    section.classList.add('js-start-hide');
-
-    let animate = () => {
-
-      // if speech bubble section in view but not previous para
-      if (isInViewport(heading) && !isInViewport(aboutUs)) {
-        
-        // animate into view
-        section.classList.add('js-end-show');
-
-      } else if (isInViewport(heading) && isInViewport(aboutUs)) {
-
-        // animate w/ delay
-        window.setTimeout(function() {
-          section.classList.add('js-end-show');
-        }, 700);
-      }
-    };
-
+  if (aboutUs.isNotUndefined()) {
+    headingsWrap.zeroOpacity();
+    animate();
     window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
-  } 
+  }
 } // End animate testimonials headings.
 
 
