@@ -2143,29 +2143,19 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 // START ANIMATE COCKTAIL-FINDER HEADING AND PARAGRAPH.
 {
-  // if cocktail-finder-section exists
-  if (typeof document.querySelector('.cocktail-finder-section') !== 'undefined' 
-      && document.querySelector('.cocktail-finder-section') !== null) {
+  const cocktailFinderSection = new ElementAnimation(document.querySelector('.cocktail-finder-section'));
+  const h2 = new ElementAnimation(document.querySelector('.cocktail-finder-search-container h2'));
+  const p = new ElementAnimation(document.querySelector('.cocktail-finder-search-container p'));
 
-    const h2 = document.querySelector('.cocktail-finder-search-container h2'),
-          p = document.querySelector('.cocktail-finder-search-container p');
+  const animate = () => {
+    h2.animateIfInView();
+    p.animateIfInView();
+  };
 
-    // hide elems
-    h2.classList.add('js-start-hide');
-    p.classList.add('js-start-hide');
-
-
-    let animate = () => {
-      if (isInViewport(h2))
-        // animate into view
-        h2.classList.add('js-end-show');
-
-      if (isInViewport(p))
-        // animate into view
-        p.classList.add('js-end-show');
-    };
-
+  if (cocktailFinderSection.isNotUndefined()) {
+    h2.zeroOpacity();
+    p.zeroOpacity();
+    animate();
     window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
   }
 } // End animate cocktail-finder heading and paragraph.
