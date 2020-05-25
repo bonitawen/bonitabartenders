@@ -1689,38 +1689,23 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 // START ANIMATE CONTACE PAGE.
 {
-  // if contactSection exists
-  if (typeof document.querySelector('.contact-section') !== 'undefined' 
-      && document.querySelector('.contact-section') !== null) {
+  const h2 = new ElementAnimation(document.querySelector('.contact-info-wrap h2'));
+  const emailSection = new ElementAnimation(document.getElementsByClassName('email-section')[0]);
+  const phoneSection = new ElementAnimation(document.getElementsByClassName('phone-section')[0]);
+  const contactSection = new ElementAnimation(document.querySelector('.contact-section'));
+  const elems = [h2, emailSection, phoneSection];
 
-    const h2 = document.querySelector('.contact-info-wrap h2'),
-          emailSection = document.getElementsByClassName('email-section')[0],
-          phoneSection = document.getElementsByClassName('phone-section')[0];
+  const animate = () => {
+    for (let elem of elems)
+      elem.animateIfInView();
+  };
 
-    // hide elems
-    h2.classList.add('js-start-hide');
-    emailSection.classList.add('js-start-hide');
-    phoneSection.classList.add('js-start-hide');
+  if (contactSection.isNotUndefined()) {
+    for (let elem of elems)
+      elem.zeroOpacity();
 
-
-    let animate = () => {
-
-      if (isInViewport(h2))
-        // animate into view
-        h2.classList.add('js-end-show');
-
-      if (isInViewport(emailSection))
-        // animate into view
-        emailSection.classList.add('js-end-show');
-
-      if (isInViewport(phoneSection))
-        // animate into view
-        phoneSection.classList.add('js-end-show');
-    };
-
+    animate();
     window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
-    
   }
 } // End animate contact page.
 
