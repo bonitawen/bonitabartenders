@@ -669,7 +669,6 @@ function ElementAnimation (elem) {
     this.elem.classList.add('js-zero-opacity');
   };
   this.fullOpacity = function (duration = 800, easing = 'ease-in-out') {
-    console.log(this);
     this.elem.classList.add('js-full-opacity');
     this.elem.style.transition = `opacity ${duration}ms ${easing}`;
   }.bind(this);
@@ -1622,44 +1621,31 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 // START ANIMATE MENU SECTION.
 {
-  let para = document.querySelector('.menu-section p'),
-      headings = document.getElementsByClassName('js-alcohol-headings')[0],
-      drinksWindow = document.getElementsByClassName('window')[0],
-      drinkBoxArr = document.getElementsByClassName('drink-box');
-
-  // if para exists
-  if (typeof para !== 'undefined' 
-      && para !== null) {
-
-    // hide elems
-    para.classList.add('js-start-hide');
-    headings.classList.add('js-start-hide');
-    drinksWindow.classList.add('js-start-hide');
-
-
-    let animate = () => {
-
-      if (isInViewport(para)) {
-
-        // animate into view
-        window.setTimeout(function() {
-          para.classList.add('js-end-show');
-          headings.classList.add('js-end-show');
-          drinksWindow.classList.add('js-end-show');
-        }, 500);
-        
-      } else {
-        for (let i = 0, j = drinkBoxArr.length; i < j; i++) {
-          if (isInViewport(drinkBoxArr[i])) {
-            headings.classList.add('js-end-show');
-            drinksWindow.classList.add('js-end-show');
-          }
+  const para = new ElementAnimation(document.querySelector('.menu-section p'));
+  const headings = new ElementAnimation(document.getElementsByClassName('js-alcohol-headings')[0]);
+  const drinksWindow = new ElementAnimation(document.getElementsByClassName('window')[0]);
+  const drinkBoxArr = document.getElementsByClassName('drink-box');
+  const animate = () => {
+    if (para.isInViewport()) {
+      para.delay(para.fullOpacity, 500);
+      headings.delay(headings.fullOpacity, 500);
+      drinksWindow.delay(drinksWindow.fullOpacity, 500);
+    } else {
+      for (let i = 0, j = drinkBoxArr.length; i < j; i++) {
+        if (isInViewport(drinkBoxArr[i])) {
+          headings.fullOpacity();
+          drinksWindow.fullOpacity();
         }
       }
-    };
+    }
+  };
 
+  if (para.isNotUndefined()) {
+    para.zeroOpacity();
+    headings.zeroOpacity();
+    drinksWindow.zeroOpacity();
+    animate();
     window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
   }
 }
 // End animate menu section.
