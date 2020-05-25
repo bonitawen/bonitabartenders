@@ -1655,42 +1655,32 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 // START ANIMATE FAQ PAGE.
 {
-  // if introSection exists
-  if (typeof document.querySelector('.intro-section-faq') !== 'undefined' 
-      && document.querySelector('.intro-section-faq') !== null) {
+  const introSection = new ElementAnimation(document.querySelector('.intro-section-faq'));
+  const h2 = new ElementAnimation(document.querySelector('.intro-section-faq h2'));
+  const heroSection = new ElementAnimation(document.getElementsByClassName('hero-section-faq')[0]);
+  const qaContainer = new ElementAnimation(document.getElementsByClassName('qa-container')[0]);
+  const qaArr = document.getElementsByClassName('qa');
 
-    const introSection = document.querySelector('.intro-section-faq'),
-          h2 = introSection.getElementsByTagName('h2')[0],
-          heroSection = document.getElementsByClassName('hero-section-faq')[0],
-          qaContainer = document.getElementsByClassName('qa-container')[0],
-          qaArr = document.getElementsByClassName('qa');
+  const animate = () => {
+    if (h2.isInViewport()) 
+      introSection.fullOpacity();
 
-    // hide elems
-    introSection.classList.add('js-start-hide');
-    heroSection.classList.add('js-start-hide');
-    qaContainer.classList.add('js-start-hide');
+    if (heroSection.isInViewport() || h2.isInViewport())
+      heroSection.fullOpacity();
 
+    for (let i = 0, j = qaArr.length; i < j; i++) {
+      if (isInViewport(qaArr[i]))
+        qaContainer.fullOpacity();
+    }
+  };
 
-    let animate = () => {
+  if (introSection.isNotUndefined()) {
+    introSection.zeroOpacity();
+    heroSection.zeroOpacity();
+    qaContainer.zeroOpacity();
 
-      if (isInViewport(h2))
-        // animate into view
-        introSection.classList.add('js-end-show');
-
-      if (isInViewport(heroSection) || isInViewport(h2))
-        // animate into view
-        heroSection.classList.add('js-end-show');
-
-      for (let i = 0, j = qaArr.length; i < j; i++) {
-        if (isInViewport(qaArr[i]))
-          // animate into view
-          qaContainer.classList.add('js-end-show');
-      }
-    };
-
+    animate();
     window.addEventListener('scroll', animate);
-    window.addEventListener('load', animate);
-    
   }
 } // End animate faq page.
 
