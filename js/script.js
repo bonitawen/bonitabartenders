@@ -441,7 +441,7 @@ let isInVerticalViewport = (elem) => {
   const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
 
   if (h3.isNotUndefined())
-    if (h3.isInViewport() ||  reservationsH4.isInViewport() && !h1ObjArr[0].inView) {
+    if (h3.isInViewport() ||  reservationsH4.isInViewport() && !h1ObjArr[0].isInVerticalViewport()) {
       //  color transition override opacity/fade-in. wait, till reservation-links are faded-in.
       window.setTimeout(function () {
         reservationsLinksNl[0].classList.add('js-color-transition');
@@ -455,98 +455,59 @@ let isInVerticalViewport = (elem) => {
 
 // START ANIMATE SERVICES SECTION.
 {
-  let heading = document.getElementsByClassName('services-heading')[0],
-      eventsCard = document.getElementsByClassName('card-events')[0],
-      consultingCard = document.getElementsByClassName('card-cocktail-consulting')[0],
-      mocktailsCard = document.getElementsByClassName('card-mocktails')[0];
+  const heading = new ElementAnimation(document.getElementsByClassName('services-heading')[0]);
+  const eventsCard = new ElementAnimation(document.getElementsByClassName('card-events')[0]);
+  const consultingCard = new ElementAnimation(document.getElementsByClassName('card-cocktail-consulting')[0]);
+  const mocktailsCard = new ElementAnimation(document.getElementsByClassName('card-mocktails')[0]);
+  const h1NodeList = document.querySelectorAll('.headings-wrap-landing h1');
+  const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
+  const elemArr = [heading, eventsCard, consultingCard, mocktailsCard];
 
+  const animateSmViewport = () => {
+    if (heading.isInViewport() && !h1ObjArr[0].isInVerticalViewport())
+      heading.fullOpacity();
 
-  // if services section exists
-  if (typeof document.getElementsByClassName('services-heading')[0] !== 'undefined') {
+    if (eventsCard.isHalfInViewport())
+      eventsCard.delay(eventsCard.slideEndPos, 10);
 
-    // hide elems
-    heading.classList.add('js-start-hide');
-    eventsCard.classList.add('js-start-hide');
-    consultingCard.classList.add('js-start-hide');
-    mocktailsCard.classList.add('js-start-hide');
-
-
-    let animateServices = () => {
-
-      if (isInViewport(heading) && !document.querySelectorAll('.headings-wrap-landing h1')[0].classList.contains('inView'))
-        // animate into view
-        heading.classList.add('js-end-show');
-
-      if (isHalfInViewport(eventsCard)) {
-        // set start position
-        eventsCard.classList.add('js-startPositionTop');
-        // animate into view
-        window.setTimeout(function () {
-          eventsCard.classList.add('js-endPosition');
-        }, 10)
-      }
-
-      if (isInViewport(consultingCard)) {
-        // set start position
-        consultingCard.classList.add('js-startPositionLeft');
-        // animate into view
-        window.setTimeout(function () {
-          consultingCard.classList.add('js-endPosition');
-        }, 10)
-      }
-
-      if (isHalfInViewport(mocktailsCard)) {
-        // set start position
-        mocktailsCard.classList.add('js-startPositionLeft');
-        // animate into view
-        window.setTimeout(function () {
-          mocktailsCard.classList.add('js-endPosition');
-        }, 10)
-      }
-    };
-
-
-    let animateServicesLargeViewport = () => {
-
-      if (isInViewport(heading))
-        // animate into view
-        heading.classList.add('js-end-show');
-
-      // if consultingCard OR mocktailsCard half in viewport
-      if (isHalfInViewport(consultingCard) || isHalfInViewport(mocktailsCard)) {
-        // staggered animations for cards
-
-        // set start position
-        consultingCard.classList.add('js-startPositionLeft_ext');
-        // animate into view
-        window.setTimeout(function () {
-          consultingCard.classList.add('js-endPosition_ext');
-        }, 10)
-
-        // set start position
-        eventsCard.classList.add('js-startPositionTop');
-        // animate into view
-        window.setTimeout(function () {
-          eventsCard.classList.add('js-endPosition');
-        }, 700)
-
-        // set start position
-        mocktailsCard.classList.add('js-startPositionLeft');
-        // animate into view
-        window.setTimeout(function () {
-          mocktailsCard.classList.add('js-endPosition');
-        }, 1300)
-      }
-    };
-
-    // if vp > 900
-    if (window.matchMedia('(min-width: 900px)').matches) {
-      window.addEventListener('scroll', animateServicesLargeViewport);
-      window.addEventListener('load', animateServicesLargeViewport);
-    } else {
-      window.addEventListener('scroll', animateServices);
-      window.addEventListener('load', animateServices);
+    if (consultingCard.isInVerticalViewport()) {
+      consultingCard.delay(consultingCard.slideEndPos, 10);
     }
+
+    if (mocktailsCard.isInVerticalViewport())
+      mocktailsCard.delay(mocktailsCard.slideEndPos, 10);
+  };
+
+  const animateLgViewport = () => {
+    heading.animateIfInView();
+
+    if (consultingCard.isHalfInViewport() || mocktailsCard.isHalfInViewport()) {
+      consultingCard.delay(consultingCard.slideEndPos, 10, 700);
+      consultingCard.delay(eventsCard.slideEndPos, 700);
+      consultingCard.delay(mocktailsCard.slideEndPos, 1300);
+    }
+  };
+
+  const viewportController = () => {
+    if (window.matchMedia('(min-width: 900px)').matches) {
+      animateLgViewport();
+      window.addEventListener('scroll', animateLgViewport);
+    } else {
+      animateSmViewport();
+      window.addEventListener('scroll', animateSmViewport);
+    }
+  };
+
+  if (heading.isNotUndefined()) {
+    for (elem of elemArr)
+      elem.zeroOpacity();
+
+    eventsCard.slideDownStartPos(50);
+    mocktailsCard.slideRightStartPos(10);
+    consultingCard.slideRightStartPos(10);
+
+    viewportController();
+    window.addEventListener('resize', viewportController);
   }
 }
 // End animate services section.
