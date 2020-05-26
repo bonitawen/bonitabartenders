@@ -442,11 +442,11 @@ let isInVerticalViewport = (elem) => {
 
   if (h3.isNotUndefined())
     if (h3.isInViewport() ||  reservationsH4.isInViewport() && !h1ObjArr[0].inView) {
-      //  add color transition after elems are animated in, so css link transitions work
+      //  color transition override opacity/fade-in. wait, till reservation-links are faded-in.
       window.setTimeout(function () {
         reservationsLinksNl[0].classList.add('js-color-transition');
         reservationsLinksNl[1].classList.add('js-color-transition');
-      }, 800);
+      }, 2500);
     }
 } // End add color transition
 

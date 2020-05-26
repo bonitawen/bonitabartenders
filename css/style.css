@@ -555,7 +555,7 @@ footer .nav-footer ul li:nth-child(1) {
 }
 
 .js-color-transition {
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out !important;
 }
 
 .js-landing-hero-show {
