@@ -470,9 +470,8 @@ let isInVerticalViewport = (elem) => {
     if (eventsCard.isHalfInViewport())
       eventsCard.delay(eventsCard.slideEndPos, 10);
 
-    if (consultingCard.isInVerticalViewport()) {
+    if (consultingCard.isInVerticalViewport())
       consultingCard.delay(consultingCard.slideEndPos, 10);
-    }
 
     if (mocktailsCard.isInVerticalViewport())
       mocktailsCard.delay(mocktailsCard.slideEndPos, 10);
