@@ -367,131 +367,88 @@ let isHalfInViewport = (elem) => {
   );
 };
 
+// HELPER FUNC THAT RETURNS TRUE IF ELEM IN VIEWPORT
+let isInVerticalViewport = (elem) => {
+  let bounding = elem.getBoundingClientRect();
 
+  return (
+      bounding.top  >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+  );
+};
 
 
 // START ANIMATE LANDING INTRO TEXT AND HERO IMG.
 {
-  let animateLandingHeadings = () => {
+  const h1NodeList = document.querySelectorAll('.headings-wrap-landing h1');
+  const reservationsLinksNodeList = document.querySelectorAll('.reservations a');
+  const hoursDivNodeList = document.querySelectorAll('.hours div');
 
-    let h1Arr = document.querySelectorAll('.headings-wrap-landing h1'),
-        h3 = document.querySelector('.headings-wrap-landing h3'),
-        reservationsH4 = document.querySelector('.reservations h4'),
-        reservationsLinksArr = document.querySelectorAll('.reservations a'),
-        hoursH4 = document.querySelector('.hours h4'),
-        hoursDivsArr = document.querySelectorAll('.hours div'),
-        hero = document.querySelector('.hero-section-homepage img'),
-        servicesHeading = document.querySelector('.services-heading');
+  const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
+  const reservationsLinksObjArr = Array.from(reservationsLinksNodeList, a => new ElementAnimation(a));
+  const hoursDivObjArr = Array.from(hoursDivNodeList, div => new ElementAnimation(div));
 
+  const h3 = new ElementAnimation(document.querySelector('.headings-wrap-landing h3'));
+  const reservationsH4 = new ElementAnimation(document.querySelector('.reservations h4'));
+  const hoursH4 = new ElementAnimation(document.querySelector('.hours h4'));
+  const hero = new ElementAnimation(document.querySelector('.hero-section-homepage img'));
+  const servicesHeading = new ElementAnimation(document.querySelector('.services-heading'));
 
-    // hide elems (opacity only)
-    for (let i = 0, j = h1Arr.length; i < j; i++) {
-      h1Arr[i].classList.add('js-start-hide');
+  const elemObjArr = [...h1ObjArr, ...reservationsLinksObjArr, ...hoursDivObjArr, h3, reservationsH4, hoursH4, hero, servicesHeading];
+  const contactObjects = [reservationsH4, reservationsLinksObjArr[0], reservationsLinksObjArr[1], hoursH4, hoursDivObjArr[0], hoursDivObjArr[1]];
 
-      // check if reservation links exists
-      if (typeof reservationsLinksArr[i] !== 'undefined') {
-        reservationsLinksArr[i].classList.add('js-start-hide');
-        hoursDivsArr[i].classList.add('js-start-hide');
-      }
+  const animate = () => {
+    if (h3.isInViewport()) {
+      hero.delay(hero.fullOpacity, 100, 1200);
+      h1ObjArr[0].delay(h1ObjArr[0].slideEndPos, 10, 600);
+      h1ObjArr[1].delay(h1ObjArr[1].slideEndPos, 250, 600);
+      h1ObjArr[2].delay(h1ObjArr[2].slideEndPos, 500, 600);
+      h3.delay(h3.slideEndPos, 1000);      
+
+      for (let obj of contactObjects)
+        obj.delay(obj.fullOpacity, 1600);
+
+      servicesHeading.delay(servicesHeading.animateIfInView, 1600);
     }
-    h3.classList.add('js-start-hide');
-    reservationsH4.classList.add('js-start-hide');
-    hoursH4.classList.add('js-start-hide');
-    hero.classList.add('js-start-hide');
+
+    if (reservationsH4.isInViewport() && !h1ObjArr[0].isInVerticalViewport())
+      for (let obj of contactObjects)
+        obj.fullOpacity();
+  };
+
+  if (h3.isNotUndefined()) {
+    for (let elem of elemObjArr)
+      elem.zeroOpacity();
+
+    for (let h1 of h1ObjArr)
+      h1.slideRightStartPos();
+    h3.slideUpStartPos();
+
+    animate();
+    window.addEventListener('scroll', animate);
+  }
+} // End animate landing intro text and hero img.
 
 
-    // if first h1 in viewport
-    // adds flag to first h1, services heading & reservations section get animated w/delay
-    if (isInViewport(h1Arr[0]))
-      h1Arr[0].classList.add('inView');
-
-    // if h3 in viewport
-    if (isInViewport(h3)) {
-
-      // set start positions for animation
-      for (let i = 0, j = h1Arr.length; i < j; i++) {
-        h1Arr[i].classList.add('js-landing-h1-startPosition');
-
-        // check if reservation links exists
-        if (typeof reservationsLinksArr[i] !== 'undefined') {
-          reservationsLinksArr[i].classList.add('js-start-hide');
-          hoursDivsArr[i].classList.add('js-start-hide');
-        }
-      }
-      h3.classList.add('js-landing-h3-startPosition');
-      reservationsH4.classList.add('js-start-hide');
-      hoursH4.classList.add('js-start-hide');
 
 
-      // animate hero into view
-      window.setTimeout(function () {
-        hero.classList.add('js-landing-hero-show');
-      }, 100)
+// START ADD COLOR TRANSITION
+{
+  const reservationsLinksNl = document.querySelectorAll('.reservations a');
+  const h3 = new ElementAnimation(document.querySelector('.headings-wrap-landing h3'));
+  const reservationsH4 = new ElementAnimation(document.querySelector('.reservations h4'));
+  const h1NodeList = document.querySelectorAll('.headings-wrap-landing h1');
+  const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
 
-      // animate headings into view
-      window.setTimeout(function () {
-        h1Arr[0].classList.add('js-endPosition');
-      }, 10)
-
-      window.setTimeout(function () {
-        h1Arr[1].classList.add('js-endPosition');
-      }, 250)
-
-      window.setTimeout(function () {
-        h1Arr[2].classList.add('js-endPosition');
-      }, 500)
-
-      window.setTimeout(function () {
-        h3.classList.add('js-landing-h3-endPosition');
-      }, 1000)
-
-      window.setTimeout(function () {
-        reservationsH4.classList.add('js-end-show');
-        reservationsLinksArr[0].classList.add('js-end-show');
-        reservationsLinksArr[1].classList.add('js-end-show');
-        hoursH4.classList.add('js-end-show');
-        hoursDivsArr[0].classList.add('js-end-show');
-        hoursDivsArr[1].classList.add('js-end-show');
-
-        //  add color transition after elems are animated in, so css link transitions work
-        window.setTimeout(function () {
-          reservationsLinksArr[0].classList.add('js-color-transition');
-          reservationsLinksArr[1].classList.add('js-color-transition');
-        }, 800);
-
-        if (isInViewport(servicesHeading))
-          servicesHeading.classList.add('js-end-show');
-
-      }, 1600)
-    } 
-
-
-    // first h1 not in vp, but reservations section is
-    if (isInViewport(reservationsH4) && !h1Arr[0].classList.contains('inView')) {
-
-      reservationsH4.classList.add('js-end-show');
-      reservationsLinksArr[0].classList.add('js-end-show');
-      reservationsLinksArr[1].classList.add('js-end-show');
-      hoursH4.classList.add('js-end-show');
-      hoursDivsArr[0].classList.add('js-end-show');
-      hoursDivsArr[1].classList.add('js-end-show');
-
-
+  if (h3.isNotUndefined())
+    if (h3.isInViewport() ||  reservationsH4.isInViewport() && !h1ObjArr[0].inView) {
       //  add color transition after elems are animated in, so css link transitions work
       window.setTimeout(function () {
-        reservationsLinksArr[0].classList.add('js-color-transition');
-        reservationsLinksArr[1].classList.add('js-color-transition');
+        reservationsLinksNl[0].classList.add('js-color-transition');
+        reservationsLinksNl[1].classList.add('js-color-transition');
       }, 800);
     }
-  }; // End animateLandingHeadings-function.
-
-  // if on landing fire event-listeners
-  if (typeof document.getElementsByClassName('headings-wrap-landing')[0] !== 'undefined') {
-    window.addEventListener('scroll', animateLandingHeadings);
-    window.addEventListener('load', animateLandingHeadings);
-  }
-
-} // End animate landing intro text and hero img.
+} // End add color transition
 
 
 
@@ -672,9 +629,9 @@ function ElementAnimation (elem) {
     this.elem.classList.add('js-full-opacity');
     this.elem.style.transition = `opacity ${duration}ms ${easing}`;
   }.bind(this);
-  this.delay = function (action, delay) {
+  this.delay = function (action, delay, actionPara = 800) {
     window.setTimeout(function () {
-      action();
+      action(actionPara);
     }, delay);
   }
   this.isInViewport = function () {
@@ -696,6 +653,13 @@ function ElementAnimation (elem) {
       this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   };
+  this.isInVerticalViewport = function () {
+    this.bounding = this.elem.getBoundingClientRect();
+    return (
+      this.bounding.top  >= 0 &&
+      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  };
   this.animateIfInView = function (duration = 800, easing = 'ease-in-out') {
     if (this.isInViewport())
       this.fullOpacity(duration, easing);
@@ -708,14 +672,23 @@ function ElementAnimation (elem) {
   this.slideDownStartPos = function (startPos = 10) {
     this.elem.classList.add('js-zero-opacity');
     this.elem.style.transform = `translateY(-${startPos}px)`;
-  }; 
-  this.slideDownEndPos = function (duration = 600, easing = 'ease-in-out') {
+  }.bind(this);
+  this.slideUpStartPos = function (startPos = 10) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateY(${startPos}px)`;
+  }.bind(this);
+  this.slideRightStartPos = function (startPos = 40) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateX(-${startPos}vw)`;
+  }.bind(this);
+  this.slideEndPos = function (duration = 600, easing = 'ease-in-out') {
     window.setTimeout(function () {
       this.elem.classList.add('js-full-opacity');
-      this.elem.style.transform = `translateY(0)`;
+      this.elem.style.transform = `translate(0)`;
       this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
     }.bind(this));
   }.bind(this);
+
 }
 // ***************************************************
 
@@ -773,7 +746,7 @@ function ElementAnimation (elem) {
   const animateIntroSection = () => {
     if (introElems.heading.isInViewport()) {
       introElems.img.fullOpacity();
-      introElems.heading.delay(introElems.heading.slideDownEndPos, 300);
+      introElems.heading.delay(introElems.heading.slideEndPos, 300);
     }
   };
 
