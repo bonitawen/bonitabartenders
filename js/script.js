@@ -1745,8 +1745,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     let beverageListContainer = document.getElementsByClassName('beverage-list-container')[0];
 
     // animate drinks-list-container into view
-    if (!beverageListContainer.classList.contains('js-start-hide')) {
-      beverageListContainer.classList.add('js-start-hide');
+    if (!beverageListContainer.classList.contains('js-zero-opacity')) {
+      beverageListContainer.classList.add('js-zero-opacity');
       beverageListContainer.classList.remove('hide-beverage-container');
       window.setTimeout(function () {
         beverageListContainer.classList.add('js-end-show');
@@ -1944,7 +1944,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     // animate margin-container width & beverage-details-container
     if (!marginContainer.classList.contains('js-max-width')) {
       marginContainer.classList.add('js-max-width');
-      drinksDetailsDiv.classList.add('js-start-hide');
+      drinksDetailsDiv.classList.add('js-zero-opacity');
       drinksDetailsDiv.classList.remove('hide-beverage-container');
 
       // if vp > 900 add a delay to fade-in

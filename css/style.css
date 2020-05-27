@@ -545,10 +545,6 @@ footer .nav-footer ul li:nth-child(1) {
   opacity: 1;
 }
 
-.js-start-hide {
-  opacity: 0;
-}
-
 .js-end-show {
   opacity: 1;
   transition: opacity 0.8s ease-in-out;
@@ -556,64 +552,6 @@ footer .nav-footer ul li:nth-child(1) {
 
 .js-color-transition {
   transition: color 0.2s ease-in-out !important;
-}
-
-.js-landing-hero-show {
-  opacity: 1;
-  transition: opacity 1.2s ease-in-out;
-}
-
-.js-startPositionTop {
-  transform: translateY(-50px);
-  opacity: 0;
-}
-
-.js-startPositionLeft {
-  transform: translateX(-50px);
-  opacity: 0;
-}
-
-.js-startPositionRight {
-  transform: translateX(50px);
-  opacity: 0;
-}
-
-.js-startPositionLeft_ext {
-  transform: translateX(-100px);
-  opacity: 0;
-}
-
-.js-landing-h1-startPosition {
-  transform: translateX(-40vw);
-  opacity: 0;
-}
-
-.js-endPosition_ext {
-  transform: translate(0);
-  opacity: 1;
-  transition: 0.7s ease-in-out;
-}
-
-.js-landing-h3-startPosition {
-  transform: translateY(10px);
-  opacity: 0;
-}
-
-.js-landing-h3-endPosition {
-  transform: translateY(0);
-  opacity: 1;
-  transition: 0.8s ease-in-out;
-}
-
-.js-about-h2-startPosition {
-  transform: translateY(-10px);
-  opacity: 0;
-}
-
-.js-endPosition {
-  transform: translate(0);
-  opacity: 1;
-  transition: 0.6s ease-in-out;
 }
 
 @media (min-width: 450px) {
