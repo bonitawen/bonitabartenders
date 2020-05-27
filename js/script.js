@@ -680,11 +680,11 @@ function ElementAnimation (elem) {
         footerElems[key].animateIfInView();
       }
       else {
-        let delay = 0;
+        let delay = 100;
         for (let li of footerElems[key]) {
           li.zeroOpacity();
           li.delay(li.animateIfInView, delay);
-          delay += 100;
+          delay += 200;
         }
       }
     }
@@ -1058,7 +1058,7 @@ function ElementAnimation (elem) {
   }
 
   // if testimonial section exists
-  if (testimonialsArr[0].isNotUndefined()) {
+  if (typeof testimonialsArr[0] !== 'undefined' && testimonialsArr[0] !== null) {
     sliderWindow.zeroOpacity();
 
     for (let testimonial of testimonialsArr)
