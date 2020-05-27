@@ -1802,14 +1802,16 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     printList(i, j);
   };
 
-  next.addEventListener('click', function () {
-    counter(5);
-  });
 
-  prev.addEventListener('click', function () {
-    counter(-5);
-  });
+  if (typeof next !== 'undefined' && next !== null) {
+    next.addEventListener('click', function () {
+      counter(5);
+    });
 
+    prev.addEventListener('click', function () {
+      counter(-5);
+    });
+  }
 
 
   // Removes previous ul.
