@@ -641,6 +641,10 @@ function ElementAnimation (elem) {
     this.elem.classList.add('js-zero-opacity');
     this.elem.style.transform = `translateX(-${startPos}vw)`;
   }.bind(this);
+  this.slideLeftStartPos = function (startPos = 40) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateX(${startPos}vw)`;
+  }.bind(this);
   this.slideEndPos = function (duration = 600, easing = 'ease-in-out') {
     window.setTimeout(function () {
       this.elem.classList.add('js-full-opacity');
@@ -1056,7 +1060,7 @@ function ElementAnimation (elem) {
   // if testimonial section exists
   if (testimonialsArr[0].isNotUndefined()) {
     sliderWindow.zeroOpacity();
-    
+
     for (let testimonial of testimonialsArr)
       testimonial.zeroOpacity();
 
@@ -1070,66 +1074,77 @@ function ElementAnimation (elem) {
 
 // START ANIMATE ABOUT WENDY SECTION.
 {
-  // if about-wendy section exists
-  if (typeof document.getElementsByClassName('about-wendy-section')[0] !== 'undefined') {
+  const h2 = new ElementAnimation(document.querySelector('.about-wendy-section h2'));
+  const p = new ElementAnimation(document.querySelector('.about-wendy-text p'));
+  const smImg = new ElementAnimation(document.querySelector('.wendy-img-box .img-wrap'));
+  const lgImg = new ElementAnimation(document.querySelector('.wendy-img-box img'));
+  const elemArr = [h2, p, smImg, lgImg];
+  let smFlag = false; // inidcates if section was animated in on mobile
+  let lgFlag = false; // inidcates if section was animated in on desktop
+  let lgStartPosSet = false;
+  let smStartPosSet = false;
 
-    const h2 = document.querySelector('.about-wendy-section h2'),
-          p = document.querySelector('.about-wendy-text p'),
-          smImg = document.querySelector('.wendy-img-box .img-wrap'),
-          lgImg = document.querySelector('.wendy-img-box img');
-
-    h2.classList.add('js-start-hide');
-    p.classList.add('js-start-hide');
-    smImg.classList.add('js-start-hide');
-    lgImg.classList.add('js-start-hide');
-
-    let animate = () => {
-
-      if (isInViewport(h2))
-        // animate into view
-        h2.classList.add('js-endPosition');
-
-      if (isInViewport(p))
-        // animate into view
-        p.classList.add('js-endPosition');
-
-      // if vp > 450
-      if (window.matchMedia('(min-width: 450px)').matches) {
-        if (isInViewport(smImg)) {
-          // set start position
-          lgImg.classList.add('js-startPositionTop');
-          // animate into view
-          window.setTimeout(function () {
-            lgImg.classList.add('js-endPosition');
-          }, 10)
+  const animateSmViewport = () => {
+    if (window.matchMedia('(max-width: 450px)').matches)
+      for (let elem of elemArr)
+        if (elem.isInViewport()) {
+          elem.fullOpacity();
+          smFlag = true;
         }
+  };
 
-        if (isInViewport(smImg)) {
-          // set start position
-          smImg.classList.add('js-startPositionRight');
-          // animate into view
-          window.setTimeout(function () {
-            smImg.classList.add('js-endPosition');
-          }, 400)
-        }
+  const animateLgViewport = () => {
+    if (window.matchMedia('(min-width: 450px)').matches) {
+      h2.animateIfInView(600);
+      p.animateIfInView(600);
 
-      // vp < 450
-      } else {
-        if (isInViewport(lgImg))
-          // animate into view
-          lgImg.classList.add('js-endPosition');
+      if (smImg.isInViewport()) {
+        lgImg.slideEndPos(800);
+        smImg.delay(smImg.slideEndPos, 400, 800);
+        lgFlag = true;
+      }
+    }
+  };
 
-        if (isInViewport(smImg))
-          // animate into view
-          smImg.classList.add('js-endPosition');
+  const setLgStartPos = () => {
+    smImg.slideLeftStartPos(10);
+    lgImg.slideDownStartPos(50);
+    lgStartPosSet = true;
+    smStartPosSet = false;
+  };
 
-      } // End if else
-    }; // End animate-function
+  const setSmStartPos = () => {
+    smImg.slideLeftStartPos(0);
+    lgImg.slideDownStartPos(0);
+    smStartPosSet = true;
+    lgStartPosSet = false;
+  };
 
-    animate();
-    window.addEventListener('scroll', animate);
+  const viewportController = () => {
+    if (window.matchMedia('(min-width: 450px)').matches && !smFlag) {
+      setTimeout(function () {
+        if (!lgStartPosSet) setLgStartPos();
+        animateLgViewport();
+        window.addEventListener('scroll', animateLgViewport);
+      }, 300)
+    }
 
-  } // End if about-wendy section exists
+    if (window.matchMedia('(max-width: 450px)').matches && !lgFlag) {
+      setTimeout(function () {
+        if (!smStartPosSet) setSmStartPos();
+        animateSmViewport();
+        window.addEventListener('scroll', animateSmViewport);
+      })
+    }
+  };
+
+  if (h2.isNotUndefined()) {
+    for (let elem of elemArr)
+      elem.zeroOpacity();
+
+    viewportController();
+    window.addEventListener('resize', viewportController);
+  }
 } // End animate about wendy section.
 
 
