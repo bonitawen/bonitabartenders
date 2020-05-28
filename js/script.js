@@ -1206,7 +1206,7 @@ function ElementAnimation (elem) {
           beltArr[i].classList.add('belt-slider');
           beltArr[i].style.width = 100 * gridsOnBeltArr.length + '%';
 
-          if (i === 0)
+          if (i !== 3)
             beltArr[i].classList.add('belt-slider-absolute');
 
           // set grid width
@@ -1328,9 +1328,13 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         sliderWindow = document.getElementsByClassName('window')[0],
         belt1 = beltArr[0],
         belt2 = beltArr[1],
+        belt3 = beltArr[2],
+        belt4 = beltArr[3],
 
         myBelt1 = new Belt(belt1),
         myBelt2 = new Belt(belt2),
+        myBelt3 = new Belt(belt3),
+        myBelt4 = new Belt(belt4),
 
         callBelt1 = function (e) {
           myBelt1.beltSlider(e);
@@ -1338,7 +1342,13 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
         callBelt2 = function (e) {
           myBelt2.beltSlider(e);
         },
-        callBeltArr = [callBelt1, callBelt2];
+        callBelt3 = function (e) {
+          myBelt3.beltSlider(e);
+        },
+        callBelt4 = function (e) {
+          myBelt4.beltSlider(e);
+        },
+        callBeltArr = [callBelt1, callBelt2, callBelt3, callBelt4];
 
 
   // does 3 things: 1) mark alcohol option, 2) switch belt, 3) set window height to belt height
