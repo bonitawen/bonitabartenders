@@ -1006,7 +1006,7 @@ textarea:hover::placeholder
 
   .js-alcohol-headings
     li
-      margin-right: 3em
+      margin-right: 2em
 
   .alcohol-heading
     margin: 4em 0 2em
@@ -1017,6 +1017,12 @@ textarea:hover::placeholder
   .drink-box
     @extend %card-styles
     background-color: $light-purple
+
+@media (min-width: 450px)
+  .menu-section
+    .js-alcohol-headings
+      li
+        margin-right: 3em
 
 @media (min-width: 900px)
   .menu-section
