@@ -1434,6 +1434,8 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     window.addEventListener('resize', function () {
       myBelt1.adjustXpositionOfBeltOnResize();
       myBelt2.adjustXpositionOfBeltOnResize();
+      myBelt3.adjustXpositionOfBeltOnResize();
+      myBelt4.adjustXpositionOfBeltOnResize();
     });
   }
 } // End alcohol options marker & add/remove active belt flag & set window height === active belt height.
