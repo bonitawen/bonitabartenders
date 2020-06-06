@@ -1,3 +1,98 @@
+class ElementAnimation {
+  constructor(elem) {
+    this.elem = elem;
+  }
+
+  isNotUndefined() {
+    return (typeof this.elem !== 'undefined' && this.elem !== null);
+  }
+
+  zeroOpacity() {
+    this.elem.classList.add('js-zero-opacity');
+  }
+
+  fullOpacity(duration = 800, easing = 'ease-in-out') {
+    this.elem.classList.add('js-full-opacity');
+    this.elem.style.transition = `opacity ${duration}ms ${easing}`;
+  }
+
+  delay(action, delay, actionPara = 800) {
+    setTimeout(() => {
+      action.call(this, actionPara);
+    }, delay)
+  }
+
+  isInViewport() {
+    this.bounding = this.elem.getBoundingClientRect();
+    return (
+      this.bounding.top  >= 0 &&
+      this.bounding.left >= 0 &&
+      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  isHalfInViewport() {
+    this.bounding = this.elem.getBoundingClientRect();
+    this.computedStyle = window.getComputedStyle(this.elem);
+    return (
+      this.bounding.top  >= '-' + parseInt(this.computedStyle.height) / 2 &&
+      this.bounding.left >= 0 &&
+      this.bounding.bottom - parseInt(this.computedStyle.height) / 2 <= (window.innerHeight || document.documentElement.clientHeight) &&
+      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  isInVerticalViewport() {
+    this.bounding = this.elem.getBoundingClientRect();
+    return (
+      this.bounding.top  >= 0 &&
+      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  };
+
+  animateIfInView(duration = 800, easing = 'ease-in-out') {
+    if (this.isInViewport())
+      this.fullOpacity(duration, easing);
+  }
+
+  animateIfHalfInView(duration = 800, easing = 'ease-in-out') {
+
+    if (this.isHalfInViewport())
+      this.fullOpacity(duration, easing);
+  }
+
+  slideDownStartPos(startPos = 10) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateY(-${startPos}px)`;
+  }
+
+  slideUpStartPos(startPos = 10) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateY(${startPos}px)`;
+  }
+
+  slideRightStartPos(startPos = 40) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateX(-${startPos}vw)`;
+  }
+
+  slideLeftStartPos(startPos = 40) {
+    this.elem.classList.add('js-zero-opacity');
+    this.elem.style.transform = `translateX(${startPos}vw)`;
+  }
+
+  slideEndPos(duration = 600, easing = 'ease-in-out') {
+    setTimeout(() => {
+      this.elem.classList.add('js-full-opacity');
+      this.elem.style.transform = `translate(0)`;
+      this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
+    })
+  }
+}
+
+
+
 // START REMOVE PRELOADER
 {
   const preloader = document.getElementsByClassName('preloader')[0];
@@ -393,7 +488,6 @@ let isInVerticalViewport = (elem) => {
   const hoursH4 = new ElementAnimation(document.querySelector('.hours h4'));
   const hero = new ElementAnimation(document.querySelector('.hero-section-homepage img'));
   const servicesHeading = new ElementAnimation(document.querySelector('.services-heading'));
-
   const elemObjArr = [...h1ObjArr, ...reservationsLinksObjArr, ...hoursDivObjArr, h3, reservationsH4, hoursH4, hero, servicesHeading];
   const contactObjects = [reservationsH4, reservationsLinksObjArr[0], reservationsLinksObjArr[1], hoursH4, hoursDivObjArr[0], hoursDivObjArr[1]];
 
@@ -482,8 +576,8 @@ let isInVerticalViewport = (elem) => {
 
     if (consultingCard.isHalfInViewport() || mocktailsCard.isHalfInViewport()) {
       consultingCard.delay(consultingCard.slideEndPos, 10, 700);
-      consultingCard.delay(eventsCard.slideEndPos, 700);
-      consultingCard.delay(mocktailsCard.slideEndPos, 1300);
+      eventsCard.delay(eventsCard.slideEndPos, 700);
+      mocktailsCard.delay(mocktailsCard.slideEndPos, 1300);
     }
   };
 
@@ -572,89 +666,6 @@ let isInVerticalViewport = (elem) => {
   }
 }
 // End animate form.
-
-
-
-
-// ***************************************************
-function ElementAnimation (elem) {
-  this.elem = elem;
-  this.isNotUndefined = function () {
-    return (typeof this.elem !== 'undefined' && this.elem !== null);
-  };
-  this.zeroOpacity = function () {
-    this.elem.classList.add('js-zero-opacity');
-  };
-  this.fullOpacity = function (duration = 800, easing = 'ease-in-out') {
-    this.elem.classList.add('js-full-opacity');
-    this.elem.style.transition = `opacity ${duration}ms ${easing}`;
-  }.bind(this);
-  this.delay = function (action, delay, actionPara = 800) {
-    window.setTimeout(function () {
-      action(actionPara);
-    }, delay);
-  }
-  this.isInViewport = function () {
-    this.bounding = this.elem.getBoundingClientRect();
-    return (
-      this.bounding.top  >= 0 &&
-      this.bounding.left >= 0 &&
-      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-  this.isHalfInViewport = function () {
-    this.bounding = this.elem.getBoundingClientRect();
-    this.computedStyle = window.getComputedStyle(this.elem);
-    return (
-      this.bounding.top  >= '-' + parseInt(this.computedStyle.height) / 2 &&
-      this.bounding.left >= 0 &&
-      this.bounding.bottom - parseInt(this.computedStyle.height) / 2 <= (window.innerHeight || document.documentElement.clientHeight) &&
-      this.bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-  this.isInVerticalViewport = function () {
-    this.bounding = this.elem.getBoundingClientRect();
-    return (
-      this.bounding.top  >= 0 &&
-      this.bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    );
-  };
-  this.animateIfInView = function (duration = 800, easing = 'ease-in-out') {
-    if (this.isInViewport())
-      this.fullOpacity(duration, easing);
-  }.bind(this);
-  this.animateIfHalfInView = function (duration = 800, easing = 'ease-in-out') {
-    // console.log(this); // ??? why is this === window here ???
-    if (this.isHalfInViewport())
-      this.fullOpacity(duration, easing);
-  }.bind(this);
-  this.slideDownStartPos = function (startPos = 10) {
-    this.elem.classList.add('js-zero-opacity');
-    this.elem.style.transform = `translateY(-${startPos}px)`;
-  }.bind(this);
-  this.slideUpStartPos = function (startPos = 10) {
-    this.elem.classList.add('js-zero-opacity');
-    this.elem.style.transform = `translateY(${startPos}px)`;
-  }.bind(this);
-  this.slideRightStartPos = function (startPos = 40) {
-    this.elem.classList.add('js-zero-opacity');
-    this.elem.style.transform = `translateX(-${startPos}vw)`;
-  }.bind(this);
-  this.slideLeftStartPos = function (startPos = 40) {
-    this.elem.classList.add('js-zero-opacity');
-    this.elem.style.transform = `translateX(${startPos}vw)`;
-  }.bind(this);
-  this.slideEndPos = function (duration = 600, easing = 'ease-in-out') {
-    window.setTimeout(function () {
-      this.elem.classList.add('js-full-opacity');
-      this.elem.style.transform = `translate(0)`;
-      this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
-    }.bind(this));
-  }.bind(this);
-
-}
-// ***************************************************
 
 
 
