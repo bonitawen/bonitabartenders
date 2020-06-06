@@ -1365,7 +1365,6 @@ textarea:hover::placeholder {
   margin-bottom: 0;
 }
 .faq .question-container {
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
