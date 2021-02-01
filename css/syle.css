@@ -590,18 +590,13 @@ footer .nav-footer ul li:nth-child(1) {
 
 .services {
   margin-bottom: 6em;
+  background-color: red;
 }
 .services h4 {
   margin-bottom: 4em;
 }
 .services .card-container-services {
   background-color: red;
-  background-image: url("../img/mixed-drinks.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  padding: 10px;
-  border-radius: 8px;
 }
 .services .card {
   background-color: #FFFFFE;
@@ -622,9 +617,8 @@ footer .nav-footer ul li:nth-child(1) {
     text-align: center;
   }
 
-  .services .card-container-services {
+  .card-container-services {
     display: flex;
-    padding: 50px;
   }
 
   .card-events {
@@ -1437,4 +1431,4 @@ textarea:hover::placeholder {
   margin-bottom: 3em;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=syle.css.map */

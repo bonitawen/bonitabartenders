@@ -572,6 +572,16 @@ footer
   h4
     margin-bottom: 4em
 
+  .card-container-services
+    background-color: red
+    background-image: url("../img/mixed-drinks.jpg")
+    background-repeat: no-repeat
+    // background-attachment: fixed  // TODO: take out
+    background-position: center
+    background-size: cover
+    padding: 10px
+    border-radius: 8px
+
   .card
     @extend %card-styles
     background-color: $white
@@ -589,8 +599,10 @@ footer
     display: block
     text-align: center
 
-  .card-container-services
-    display: flex
+  .services
+    .card-container-services
+      display: flex
+      padding: 50px
 
   .card-events
     align-self: center
