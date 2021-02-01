@@ -89,6 +89,14 @@ class ElementAnimation {
       this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
     })
   }
+
+  slideEndPosTransparent(duration = 600, easing = 'ease-in-out') {
+    setTimeout(() => {
+      this.elem.classList.add('js-94-opacity');
+      this.elem.style.transform = `translate(0)`;
+      this.elem.style.transition = `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}`;
+    })
+  }
 }
 
 
@@ -562,22 +570,22 @@ let isInVerticalViewport = (elem) => {
       heading.fullOpacity();
 
     if (eventsCard.isHalfInViewport())
-      eventsCard.delay(eventsCard.slideEndPos, 10);
+      eventsCard.delay(eventsCard.slideEndPosTransparent, 10);
 
     if (consultingCard.isInVerticalViewport())
-      consultingCard.delay(consultingCard.slideEndPos, 10);
+      consultingCard.delay(consultingCard.slideEndPosTransparent, 10);
 
     if (mocktailsCard.isInVerticalViewport())
-      mocktailsCard.delay(mocktailsCard.slideEndPos, 10);
+      mocktailsCard.delay(mocktailsCard.slideEndPosTransparent, 10);
   };
 
   const animateLgViewport = () => {
     heading.animateIfInView();
 
     if (consultingCard.isHalfInViewport() || mocktailsCard.isHalfInViewport()) {
-      consultingCard.delay(consultingCard.slideEndPos, 10, 700);
-      eventsCard.delay(eventsCard.slideEndPos, 700);
-      mocktailsCard.delay(mocktailsCard.slideEndPos, 1300);
+      consultingCard.delay(consultingCard.slideEndPosTransparent, 10, 700);
+      eventsCard.delay(eventsCard.slideEndPosTransparent, 700);
+      mocktailsCard.delay(mocktailsCard.slideEndPosTransparent, 1300);
     }
   };
 

@@ -545,6 +545,10 @@ footer .nav-footer ul li:nth-child(1) {
   opacity: 1;
 }
 
+.js-94-opacity {
+  opacity: 0.94;
+}
+
 .js-end-show {
   opacity: 1;
   transition: opacity 0.8s ease-in-out;
