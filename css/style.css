@@ -16,6 +16,7 @@ body {
  * * ================================== */
 html {
   font-size: 17px;
+  color: #0E172C;
 }
 
 @media (min-width: 450px) {
@@ -511,14 +512,10 @@ footer .nav-footer ul li:nth-child(1) {
 }
 
 .hero-section-homepage {
-  background-color: #D9D4E7;
-  position: relative;
-}
-.hero-section-homepage img {
-  position: absolute;
-  left: 105px;
-  min-width: 405px;
-  max-width: 405px;
+  background-image: linear-gradient(rgba(255, 255, 254, 0.63), rgba(255, 255, 254, 0.63)), url(../img/hero1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .headings-wrap-landing {
@@ -558,23 +555,15 @@ footer .nav-footer ul li:nth-child(1) {
   transition: color 0.2s ease-in-out !important;
 }
 
-@media (min-width: 450px) {
-  .hero-section-homepage img {
-    max-width: 505px;
-    left: 40vw;
-  }
-}
 @media (min-width: 900px) {
   .hero-section-homepage .margin-container {
     padding-top: 4.8em;
     padding-bottom: 6.8em;
   }
-  .hero-section-homepage img {
-    max-width: 885px;
-  }
 }
 .contact-info {
-  background-color: #FFFFFE;
+  background-color: #0E172C;
+  color: #FFFFFE;
   margin-bottom: 6em;
 }
 

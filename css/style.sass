@@ -31,6 +31,7 @@ $large-side-padding: 7%
  * ================================== */
 html
   font-size: 17px
+  color: $dark-blue
 
 @media(min-width: 450px)
   html
@@ -495,14 +496,10 @@ footer
   background-color: $pink
 
 .hero-section-homepage
-  background-color: $light-purple
-  position: relative
-  img
-    position: absolute
-    left: 105px
-    min-width: 405px
-    max-width: 405px
-    // border: 1px solid red   TODO: take out
+  background-image: linear-gradient(rgba(255, 255, 254, 0.63), rgba(255, 255, 254, 0.63)), url(../img/hero1.jpg)
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
 
 .headings-wrap-landing
   position: relative
@@ -536,11 +533,11 @@ footer
 .js-color-transition
   transition: color .2s ease-in-out !important
 
-@media (min-width: 450px)
-  .hero-section-homepage
-    img
-      max-width: 505px
-      left: 40vw
+// @media (min-width: 450px)      //TODO: take out
+//   .hero-section-homepage
+//     img
+//       max-width: 505px
+//       left: 40vw
 
 @media (min-width: 900px)
   .hero-section-homepage
@@ -548,11 +545,12 @@ footer
       padding-top: 4.8em
       padding-bottom: 6.8em
 
-    img
-      max-width: 885px
+    // img                  //TODO: take out
+    //   max-width: 885px
 
 .contact-info
-  background-color: $white
+  background-color: $dark-blue
+  color: $white
   margin-bottom: 6em
 
 @media (min-width: 900px)    

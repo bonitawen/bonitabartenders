@@ -481,55 +481,55 @@ let isInVerticalViewport = (elem) => {
 };
 
 
-// START ANIMATE LANDING INTRO TEXT AND HERO IMG.
-{
-  const h1NodeList = document.querySelectorAll('.headings-wrap-landing h1');
-  const reservationsLinksNodeList = document.querySelectorAll('.reservations a');
-  const hoursDivNodeList = document.querySelectorAll('.hours div');
+// // START ANIMATE LANDING INTRO TEXT AND HERO IMG.
+// {
+//   const h1NodeList = document.querySelectorAll('.headings-wrap-landing h1');
+//   const reservationsLinksNodeList = document.querySelectorAll('.reservations a');
+//   const hoursDivNodeList = document.querySelectorAll('.hours div');
 
-  const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
-  const reservationsLinksObjArr = Array.from(reservationsLinksNodeList, a => new ElementAnimation(a));
-  const hoursDivObjArr = Array.from(hoursDivNodeList, div => new ElementAnimation(div));
+//   const h1ObjArr = Array.from(h1NodeList, h1 => new ElementAnimation(h1));
+//   const reservationsLinksObjArr = Array.from(reservationsLinksNodeList, a => new ElementAnimation(a));
+//   const hoursDivObjArr = Array.from(hoursDivNodeList, div => new ElementAnimation(div));
 
-  const h3 = new ElementAnimation(document.querySelector('.headings-wrap-landing h3'));
-  const reservationsH4 = new ElementAnimation(document.querySelector('.reservations h4'));
-  const hoursH4 = new ElementAnimation(document.querySelector('.hours h4'));
-  const hero = new ElementAnimation(document.querySelector('.hero-section-homepage img'));
-  const servicesHeading = new ElementAnimation(document.querySelector('.services-heading'));
-  const elemObjArr = [...h1ObjArr, ...reservationsLinksObjArr, ...hoursDivObjArr, h3, reservationsH4, hoursH4, hero, servicesHeading];
-  const contactObjects = [reservationsH4, reservationsLinksObjArr[0], reservationsLinksObjArr[1], hoursH4, hoursDivObjArr[0], hoursDivObjArr[1]];
+//   const h3 = new ElementAnimation(document.querySelector('.headings-wrap-landing h3'));
+//   const reservationsH4 = new ElementAnimation(document.querySelector('.reservations h4'));
+//   const hoursH4 = new ElementAnimation(document.querySelector('.hours h4'));
+//   const hero = new ElementAnimation(document.querySelector('.hero-section-homepage img'));
+//   const servicesHeading = new ElementAnimation(document.querySelector('.services-heading'));
+//   const elemObjArr = [...h1ObjArr, ...reservationsLinksObjArr, ...hoursDivObjArr, h3, reservationsH4, hoursH4, hero, servicesHeading];
+//   const contactObjects = [reservationsH4, reservationsLinksObjArr[0], reservationsLinksObjArr[1], hoursH4, hoursDivObjArr[0], hoursDivObjArr[1]];
 
-  const animate = () => {
-    if (h3.isInViewport()) {
-      hero.delay(hero.fullOpacity, 100, 1200);
-      h1ObjArr[0].delay(h1ObjArr[0].slideEndPos, 10, 600);
-      h1ObjArr[1].delay(h1ObjArr[1].slideEndPos, 250, 600);
-      h1ObjArr[2].delay(h1ObjArr[2].slideEndPos, 500, 600);
-      h3.delay(h3.slideEndPos, 1000);      
+//   const animate = () => {
+//     if (h3.isInViewport()) {
+//       hero.delay(hero.fullOpacity, 100, 1200);
+//       h1ObjArr[0].delay(h1ObjArr[0].slideEndPos, 10, 600);
+//       h1ObjArr[1].delay(h1ObjArr[1].slideEndPos, 250, 600);
+//       h1ObjArr[2].delay(h1ObjArr[2].slideEndPos, 500, 600);
+//       h3.delay(h3.slideEndPos, 1000);      
 
-      for (let obj of contactObjects)
-        obj.delay(obj.fullOpacity, 1600);
+//       for (let obj of contactObjects)
+//         obj.delay(obj.fullOpacity, 1600);
 
-      servicesHeading.delay(servicesHeading.animateIfInView, 1600);
-    }
+//       servicesHeading.delay(servicesHeading.animateIfInView, 1600);
+//     }
 
-    if (reservationsH4.isInViewport() && !h1ObjArr[0].isInVerticalViewport())
-      for (let obj of contactObjects)
-        obj.fullOpacity();
-  };
+//     if (reservationsH4.isInViewport() && !h1ObjArr[0].isInVerticalViewport())
+//       for (let obj of contactObjects)
+//         obj.fullOpacity();
+//   };
 
-  if (h3.isNotUndefined()) {
-    for (let elem of elemObjArr)
-      elem.zeroOpacity();
+//   if (h3.isNotUndefined()) {
+//     for (let elem of elemObjArr)
+//       elem.zeroOpacity();
 
-    for (let h1 of h1ObjArr)
-      h1.slideRightStartPos();
-    h3.slideUpStartPos();
+//     for (let h1 of h1ObjArr)
+//       h1.slideRightStartPos();
+//     h3.slideUpStartPos();
 
-    animate();
-    window.addEventListener('scroll', animate);
-  }
-} // End animate landing intro text and hero img.
+//     animate();
+//     window.addEventListener('scroll', animate);
+//   }
+// } // End animate landing intro text and hero img.
 
 
 
