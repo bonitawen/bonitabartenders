@@ -101,6 +101,7 @@ h1, h2, h3
 h1
   font-size: 2.83rem
   font-size: 2.4rem
+  line-height: 1.2
 
 @media (min-width: 900px)
   h1 
@@ -501,21 +502,36 @@ footer
   background-position: center
   background-size: cover
 
+  .margin-container
+    text-align: center
+
 .headings-wrap-landing
   position: relative
+  text-align: center
+  background-color: $white
+  opacity: .72
+  display: inline-block
+  padding: 1.5em 2.5em
+  border-radius: 10px
 
-
-  h1:nth-child(1)
-    margin-bottom: 0
-
-  h1:nth-child(2)
+  h1, h3
     margin: 0
 
   h1:nth-child(3)
-    margin-top: 0
+    margin-bottom: .2em
 
-  h3
-    margin-top: -1.3em
+  // TO-DO: take out
+  // h1:nth-child(1)
+  //   margin-bottom: 0
+
+  // h1:nth-child(2)
+  //   margin: 0
+
+  // h1:nth-child(3)
+  //   margin-top: 0
+
+  // h3
+  //   margin-top: -1.3em
 
 .js-zero-opacity
   opacity: 0

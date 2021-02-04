@@ -96,6 +96,7 @@ textarea, h1, h2, h3 {
 h1 {
   font-size: 2.83rem;
   font-size: 2.4rem;
+  line-height: 1.2;
 }
 
 @media (min-width: 900px) {
@@ -517,21 +518,24 @@ footer .nav-footer ul li:nth-child(1) {
   background-position: center;
   background-size: cover;
 }
+.hero-section-homepage .margin-container {
+  text-align: center;
+}
 
 .headings-wrap-landing {
   position: relative;
+  text-align: center;
+  background-color: #FFFFFE;
+  opacity: 0.72;
+  display: inline-block;
+  padding: 1.5em 2.5em;
+  border-radius: 10px;
 }
-.headings-wrap-landing h1:nth-child(1) {
-  margin-bottom: 0;
-}
-.headings-wrap-landing h1:nth-child(2) {
+.headings-wrap-landing h1, .headings-wrap-landing h3 {
   margin: 0;
 }
 .headings-wrap-landing h1:nth-child(3) {
-  margin-top: 0;
-}
-.headings-wrap-landing h3 {
-  margin-top: -1.3em;
+  margin-bottom: 0.2em;
 }
 
 .js-zero-opacity {
