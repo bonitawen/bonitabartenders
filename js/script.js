@@ -683,6 +683,7 @@ let isInVerticalViewport = (elem) => {
   const footerElems = {
     logo: new ElementAnimation(document.getElementsByClassName('logo-footer')[0]),
     contact: new ElementAnimation(document.getElementsByClassName('footer-contact')[0]),
+    img: new ElementAnimation(document.querySelector('.footer-bottom-row img')),
     nav: new ElementAnimation(document.getElementsByClassName('nav-footer')[0]),
     liArr: [
       new ElementAnimation(document.querySelectorAll('.nav-footer li')[0]),
