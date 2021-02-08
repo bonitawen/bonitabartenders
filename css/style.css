@@ -261,7 +261,7 @@ footer .logo-footer a:hover, footer .logo-footer a:focus {
 footer .footer-top-row {
   display: flex;
   flex-direction: column;
-  margin-bottom: 6em;
+  margin-bottom: 4em;
 }
 footer .footer-contact h2 {
   margin-bottom: 0;
@@ -271,10 +271,17 @@ footer .footer-contact h4 {
   color: #0E172C;
   text-decoration: none;
 }
+footer .footer-bottom-row img {
+  width: 150px;
+  margin-bottom: 1.75em;
+}
 
 @media (min-width: 450px) {
   footer .logo-footer img {
     width: 70px;
+  }
+  footer .footer-bottom-row img {
+    width: 200px;
   }
 }
 @media (min-width: 900px) {
@@ -298,7 +305,11 @@ footer .footer-contact h4 {
   footer .footer-contact h2 {
     margin-top: -5px;
   }
-  footer .nav-footer ul {
+  footer .footer-bottom-row img {
+    width: 320px;
+    margin: -320px auto 50px;
+  }
+  footer .footer-bottom-row .nav-footer ul {
     margin: 0 auto;
   }
 }
@@ -1088,12 +1099,6 @@ textarea:hover::placeholder {
     }
     .menu-section .js-belt-transition {
       transition: transform 300ms ease-in-out;
-    }
-    .menu-section .drinks-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 30px;
-      margin-bottom: 30px;
     }
     .menu-section .drinks-grid .drink-box {
       width: 100%;
