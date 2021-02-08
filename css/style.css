@@ -8,6 +8,14 @@ body {
   overflow-x: hidden;
 }
 
+input {
+  background: white;
+}
+
+input:-internal-autofill-selected {
+  background: white;
+}
+
 /* =====================================
  * * SASS VARIABLES
  * * ================================== */
@@ -1138,6 +1146,12 @@ textarea:hover::placeholder {
 }
 .cocktail-finder-section .margin-container:nth-of-type(1) {
   padding-top: 4.5em;
+}
+.cocktail-finder-section .margin-container:nth-of-type(1) .cocktail-finder-search-background {
+  display: inline-block;
+  background-color: rgba(249, 248, 252, 0.94);
+  padding: 2em;
+  border-radius: 5px;
 }
 .cocktail-finder-section .margin-container:nth-of-type(1) p {
   max-width: 490px;

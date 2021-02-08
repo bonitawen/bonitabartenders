@@ -7,6 +7,12 @@ body
   padding: 0
   overflow-x: hidden
 
+input
+  background: white
+
+input:-internal-autofill-selected
+  background: white
+
 /* =====================================
  * SASS VARIABLES
  * ================================== */
@@ -1121,6 +1127,12 @@ textarea:hover::placeholder
 
   .margin-container:nth-of-type(1)
     padding-top: 4.5em
+
+    .cocktail-finder-search-background
+      display: inline-block
+      background-color: rgba(249, 248, 252, .94)
+      padding: 2em
+      border-radius: 5px
 
     p
       max-width: 490px
