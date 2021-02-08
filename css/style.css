@@ -1100,6 +1100,12 @@ textarea:hover::placeholder {
     .menu-section .js-belt-transition {
       transition: transform 300ms ease-in-out;
     }
+    .menu-section .drinks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 30px;
+      margin-bottom: 30px;
+    }
     .menu-section .drinks-grid .drink-box {
       width: 100%;
     }
