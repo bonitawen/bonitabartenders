@@ -722,11 +722,14 @@ textarea:hover::placeholder {
 }
 .hero-section-about .hero-image-wrap {
   height: 160px;
-  background-image: linear-gradient(rgba(217, 212, 231, 0.85), rgba(217, 212, 231, 0.85)), url(../img/hero_about.jpg);
+  background-image: url(../img/hero-about2.jpg);
   background-size: cover;
   width: 100%;
   position: absolute;
   z-index: -1;
+}
+.hero-section-about h2 {
+  margin: 0 0 -5px;
 }
 
 @media (min-width: 450px) {
@@ -737,7 +740,7 @@ textarea:hover::placeholder {
     height: 15.5rem;
   }
   .hero-section-about h2 {
-    margin-bottom: 40px;
+    margin: 83px 0 0;
   }
 }
 @media (min-width: 900px) {
