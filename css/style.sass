@@ -1330,6 +1330,7 @@ textarea:hover::placeholder
 /* || FAQ */
 
 .faq
+  background-color: $pink
 
   .intro-section-faq
     p
@@ -1337,7 +1338,8 @@ textarea:hover::placeholder
 
   .hero-section-faq
     height: 200px
-    background-image: url(../img/questionmark.jpg)
+    background-image: linear-gradient(rgba(255, 255, 254, 0.1), rgba(255, 255, 254, 0.1)), url(../img/hero-faq.jpg)
+
     background-size: cover
     background-position: center
     margin-bottom: 2em
@@ -1354,14 +1356,14 @@ textarea:hover::placeholder
     margin-bottom: 7rem
 
   .qa-container
-    background-color: $light-purple
+    background-color: $light-gray
     border-radius: 5px
 
   .card-margin-container
     padding: 2em 0.7em
 
   .qa
-    border-bottom: 1px solid $light-gray
+    border-bottom: 1px solid $light-purple
     margin-bottom: 1.4em
 
   .qa:last-child
