@@ -986,9 +986,6 @@ textarea:hover::placeholder {
 .cocktails header .logo a {
   color: #FFFFFE;
 }
-.cocktails footer {
-  background-color: #FEC7D7;
-}
 
 .hero-section-cocktails {
   height: 160px;
@@ -1411,9 +1408,6 @@ textarea:hover::placeholder {
   .faq .answer-container p {
     max-width: 624px;
   }
-}
-.faq footer {
-  background-color: #FEC7D7;
 }
 
 /* || CONTACT */
