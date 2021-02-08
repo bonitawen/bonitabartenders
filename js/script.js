@@ -2091,21 +2091,24 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
 
 
 
-// START ANIMATE COCKTAIL-FINDER HEADING AND PARAGRAPH.
+// START ANIMATE COCKTAIL-FINDER HEADING, PARAGRAPH AND BACKGROUND.
 {
   const cocktailFinderSection = new ElementAnimation(document.querySelector('.cocktail-finder-section'));
   const h2 = new ElementAnimation(document.querySelector('.cocktail-finder-search-container h2'));
   const p = new ElementAnimation(document.querySelector('.cocktail-finder-search-container p'));
+  const bg = new ElementAnimation(document.querySelector('.cocktail-finder-search-background'));
 
   const animate = () => {
     h2.animateIfInView();
     p.animateIfInView();
+    bg.animateIfHalfInView();
   };
 
   if (cocktailFinderSection.isNotUndefined()) {
     h2.zeroOpacity();
     p.zeroOpacity();
+    bg.zeroOpacity();
     animate();
     window.addEventListener('scroll', animate);
   }
-} // End animate cocktail-finder heading and paragraph.
+} // End animate cocktail-finder heading, paragraph and background.
