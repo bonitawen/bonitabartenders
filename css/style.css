@@ -8,14 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-input {
-  background: white;
-}
-
-input:-internal-autofill-selected {
-  background: white;
-}
-
 /* =====================================
  * * SASS VARIABLES
  * * ================================== */

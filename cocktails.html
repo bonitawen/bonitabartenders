@@ -319,8 +319,8 @@
           Search for it here.</p>
           <div class="error-message-input hide">Oops, we couldn't find that ingredient.</div>
           <div class="error-message-server hide">Sorry, we couldn't connect to the database.</div>
-          <form class="cocktail-finder-form">
-            <input type="text" name="ingredient" class="ingredient-input" placeholder="Lime">
+          <form autocomplete="off" class="cocktail-finder-form">
+            <input id="myId" type="text" name="ingredient" class="ingredient-input" placeholder="Lime">
             <input class="btn_2" type="submit" value="Search">
           </form>
         </div>
