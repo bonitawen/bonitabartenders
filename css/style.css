@@ -1360,7 +1360,6 @@ textarea:hover::placeholder {
   height: 200px;
   background-image: linear-gradient(rgba(255, 255, 254, 0.1), rgba(255, 255, 254, 0.1)), url(../img/hero-faq.jpg);
   background-size: cover;
-  background-position: center;
   margin-bottom: 2em;
 }
 @media (min-width: 450px) {
@@ -1368,9 +1367,20 @@ textarea:hover::placeholder {
     height: 300px;
   }
 }
+@media (min-width: 800px) {
+  .faq .hero-section-faq {
+    background-position: center;
+  }
+}
 @media (min-width: 900px) {
   .faq .hero-section-faq {
     height: 460px;
+    background-position: unset;
+  }
+}
+@media (min-width: 1250px) {
+  .faq .hero-section-faq {
+    background-position: center;
   }
 }
 .faq .qa-section {
