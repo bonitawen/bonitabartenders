@@ -214,6 +214,7 @@ header {
 }
 header .logo img {
   width: 130px;
+  border-radius: calc(130px * .14);
 }
 
 .js-header-transition {
@@ -230,6 +231,7 @@ header .logo img {
   }
   header .logo img {
     width: 160px;
+    border-radius: calc(160px * .14);
   }
 }
 @media (min-width: 900px) {
@@ -240,7 +242,8 @@ header .logo img {
     padding: 0;
   }
   header .logo img {
-    width: 210px;
+    width: 260px;
+    border-radius: calc(260px * .14);
   }
 }
 /* || FOOTER */
