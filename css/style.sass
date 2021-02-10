@@ -12,7 +12,7 @@ body
  * ================================== */
 $heading-font: 'Sriracha', serif
 $main-font: 'Source Sans Pro', sans-serif
-$logo-font: 'Nunito', sans-serif
+$logo-font: 'Nunito', sans-serif // TODO: take out, not needed cause img as logo
 
 $dark-blue: #0E172C
 $light-purple: #D9D4E7
@@ -124,7 +124,7 @@ h4
 p
   line-height: 1.4
 
-.logo
+.logo // TODO: take out cause logo an image
   font-family: $logo-font
   letter-spacing: .141em
   line-height: 1.4em
@@ -134,7 +134,7 @@ p
     font-size: 1rem
     color: $white
 
-.logo a:hover, .logo a:focus
+.logo a:hover, .logo a:focus    // TODO: take out cause logo an image
   color: $white
 
 .small
@@ -200,11 +200,6 @@ header
   align-items: center
   z-index: 8
 
-  .logo
-    img
-      width: 150px
-      border-radius: calc(150px * .14)
-
 .js-header-transition
   transition: transform .4s ease-in-out
 
@@ -214,10 +209,6 @@ header
 @media (min-width: 450px)
   header
     padding: $large-top-bottom-padding $large-side-margin
-    .logo
-      img
-        width: 200px
-        border-radius: calc(200px * .14)
 
 @media (min-width: 900px)
   header
@@ -226,25 +217,14 @@ header
     justify-content: flex-end
     padding: 0
 
-    .logo
-      img
-        width: 260px
-        border-radius: calc(260px * .14)
-
 /* || FOOTER */
 footer
   background-color: $white
   padding-top: 1.76em
 
-  .logo-footer
-    // color: $dark-blue
-    // margin-bottom: 1.3em
-    img
-      width: 54px
-
-    a
-      color: $dark-blue
-      text-decoration: none
+  a
+    color: $dark-blue
+    text-decoration: none
 
     a:hover, a:focus
       color: $dark-blue
@@ -270,10 +250,6 @@ footer
 
 @media (min-width: 450px)
   footer
-    .logo-footer
-      img
-        width: 70px
-
     .footer-bottom-row
       img
         width: 200px
@@ -291,10 +267,6 @@ footer
       justify-content: space-between
       margin-bottom: 6.5em
 
-    .logo-footer
-      img
-        width: 80px
-
     .footer-contact
       text-align: right
       h2
@@ -310,6 +282,35 @@ footer
           margin: 0 auto
 
 /* || COMPONENTS */
+
+// Logo
+.logo
+  img
+    width: 150px
+    border-radius: calc(150px * .14)
+
+@media (min-width: 450px)
+  .logo
+    img
+      width: 200px
+      border-radius: calc(200px * .14)
+
+@media (min-width: 900px)
+  .logo
+    img
+      width: 260px
+      border-radius: calc(260px * .14)
+
+  .logo-footer
+    img
+      width: 200px
+      border-radius: calc(200px * .14)
+
+@media (min-width: 1300px)
+  .logo-footer
+    img
+      width: 260px
+      border-radius: calc(260px * .14)
 
 // Main nav
 nav
@@ -412,9 +413,9 @@ nav
   justify-content: center
   align-items: center
 
-  .logo
-    img
-      width: 170px
+  // .logo  // TODO: take out cause logo an image
+  //   img
+  //     width: 170px
 
   ul
     text-align: center
@@ -430,7 +431,7 @@ nav
     li:first-child
       margin-bottom: 2em
       letter-spacing: .141em
-    .logo
+    .logo   // TODO: take out cause logo an image
       a
         color: $white
 
@@ -438,15 +439,15 @@ nav
   .nav-mobile
     ul
       font-size: calc(100% * 1.1)
-      .logo
+      .logo   // TODO: take out cause logo an image
         a
           font-size: (100% * 1.1)
 
-@media (min-width: 450px)
-  .nav-mobile
-    .logo
-      img
-        width: 200px
+// @media (min-width: 450px)
+//   .nav-mobile
+//     .logo   // TODO: take out cause logo an image
+//       img
+//         width: 200px
 
 .js-nav-mobile-transition
   transition: transform .4s ease-in-out
@@ -974,7 +975,7 @@ textarea:hover::placeholder
     a:hover, a:focus
       color: $purple
 
-    .logo
+    .logo    // TODO: take out cause logo an image
       a
         color: $white
 

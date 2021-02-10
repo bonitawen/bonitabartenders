@@ -212,10 +212,6 @@ header {
   align-items: center;
   z-index: 8;
 }
-header .logo img {
-  width: 150px;
-  border-radius: calc(150px * .14);
-}
 
 .js-header-transition {
   transition: transform 0.4s ease-in-out;
@@ -229,10 +225,6 @@ header .logo img {
   header {
     padding: 2em 10%;
   }
-  header .logo img {
-    width: 200px;
-    border-radius: calc(200px * .14);
-  }
 }
 @media (min-width: 900px) {
   header {
@@ -241,24 +233,17 @@ header .logo img {
     justify-content: flex-end;
     padding: 0;
   }
-  header .logo img {
-    width: 260px;
-    border-radius: calc(260px * .14);
-  }
 }
 /* || FOOTER */
 footer {
   background-color: #FFFFFE;
   padding-top: 1.76em;
 }
-footer .logo-footer img {
-  width: 54px;
-}
-footer .logo-footer a {
+footer a {
   color: #0E172C;
   text-decoration: none;
 }
-footer .logo-footer a:hover, footer .logo-footer a:focus {
+footer a a:hover, footer a a:focus {
   color: #0E172C;
 }
 footer .footer-top-row {
@@ -280,9 +265,6 @@ footer .footer-bottom-row img {
 }
 
 @media (min-width: 450px) {
-  footer .logo-footer img {
-    width: 70px;
-  }
   footer .footer-bottom-row img {
     width: 200px;
   }
@@ -299,9 +281,6 @@ footer .footer-bottom-row img {
     justify-content: space-between;
     margin-bottom: 6.5em;
   }
-  footer .logo-footer img {
-    width: 80px;
-  }
   footer .footer-contact {
     text-align: right;
   }
@@ -317,6 +296,34 @@ footer .footer-bottom-row img {
   }
 }
 /* || COMPONENTS */
+.logo img {
+  width: 150px;
+  border-radius: calc(150px * .14);
+}
+
+@media (min-width: 450px) {
+  .logo img {
+    width: 200px;
+    border-radius: calc(200px * .14);
+  }
+}
+@media (min-width: 900px) {
+  .logo img {
+    width: 260px;
+    border-radius: calc(260px * .14);
+  }
+
+  .logo-footer img {
+    width: 200px;
+    border-radius: calc(200px * .14);
+  }
+}
+@media (min-width: 1300px) {
+  .logo-footer img {
+    width: 260px;
+    border-radius: calc(260px * .14);
+  }
+}
 nav {
   display: flex;
   align-items: center;
@@ -425,9 +432,6 @@ nav a {
   justify-content: center;
   align-items: center;
 }
-.nav-mobile .logo img {
-  width: 170px;
-}
 .nav-mobile ul {
   text-align: center;
   text-transform: uppercase;
@@ -457,11 +461,6 @@ nav a {
   }
   .nav-mobile ul .logo a {
     font-size: 110%;
-  }
-}
-@media (min-width: 450px) {
-  .nav-mobile .logo img {
-    width: 200px;
   }
 }
 .js-nav-mobile-transition {
