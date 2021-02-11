@@ -570,22 +570,22 @@ let isInVerticalViewport = (elem) => {
       heading.fullOpacity();
 
     if (eventsCard.isHalfInViewport())
-      eventsCard.delay(eventsCard.slideEndPosTransparent, 10);
+      eventsCard.delay(eventsCard.slideEndPos, 10);
 
     if (consultingCard.isInVerticalViewport())
-      consultingCard.delay(consultingCard.slideEndPosTransparent, 10);
+      consultingCard.delay(consultingCard.slideEndPos, 10);
 
     if (mocktailsCard.isInVerticalViewport())
-      mocktailsCard.delay(mocktailsCard.slideEndPosTransparent, 10);
+      mocktailsCard.delay(mocktailsCard.slideEndPos, 10);
   };
 
   const animateLgViewport = () => {
     heading.animateIfInView();
 
     if (consultingCard.isHalfInViewport() || mocktailsCard.isHalfInViewport()) {
-      consultingCard.delay(consultingCard.slideEndPosTransparent, 10, 700);
-      eventsCard.delay(eventsCard.slideEndPosTransparent, 700);
-      mocktailsCard.delay(mocktailsCard.slideEndPosTransparent, 1300);
+      consultingCard.delay(consultingCard.slideEndPos, 10, 700);
+      eventsCard.delay(eventsCard.slideEndPos, 700);
+      mocktailsCard.delay(mocktailsCard.slideEndPos, 1300);
     }
   };
 

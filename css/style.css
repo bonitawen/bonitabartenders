@@ -613,7 +613,7 @@ footer .nav-footer ul li:nth-child(1) {
   border-radius: 8px;
 }
 .services .card {
-  background-color: #FFFFFE;
+  background-color: rgba(255, 255, 254, 0.94);
   display: block;
 }
 .services .card a {
