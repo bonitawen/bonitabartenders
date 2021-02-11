@@ -1059,7 +1059,7 @@ textarea:hover::placeholder {
   border-bottom: 1px solid #A786DF;
 }
 .menu-section .drink-box {
-  background-color: rgba(217, 212, 231, 0.93);
+  background-color: rgba(217, 212, 231, 0.96);
 }
 .menu-section .menu-background {
   background-image: linear-gradient(rgba(255, 255, 254, 0.17), rgba(255, 255, 254, 0.17)), url(../img/cocktail-menu-background.jpg);
