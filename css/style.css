@@ -1061,6 +1061,11 @@ textarea:hover::placeholder {
 .menu-section .drink-box {
   background-color: #D9D4E7;
 }
+.menu-section .menu-background {
+  background-color: red;
+  padding: 20px;
+  border-radius: 5px;
+}
 
 @media (min-width: 450px) {
   .menu-section .js-alcohol-headings li {
