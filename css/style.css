@@ -1240,6 +1240,7 @@ textarea:hover::placeholder {
 }
 .cocktail-finder-section .beverage-list-container .btn_back .material-icons-round {
   font-size: 2.5rem;
+  margin-left: 0.4em;
 }
 .cocktail-finder-section .beverage-list-container .btn_forward {
   order: 2;
