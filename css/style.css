@@ -991,9 +991,6 @@ textarea:hover::placeholder {
   color: #FFFFFE;
 }
 
-.hero-section-cocktails {
-  height: 160px;
-}
 .hero-section-cocktails .margin-container {
   padding: 0;
   height: 100%;
@@ -1001,44 +998,37 @@ textarea:hover::placeholder {
   align-items: flex-end;
 }
 .hero-section-cocktails .hero-image-wrap {
-  height: 160px;
   background-image: linear-gradient(rgba(255, 255, 254, 0.17), rgba(255, 255, 254, 0.17)), url(../img/hero-cocktails.jpg);
   background-size: cover;
   width: 100%;
-  position: absolute;
   z-index: -1;
+  background-size: 100%;
+  padding-bottom: 28.481%;
+  margin-top: 20px;
 }
 
-@media (min-width: 450px) {
-  .hero-section-cocktails {
-    height: 15.5rem;
-  }
-  .hero-section-cocktails .hero-image-wrap {
-    height: 15.5rem;
-  }
-  .hero-section-cocktails h2 {
-    margin-bottom: 40px;
-  }
-}
 @media (min-width: 900px) {
   .hero-section-cocktails {
     padding-top: 60px;
   }
-  .hero-section-cocktails .margin-container {
-    margin-top: 170px;
-    display: block;
-    padding: 2em 7%;
+  .hero-section-cocktails .hero-image-wrap {
+    margin-top: 0;
   }
+}
+@media (min-width: 1280px) {
   .hero-section-cocktails .hero-image-wrap {
     max-width: 1264px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-  }
-}
-@media (min-width: 1280px) {
-  .hero-section-cocktails .hero-image-wrap {
     border-radius: 5px;
+    background-size: cover;
+    padding-bottom: 0;
+    height: 15.5rem;
+    position: absolute;
+  }
+  .hero-section-cocktails .margin-container {
+    margin-top: 400px;
   }
 }
 .menu-section {
