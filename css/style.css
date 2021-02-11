@@ -1177,13 +1177,17 @@ textarea:hover::placeholder {
   margin-left: auto;
   height: 2rem;
   width: 5.6rem;
-  color: #D9D4E7;
-  background-color: rgba(167, 134, 223, 0.73);
+  color: #FFFFFE;
+  background-color: #b390F0;
+  transition: background-color 0.2s;
   font-weight: 600;
   line-height: 1.5;
   font-size: 0.78rem;
   cursor: pointer;
   letter-spacing: 0.123em;
+}
+.cocktail-finder-section form .btn_2:hover {
+  background-color: #A786DF;
 }
 .cocktail-finder-section .beverage-list-container,
 .cocktail-finder-section .beverage-details-container {
