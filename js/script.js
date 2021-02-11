@@ -1572,17 +1572,20 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
   const para = new ElementAnimation(document.querySelector('.menu-section p'));
   const headings = new ElementAnimation(document.getElementsByClassName('js-alcohol-headings')[0]);
   const drinksWindow = new ElementAnimation(document.getElementsByClassName('window')[0]);
+  const menuBg = new ElementAnimation(document.getElementsByClassName('menu-background')[0]);
   const drinkBoxArr = document.getElementsByClassName('drink-box');
   const animate = () => {
     if (para.isInViewport()) {
       para.delay(para.fullOpacity, 500);
       headings.delay(headings.fullOpacity, 500);
       drinksWindow.delay(drinksWindow.fullOpacity, 500);
+      menuBg.delay(menuBg.fullOpacity, 400);
     } else {
       for (let i = 0, j = drinkBoxArr.length; i < j; i++) {
         if (isInViewport(drinkBoxArr[i])) {
           headings.fullOpacity();
           drinksWindow.fullOpacity();
+          menuBg.fullOpacity();
         }
       }
     }
@@ -1592,6 +1595,7 @@ if (typeof document.getElementsByClassName('js-alcohol-headings')[0] !== 'undefi
     para.zeroOpacity();
     headings.zeroOpacity();
     drinksWindow.zeroOpacity();
+    menuBg.zeroOpacity();
     animate();
     window.addEventListener('scroll', animate);
   }
