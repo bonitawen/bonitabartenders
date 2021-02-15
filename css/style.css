@@ -497,9 +497,13 @@ footer .nav-footer ul li:nth-child(1) {
   position: relative;
   display: inline-block;
   padding: 2em;
-  margin: 0 auto;
 }
 
+@media (min-width: 900px) {
+  .card-margin-container {
+    margin: 0 auto;
+  }
+}
 /* =====================================
  * * PAGES
  * * ================================== */
