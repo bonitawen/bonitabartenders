@@ -157,21 +157,6 @@ class ElementAnimation {
 
       window.matchMedia('(min-width: 900px)').matches ? liArr[i].classList.remove('hide') : liArr[i].classList.add('hide');
     }
-
-    // TODO: take out
-    // for (let i = 0; i < liArr.length; i++) {
-    //   // If li not the logo.
-    //   if (!liArr[i].classList.contains('logo')) {
-    //     // If viewport > 900px and li-elem has hide-class.
-    //     if (window.matchMedia('(min-width: 900px)').matches) {
-    //       // Remove hide-class.
-    //       liArr[i].classList.remove('hide');
-    //     } else {
-    //       // Add hide class.
-    //       liArr[i].classList.add('hide');
-    //     }
-    //   }
-    // }
   };
   hideNavItems();
 
@@ -403,15 +388,6 @@ var checkScrollSpeed = (function(settings){
             header.style.position = 'fixed';
           }
         } 
-        
-        // TODO: remove??
-        // header was fixed before opening
-        //else if (window.pageYOffset < 200) {
-
-        //   window.setTimeout(function () {
-        //     header.style.position = 'absolute';
-        //   }, 400); // length of transitioning mobile-overlay
-        // }
 
         overlay.classList.remove('js-nav-mobile-show');
         window.addEventListener('scroll', headerPositioning_1);
