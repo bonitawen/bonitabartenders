@@ -497,6 +497,7 @@ footer .nav-footer ul li:nth-child(1) {
   position: relative;
   display: inline-block;
   padding: 2em;
+  margin: 0 auto;
 }
 
 /* =====================================
