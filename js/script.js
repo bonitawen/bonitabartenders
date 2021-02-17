@@ -740,7 +740,7 @@ let isInVerticalViewport = (elem) => {
 // START ANIMATE TESTIMONIALS HEADINGS.
 {
   const headingsWrap = new ElementAnimation(document.getElementsByClassName('headings-testimonials')[0]);
-  const heading = new ElementAnimation(document.querySelector('.headings-testimonials h3'));
+  const heading = new ElementAnimation(document.querySelector('.headings-testimonials h2'));
   const aboutUs = new ElementAnimation(document.querySelector('.about-us-section p'));
 
   const animate = () => {
