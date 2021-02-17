@@ -788,6 +788,12 @@ textarea:hover::placeholder {
 .testimonials-section .headings-testimonials {
   margin-bottom: 2em;
 }
+.testimonials-section .testimonials-background {
+  background-image: linear-gradient(rgba(255, 255, 254, 0.17), rgba(255, 255, 254, 0.17)), url(../img/mixed-drinks.jpg);
+  background-position: center;
+  padding: 20px;
+  border-radius: 5px;
+}
 .testimonials-section .testimonial-box {
   position: relative;
   z-index: -2;
