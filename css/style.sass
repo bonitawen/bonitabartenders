@@ -754,6 +754,9 @@ textarea:hover::placeholder
     padding: 20px
     border-radius: 5px
 
+  .slider-window
+    transform: translate(0px) // needed, so testimonal boxes won't dissapear on load after bg was added.
+
   .testimonial-box
     @extend %card-styles
     position: relative
@@ -796,7 +799,8 @@ textarea:hover::placeholder
         position: relative
         display: flex
         justify-content: space-between
-        width: 200% /* adjust depending on belt-items*/
+        width: 200% // adjust depending on belt-items
+        transform: translate(0px) // needed, so testimonal boxes won't dissapear on load after bg was added.
 
       .js-belt-transition
         transition: transform 300ms ease-in-out
