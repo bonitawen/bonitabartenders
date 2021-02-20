@@ -1027,7 +1027,7 @@ let isInVerticalViewport = (elem) => {
 
   const animateNoGrid = () => {
     for (let testimonial of testimonialsArr)
-      if (testimonial.isInViewport()) {
+      if (testimonial.isHalfInViewport()) {
         sliderWindow.fullOpacity(0);
         testimonial.fullOpacity();
       }
